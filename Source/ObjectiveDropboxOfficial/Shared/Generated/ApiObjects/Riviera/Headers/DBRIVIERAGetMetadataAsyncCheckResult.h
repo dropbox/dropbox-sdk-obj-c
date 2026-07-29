@@ -9,8 +9,8 @@
 #import "DBSerializableProtocol.h"
 
 @class DBRIVIERAGetMetadataAsyncCheckResult;
-@class DBRIVIERAGetMetadataAsyncError;
 @class DBRIVIERAGetMetadataResult;
+@class DBRIVIERAMetadataExtractionApiV2Error;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -56,7 +56,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetMetadataAsyncCheckResultTag) {
 
 /// (no description). @note Ensure the `isFailed` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBRIVIERAGetMetadataAsyncError *failed;
+@property (nonatomic, readonly) DBRIVIERAMetadataExtractionApiV2Error *failed;
 
 #pragma mark - Constructors
 
@@ -83,7 +83,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetMetadataAsyncCheckResultTag) {
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithFailed:(DBRIVIERAGetMetadataAsyncError *)failed;
+- (instancetype)initWithFailed:(DBRIVIERAMetadataExtractionApiV2Error *)failed;
 
 ///
 /// Initializes union class with tag state of "other".

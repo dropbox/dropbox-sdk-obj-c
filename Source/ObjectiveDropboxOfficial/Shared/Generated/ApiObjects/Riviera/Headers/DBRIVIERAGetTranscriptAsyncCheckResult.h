@@ -8,8 +8,8 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBRIVIERAContentApiV2Error;
 @class DBRIVIERAGetTranscriptAsyncCheckResult;
-@class DBRIVIERAGetTranscriptAsyncError;
 @class DBRIVIERAGetTranscriptResult;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -56,7 +56,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetTranscriptAsyncCheckResultTag) {
 
 /// (no description). @note Ensure the `isFailed` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBRIVIERAGetTranscriptAsyncError *failed;
+@property (nonatomic, readonly) DBRIVIERAContentApiV2Error *failed;
 
 #pragma mark - Constructors
 
@@ -83,7 +83,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetTranscriptAsyncCheckResultTag) {
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithFailed:(DBRIVIERAGetTranscriptAsyncError *)failed;
+- (instancetype)initWithFailed:(DBRIVIERAContentApiV2Error *)failed;
 
 ///
 /// Initializes union class with tag state of "other".

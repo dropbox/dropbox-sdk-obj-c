@@ -31,20 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// Identifier of the document to convert. Callers must set exactly one of the
-/// oneof variants: - file_id: a Dropbox-issued file id (format: "id:<id>") for
-/// a file the authenticated user has access to. - path: an absolute Dropbox
-/// path, e.g. "/folder/report.docx". - url: either a Dropbox shared link
-/// (www.dropbox.com) or an external HTTPS URL pointing to a supported document
-/// file. - Dropbox shared links are resolved internally using the caller's
-/// authenticated identity and the link's visibility / download settings. They
-/// therefore require an authenticated user context (anonymous `url` requests
-/// against Dropbox links are rejected with an `ACCESS_ERROR`). Links protected
-/// by a password are rejected with `shared_link_password_protected`; links with
-/// downloads disabled are rejected with `link_download_disabled_error`. -
-/// External URLs are fetched over HTTPS through the backend's egress proxy and
-/// must point at a supported document file extension. The referenced file must
-/// be a document in a supported format; requests against unsupported formats
-/// return `unsupported_format_error`.
+/// `FileIdOrUrl` variants. The referenced file must be a document in a
+/// supported format (see the route description for the list); requests against
+/// unsupported formats return `unsupported_format_error`.
 @property (nonatomic, readonly, nullable) DBRIVIERAFileIdOrUrl *fileIdOrUrl;
 
 /// Enable OCR for PDF documents. Processing is slower when enabled.
@@ -60,21 +49,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param fileIdOrUrl Identifier of the document to convert. Callers must set
-/// exactly one of the oneof variants: - file_id: a Dropbox-issued file id
-/// (format: "id:<id>") for a file the authenticated user has access to. - path:
-/// an absolute Dropbox path, e.g. "/folder/report.docx". - url: either a
-/// Dropbox shared link (www.dropbox.com) or an external HTTPS URL pointing to a
-/// supported document file. - Dropbox shared links are resolved internally
-/// using the caller's authenticated identity and the link's visibility /
-/// download settings. They therefore require an authenticated user context
-/// (anonymous `url` requests against Dropbox links are rejected with an
-/// `ACCESS_ERROR`). Links protected by a password are rejected with
-/// `shared_link_password_protected`; links with downloads disabled are rejected
-/// with `link_download_disabled_error`. - External URLs are fetched over HTTPS
-/// through the backend's egress proxy and must point at a supported document
-/// file extension. The referenced file must be a document in a supported
-/// format; requests against unsupported formats return
-/// `unsupported_format_error`.
+/// exactly one of the `FileIdOrUrl` variants. The referenced file must be a
+/// document in a supported format (see the route description for the list);
+/// requests against unsupported formats return `unsupported_format_error`.
 /// @param enableOcr Enable OCR for PDF documents. Processing is slower when
 /// enabled.
 /// @param embedImages When true, embed images as base64 data URIs in the

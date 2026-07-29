@@ -1962,6 +1962,2322 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMBulkSuspendArg.h"
+#import "DBTEAMBulkSuspendMemberTarget.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMBulkSuspendArg
+
+#pragma mark - Constructors
+
+- (instancetype)initWithMembers:(NSArray<DBTEAMBulkSuspendMemberTarget *> *)members {
+  [DBStoneValidators
+   nonnullValidator:[DBStoneValidators arrayValidator:nil
+                                             maxItems:nil
+                                        itemValidator:[DBStoneValidators nonnullValidator:nil]]](members);
+
+  self = [super init];
+  if (self) {
+    _members = members;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMBulkSuspendArgSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMBulkSuspendArgSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMBulkSuspendArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.members hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToBulkSuspendArg:other];
+}
+
+- (BOOL)isEqualToBulkSuspendArg:(DBTEAMBulkSuspendArg *)aBulkSuspendArg {
+  if (self == aBulkSuspendArg) {
+    return YES;
+  }
+  if (![self.members isEqual:aBulkSuspendArg.members]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMBulkSuspendArgSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMBulkSuspendArg *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"members"] = [DBArraySerializer serialize:valueObj.members
+                                            withBlock:^id(id elem0) {
+                                              return [DBTEAMBulkSuspendMemberTargetSerializer serialize:elem0];
+                                            }];
+
+  return jsonDict;
+}
+
++ (DBTEAMBulkSuspendArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSArray<DBTEAMBulkSuspendMemberTarget *> *members =
+      [DBArraySerializer deserialize:valueDict[@"members"]
+                           withBlock:^id(id elem0) {
+                             return [DBTEAMBulkSuspendMemberTargetSerializer deserialize:elem0];
+                           }];
+
+  return [[DBTEAMBulkSuspendArg alloc] initWithMembers:members];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMBulkSuspendComplete.h"
+#import "DBTEAMBulkSuspendReportDeliveryStatus.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMBulkSuspendComplete
+
+#pragma mark - Constructors
+
+- (instancetype)initWithRequested:(NSNumber *)requested
+                        suspended:(NSNumber *)suspended
+                           failed:(NSNumber *)failed
+                          unknown:(NSNumber *)unknown
+                   reportDelivery:(DBTEAMBulkSuspendReportDeliveryStatus *)reportDelivery {
+  [DBStoneValidators nonnullValidator:nil](requested);
+  [DBStoneValidators nonnullValidator:nil](suspended);
+  [DBStoneValidators nonnullValidator:nil](failed);
+  [DBStoneValidators nonnullValidator:nil](unknown);
+  [DBStoneValidators nonnullValidator:nil](reportDelivery);
+
+  self = [super init];
+  if (self) {
+    _requested = requested;
+    _suspended = suspended;
+    _failed = failed;
+    _unknown = unknown;
+    _reportDelivery = reportDelivery;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMBulkSuspendCompleteSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMBulkSuspendCompleteSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMBulkSuspendCompleteSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.requested hash];
+  result = prime * result + [self.suspended hash];
+  result = prime * result + [self.failed hash];
+  result = prime * result + [self.unknown hash];
+  result = prime * result + [self.reportDelivery hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToBulkSuspendComplete:other];
+}
+
+- (BOOL)isEqualToBulkSuspendComplete:(DBTEAMBulkSuspendComplete *)aBulkSuspendComplete {
+  if (self == aBulkSuspendComplete) {
+    return YES;
+  }
+  if (![self.requested isEqual:aBulkSuspendComplete.requested]) {
+    return NO;
+  }
+  if (![self.suspended isEqual:aBulkSuspendComplete.suspended]) {
+    return NO;
+  }
+  if (![self.failed isEqual:aBulkSuspendComplete.failed]) {
+    return NO;
+  }
+  if (![self.unknown isEqual:aBulkSuspendComplete.unknown]) {
+    return NO;
+  }
+  if (![self.reportDelivery isEqual:aBulkSuspendComplete.reportDelivery]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMBulkSuspendCompleteSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMBulkSuspendComplete *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"requested"] = valueObj.requested;
+  jsonDict[@"suspended"] = valueObj.suspended;
+  jsonDict[@"failed"] = valueObj.failed;
+  jsonDict[@"unknown"] = valueObj.unknown;
+  jsonDict[@"report_delivery"] = [DBTEAMBulkSuspendReportDeliveryStatusSerializer serialize:valueObj.reportDelivery];
+
+  return jsonDict;
+}
+
++ (DBTEAMBulkSuspendComplete *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSNumber *requested = valueDict[@"requested"];
+  NSNumber *suspended = valueDict[@"suspended"];
+  NSNumber *failed = valueDict[@"failed"];
+  NSNumber *unknown = valueDict[@"unknown"];
+  DBTEAMBulkSuspendReportDeliveryStatus *reportDelivery =
+      [DBTEAMBulkSuspendReportDeliveryStatusSerializer deserialize:valueDict[@"report_delivery"]];
+
+  return [[DBTEAMBulkSuspendComplete alloc] initWithRequested:requested
+                                                    suspended:suspended
+                                                       failed:failed
+                                                      unknown:unknown
+                                               reportDelivery:reportDelivery];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMBulkSuspendError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMBulkSuspendError
+
+#pragma mark - Constructors
+
+- (instancetype)initWithInvalidRequest {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendErrorInvalidRequest;
+  }
+  return self;
+}
+
+- (instancetype)initWithTooManyMembers {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendErrorTooManyMembers;
+  }
+  return self;
+}
+
+- (instancetype)initWithDuplicateClientItemId {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendErrorDuplicateClientItemId;
+  }
+  return self;
+}
+
+- (instancetype)initWithDuplicateTeamMemberId {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendErrorDuplicateTeamMemberId;
+  }
+  return self;
+}
+
+- (instancetype)initWithActingAdmin {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendErrorActingAdmin;
+  }
+  return self;
+}
+
+- (instancetype)initWithLastAdmin {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendErrorLastAdmin;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isInvalidRequest {
+  return _tag == DBTEAMBulkSuspendErrorInvalidRequest;
+}
+
+- (BOOL)isTooManyMembers {
+  return _tag == DBTEAMBulkSuspendErrorTooManyMembers;
+}
+
+- (BOOL)isDuplicateClientItemId {
+  return _tag == DBTEAMBulkSuspendErrorDuplicateClientItemId;
+}
+
+- (BOOL)isDuplicateTeamMemberId {
+  return _tag == DBTEAMBulkSuspendErrorDuplicateTeamMemberId;
+}
+
+- (BOOL)isActingAdmin {
+  return _tag == DBTEAMBulkSuspendErrorActingAdmin;
+}
+
+- (BOOL)isLastAdmin {
+  return _tag == DBTEAMBulkSuspendErrorLastAdmin;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMBulkSuspendErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMBulkSuspendErrorInvalidRequest:
+    return @"DBTEAMBulkSuspendErrorInvalidRequest";
+  case DBTEAMBulkSuspendErrorTooManyMembers:
+    return @"DBTEAMBulkSuspendErrorTooManyMembers";
+  case DBTEAMBulkSuspendErrorDuplicateClientItemId:
+    return @"DBTEAMBulkSuspendErrorDuplicateClientItemId";
+  case DBTEAMBulkSuspendErrorDuplicateTeamMemberId:
+    return @"DBTEAMBulkSuspendErrorDuplicateTeamMemberId";
+  case DBTEAMBulkSuspendErrorActingAdmin:
+    return @"DBTEAMBulkSuspendErrorActingAdmin";
+  case DBTEAMBulkSuspendErrorLastAdmin:
+    return @"DBTEAMBulkSuspendErrorLastAdmin";
+  case DBTEAMBulkSuspendErrorOther:
+    return @"DBTEAMBulkSuspendErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMBulkSuspendErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMBulkSuspendErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMBulkSuspendErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMBulkSuspendErrorInvalidRequest:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendErrorTooManyMembers:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendErrorDuplicateClientItemId:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendErrorDuplicateTeamMemberId:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendErrorActingAdmin:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendErrorLastAdmin:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendErrorOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToBulkSuspendError:other];
+}
+
+- (BOOL)isEqualToBulkSuspendError:(DBTEAMBulkSuspendError *)aBulkSuspendError {
+  if (self == aBulkSuspendError) {
+    return YES;
+  }
+  if (self.tag != aBulkSuspendError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMBulkSuspendErrorInvalidRequest:
+    return [[self tagName] isEqual:[aBulkSuspendError tagName]];
+  case DBTEAMBulkSuspendErrorTooManyMembers:
+    return [[self tagName] isEqual:[aBulkSuspendError tagName]];
+  case DBTEAMBulkSuspendErrorDuplicateClientItemId:
+    return [[self tagName] isEqual:[aBulkSuspendError tagName]];
+  case DBTEAMBulkSuspendErrorDuplicateTeamMemberId:
+    return [[self tagName] isEqual:[aBulkSuspendError tagName]];
+  case DBTEAMBulkSuspendErrorActingAdmin:
+    return [[self tagName] isEqual:[aBulkSuspendError tagName]];
+  case DBTEAMBulkSuspendErrorLastAdmin:
+    return [[self tagName] isEqual:[aBulkSuspendError tagName]];
+  case DBTEAMBulkSuspendErrorOther:
+    return [[self tagName] isEqual:[aBulkSuspendError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMBulkSuspendErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMBulkSuspendError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isInvalidRequest]) {
+    jsonDict[@".tag"] = @"invalid_request";
+  } else if ([valueObj isTooManyMembers]) {
+    jsonDict[@".tag"] = @"too_many_members";
+  } else if ([valueObj isDuplicateClientItemId]) {
+    jsonDict[@".tag"] = @"duplicate_client_item_id";
+  } else if ([valueObj isDuplicateTeamMemberId]) {
+    jsonDict[@".tag"] = @"duplicate_team_member_id";
+  } else if ([valueObj isActingAdmin]) {
+    jsonDict[@".tag"] = @"acting_admin";
+  } else if ([valueObj isLastAdmin]) {
+    jsonDict[@".tag"] = @"last_admin";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMBulkSuspendError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"invalid_request"]) {
+    return [[DBTEAMBulkSuspendError alloc] initWithInvalidRequest];
+  } else if ([tag isEqualToString:@"too_many_members"]) {
+    return [[DBTEAMBulkSuspendError alloc] initWithTooManyMembers];
+  } else if ([tag isEqualToString:@"duplicate_client_item_id"]) {
+    return [[DBTEAMBulkSuspendError alloc] initWithDuplicateClientItemId];
+  } else if ([tag isEqualToString:@"duplicate_team_member_id"]) {
+    return [[DBTEAMBulkSuspendError alloc] initWithDuplicateTeamMemberId];
+  } else if ([tag isEqualToString:@"acting_admin"]) {
+    return [[DBTEAMBulkSuspendError alloc] initWithActingAdmin];
+  } else if ([tag isEqualToString:@"last_admin"]) {
+    return [[DBTEAMBulkSuspendError alloc] initWithLastAdmin];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMBulkSuspendError alloc] initWithOther];
+  } else {
+    return [[DBTEAMBulkSuspendError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBASYNCPollResultBase.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMBulkSuspendComplete.h"
+#import "DBTEAMBulkSuspendJobStatus.h"
+#import "DBTEAMBulkSuspendTaskFailure.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMBulkSuspendJobStatus
+
+@synthesize complete = _complete;
+@synthesize failed = _failed;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithInProgress {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendJobStatusInProgress;
+  }
+  return self;
+}
+
+- (instancetype)initWithComplete:(DBTEAMBulkSuspendComplete *)complete {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendJobStatusComplete;
+    _complete = complete;
+  }
+  return self;
+}
+
+- (instancetype)initWithFailed:(DBTEAMBulkSuspendTaskFailure *)failed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendJobStatusFailed;
+    _failed = failed;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendJobStatusOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBTEAMBulkSuspendComplete *)complete {
+  if (![self isComplete]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMBulkSuspendJobStatusComplete, but was %@.", [self tagName]];
+  }
+  return _complete;
+}
+
+- (DBTEAMBulkSuspendTaskFailure *)failed {
+  if (![self isFailed]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMBulkSuspendJobStatusFailed, but was %@.", [self tagName]];
+  }
+  return _failed;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isInProgress {
+  return _tag == DBTEAMBulkSuspendJobStatusInProgress;
+}
+
+- (BOOL)isComplete {
+  return _tag == DBTEAMBulkSuspendJobStatusComplete;
+}
+
+- (BOOL)isFailed {
+  return _tag == DBTEAMBulkSuspendJobStatusFailed;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMBulkSuspendJobStatusOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMBulkSuspendJobStatusInProgress:
+    return @"DBTEAMBulkSuspendJobStatusInProgress";
+  case DBTEAMBulkSuspendJobStatusComplete:
+    return @"DBTEAMBulkSuspendJobStatusComplete";
+  case DBTEAMBulkSuspendJobStatusFailed:
+    return @"DBTEAMBulkSuspendJobStatusFailed";
+  case DBTEAMBulkSuspendJobStatusOther:
+    return @"DBTEAMBulkSuspendJobStatusOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMBulkSuspendJobStatusSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMBulkSuspendJobStatusSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMBulkSuspendJobStatusSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMBulkSuspendJobStatusInProgress:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendJobStatusComplete:
+    result = prime * result + [self.complete hash];
+    break;
+  case DBTEAMBulkSuspendJobStatusFailed:
+    result = prime * result + [self.failed hash];
+    break;
+  case DBTEAMBulkSuspendJobStatusOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToBulkSuspendJobStatus:other];
+}
+
+- (BOOL)isEqualToBulkSuspendJobStatus:(DBTEAMBulkSuspendJobStatus *)aBulkSuspendJobStatus {
+  if (self == aBulkSuspendJobStatus) {
+    return YES;
+  }
+  if (self.tag != aBulkSuspendJobStatus.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMBulkSuspendJobStatusInProgress:
+    return [[self tagName] isEqual:[aBulkSuspendJobStatus tagName]];
+  case DBTEAMBulkSuspendJobStatusComplete:
+    return [self.complete isEqual:aBulkSuspendJobStatus.complete];
+  case DBTEAMBulkSuspendJobStatusFailed:
+    return [self.failed isEqual:aBulkSuspendJobStatus.failed];
+  case DBTEAMBulkSuspendJobStatusOther:
+    return [[self tagName] isEqual:[aBulkSuspendJobStatus tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMBulkSuspendJobStatusSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMBulkSuspendJobStatus *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isInProgress]) {
+    jsonDict[@".tag"] = @"in_progress";
+  } else if ([valueObj isComplete]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMBulkSuspendCompleteSerializer serialize:valueObj.complete]];
+    jsonDict[@".tag"] = @"complete";
+  } else if ([valueObj isFailed]) {
+    jsonDict[@"failed"] = [[DBTEAMBulkSuspendTaskFailureSerializer serialize:valueObj.failed] mutableCopy];
+    jsonDict[@".tag"] = @"failed";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMBulkSuspendJobStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"in_progress"]) {
+    return [[DBTEAMBulkSuspendJobStatus alloc] initWithInProgress];
+  } else if ([tag isEqualToString:@"complete"]) {
+    DBTEAMBulkSuspendComplete *complete = [DBTEAMBulkSuspendCompleteSerializer deserialize:valueDict];
+    return [[DBTEAMBulkSuspendJobStatus alloc] initWithComplete:complete];
+  } else if ([tag isEqualToString:@"failed"]) {
+    DBTEAMBulkSuspendTaskFailure *failed = [DBTEAMBulkSuspendTaskFailureSerializer deserialize:valueDict[@"failed"]];
+    return [[DBTEAMBulkSuspendJobStatus alloc] initWithFailed:failed];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMBulkSuspendJobStatus alloc] initWithOther];
+  } else {
+    return [[DBTEAMBulkSuspendJobStatus alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMBulkSuspendMemberTarget.h"
+#import "DBTEAMMembersDeactivateArg.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMBulkSuspendMemberTarget
+
+#pragma mark - Constructors
+
+- (instancetype)initWithClientItemId:(NSString *)clientItemId suspendArg:(DBTEAMMembersDeactivateArg *)suspendArg {
+  [DBStoneValidators nonnullValidator:nil](clientItemId);
+  [DBStoneValidators nonnullValidator:nil](suspendArg);
+
+  self = [super init];
+  if (self) {
+    _clientItemId = clientItemId;
+    _suspendArg = suspendArg;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMBulkSuspendMemberTargetSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMBulkSuspendMemberTargetSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMBulkSuspendMemberTargetSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.clientItemId hash];
+  result = prime * result + [self.suspendArg hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToBulkSuspendMemberTarget:other];
+}
+
+- (BOOL)isEqualToBulkSuspendMemberTarget:(DBTEAMBulkSuspendMemberTarget *)aBulkSuspendMemberTarget {
+  if (self == aBulkSuspendMemberTarget) {
+    return YES;
+  }
+  if (![self.clientItemId isEqual:aBulkSuspendMemberTarget.clientItemId]) {
+    return NO;
+  }
+  if (![self.suspendArg isEqual:aBulkSuspendMemberTarget.suspendArg]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMBulkSuspendMemberTargetSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMBulkSuspendMemberTarget *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"client_item_id"] = valueObj.clientItemId;
+  jsonDict[@"suspend_arg"] = [DBTEAMMembersDeactivateArgSerializer serialize:valueObj.suspendArg];
+
+  return jsonDict;
+}
+
++ (DBTEAMBulkSuspendMemberTarget *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *clientItemId = valueDict[@"client_item_id"];
+  DBTEAMMembersDeactivateArg *suspendArg = [DBTEAMMembersDeactivateArgSerializer deserialize:valueDict[@"suspend_arg"]];
+
+  return [[DBTEAMBulkSuspendMemberTarget alloc] initWithClientItemId:clientItemId suspendArg:suspendArg];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMBulkSuspendReportDeliveryStatus.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMBulkSuspendReportDeliveryStatus
+
+#pragma mark - Constructors
+
+- (instancetype)initWithBulkSuspendReportDeliveryStatusUnspecified {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusUnspecified;
+  }
+  return self;
+}
+
+- (instancetype)initWithBulkSuspendReportDeliveryStatusPending {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusPending;
+  }
+  return self;
+}
+
+- (instancetype)initWithBulkSuspendReportDeliveryStatusDelivered {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusDelivered;
+  }
+  return self;
+}
+
+- (instancetype)initWithBulkSuspendReportDeliveryStatusFailed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusFailed;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendReportDeliveryStatusOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isBulkSuspendReportDeliveryStatusUnspecified {
+  return _tag == DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusUnspecified;
+}
+
+- (BOOL)isBulkSuspendReportDeliveryStatusPending {
+  return _tag == DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusPending;
+}
+
+- (BOOL)isBulkSuspendReportDeliveryStatusDelivered {
+  return _tag == DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusDelivered;
+}
+
+- (BOOL)isBulkSuspendReportDeliveryStatusFailed {
+  return _tag == DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusFailed;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMBulkSuspendReportDeliveryStatusOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusUnspecified:
+    return @"DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusUnspecified";
+  case DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusPending:
+    return @"DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusPending";
+  case DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusDelivered:
+    return @"DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusDelivered";
+  case DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusFailed:
+    return @"DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusFailed";
+  case DBTEAMBulkSuspendReportDeliveryStatusOther:
+    return @"DBTEAMBulkSuspendReportDeliveryStatusOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMBulkSuspendReportDeliveryStatusSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMBulkSuspendReportDeliveryStatusSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMBulkSuspendReportDeliveryStatusSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusUnspecified:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusPending:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusDelivered:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusFailed:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendReportDeliveryStatusOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToBulkSuspendReportDeliveryStatus:other];
+}
+
+- (BOOL)isEqualToBulkSuspendReportDeliveryStatus:
+    (DBTEAMBulkSuspendReportDeliveryStatus *)aBulkSuspendReportDeliveryStatus {
+  if (self == aBulkSuspendReportDeliveryStatus) {
+    return YES;
+  }
+  if (self.tag != aBulkSuspendReportDeliveryStatus.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusUnspecified:
+    return [[self tagName] isEqual:[aBulkSuspendReportDeliveryStatus tagName]];
+  case DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusPending:
+    return [[self tagName] isEqual:[aBulkSuspendReportDeliveryStatus tagName]];
+  case DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusDelivered:
+    return [[self tagName] isEqual:[aBulkSuspendReportDeliveryStatus tagName]];
+  case DBTEAMBulkSuspendReportDeliveryStatusBulkSuspendReportDeliveryStatusFailed:
+    return [[self tagName] isEqual:[aBulkSuspendReportDeliveryStatus tagName]];
+  case DBTEAMBulkSuspendReportDeliveryStatusOther:
+    return [[self tagName] isEqual:[aBulkSuspendReportDeliveryStatus tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMBulkSuspendReportDeliveryStatusSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMBulkSuspendReportDeliveryStatus *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isBulkSuspendReportDeliveryStatusUnspecified]) {
+    jsonDict[@".tag"] = @"bulk_suspend_report_delivery_status_unspecified";
+  } else if ([valueObj isBulkSuspendReportDeliveryStatusPending]) {
+    jsonDict[@".tag"] = @"bulk_suspend_report_delivery_status_pending";
+  } else if ([valueObj isBulkSuspendReportDeliveryStatusDelivered]) {
+    jsonDict[@".tag"] = @"bulk_suspend_report_delivery_status_delivered";
+  } else if ([valueObj isBulkSuspendReportDeliveryStatusFailed]) {
+    jsonDict[@".tag"] = @"bulk_suspend_report_delivery_status_failed";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMBulkSuspendReportDeliveryStatus *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"bulk_suspend_report_delivery_status_unspecified"]) {
+    return [[DBTEAMBulkSuspendReportDeliveryStatus alloc] initWithBulkSuspendReportDeliveryStatusUnspecified];
+  } else if ([tag isEqualToString:@"bulk_suspend_report_delivery_status_pending"]) {
+    return [[DBTEAMBulkSuspendReportDeliveryStatus alloc] initWithBulkSuspendReportDeliveryStatusPending];
+  } else if ([tag isEqualToString:@"bulk_suspend_report_delivery_status_delivered"]) {
+    return [[DBTEAMBulkSuspendReportDeliveryStatus alloc] initWithBulkSuspendReportDeliveryStatusDelivered];
+  } else if ([tag isEqualToString:@"bulk_suspend_report_delivery_status_failed"]) {
+    return [[DBTEAMBulkSuspendReportDeliveryStatus alloc] initWithBulkSuspendReportDeliveryStatusFailed];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMBulkSuspendReportDeliveryStatus alloc] initWithOther];
+  } else {
+    return [[DBTEAMBulkSuspendReportDeliveryStatus alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMUserSelectorError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMUserSelectorError
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUserNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMUserSelectorErrorUserNotFound;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isUserNotFound {
+  return _tag == DBTEAMUserSelectorErrorUserNotFound;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMUserSelectorErrorUserNotFound:
+    return @"DBTEAMUserSelectorErrorUserNotFound";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMUserSelectorErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMUserSelectorErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMUserSelectorErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMUserSelectorErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToUserSelectorError:other];
+}
+
+- (BOOL)isEqualToUserSelectorError:(DBTEAMUserSelectorError *)anUserSelectorError {
+  if (self == anUserSelectorError) {
+    return YES;
+  }
+  if (self.tag != anUserSelectorError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMUserSelectorErrorUserNotFound:
+    return [[self tagName] isEqual:[anUserSelectorError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMUserSelectorErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMUserSelectorError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isUserNotFound]) {
+    jsonDict[@".tag"] = @"user_not_found";
+  } else {
+    @throw([NSException exceptionWithName:@"InvalidTag"
+                                   reason:@"Object not properly initialized. Tag has an unknown value."
+                                 userInfo:nil]);
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMUserSelectorError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"user_not_found"]) {
+    return [[DBTEAMUserSelectorError alloc] initWithUserNotFound];
+  } else {
+    @throw([NSException
+        exceptionWithName:@"InvalidTag"
+                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
+                 userInfo:nil]);
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMMembersDeactivateError.h"
+#import "DBTEAMUserSelectorError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMMembersDeactivateError
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUserNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersDeactivateErrorUserNotFound;
+  }
+  return self;
+}
+
+- (instancetype)initWithUserNotInTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersDeactivateErrorUserNotInTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersDeactivateErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isUserNotFound {
+  return _tag == DBTEAMMembersDeactivateErrorUserNotFound;
+}
+
+- (BOOL)isUserNotInTeam {
+  return _tag == DBTEAMMembersDeactivateErrorUserNotInTeam;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMMembersDeactivateErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMMembersDeactivateErrorUserNotFound:
+    return @"DBTEAMMembersDeactivateErrorUserNotFound";
+  case DBTEAMMembersDeactivateErrorUserNotInTeam:
+    return @"DBTEAMMembersDeactivateErrorUserNotInTeam";
+  case DBTEAMMembersDeactivateErrorOther:
+    return @"DBTEAMMembersDeactivateErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMMembersDeactivateErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMMembersDeactivateErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMMembersDeactivateErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersDeactivateErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMMembersDeactivateErrorUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMMembersDeactivateErrorOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersDeactivateError:other];
+}
+
+- (BOOL)isEqualToMembersDeactivateError:(DBTEAMMembersDeactivateError *)aMembersDeactivateError {
+  if (self == aMembersDeactivateError) {
+    return YES;
+  }
+  if (self.tag != aMembersDeactivateError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersDeactivateErrorUserNotFound:
+    return [[self tagName] isEqual:[aMembersDeactivateError tagName]];
+  case DBTEAMMembersDeactivateErrorUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersDeactivateError tagName]];
+  case DBTEAMMembersDeactivateErrorOther:
+    return [[self tagName] isEqual:[aMembersDeactivateError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMMembersDeactivateErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersDeactivateError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isUserNotFound]) {
+    jsonDict[@".tag"] = @"user_not_found";
+  } else if ([valueObj isUserNotInTeam]) {
+    jsonDict[@".tag"] = @"user_not_in_team";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMMembersDeactivateError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"user_not_found"]) {
+    return [[DBTEAMMembersDeactivateError alloc] initWithUserNotFound];
+  } else if ([tag isEqualToString:@"user_not_in_team"]) {
+    return [[DBTEAMMembersDeactivateError alloc] initWithUserNotInTeam];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMMembersDeactivateError alloc] initWithOther];
+  } else {
+    return [[DBTEAMMembersDeactivateError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMMembersDeactivateError.h"
+#import "DBTEAMMembersSuspendError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMMembersSuspendError
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUserNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersSuspendErrorUserNotFound;
+  }
+  return self;
+}
+
+- (instancetype)initWithUserNotInTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersSuspendErrorUserNotInTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersSuspendErrorOther;
+  }
+  return self;
+}
+
+- (instancetype)initWithSuspendInactiveUser {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersSuspendErrorSuspendInactiveUser;
+  }
+  return self;
+}
+
+- (instancetype)initWithSuspendLastAdmin {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersSuspendErrorSuspendLastAdmin;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamLicenseLimit {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMMembersSuspendErrorTeamLicenseLimit;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isUserNotFound {
+  return _tag == DBTEAMMembersSuspendErrorUserNotFound;
+}
+
+- (BOOL)isUserNotInTeam {
+  return _tag == DBTEAMMembersSuspendErrorUserNotInTeam;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMMembersSuspendErrorOther;
+}
+
+- (BOOL)isSuspendInactiveUser {
+  return _tag == DBTEAMMembersSuspendErrorSuspendInactiveUser;
+}
+
+- (BOOL)isSuspendLastAdmin {
+  return _tag == DBTEAMMembersSuspendErrorSuspendLastAdmin;
+}
+
+- (BOOL)isTeamLicenseLimit {
+  return _tag == DBTEAMMembersSuspendErrorTeamLicenseLimit;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMMembersSuspendErrorUserNotFound:
+    return @"DBTEAMMembersSuspendErrorUserNotFound";
+  case DBTEAMMembersSuspendErrorUserNotInTeam:
+    return @"DBTEAMMembersSuspendErrorUserNotInTeam";
+  case DBTEAMMembersSuspendErrorOther:
+    return @"DBTEAMMembersSuspendErrorOther";
+  case DBTEAMMembersSuspendErrorSuspendInactiveUser:
+    return @"DBTEAMMembersSuspendErrorSuspendInactiveUser";
+  case DBTEAMMembersSuspendErrorSuspendLastAdmin:
+    return @"DBTEAMMembersSuspendErrorSuspendLastAdmin";
+  case DBTEAMMembersSuspendErrorTeamLicenseLimit:
+    return @"DBTEAMMembersSuspendErrorTeamLicenseLimit";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMMembersSuspendErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMMembersSuspendErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMMembersSuspendErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMMembersSuspendErrorUserNotFound:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMMembersSuspendErrorUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMMembersSuspendErrorOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMMembersSuspendErrorSuspendInactiveUser:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMMembersSuspendErrorSuspendLastAdmin:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMMembersSuspendErrorTeamLicenseLimit:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMembersSuspendError:other];
+}
+
+- (BOOL)isEqualToMembersSuspendError:(DBTEAMMembersSuspendError *)aMembersSuspendError {
+  if (self == aMembersSuspendError) {
+    return YES;
+  }
+  if (self.tag != aMembersSuspendError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMMembersSuspendErrorUserNotFound:
+    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
+  case DBTEAMMembersSuspendErrorUserNotInTeam:
+    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
+  case DBTEAMMembersSuspendErrorOther:
+    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
+  case DBTEAMMembersSuspendErrorSuspendInactiveUser:
+    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
+  case DBTEAMMembersSuspendErrorSuspendLastAdmin:
+    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
+  case DBTEAMMembersSuspendErrorTeamLicenseLimit:
+    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMMembersSuspendErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersSuspendError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isUserNotFound]) {
+    jsonDict[@".tag"] = @"user_not_found";
+  } else if ([valueObj isUserNotInTeam]) {
+    jsonDict[@".tag"] = @"user_not_in_team";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isSuspendInactiveUser]) {
+    jsonDict[@".tag"] = @"suspend_inactive_user";
+  } else if ([valueObj isSuspendLastAdmin]) {
+    jsonDict[@".tag"] = @"suspend_last_admin";
+  } else if ([valueObj isTeamLicenseLimit]) {
+    jsonDict[@".tag"] = @"team_license_limit";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMMembersSuspendError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"user_not_found"]) {
+    return [[DBTEAMMembersSuspendError alloc] initWithUserNotFound];
+  } else if ([tag isEqualToString:@"user_not_in_team"]) {
+    return [[DBTEAMMembersSuspendError alloc] initWithUserNotInTeam];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMMembersSuspendError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"suspend_inactive_user"]) {
+    return [[DBTEAMMembersSuspendError alloc] initWithSuspendInactiveUser];
+  } else if ([tag isEqualToString:@"suspend_last_admin"]) {
+    return [[DBTEAMMembersSuspendError alloc] initWithSuspendLastAdmin];
+  } else if ([tag isEqualToString:@"team_license_limit"]) {
+    return [[DBTEAMMembersSuspendError alloc] initWithTeamLicenseLimit];
+  } else {
+    return [[DBTEAMMembersSuspendError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMBulkSuspendRowFailure.h"
+#import "DBTEAMMembersSuspendError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMBulkSuspendRowFailure
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUserNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendRowFailureUserNotFound;
+  }
+  return self;
+}
+
+- (instancetype)initWithUserNotInTeam {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendRowFailureUserNotInTeam;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendRowFailureOther;
+  }
+  return self;
+}
+
+- (instancetype)initWithSuspendInactiveUser {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendRowFailureSuspendInactiveUser;
+  }
+  return self;
+}
+
+- (instancetype)initWithSuspendLastAdmin {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendRowFailureSuspendLastAdmin;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamLicenseLimit {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendRowFailureTeamLicenseLimit;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectedActingAdmin {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendRowFailureProtectedActingAdmin;
+  }
+  return self;
+}
+
+- (instancetype)initWithPermissionChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendRowFailurePermissionChanged;
+  }
+  return self;
+}
+
+- (instancetype)initWithSuspendFailed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendRowFailureSuspendFailed;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isUserNotFound {
+  return _tag == DBTEAMBulkSuspendRowFailureUserNotFound;
+}
+
+- (BOOL)isUserNotInTeam {
+  return _tag == DBTEAMBulkSuspendRowFailureUserNotInTeam;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMBulkSuspendRowFailureOther;
+}
+
+- (BOOL)isSuspendInactiveUser {
+  return _tag == DBTEAMBulkSuspendRowFailureSuspendInactiveUser;
+}
+
+- (BOOL)isSuspendLastAdmin {
+  return _tag == DBTEAMBulkSuspendRowFailureSuspendLastAdmin;
+}
+
+- (BOOL)isTeamLicenseLimit {
+  return _tag == DBTEAMBulkSuspendRowFailureTeamLicenseLimit;
+}
+
+- (BOOL)isProtectedActingAdmin {
+  return _tag == DBTEAMBulkSuspendRowFailureProtectedActingAdmin;
+}
+
+- (BOOL)isPermissionChanged {
+  return _tag == DBTEAMBulkSuspendRowFailurePermissionChanged;
+}
+
+- (BOOL)isSuspendFailed {
+  return _tag == DBTEAMBulkSuspendRowFailureSuspendFailed;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMBulkSuspendRowFailureUserNotFound:
+    return @"DBTEAMBulkSuspendRowFailureUserNotFound";
+  case DBTEAMBulkSuspendRowFailureUserNotInTeam:
+    return @"DBTEAMBulkSuspendRowFailureUserNotInTeam";
+  case DBTEAMBulkSuspendRowFailureOther:
+    return @"DBTEAMBulkSuspendRowFailureOther";
+  case DBTEAMBulkSuspendRowFailureSuspendInactiveUser:
+    return @"DBTEAMBulkSuspendRowFailureSuspendInactiveUser";
+  case DBTEAMBulkSuspendRowFailureSuspendLastAdmin:
+    return @"DBTEAMBulkSuspendRowFailureSuspendLastAdmin";
+  case DBTEAMBulkSuspendRowFailureTeamLicenseLimit:
+    return @"DBTEAMBulkSuspendRowFailureTeamLicenseLimit";
+  case DBTEAMBulkSuspendRowFailureProtectedActingAdmin:
+    return @"DBTEAMBulkSuspendRowFailureProtectedActingAdmin";
+  case DBTEAMBulkSuspendRowFailurePermissionChanged:
+    return @"DBTEAMBulkSuspendRowFailurePermissionChanged";
+  case DBTEAMBulkSuspendRowFailureSuspendFailed:
+    return @"DBTEAMBulkSuspendRowFailureSuspendFailed";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMBulkSuspendRowFailureSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMBulkSuspendRowFailureSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMBulkSuspendRowFailureSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMBulkSuspendRowFailureUserNotFound:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendRowFailureUserNotInTeam:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendRowFailureOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendRowFailureSuspendInactiveUser:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendRowFailureSuspendLastAdmin:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendRowFailureTeamLicenseLimit:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendRowFailureProtectedActingAdmin:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendRowFailurePermissionChanged:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendRowFailureSuspendFailed:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToBulkSuspendRowFailure:other];
+}
+
+- (BOOL)isEqualToBulkSuspendRowFailure:(DBTEAMBulkSuspendRowFailure *)aBulkSuspendRowFailure {
+  if (self == aBulkSuspendRowFailure) {
+    return YES;
+  }
+  if (self.tag != aBulkSuspendRowFailure.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMBulkSuspendRowFailureUserNotFound:
+    return [[self tagName] isEqual:[aBulkSuspendRowFailure tagName]];
+  case DBTEAMBulkSuspendRowFailureUserNotInTeam:
+    return [[self tagName] isEqual:[aBulkSuspendRowFailure tagName]];
+  case DBTEAMBulkSuspendRowFailureOther:
+    return [[self tagName] isEqual:[aBulkSuspendRowFailure tagName]];
+  case DBTEAMBulkSuspendRowFailureSuspendInactiveUser:
+    return [[self tagName] isEqual:[aBulkSuspendRowFailure tagName]];
+  case DBTEAMBulkSuspendRowFailureSuspendLastAdmin:
+    return [[self tagName] isEqual:[aBulkSuspendRowFailure tagName]];
+  case DBTEAMBulkSuspendRowFailureTeamLicenseLimit:
+    return [[self tagName] isEqual:[aBulkSuspendRowFailure tagName]];
+  case DBTEAMBulkSuspendRowFailureProtectedActingAdmin:
+    return [[self tagName] isEqual:[aBulkSuspendRowFailure tagName]];
+  case DBTEAMBulkSuspendRowFailurePermissionChanged:
+    return [[self tagName] isEqual:[aBulkSuspendRowFailure tagName]];
+  case DBTEAMBulkSuspendRowFailureSuspendFailed:
+    return [[self tagName] isEqual:[aBulkSuspendRowFailure tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMBulkSuspendRowFailureSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMBulkSuspendRowFailure *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isUserNotFound]) {
+    jsonDict[@".tag"] = @"user_not_found";
+  } else if ([valueObj isUserNotInTeam]) {
+    jsonDict[@".tag"] = @"user_not_in_team";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isSuspendInactiveUser]) {
+    jsonDict[@".tag"] = @"suspend_inactive_user";
+  } else if ([valueObj isSuspendLastAdmin]) {
+    jsonDict[@".tag"] = @"suspend_last_admin";
+  } else if ([valueObj isTeamLicenseLimit]) {
+    jsonDict[@".tag"] = @"team_license_limit";
+  } else if ([valueObj isProtectedActingAdmin]) {
+    jsonDict[@".tag"] = @"protected_acting_admin";
+  } else if ([valueObj isPermissionChanged]) {
+    jsonDict[@".tag"] = @"permission_changed";
+  } else if ([valueObj isSuspendFailed]) {
+    jsonDict[@".tag"] = @"suspend_failed";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMBulkSuspendRowFailure *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"user_not_found"]) {
+    return [[DBTEAMBulkSuspendRowFailure alloc] initWithUserNotFound];
+  } else if ([tag isEqualToString:@"user_not_in_team"]) {
+    return [[DBTEAMBulkSuspendRowFailure alloc] initWithUserNotInTeam];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMBulkSuspendRowFailure alloc] initWithOther];
+  } else if ([tag isEqualToString:@"suspend_inactive_user"]) {
+    return [[DBTEAMBulkSuspendRowFailure alloc] initWithSuspendInactiveUser];
+  } else if ([tag isEqualToString:@"suspend_last_admin"]) {
+    return [[DBTEAMBulkSuspendRowFailure alloc] initWithSuspendLastAdmin];
+  } else if ([tag isEqualToString:@"team_license_limit"]) {
+    return [[DBTEAMBulkSuspendRowFailure alloc] initWithTeamLicenseLimit];
+  } else if ([tag isEqualToString:@"protected_acting_admin"]) {
+    return [[DBTEAMBulkSuspendRowFailure alloc] initWithProtectedActingAdmin];
+  } else if ([tag isEqualToString:@"permission_changed"]) {
+    return [[DBTEAMBulkSuspendRowFailure alloc] initWithPermissionChanged];
+  } else if ([tag isEqualToString:@"suspend_failed"]) {
+    return [[DBTEAMBulkSuspendRowFailure alloc] initWithSuspendFailed];
+  } else {
+    return [[DBTEAMBulkSuspendRowFailure alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMBulkSuspendRowFailure.h"
+#import "DBTEAMBulkSuspendRowOutcome.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMBulkSuspendRowOutcome
+
+@synthesize failed = _failed;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSuspended {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendRowOutcomeSuspended;
+  }
+  return self;
+}
+
+- (instancetype)initWithFailed:(DBTEAMBulkSuspendRowFailure *)failed {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendRowOutcomeFailed;
+    _failed = failed;
+  }
+  return self;
+}
+
+- (instancetype)initWithUnknown {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendRowOutcomeUnknown;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendRowOutcomeOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBTEAMBulkSuspendRowFailure *)failed {
+  if (![self isFailed]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMBulkSuspendRowOutcomeFailed, but was %@.", [self tagName]];
+  }
+  return _failed;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isSuspended {
+  return _tag == DBTEAMBulkSuspendRowOutcomeSuspended;
+}
+
+- (BOOL)isFailed {
+  return _tag == DBTEAMBulkSuspendRowOutcomeFailed;
+}
+
+- (BOOL)isUnknown {
+  return _tag == DBTEAMBulkSuspendRowOutcomeUnknown;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMBulkSuspendRowOutcomeOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMBulkSuspendRowOutcomeSuspended:
+    return @"DBTEAMBulkSuspendRowOutcomeSuspended";
+  case DBTEAMBulkSuspendRowOutcomeFailed:
+    return @"DBTEAMBulkSuspendRowOutcomeFailed";
+  case DBTEAMBulkSuspendRowOutcomeUnknown:
+    return @"DBTEAMBulkSuspendRowOutcomeUnknown";
+  case DBTEAMBulkSuspendRowOutcomeOther:
+    return @"DBTEAMBulkSuspendRowOutcomeOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMBulkSuspendRowOutcomeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMBulkSuspendRowOutcomeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMBulkSuspendRowOutcomeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMBulkSuspendRowOutcomeSuspended:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendRowOutcomeFailed:
+    result = prime * result + [self.failed hash];
+    break;
+  case DBTEAMBulkSuspendRowOutcomeUnknown:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendRowOutcomeOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToBulkSuspendRowOutcome:other];
+}
+
+- (BOOL)isEqualToBulkSuspendRowOutcome:(DBTEAMBulkSuspendRowOutcome *)aBulkSuspendRowOutcome {
+  if (self == aBulkSuspendRowOutcome) {
+    return YES;
+  }
+  if (self.tag != aBulkSuspendRowOutcome.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMBulkSuspendRowOutcomeSuspended:
+    return [[self tagName] isEqual:[aBulkSuspendRowOutcome tagName]];
+  case DBTEAMBulkSuspendRowOutcomeFailed:
+    return [self.failed isEqual:aBulkSuspendRowOutcome.failed];
+  case DBTEAMBulkSuspendRowOutcomeUnknown:
+    return [[self tagName] isEqual:[aBulkSuspendRowOutcome tagName]];
+  case DBTEAMBulkSuspendRowOutcomeOther:
+    return [[self tagName] isEqual:[aBulkSuspendRowOutcome tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMBulkSuspendRowOutcomeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMBulkSuspendRowOutcome *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isSuspended]) {
+    jsonDict[@".tag"] = @"suspended";
+  } else if ([valueObj isFailed]) {
+    jsonDict[@"failed"] = [[DBTEAMBulkSuspendRowFailureSerializer serialize:valueObj.failed] mutableCopy];
+    jsonDict[@".tag"] = @"failed";
+  } else if ([valueObj isUnknown]) {
+    jsonDict[@".tag"] = @"unknown";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMBulkSuspendRowOutcome *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"suspended"]) {
+    return [[DBTEAMBulkSuspendRowOutcome alloc] initWithSuspended];
+  } else if ([tag isEqualToString:@"failed"]) {
+    DBTEAMBulkSuspendRowFailure *failed = [DBTEAMBulkSuspendRowFailureSerializer deserialize:valueDict[@"failed"]];
+    return [[DBTEAMBulkSuspendRowOutcome alloc] initWithFailed:failed];
+  } else if ([tag isEqualToString:@"unknown"]) {
+    return [[DBTEAMBulkSuspendRowOutcome alloc] initWithUnknown];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMBulkSuspendRowOutcome alloc] initWithOther];
+  } else {
+    return [[DBTEAMBulkSuspendRowOutcome alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMBulkSuspendTaskFailure.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMBulkSuspendTaskFailure
+
+#pragma mark - Constructors
+
+- (instancetype)initWithUnusableResult {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendTaskFailureUnusableResult;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMBulkSuspendTaskFailureOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isUnusableResult {
+  return _tag == DBTEAMBulkSuspendTaskFailureUnusableResult;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMBulkSuspendTaskFailureOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMBulkSuspendTaskFailureUnusableResult:
+    return @"DBTEAMBulkSuspendTaskFailureUnusableResult";
+  case DBTEAMBulkSuspendTaskFailureOther:
+    return @"DBTEAMBulkSuspendTaskFailureOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMBulkSuspendTaskFailureSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMBulkSuspendTaskFailureSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMBulkSuspendTaskFailureSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMBulkSuspendTaskFailureUnusableResult:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMBulkSuspendTaskFailureOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToBulkSuspendTaskFailure:other];
+}
+
+- (BOOL)isEqualToBulkSuspendTaskFailure:(DBTEAMBulkSuspendTaskFailure *)aBulkSuspendTaskFailure {
+  if (self == aBulkSuspendTaskFailure) {
+    return YES;
+  }
+  if (self.tag != aBulkSuspendTaskFailure.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMBulkSuspendTaskFailureUnusableResult:
+    return [[self tagName] isEqual:[aBulkSuspendTaskFailure tagName]];
+  case DBTEAMBulkSuspendTaskFailureOther:
+    return [[self tagName] isEqual:[aBulkSuspendTaskFailure tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMBulkSuspendTaskFailureSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMBulkSuspendTaskFailure *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isUnusableResult]) {
+    jsonDict[@".tag"] = @"unusable_result";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMBulkSuspendTaskFailure *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"unusable_result"]) {
+    return [[DBTEAMBulkSuspendTaskFailure alloc] initWithUnusableResult];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMBulkSuspendTaskFailure alloc] initWithOther];
+  } else {
+    return [[DBTEAMBulkSuspendTaskFailure alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMCustomQuotaError.h"
 
 #pragma mark - API Object
@@ -22489,141 +24805,6 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
-#import "DBTEAMUserSelectorError.h"
-
-#pragma mark - API Object
-
-@implementation DBTEAMUserSelectorError
-
-#pragma mark - Constructors
-
-- (instancetype)initWithUserNotFound {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMUserSelectorErrorUserNotFound;
-  }
-  return self;
-}
-
-#pragma mark - Instance field accessors
-
-#pragma mark - Tag state methods
-
-- (BOOL)isUserNotFound {
-  return _tag == DBTEAMUserSelectorErrorUserNotFound;
-}
-
-- (NSString *)tagName {
-  switch (_tag) {
-  case DBTEAMUserSelectorErrorUserNotFound:
-    return @"DBTEAMUserSelectorErrorUserNotFound";
-  }
-
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBTEAMUserSelectorErrorSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBTEAMUserSelectorErrorSerializer deserialize:dict];
-}
-
-#pragma mark - Debug Description method
-
-- (NSString *)debugDescription {
-  return [[DBTEAMUserSelectorErrorSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  switch (_tag) {
-  case DBTEAMUserSelectorErrorUserNotFound:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToUserSelectorError:other];
-}
-
-- (BOOL)isEqualToUserSelectorError:(DBTEAMUserSelectorError *)anUserSelectorError {
-  if (self == anUserSelectorError) {
-    return YES;
-  }
-  if (self.tag != anUserSelectorError.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBTEAMUserSelectorErrorUserNotFound:
-    return [[self tagName] isEqual:[anUserSelectorError tagName]];
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBTEAMUserSelectorErrorSerializer
-
-+ (NSDictionary<NSString *, id> *)serialize:(DBTEAMUserSelectorError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  if ([valueObj isUserNotFound]) {
-    jsonDict[@".tag"] = @"user_not_found";
-  } else {
-    @throw([NSException exceptionWithName:@"InvalidTag"
-                                   reason:@"Object not properly initialized. Tag has an unknown value."
-                                 userInfo:nil]);
-  }
-
-  return jsonDict;
-}
-
-+ (DBTEAMUserSelectorError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
-
-  if ([tag isEqualToString:@"user_not_found"]) {
-    return [[DBTEAMUserSelectorError alloc] initWithUserNotFound];
-  } else {
-    @throw([NSException
-        exceptionWithName:@"InvalidTag"
-                   reason:[NSString stringWithFormat:@"Tag has an invalid value: \"%@\".", valueDict[@".tag"]]
-                 userInfo:nil]);
-  }
-}
-
-@end
-
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
 #import "DBTEAMMemberSelectorError.h"
 #import "DBTEAMUserSelectorError.h"
 
@@ -24303,183 +26484,6 @@
   NSNumber *wipeData = valueDict[@"wipe_data"] ?: @YES;
 
   return [[DBTEAMMembersDeactivateArg alloc] initWithUser:user wipeData:wipeData];
-}
-
-@end
-
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-#import "DBTEAMMembersDeactivateError.h"
-#import "DBTEAMUserSelectorError.h"
-
-#pragma mark - API Object
-
-@implementation DBTEAMMembersDeactivateError
-
-#pragma mark - Constructors
-
-- (instancetype)initWithUserNotFound {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMMembersDeactivateErrorUserNotFound;
-  }
-  return self;
-}
-
-- (instancetype)initWithUserNotInTeam {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMMembersDeactivateErrorUserNotInTeam;
-  }
-  return self;
-}
-
-- (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMMembersDeactivateErrorOther;
-  }
-  return self;
-}
-
-#pragma mark - Instance field accessors
-
-#pragma mark - Tag state methods
-
-- (BOOL)isUserNotFound {
-  return _tag == DBTEAMMembersDeactivateErrorUserNotFound;
-}
-
-- (BOOL)isUserNotInTeam {
-  return _tag == DBTEAMMembersDeactivateErrorUserNotInTeam;
-}
-
-- (BOOL)isOther {
-  return _tag == DBTEAMMembersDeactivateErrorOther;
-}
-
-- (NSString *)tagName {
-  switch (_tag) {
-  case DBTEAMMembersDeactivateErrorUserNotFound:
-    return @"DBTEAMMembersDeactivateErrorUserNotFound";
-  case DBTEAMMembersDeactivateErrorUserNotInTeam:
-    return @"DBTEAMMembersDeactivateErrorUserNotInTeam";
-  case DBTEAMMembersDeactivateErrorOther:
-    return @"DBTEAMMembersDeactivateErrorOther";
-  }
-
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBTEAMMembersDeactivateErrorSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBTEAMMembersDeactivateErrorSerializer deserialize:dict];
-}
-
-#pragma mark - Debug Description method
-
-- (NSString *)debugDescription {
-  return [[DBTEAMMembersDeactivateErrorSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  switch (_tag) {
-  case DBTEAMMembersDeactivateErrorUserNotFound:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBTEAMMembersDeactivateErrorUserNotInTeam:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBTEAMMembersDeactivateErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToMembersDeactivateError:other];
-}
-
-- (BOOL)isEqualToMembersDeactivateError:(DBTEAMMembersDeactivateError *)aMembersDeactivateError {
-  if (self == aMembersDeactivateError) {
-    return YES;
-  }
-  if (self.tag != aMembersDeactivateError.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBTEAMMembersDeactivateErrorUserNotFound:
-    return [[self tagName] isEqual:[aMembersDeactivateError tagName]];
-  case DBTEAMMembersDeactivateErrorUserNotInTeam:
-    return [[self tagName] isEqual:[aMembersDeactivateError tagName]];
-  case DBTEAMMembersDeactivateErrorOther:
-    return [[self tagName] isEqual:[aMembersDeactivateError tagName]];
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBTEAMMembersDeactivateErrorSerializer
-
-+ (NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersDeactivateError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  if ([valueObj isUserNotFound]) {
-    jsonDict[@".tag"] = @"user_not_found";
-  } else if ([valueObj isUserNotInTeam]) {
-    jsonDict[@".tag"] = @"user_not_in_team";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
-
-  return jsonDict;
-}
-
-+ (DBTEAMMembersDeactivateError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
-
-  if ([tag isEqualToString:@"user_not_found"]) {
-    return [[DBTEAMMembersDeactivateError alloc] initWithUserNotFound];
-  } else if ([tag isEqualToString:@"user_not_in_team"]) {
-    return [[DBTEAMMembersDeactivateError alloc] initWithUserNotInTeam];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBTEAMMembersDeactivateError alloc] initWithOther];
-  } else {
-    return [[DBTEAMMembersDeactivateError alloc] initWithOther];
-  }
 }
 
 @end
@@ -31198,252 +33202,6 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
-#import "DBTEAMMembersDeactivateError.h"
-#import "DBTEAMMembersSuspendError.h"
-
-#pragma mark - API Object
-
-@implementation DBTEAMMembersSuspendError
-
-#pragma mark - Constructors
-
-- (instancetype)initWithUserNotFound {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMMembersSuspendErrorUserNotFound;
-  }
-  return self;
-}
-
-- (instancetype)initWithUserNotInTeam {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMMembersSuspendErrorUserNotInTeam;
-  }
-  return self;
-}
-
-- (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMMembersSuspendErrorOther;
-  }
-  return self;
-}
-
-- (instancetype)initWithSuspendInactiveUser {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMMembersSuspendErrorSuspendInactiveUser;
-  }
-  return self;
-}
-
-- (instancetype)initWithSuspendLastAdmin {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMMembersSuspendErrorSuspendLastAdmin;
-  }
-  return self;
-}
-
-- (instancetype)initWithTeamLicenseLimit {
-  self = [super init];
-  if (self) {
-    _tag = DBTEAMMembersSuspendErrorTeamLicenseLimit;
-  }
-  return self;
-}
-
-#pragma mark - Instance field accessors
-
-#pragma mark - Tag state methods
-
-- (BOOL)isUserNotFound {
-  return _tag == DBTEAMMembersSuspendErrorUserNotFound;
-}
-
-- (BOOL)isUserNotInTeam {
-  return _tag == DBTEAMMembersSuspendErrorUserNotInTeam;
-}
-
-- (BOOL)isOther {
-  return _tag == DBTEAMMembersSuspendErrorOther;
-}
-
-- (BOOL)isSuspendInactiveUser {
-  return _tag == DBTEAMMembersSuspendErrorSuspendInactiveUser;
-}
-
-- (BOOL)isSuspendLastAdmin {
-  return _tag == DBTEAMMembersSuspendErrorSuspendLastAdmin;
-}
-
-- (BOOL)isTeamLicenseLimit {
-  return _tag == DBTEAMMembersSuspendErrorTeamLicenseLimit;
-}
-
-- (NSString *)tagName {
-  switch (_tag) {
-  case DBTEAMMembersSuspendErrorUserNotFound:
-    return @"DBTEAMMembersSuspendErrorUserNotFound";
-  case DBTEAMMembersSuspendErrorUserNotInTeam:
-    return @"DBTEAMMembersSuspendErrorUserNotInTeam";
-  case DBTEAMMembersSuspendErrorOther:
-    return @"DBTEAMMembersSuspendErrorOther";
-  case DBTEAMMembersSuspendErrorSuspendInactiveUser:
-    return @"DBTEAMMembersSuspendErrorSuspendInactiveUser";
-  case DBTEAMMembersSuspendErrorSuspendLastAdmin:
-    return @"DBTEAMMembersSuspendErrorSuspendLastAdmin";
-  case DBTEAMMembersSuspendErrorTeamLicenseLimit:
-    return @"DBTEAMMembersSuspendErrorTeamLicenseLimit";
-  }
-
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBTEAMMembersSuspendErrorSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBTEAMMembersSuspendErrorSerializer deserialize:dict];
-}
-
-#pragma mark - Debug Description method
-
-- (NSString *)debugDescription {
-  return [[DBTEAMMembersSuspendErrorSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  switch (_tag) {
-  case DBTEAMMembersSuspendErrorUserNotFound:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBTEAMMembersSuspendErrorUserNotInTeam:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBTEAMMembersSuspendErrorOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBTEAMMembersSuspendErrorSuspendInactiveUser:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBTEAMMembersSuspendErrorSuspendLastAdmin:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBTEAMMembersSuspendErrorTeamLicenseLimit:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToMembersSuspendError:other];
-}
-
-- (BOOL)isEqualToMembersSuspendError:(DBTEAMMembersSuspendError *)aMembersSuspendError {
-  if (self == aMembersSuspendError) {
-    return YES;
-  }
-  if (self.tag != aMembersSuspendError.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBTEAMMembersSuspendErrorUserNotFound:
-    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
-  case DBTEAMMembersSuspendErrorUserNotInTeam:
-    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
-  case DBTEAMMembersSuspendErrorOther:
-    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
-  case DBTEAMMembersSuspendErrorSuspendInactiveUser:
-    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
-  case DBTEAMMembersSuspendErrorSuspendLastAdmin:
-    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
-  case DBTEAMMembersSuspendErrorTeamLicenseLimit:
-    return [[self tagName] isEqual:[aMembersSuspendError tagName]];
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBTEAMMembersSuspendErrorSerializer
-
-+ (NSDictionary<NSString *, id> *)serialize:(DBTEAMMembersSuspendError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  if ([valueObj isUserNotFound]) {
-    jsonDict[@".tag"] = @"user_not_found";
-  } else if ([valueObj isUserNotInTeam]) {
-    jsonDict[@".tag"] = @"user_not_in_team";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else if ([valueObj isSuspendInactiveUser]) {
-    jsonDict[@".tag"] = @"suspend_inactive_user";
-  } else if ([valueObj isSuspendLastAdmin]) {
-    jsonDict[@".tag"] = @"suspend_last_admin";
-  } else if ([valueObj isTeamLicenseLimit]) {
-    jsonDict[@".tag"] = @"team_license_limit";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
-
-  return jsonDict;
-}
-
-+ (DBTEAMMembersSuspendError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
-
-  if ([tag isEqualToString:@"user_not_found"]) {
-    return [[DBTEAMMembersSuspendError alloc] initWithUserNotFound];
-  } else if ([tag isEqualToString:@"user_not_in_team"]) {
-    return [[DBTEAMMembersSuspendError alloc] initWithUserNotInTeam];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBTEAMMembersSuspendError alloc] initWithOther];
-  } else if ([tag isEqualToString:@"suspend_inactive_user"]) {
-    return [[DBTEAMMembersSuspendError alloc] initWithSuspendInactiveUser];
-  } else if ([tag isEqualToString:@"suspend_last_admin"]) {
-    return [[DBTEAMMembersSuspendError alloc] initWithSuspendLastAdmin];
-  } else if ([tag isEqualToString:@"team_license_limit"]) {
-    return [[DBTEAMMembersSuspendError alloc] initWithTeamLicenseLimit];
-  } else {
-    return [[DBTEAMMembersSuspendError alloc] initWithOther];
-  }
-}
-
-@end
-
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
 #import "DBTEAMMembersTransferFilesError.h"
 #import "DBTEAMMembersTransferFormerMembersFilesError.h"
 
@@ -37991,6 +39749,14 @@
   return self;
 }
 
+- (instancetype)initWithFolderCountLimitExceeded {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderActivateErrorFolderCountLimitExceeded;
+  }
+  return self;
+}
+
 #pragma mark - Instance field accessors
 
 - (DBTEAMTeamFolderAccessError *)accessError {
@@ -38036,6 +39802,10 @@
   return _tag == DBTEAMTeamFolderActivateErrorOther;
 }
 
+- (BOOL)isFolderCountLimitExceeded {
+  return _tag == DBTEAMTeamFolderActivateErrorFolderCountLimitExceeded;
+}
+
 - (NSString *)tagName {
   switch (_tag) {
   case DBTEAMTeamFolderActivateErrorAccessError:
@@ -38046,6 +39816,8 @@
     return @"DBTEAMTeamFolderActivateErrorTeamSharedDropboxError";
   case DBTEAMTeamFolderActivateErrorOther:
     return @"DBTEAMTeamFolderActivateErrorOther";
+  case DBTEAMTeamFolderActivateErrorFolderCountLimitExceeded:
+    return @"DBTEAMTeamFolderActivateErrorFolderCountLimitExceeded";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -38094,6 +39866,9 @@
   case DBTEAMTeamFolderActivateErrorOther:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBTEAMTeamFolderActivateErrorFolderCountLimitExceeded:
+    result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -38127,6 +39902,8 @@
     return [self.teamSharedDropboxError isEqual:aTeamFolderActivateError.teamSharedDropboxError];
   case DBTEAMTeamFolderActivateErrorOther:
     return [[self tagName] isEqual:[aTeamFolderActivateError tagName]];
+  case DBTEAMTeamFolderActivateErrorFolderCountLimitExceeded:
+    return [[self tagName] isEqual:[aTeamFolderActivateError tagName]];
   }
   return YES;
 }
@@ -38153,6 +39930,8 @@
     jsonDict[@".tag"] = @"team_shared_dropbox_error";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isFolderCountLimitExceeded]) {
+    jsonDict[@".tag"] = @"folder_count_limit_exceeded";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -38177,6 +39956,8 @@
     return [[DBTEAMTeamFolderActivateError alloc] initWithTeamSharedDropboxError:teamSharedDropboxError];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMTeamFolderActivateError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"folder_count_limit_exceeded"]) {
+    return [[DBTEAMTeamFolderActivateError alloc] initWithFolderCountLimitExceeded];
   } else {
     return [[DBTEAMTeamFolderActivateError alloc] initWithOther];
   }
@@ -41409,6 +43190,14 @@
   return self;
 }
 
+- (instancetype)initWithFolderCountLimitExceeded {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderRestoreErrorFolderCountLimitExceeded;
+  }
+  return self;
+}
+
 #pragma mark - Instance field accessors
 
 - (DBTEAMTeamFolderAccessError *)accessError {
@@ -41454,6 +43243,10 @@
   return _tag == DBTEAMTeamFolderRestoreErrorOther;
 }
 
+- (BOOL)isFolderCountLimitExceeded {
+  return _tag == DBTEAMTeamFolderRestoreErrorFolderCountLimitExceeded;
+}
+
 - (NSString *)tagName {
   switch (_tag) {
   case DBTEAMTeamFolderRestoreErrorAccessError:
@@ -41464,6 +43257,8 @@
     return @"DBTEAMTeamFolderRestoreErrorTeamSharedDropboxError";
   case DBTEAMTeamFolderRestoreErrorOther:
     return @"DBTEAMTeamFolderRestoreErrorOther";
+  case DBTEAMTeamFolderRestoreErrorFolderCountLimitExceeded:
+    return @"DBTEAMTeamFolderRestoreErrorFolderCountLimitExceeded";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -41512,6 +43307,9 @@
   case DBTEAMTeamFolderRestoreErrorOther:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBTEAMTeamFolderRestoreErrorFolderCountLimitExceeded:
+    result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -41545,6 +43343,8 @@
     return [self.teamSharedDropboxError isEqual:aTeamFolderRestoreError.teamSharedDropboxError];
   case DBTEAMTeamFolderRestoreErrorOther:
     return [[self tagName] isEqual:[aTeamFolderRestoreError tagName]];
+  case DBTEAMTeamFolderRestoreErrorFolderCountLimitExceeded:
+    return [[self tagName] isEqual:[aTeamFolderRestoreError tagName]];
   }
   return YES;
 }
@@ -41571,6 +43371,8 @@
     jsonDict[@".tag"] = @"team_shared_dropbox_error";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isFolderCountLimitExceeded]) {
+    jsonDict[@".tag"] = @"folder_count_limit_exceeded";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -41595,6 +43397,8 @@
     return [[DBTEAMTeamFolderRestoreError alloc] initWithTeamSharedDropboxError:teamSharedDropboxError];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBTEAMTeamFolderRestoreError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"folder_count_limit_exceeded"]) {
+    return [[DBTEAMTeamFolderRestoreError alloc] initWithFolderCountLimitExceeded];
   } else {
     return [[DBTEAMTeamFolderRestoreError alloc] initWithOther];
   }

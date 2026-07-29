@@ -8,6 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBTEAMLOGMediaHubProjectLogInfo;
 @class DBTEAMLOGMediaHubProjectTeamAddDetails;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MediaHubProjectTeamAddDetails` struct.
 ///
-/// Added member to Media Hub project.
+/// Added member to Replay project.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -27,10 +28,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
+/// Replay project.
+@property (nonatomic, readonly, nullable) DBTEAMLOGMediaHubProjectLogInfo *project;
+
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
+///
+/// @param project Replay project.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProject:(nullable DBTEAMLOGMediaHubProjectLogInfo *)project;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
+///
 ///
 /// @return An initialized instance.
 ///

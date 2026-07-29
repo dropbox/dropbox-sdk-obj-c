@@ -17,6 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MetadataExtractionApiV2Error` union.
 ///
+/// Reason a metadata extraction job failed. Returned in the `failed` variant of
+/// `GetMetadataAsyncCheckResult`. This is a semantic error union: the HTTP
+/// status of the poll request itself is unaffected (a poll that surfaces a
+/// failed job is still a normal successful poll response). Callers should
+/// branch on the variant.
+///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
@@ -29,10 +35,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBRIVIERAMetadataExtractionApiV2Error`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataExtractionApiV2ErrorTag) {
-  /// (no description).
+  /// An unexpected, typically transient, server-side failure. The string is a
+  /// human-readable message; retrying with backoff may succeed.
   DBRIVIERAMetadataExtractionApiV2ErrorServerError,
 
-  /// (no description).
+  /// The request could not be processed as supplied (a problem with the
+  /// caller's input). The string is a human-readable message; retrying the
+  /// same request will not help.
   DBRIVIERAMetadataExtractionApiV2ErrorUserError,
 
   /// (no description).
@@ -64,11 +73,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataExtractionApiV2ErrorTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBRIVIERAMetadataExtractionApiV2ErrorTag tag;
 
-/// (no description). @note Ensure the `isServerError` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// An unexpected, typically transient, server-side failure. The string is a
+/// human-readable message; retrying with backoff may succeed. @note Ensure the
+/// `isServerError` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property (nonatomic, readonly, copy) NSString *serverError;
 
-/// (no description). @note Ensure the `isUserError` method returns true before
+/// The request could not be processed as supplied (a problem with the caller's
+/// input). The string is a human-readable message; retrying the same request
+/// will not help. @note Ensure the `isUserError` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly, copy) NSString *userError;
 
@@ -77,7 +90,12 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataExtractionApiV2ErrorTag) {
 ///
 /// Initializes union class with tag state of "server_error".
 ///
-/// @param serverError (no description).
+/// Description of the "server_error" tag state: An unexpected, typically
+/// transient, server-side failure. The string is a human-readable message;
+/// retrying with backoff may succeed.
+///
+/// @param serverError An unexpected, typically transient, server-side failure.
+/// The string is a human-readable message; retrying with backoff may succeed.
 ///
 /// @return An initialized instance.
 ///
@@ -86,7 +104,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataExtractionApiV2ErrorTag) {
 ///
 /// Initializes union class with tag state of "user_error".
 ///
-/// @param userError (no description).
+/// Description of the "user_error" tag state: The request could not be
+/// processed as supplied (a problem with the caller's input). The string is a
+/// human-readable message; retrying the same request will not help.
+///
+/// @param userError The request could not be processed as supplied (a problem
+/// with the caller's input). The string is a human-readable message; retrying
+/// the same request will not help.
 ///
 /// @return An initialized instance.
 ///

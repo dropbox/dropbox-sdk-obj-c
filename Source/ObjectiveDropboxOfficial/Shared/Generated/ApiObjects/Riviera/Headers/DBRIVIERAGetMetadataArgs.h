@@ -31,23 +31,12 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// Identifier of the file to extract metadata from. Callers must set exactly
-/// one of the oneof variants: - file_id: a Dropbox-issued file id (format:
-/// "id:<id>") for a file the authenticated user has access to. - path: an
-/// absolute Dropbox path, e.g. "/folder/photo.jpg". - url: either a Dropbox
-/// shared link (www.dropbox.com) or an external HTTPS URL pointing to a
-/// supported file. - Dropbox shared links are resolved internally using the
-/// caller's authenticated identity and the link's visibility / download
-/// settings. They therefore require an authenticated user context (anonymous
-/// `url` requests against Dropbox links are rejected with an `ACCESS_ERROR`).
-/// Links protected by a password are rejected with
-/// `shared_link_password_protected`; links with downloads disabled are rejected
-/// with `link_download_disabled_error`. - External URLs are fetched over HTTPS
-/// through the backend's egress proxy and must point at a supported file
-/// extension. The kind of metadata returned is determined by the file type:
-/// image files return EXIF metadata, audio/video files return media metadata,
-/// PDFs return PDF metadata, and MS Office documents (docx, pptx, xlsx) return
-/// Office metadata. Requests against unsupported formats return
-/// `unsupported_format_error`.
+/// one of the `FileIdOrUrl` variants. The kind of metadata returned is
+/// determined by the file type: image files return EXIF metadata, audio/video
+/// files return media metadata, PDFs return PDF metadata, and MS Office
+/// documents (docx, pptx, xlsx) return Office metadata. See the route
+/// description for the supported formats. Requests against unsupported formats
+/// return `unsupported_format_error`.
 @property (nonatomic, readonly, nullable) DBRIVIERAFileIdOrUrl *fileIdOrUrl;
 
 #pragma mark - Constructors
@@ -56,23 +45,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param fileIdOrUrl Identifier of the file to extract metadata from. Callers
-/// must set exactly one of the oneof variants: - file_id: a Dropbox-issued file
-/// id (format: "id:<id>") for a file the authenticated user has access to. -
-/// path: an absolute Dropbox path, e.g. "/folder/photo.jpg". - url: either a
-/// Dropbox shared link (www.dropbox.com) or an external HTTPS URL pointing to a
-/// supported file. - Dropbox shared links are resolved internally using the
-/// caller's authenticated identity and the link's visibility / download
-/// settings. They therefore require an authenticated user context (anonymous
-/// `url` requests against Dropbox links are rejected with an `ACCESS_ERROR`).
-/// Links protected by a password are rejected with
-/// `shared_link_password_protected`; links with downloads disabled are rejected
-/// with `link_download_disabled_error`. - External URLs are fetched over HTTPS
-/// through the backend's egress proxy and must point at a supported file
-/// extension. The kind of metadata returned is determined by the file type:
-/// image files return EXIF metadata, audio/video files return media metadata,
-/// PDFs return PDF metadata, and MS Office documents (docx, pptx, xlsx) return
-/// Office metadata. Requests against unsupported formats return
-/// `unsupported_format_error`.
+/// must set exactly one of the `FileIdOrUrl` variants. The kind of metadata
+/// returned is determined by the file type: image files return EXIF metadata,
+/// audio/video files return media metadata, PDFs return PDF metadata, and MS
+/// Office documents (docx, pptx, xlsx) return Office metadata. See the route
+/// description for the supported formats. Requests against unsupported formats
+/// return `unsupported_format_error`.
 ///
 /// @return An initialized instance.
 ///

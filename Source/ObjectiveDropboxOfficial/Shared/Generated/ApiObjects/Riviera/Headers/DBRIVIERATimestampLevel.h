@@ -29,9 +29,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// states with which the `DBRIVIERATimestampLevel` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERATimestampLevelTag) {
   /// (no description).
-  DBRIVIERATimestampLevelUnknown,
-
-  /// (no description).
   DBRIVIERATimestampLevelSentence,
 
   /// (no description).
@@ -46,13 +43,6 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERATimestampLevelTag) {
 @property (nonatomic, readonly) DBRIVIERATimestampLevelTag tag;
 
 #pragma mark - Constructors
-
-///
-/// Initializes union class with tag state of "unknown".
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithUnknown;
 
 ///
 /// Initializes union class with tag state of "sentence".
@@ -78,13 +68,6 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERATimestampLevelTag) {
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
-
-///
-/// Retrieves whether the union's current tag state has value "unknown".
-///
-/// @return Whether the union's current tag state has value "unknown".
-///
-- (BOOL)isUnknown;
 
 ///
 /// Retrieves whether the union's current tag state has value "sentence".

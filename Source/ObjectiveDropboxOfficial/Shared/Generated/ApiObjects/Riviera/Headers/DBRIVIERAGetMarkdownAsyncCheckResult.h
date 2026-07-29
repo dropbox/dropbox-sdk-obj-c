@@ -9,8 +9,8 @@
 #import "DBSerializableProtocol.h"
 
 @class DBRIVIERAGetMarkdownAsyncCheckResult;
-@class DBRIVIERAGetMarkdownAsyncError;
 @class DBRIVIERAGetMarkdownResult;
+@class DBRIVIERAMarkdownConversionApiV2Error;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -56,7 +56,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetMarkdownAsyncCheckResultTag) {
 
 /// (no description). @note Ensure the `isFailed` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
-@property (nonatomic, readonly) DBRIVIERAGetMarkdownAsyncError *failed;
+@property (nonatomic, readonly) DBRIVIERAMarkdownConversionApiV2Error *failed;
 
 #pragma mark - Constructors
 
@@ -83,7 +83,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetMarkdownAsyncCheckResultTag) {
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithFailed:(DBRIVIERAGetMarkdownAsyncError *)failed;
+- (instancetype)initWithFailed:(DBRIVIERAMarkdownConversionApiV2Error *)failed;
 
 ///
 /// Initializes union class with tag state of "other".

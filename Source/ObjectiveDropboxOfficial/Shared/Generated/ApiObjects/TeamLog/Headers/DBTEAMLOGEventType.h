@@ -277,6 +277,7 @@
 @class DBTEAMLOGMemberChangeStatusType;
 @class DBTEAMLOGMemberDeleteManualContactsType;
 @class DBTEAMLOGMemberDeleteProfilePhotoType;
+@class DBTEAMLOGMemberFolderContentsAccessedType;
 @class DBTEAMLOGMemberPermanentlyDeleteAccountContentsType;
 @class DBTEAMLOGMemberRemoveExternalIdType;
 @class DBTEAMLOGMemberRequestsChangePolicyType;
@@ -377,6 +378,13 @@
 @class DBTEAMLOGPreviewsAiPolicyChangedType;
 @class DBTEAMLOGProductAssignedToMemberType;
 @class DBTEAMLOGProductRemovedFromMemberType;
+@class DBTEAMLOGProtectActionAddCollaboratorType;
+@class DBTEAMLOGProtectActionAddLinkType;
+@class DBTEAMLOGProtectActionDeleteType;
+@class DBTEAMLOGProtectActionExportType;
+@class DBTEAMLOGProtectActionRemoveCollaboratorType;
+@class DBTEAMLOGProtectActionRemoveLinkType;
+@class DBTEAMLOGProtectActionStopSharingType;
 @class DBTEAMLOGProtectInternalDomainsChangedType;
 @class DBTEAMLOGRansomwareAlertCreateReportFailedType;
 @class DBTEAMLOGRansomwareAlertCreateReportType;
@@ -1091,7 +1099,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// (file_operations) Unpinned item from folder overview
   DBTEAMLOGEventTypeFolderOverviewItemUnpinned,
 
-  /// (file_operations) Downloaded files in Media Hub
+  /// (file_operations) Downloaded files in Replay
   DBTEAMLOGEventTypeMediaHubFileDownloaded,
 
   /// (file_operations) Added a label
@@ -1282,6 +1290,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
   /// (members) Deleted team member profile photo
   DBTEAMLOGEventTypeMemberDeleteProfilePhoto,
+
+  /// (members) Admin browsed a team member's folder contents
+  DBTEAMLOGEventTypeMemberFolderContentsAccessed,
 
   /// (members) Permanently deleted contents of deleted team member account
   DBTEAMLOGEventTypeMemberPermanentlyDeleteAccountContents,
@@ -1493,6 +1504,27 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// (passwords) Reset all team member passwords
   DBTEAMLOGEventTypePasswordResetAll,
 
+  /// (protect) Added collaborators via Dropbox Protect
+  DBTEAMLOGEventTypeProtectActionAddCollaborator,
+
+  /// (protect) Added a link via Dropbox Protect
+  DBTEAMLOGEventTypeProtectActionAddLink,
+
+  /// (protect) Deleted content via Dropbox Protect
+  DBTEAMLOGEventTypeProtectActionDelete,
+
+  /// (protect) Exported content via Dropbox Protect
+  DBTEAMLOGEventTypeProtectActionExport,
+
+  /// (protect) Removed collaborators via Dropbox Protect
+  DBTEAMLOGEventTypeProtectActionRemoveCollaborator,
+
+  /// (protect) Removed a link via Dropbox Protect
+  DBTEAMLOGEventTypeProtectActionRemoveLink,
+
+  /// (protect) Stopped sharing content via Dropbox Protect
+  DBTEAMLOGEventTypeProtectActionStopSharing,
+
   /// (protect) Modified Protect internal domains list
   DBTEAMLOGEventTypeProtectInternalDomainsChanged,
 
@@ -1604,25 +1636,25 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// (sharing) Viewed transfer
   DBTEAMLOGEventTypeFileTransfersTransferView,
 
-  /// (sharing) Added member to Media Hub project
+  /// (sharing) Added member to Replay project
   DBTEAMLOGEventTypeMediaHubProjectTeamAdd,
 
-  /// (sharing) Removed member from Media Hub project
+  /// (sharing) Removed member from Replay project
   DBTEAMLOGEventTypeMediaHubProjectTeamDelete,
 
-  /// (sharing) Changed member role in Media Hub project
+  /// (sharing) Changed member role in Replay project
   DBTEAMLOGEventTypeMediaHubProjectTeamRoleChanged,
 
-  /// (sharing) Changed Media Hub shared link audience
+  /// (sharing) Changed Replay shared link audience
   DBTEAMLOGEventTypeMediaHubSharedLinkAudienceChanged,
 
-  /// (sharing) Created Media Hub shared link
+  /// (sharing) Created Replay shared link
   DBTEAMLOGEventTypeMediaHubSharedLinkCreated,
 
-  /// (sharing) Changed Media Hub shared link download setting
+  /// (sharing) Changed Replay shared link download setting
   DBTEAMLOGEventTypeMediaHubSharedLinkDownloadSettingChanged,
 
-  /// (sharing) Revoked Media Hub shared link
+  /// (sharing) Revoked Replay shared link
   DBTEAMLOGEventTypeMediaHubSharedLinkRevoked,
 
   /// (sharing) Changed Paper doc to invite-only (deprecated, no longer
@@ -2220,14 +2252,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// (team_policies) Changed invite accept email policy for team
   DBTEAMLOGEventTypeInviteAcceptanceEmailPolicyChanged,
 
-  /// (team_policies) Changed the policy for adding people to Media Hub
-  /// content
+  /// (team_policies) Changed the policy for adding people to Replay content
   DBTEAMLOGEventTypeMediaHubAddingPeoplePolicyChanged,
 
-  /// (team_policies) Changed the policy for downloading Media Hub content
+  /// (team_policies) Changed the policy for downloading Replay content
   DBTEAMLOGEventTypeMediaHubDownloadPolicyChanged,
 
-  /// (team_policies) Changed the policy for sharing Media Hub content
+  /// (team_policies) Changed the policy for sharing Replay content
   DBTEAMLOGEventTypeMediaHubLinkSharingPolicyChanged,
 
   /// (team_policies) Changed whether users can find team when not invited
@@ -3317,7 +3348,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGFolderOverviewItemUnpinnedType *folderOverviewItemUnpinned;
 
-/// (file_operations) Downloaded files in Media Hub @note Ensure the
+/// (file_operations) Downloaded files in Replay @note Ensure the
 /// `isMediaHubFileDownloaded` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMediaHubFileDownloadedType *mediaHubFileDownloaded;
@@ -3619,6 +3650,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// `isMemberDeleteProfilePhoto` method returns true before accessing, otherwise
 /// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberDeleteProfilePhotoType *memberDeleteProfilePhoto;
+
+/// (members) Admin browsed a team member's folder contents @note Ensure the
+/// `isMemberFolderContentsAccessed` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGMemberFolderContentsAccessedType *memberFolderContentsAccessed;
 
 /// (members) Permanently deleted contents of deleted team member account @note
 /// Ensure the `isMemberPermanentlyDeleteAccountContents` method returns true
@@ -3949,6 +3985,41 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPasswordResetAllType *passwordResetAll;
 
+/// (protect) Added collaborators via Dropbox Protect @note Ensure the
+/// `isProtectActionAddCollaborator` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionAddCollaboratorType *protectActionAddCollaborator;
+
+/// (protect) Added a link via Dropbox Protect @note Ensure the
+/// `isProtectActionAddLink` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionAddLinkType *protectActionAddLink;
+
+/// (protect) Deleted content via Dropbox Protect @note Ensure the
+/// `isProtectActionDelete` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionDeleteType *protectActionDelete;
+
+/// (protect) Exported content via Dropbox Protect @note Ensure the
+/// `isProtectActionExport` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionExportType *protectActionExport;
+
+/// (protect) Removed collaborators via Dropbox Protect @note Ensure the
+/// `isProtectActionRemoveCollaborator` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionRemoveCollaboratorType *protectActionRemoveCollaborator;
+
+/// (protect) Removed a link via Dropbox Protect @note Ensure the
+/// `isProtectActionRemoveLink` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionRemoveLinkType *protectActionRemoveLink;
+
+/// (protect) Stopped sharing content via Dropbox Protect @note Ensure the
+/// `isProtectActionStopSharing` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionStopSharingType *protectActionStopSharing;
+
 /// (protect) Modified Protect internal domains list @note Ensure the
 /// `isProtectInternalDomainsChanged` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
@@ -4134,38 +4205,38 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGFileTransfersTransferViewType *fileTransfersTransferView;
 
-/// (sharing) Added member to Media Hub project @note Ensure the
+/// (sharing) Added member to Replay project @note Ensure the
 /// `isMediaHubProjectTeamAdd` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMediaHubProjectTeamAddType *mediaHubProjectTeamAdd;
 
-/// (sharing) Removed member from Media Hub project @note Ensure the
+/// (sharing) Removed member from Replay project @note Ensure the
 /// `isMediaHubProjectTeamDelete` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMediaHubProjectTeamDeleteType *mediaHubProjectTeamDelete;
 
-/// (sharing) Changed member role in Media Hub project @note Ensure the
+/// (sharing) Changed member role in Replay project @note Ensure the
 /// `isMediaHubProjectTeamRoleChanged` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMediaHubProjectTeamRoleChangedType *mediaHubProjectTeamRoleChanged;
 
-/// (sharing) Changed Media Hub shared link audience @note Ensure the
+/// (sharing) Changed Replay shared link audience @note Ensure the
 /// `isMediaHubSharedLinkAudienceChanged` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMediaHubSharedLinkAudienceChangedType *mediaHubSharedLinkAudienceChanged;
 
-/// (sharing) Created Media Hub shared link @note Ensure the
+/// (sharing) Created Replay shared link @note Ensure the
 /// `isMediaHubSharedLinkCreated` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMediaHubSharedLinkCreatedType *mediaHubSharedLinkCreated;
 
-/// (sharing) Changed Media Hub shared link download setting @note Ensure the
+/// (sharing) Changed Replay shared link download setting @note Ensure the
 /// `isMediaHubSharedLinkDownloadSettingChanged` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly)
     DBTEAMLOGMediaHubSharedLinkDownloadSettingChangedType *mediaHubSharedLinkDownloadSettingChanged;
 
-/// (sharing) Revoked Media Hub shared link @note Ensure the
+/// (sharing) Revoked Replay shared link @note Ensure the
 /// `isMediaHubSharedLinkRevoked` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMediaHubSharedLinkRevokedType *mediaHubSharedLinkRevoked;
@@ -5104,18 +5175,18 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGInviteAcceptanceEmailPolicyChangedType *inviteAcceptanceEmailPolicyChanged;
 
-/// (team_policies) Changed the policy for adding people to Media Hub content
-/// @note Ensure the `isMediaHubAddingPeoplePolicyChanged` method returns true
-/// before accessing, otherwise a runtime exception will be raised.
+/// (team_policies) Changed the policy for adding people to Replay content @note
+/// Ensure the `isMediaHubAddingPeoplePolicyChanged` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMediaHubAddingPeoplePolicyChangedType *mediaHubAddingPeoplePolicyChanged;
 
-/// (team_policies) Changed the policy for downloading Media Hub content @note
+/// (team_policies) Changed the policy for downloading Replay content @note
 /// Ensure the `isMediaHubDownloadPolicyChanged` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMediaHubDownloadPolicyChangedType *mediaHubDownloadPolicyChanged;
 
-/// (team_policies) Changed the policy for sharing Media Hub content @note
-/// Ensure the `isMediaHubLinkSharingPolicyChanged` method returns true before
+/// (team_policies) Changed the policy for sharing Replay content @note Ensure
+/// the `isMediaHubLinkSharingPolicyChanged` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGMediaHubLinkSharingPolicyChangedType *mediaHubLinkSharingPolicyChanged;
 
@@ -7646,10 +7717,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "media_hub_file_downloaded".
 ///
 /// Description of the "media_hub_file_downloaded" tag state: (file_operations)
-/// Downloaded files in Media Hub
+/// Downloaded files in Replay
 ///
-/// @param mediaHubFileDownloaded (file_operations) Downloaded files in Media
-/// Hub
+/// @param mediaHubFileDownloaded (file_operations) Downloaded files in Replay
 ///
 /// @return An initialized instance.
 ///
@@ -8419,6 +8489,20 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithMemberDeleteProfilePhoto:(DBTEAMLOGMemberDeleteProfilePhotoType *)memberDeleteProfilePhoto;
+
+///
+/// Initializes union class with tag state of "member_folder_contents_accessed".
+///
+/// Description of the "member_folder_contents_accessed" tag state: (members)
+/// Admin browsed a team member's folder contents
+///
+/// @param memberFolderContentsAccessed (members) Admin browsed a team member's
+/// folder contents
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithMemberFolderContentsAccessed:
+    (DBTEAMLOGMemberFolderContentsAccessedType *)memberFolderContentsAccessed;
 
 ///
 /// Initializes union class with tag state of
@@ -9279,6 +9363,96 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 - (instancetype)initWithPasswordResetAll:(DBTEAMLOGPasswordResetAllType *)passwordResetAll;
 
 ///
+/// Initializes union class with tag state of "protect_action_add_collaborator".
+///
+/// Description of the "protect_action_add_collaborator" tag state: (protect)
+/// Added collaborators via Dropbox Protect
+///
+/// @param protectActionAddCollaborator (protect) Added collaborators via
+/// Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionAddCollaborator:
+    (DBTEAMLOGProtectActionAddCollaboratorType *)protectActionAddCollaborator;
+
+///
+/// Initializes union class with tag state of "protect_action_add_link".
+///
+/// Description of the "protect_action_add_link" tag state: (protect) Added a
+/// link via Dropbox Protect
+///
+/// @param protectActionAddLink (protect) Added a link via Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionAddLink:(DBTEAMLOGProtectActionAddLinkType *)protectActionAddLink;
+
+///
+/// Initializes union class with tag state of "protect_action_delete".
+///
+/// Description of the "protect_action_delete" tag state: (protect) Deleted
+/// content via Dropbox Protect
+///
+/// @param protectActionDelete (protect) Deleted content via Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionDelete:(DBTEAMLOGProtectActionDeleteType *)protectActionDelete;
+
+///
+/// Initializes union class with tag state of "protect_action_export".
+///
+/// Description of the "protect_action_export" tag state: (protect) Exported
+/// content via Dropbox Protect
+///
+/// @param protectActionExport (protect) Exported content via Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionExport:(DBTEAMLOGProtectActionExportType *)protectActionExport;
+
+///
+/// Initializes union class with tag state of
+/// "protect_action_remove_collaborator".
+///
+/// Description of the "protect_action_remove_collaborator" tag state: (protect)
+/// Removed collaborators via Dropbox Protect
+///
+/// @param protectActionRemoveCollaborator (protect) Removed collaborators via
+/// Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionRemoveCollaborator:
+    (DBTEAMLOGProtectActionRemoveCollaboratorType *)protectActionRemoveCollaborator;
+
+///
+/// Initializes union class with tag state of "protect_action_remove_link".
+///
+/// Description of the "protect_action_remove_link" tag state: (protect) Removed
+/// a link via Dropbox Protect
+///
+/// @param protectActionRemoveLink (protect) Removed a link via Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionRemoveLink:(DBTEAMLOGProtectActionRemoveLinkType *)protectActionRemoveLink;
+
+///
+/// Initializes union class with tag state of "protect_action_stop_sharing".
+///
+/// Description of the "protect_action_stop_sharing" tag state: (protect)
+/// Stopped sharing content via Dropbox Protect
+///
+/// @param protectActionStopSharing (protect) Stopped sharing content via
+/// Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionStopSharing:(DBTEAMLOGProtectActionStopSharingType *)protectActionStopSharing;
+
+///
 /// Initializes union class with tag state of
 /// "protect_internal_domains_changed".
 ///
@@ -9788,9 +9962,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "media_hub_project_team_add".
 ///
 /// Description of the "media_hub_project_team_add" tag state: (sharing) Added
-/// member to Media Hub project
+/// member to Replay project
 ///
-/// @param mediaHubProjectTeamAdd (sharing) Added member to Media Hub project
+/// @param mediaHubProjectTeamAdd (sharing) Added member to Replay project
 ///
 /// @return An initialized instance.
 ///
@@ -9800,9 +9974,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "media_hub_project_team_delete".
 ///
 /// Description of the "media_hub_project_team_delete" tag state: (sharing)
-/// Removed member from Media Hub project
+/// Removed member from Replay project
 ///
-/// @param mediaHubProjectTeamDelete (sharing) Removed member from Media Hub
+/// @param mediaHubProjectTeamDelete (sharing) Removed member from Replay
 /// project
 ///
 /// @return An initialized instance.
@@ -9814,10 +9988,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "media_hub_project_team_role_changed".
 ///
 /// Description of the "media_hub_project_team_role_changed" tag state:
-/// (sharing) Changed member role in Media Hub project
+/// (sharing) Changed member role in Replay project
 ///
-/// @param mediaHubProjectTeamRoleChanged (sharing) Changed member role in Media
-/// Hub project
+/// @param mediaHubProjectTeamRoleChanged (sharing) Changed member role in
+/// Replay project
 ///
 /// @return An initialized instance.
 ///
@@ -9829,9 +10003,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "media_hub_shared_link_audience_changed".
 ///
 /// Description of the "media_hub_shared_link_audience_changed" tag state:
-/// (sharing) Changed Media Hub shared link audience
+/// (sharing) Changed Replay shared link audience
 ///
-/// @param mediaHubSharedLinkAudienceChanged (sharing) Changed Media Hub shared
+/// @param mediaHubSharedLinkAudienceChanged (sharing) Changed Replay shared
 /// link audience
 ///
 /// @return An initialized instance.
@@ -9843,9 +10017,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "media_hub_shared_link_created".
 ///
 /// Description of the "media_hub_shared_link_created" tag state: (sharing)
-/// Created Media Hub shared link
+/// Created Replay shared link
 ///
-/// @param mediaHubSharedLinkCreated (sharing) Created Media Hub shared link
+/// @param mediaHubSharedLinkCreated (sharing) Created Replay shared link
 ///
 /// @return An initialized instance.
 ///
@@ -9856,9 +10030,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "media_hub_shared_link_download_setting_changed".
 ///
 /// Description of the "media_hub_shared_link_download_setting_changed" tag
-/// state: (sharing) Changed Media Hub shared link download setting
+/// state: (sharing) Changed Replay shared link download setting
 ///
-/// @param mediaHubSharedLinkDownloadSettingChanged (sharing) Changed Media Hub
+/// @param mediaHubSharedLinkDownloadSettingChanged (sharing) Changed Replay
 /// shared link download setting
 ///
 /// @return An initialized instance.
@@ -9870,9 +10044,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// Initializes union class with tag state of "media_hub_shared_link_revoked".
 ///
 /// Description of the "media_hub_shared_link_revoked" tag state: (sharing)
-/// Revoked Media Hub shared link
+/// Revoked Replay shared link
 ///
-/// @param mediaHubSharedLinkRevoked (sharing) Revoked Media Hub shared link
+/// @param mediaHubSharedLinkRevoked (sharing) Revoked Replay shared link
 ///
 /// @return An initialized instance.
 ///
@@ -12384,10 +12558,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "media_hub_adding_people_policy_changed".
 ///
 /// Description of the "media_hub_adding_people_policy_changed" tag state:
-/// (team_policies) Changed the policy for adding people to Media Hub content
+/// (team_policies) Changed the policy for adding people to Replay content
 ///
 /// @param mediaHubAddingPeoplePolicyChanged (team_policies) Changed the policy
-/// for adding people to Media Hub content
+/// for adding people to Replay content
 ///
 /// @return An initialized instance.
 ///
@@ -12399,10 +12573,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "media_hub_download_policy_changed".
 ///
 /// Description of the "media_hub_download_policy_changed" tag state:
-/// (team_policies) Changed the policy for downloading Media Hub content
+/// (team_policies) Changed the policy for downloading Replay content
 ///
 /// @param mediaHubDownloadPolicyChanged (team_policies) Changed the policy for
-/// downloading Media Hub content
+/// downloading Replay content
 ///
 /// @return An initialized instance.
 ///
@@ -12414,10 +12588,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "media_hub_link_sharing_policy_changed".
 ///
 /// Description of the "media_hub_link_sharing_policy_changed" tag state:
-/// (team_policies) Changed the policy for sharing Media Hub content
+/// (team_policies) Changed the policy for sharing Replay content
 ///
 /// @param mediaHubLinkSharingPolicyChanged (team_policies) Changed the policy
-/// for sharing Media Hub content
+/// for sharing Replay content
 ///
 /// @return An initialized instance.
 ///
@@ -16583,6 +16757,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "member_folder_contents_accessed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `memberFolderContentsAccessed` property, otherwise a runtime exception will
+/// be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "member_folder_contents_accessed".
+///
+- (BOOL)isMemberFolderContentsAccessed;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "member_permanently_delete_account_contents".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -17411,6 +17598,97 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "password_reset_all".
 ///
 - (BOOL)isPasswordResetAll;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_add_collaborator".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionAddCollaborator` property, otherwise a runtime exception will
+/// be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_add_collaborator".
+///
+- (BOOL)isProtectActionAddCollaborator;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_add_link".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionAddLink` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_add_link".
+///
+- (BOOL)isProtectActionAddLink;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_delete".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionDelete` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_delete".
+///
+- (BOOL)isProtectActionDelete;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_export".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionExport` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_export".
+///
+- (BOOL)isProtectActionExport;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_remove_collaborator".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionRemoveCollaborator` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_remove_collaborator".
+///
+- (BOOL)isProtectActionRemoveCollaborator;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_remove_link".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionRemoveLink` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_remove_link".
+///
+- (BOOL)isProtectActionRemoveLink;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_stop_sharing".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionStopSharing` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_stop_sharing".
+///
+- (BOOL)isProtectActionStopSharing;
 
 ///
 /// Retrieves whether the union's current tag state has value

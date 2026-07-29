@@ -11,6 +11,7 @@
 @class DBACCOUNTPhotoSourceArg;
 @class DBACCOUNTSetProfilePhotoError;
 @class DBASYNCLaunchEmptyResult;
+@class DBASYNCLaunchResultBase;
 @class DBASYNCPollEmptyResult;
 @class DBASYNCPollError;
 @class DBFILEPROPERTIESAddTemplateResult;
@@ -30,6 +31,11 @@
 @class DBTEAMAddSecondaryEmailsResult;
 @class DBTEAMAdminTier;
 @class DBTEAMApiApp;
+@class DBTEAMBulkSuspendComplete;
+@class DBTEAMBulkSuspendError;
+@class DBTEAMBulkSuspendJobStatus;
+@class DBTEAMBulkSuspendMemberTarget;
+@class DBTEAMBulkSuspendTaskFailure;
 @class DBTEAMCOMMONGroupManagementType;
 @class DBTEAMCOMMONGroupSummary;
 @class DBTEAMCustomQuotaError;
@@ -108,6 +114,7 @@
 @class DBTEAMMembersAddJobStatusV2Result;
 @class DBTEAMMembersAddLaunch;
 @class DBTEAMMembersAddLaunchV2Result;
+@class DBTEAMMembersDeactivateArg;
 @class DBTEAMMembersDeleteFormerMemberFilesError;
 @class DBTEAMMembersDeleteProfilePhotoError;
 @class DBTEAMMembersGetAvailableTeamMemberRolesResult;
@@ -1035,6 +1042,30 @@ NS_ASSUME_NONNULL_BEGIN
 /// success or a `DBASYNCPollError` object on failure.
 ///
 - (DBRpcTask<DBTEAMMembersAddJobStatusV2Result *, DBASYNCPollError *> *)membersAddJobStatusGetV2:(NSString *)asyncJobId;
+
+///
+/// Launch a bulk suspend job. The server enforces a maximum of 500 members.
+///
+/// @param members Must contain between 1 and 500 targets. The launch handler also rejects duplicate client item IDs and
+/// duplicate member selectors.
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
+/// `DBTEAMBulkSuspendError` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBTEAMBulkSuspendError *> *)membersBulkSuspend:
+    (NSArray<DBTEAMBulkSuspendMemberTarget *> *)members;
+
+///
+/// Poll a previously launched bulk suspend job.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMBulkSuspendJobStatus` object on success or a
+/// `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBTEAMBulkSuspendJobStatus *, DBASYNCPollError *> *)membersBulkSuspendJobStatusCheck:
+    (NSString *)asyncJobId;
 
 ///
 /// Permanently delete the files of a user who has been removed from the team. After permanent deletion, those files

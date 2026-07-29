@@ -11,16 +11,16 @@
 @class DBASYNCLaunchResultBase;
 @class DBASYNCPollError;
 @class DBNilObject;
+@class DBRIVIERAContentApiV2Error;
 @class DBRIVIERAFileIdOrUrl;
 @class DBRIVIERAGetMarkdownAsyncCheckResult;
-@class DBRIVIERAGetMarkdownAsyncError;
 @class DBRIVIERAGetMarkdownResult;
 @class DBRIVIERAGetMetadataAsyncCheckResult;
-@class DBRIVIERAGetMetadataAsyncError;
 @class DBRIVIERAGetMetadataResult;
 @class DBRIVIERAGetTranscriptAsyncCheckResult;
-@class DBRIVIERAGetTranscriptAsyncError;
 @class DBRIVIERAGetTranscriptResult;
+@class DBRIVIERAMarkdownConversionApiV2Error;
+@class DBRIVIERAMetadataExtractionApiV2Error;
 @class DBRIVIERATimestampLevel;
 
 @protocol DBTransportClient;
@@ -42,7 +42,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)init:(id<DBTransportClient>)client;
 
 ///
-/// Asynchronous document-to-markdown conversion for supported file formats.
+/// Asynchronous document-to-markdown conversion for supported file formats. Supported formats: .binder, .docx, .html,
+/// .paper, .papert, .pptx, .xlsx, .gsheet, .ods, .pdf. Unsupported formats return an `unsupported_format_error`. Size
+/// limit: the source file must be at most 50 MB. Larger files are rejected.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
@@ -51,18 +53,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getMarkdownAsync;
 
 ///
-/// Asynchronous document-to-markdown conversion for supported file formats.
+/// Asynchronous document-to-markdown conversion for supported file formats. Supported formats: .binder, .docx, .html,
+/// .paper, .papert, .pptx, .xlsx, .gsheet, .ods, .pdf. Unsupported formats return an `unsupported_format_error`. Size
+/// limit: the source file must be at most 50 MB. Larger files are rejected.
 ///
-/// @param fileIdOrUrl Identifier of the document to convert. Callers must set exactly one of the oneof variants: -
-/// file_id: a Dropbox-issued file id (format: "id:<id>") for a file the authenticated user has access to. - path: an
-/// absolute Dropbox path, e.g. "/folder/report.docx". - url: either a Dropbox shared link (www.dropbox.com) or an
-/// external HTTPS URL pointing to a supported document file. - Dropbox shared links are resolved internally using the
-/// caller's authenticated identity and the link's visibility / download settings. They therefore require an
-/// authenticated user context (anonymous `url` requests against Dropbox links are rejected with an `ACCESS_ERROR`).
-/// Links protected by a password are rejected with `shared_link_password_protected`; links with downloads disabled are
-/// rejected with `link_download_disabled_error`. - External URLs are fetched over HTTPS through the backend's egress
-/// proxy and must point at a supported document file extension. The referenced file must be a document in a supported
-/// format; requests against unsupported formats return `unsupported_format_error`.
+/// @param fileIdOrUrl Identifier of the document to convert. Callers must set exactly one of the `FileIdOrUrl`
+/// variants. The referenced file must be a document in a supported format (see the route description for the list);
+/// requests against unsupported formats return `unsupported_format_error`.
 /// @param enableOcr Enable OCR for PDF documents. Processing is slower when enabled.
 /// @param embedImages When true, embed images as base64 data URIs in the markdown output. This can significantly
 /// increase output size.
@@ -86,7 +83,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBRIVIERAGetMarkdownAsyncCheckResult *, DBASYNCPollError *> *)getMarkdownAsyncCheck:(NSString *)asyncJobId;
 
 ///
-/// Asynchronous file metadata extraction for supported file formats.
+/// Asynchronous file metadata extraction for supported file formats. The kind of metadata returned depends on the file
+/// type: - Image (EXIF) formats: .3fr, .arw, .avif, .bmp, .cr2, .cr3, .crw, .dcr, .dcs, .dng, .erf, .gif, .heic, .j2c,
+/// .j2k, .jp2, .jpc, .jpeg, .jpf, .jpg, .jpg2, .jpm, .jpx, .kdc, .mef, .mos, .mrw, .nef, .nrw, .orf, .pef, .png, .ppm,
+/// .r3d, .raf, .rw2, .rwl, .sr2, .tga, .tif, .tiff, .wbmp, .web, .webp, .x3f. - Audio/video (media) formats: .aac,
+/// .aif, .aiff, .flac, .m4a, .m4r, .mp3, .oga, .ogg, .wav, .wma, .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .flv, .m2t,
+/// .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. - PDF format:
+/// .pdf. - MS Office formats: .docx, .pptx, .xlsx. Unsupported formats return an `unsupported_format_error`.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
@@ -95,20 +98,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getMetadataAsync;
 
 ///
-/// Asynchronous file metadata extraction for supported file formats.
+/// Asynchronous file metadata extraction for supported file formats. The kind of metadata returned depends on the file
+/// type: - Image (EXIF) formats: .3fr, .arw, .avif, .bmp, .cr2, .cr3, .crw, .dcr, .dcs, .dng, .erf, .gif, .heic, .j2c,
+/// .j2k, .jp2, .jpc, .jpeg, .jpf, .jpg, .jpg2, .jpm, .jpx, .kdc, .mef, .mos, .mrw, .nef, .nrw, .orf, .pef, .png, .ppm,
+/// .r3d, .raf, .rw2, .rwl, .sr2, .tga, .tif, .tiff, .wbmp, .web, .webp, .x3f. - Audio/video (media) formats: .aac,
+/// .aif, .aiff, .flac, .m4a, .m4r, .mp3, .oga, .ogg, .wav, .wma, .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .flv, .m2t,
+/// .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. - PDF format:
+/// .pdf. - MS Office formats: .docx, .pptx, .xlsx. Unsupported formats return an `unsupported_format_error`.
 ///
-/// @param fileIdOrUrl Identifier of the file to extract metadata from. Callers must set exactly one of the oneof
-/// variants: - file_id: a Dropbox-issued file id (format: "id:<id>") for a file the authenticated user has access to. -
-/// path: an absolute Dropbox path, e.g. "/folder/photo.jpg". - url: either a Dropbox shared link (www.dropbox.com) or
-/// an external HTTPS URL pointing to a supported file. - Dropbox shared links are resolved internally using the
-/// caller's authenticated identity and the link's visibility / download settings. They therefore require an
-/// authenticated user context (anonymous `url` requests against Dropbox links are rejected with an `ACCESS_ERROR`).
-/// Links protected by a password are rejected with `shared_link_password_protected`; links with downloads disabled are
-/// rejected with `link_download_disabled_error`. - External URLs are fetched over HTTPS through the backend's egress
-/// proxy and must point at a supported file extension. The kind of metadata returned is determined by the file type:
-/// image files return EXIF metadata, audio/video files return media metadata, PDFs return PDF metadata, and MS Office
-/// documents (docx, pptx, xlsx) return Office metadata. Requests against unsupported formats return
-/// `unsupported_format_error`.
+/// @param fileIdOrUrl Identifier of the file to extract metadata from. Callers must set exactly one of the
+/// `FileIdOrUrl` variants. The kind of metadata returned is determined by the file type: image files return EXIF
+/// metadata, audio/video files return media metadata, PDFs return PDF metadata, and MS Office documents (docx, pptx,
+/// xlsx) return Office metadata. See the route description for the supported formats. Requests against unsupported
+/// formats return `unsupported_format_error`.
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
@@ -127,7 +129,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBRIVIERAGetMetadataAsyncCheckResult *, DBASYNCPollError *> *)getMetadataAsyncCheck:(NSString *)asyncJobId;
 
 ///
-/// Asynchronous transcript generation for audio and video files.
+/// Asynchronous transcript generation for audio and video files. Supported audio formats: .aac, .aif, .aiff, .flac,
+/// .m4a, .m4r, .mp3, .oga, .ogg, .wav, .wma. Supported video formats: .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .flv, .m2t,
+/// .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. Unsupported
+/// formats return an `unsupported_format_error`. Size limits: the source file must be at most 10 GB and its audio track
+/// at most 1 hour in duration. Files exceeding these limits are rejected.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
@@ -136,21 +142,18 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getTranscriptAsync;
 
 ///
-/// Asynchronous transcript generation for audio and video files.
+/// Asynchronous transcript generation for audio and video files. Supported audio formats: .aac, .aif, .aiff, .flac,
+/// .m4a, .m4r, .mp3, .oga, .ogg, .wav, .wma. Supported video formats: .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .flv, .m2t,
+/// .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. Unsupported
+/// formats return an `unsupported_format_error`. Size limits: the source file must be at most 10 GB and its audio track
+/// at most 1 hour in duration. Files exceeding these limits are rejected.
 ///
-/// @param fileIdOrUrl Identifier of the media asset to transcribe. Callers must set exactly one of the oneof variants:
-/// - file_id: a Dropbox-issued file id (format: "id:<id>") for a file the authenticated user has access to. - path: an
-/// absolute Dropbox path, e.g. "/folder/recording.mp4". - url: either a Dropbox shared link (www.dropbox.com) or an
-/// external HTTPS URL pointing to a supported audio/video file. - Dropbox shared links are resolved internally using
-/// the caller's authenticated identity and the link's visibility / download settings. They therefore require an
-/// authenticated user context (anonymous `url` requests against Dropbox links are rejected with an `ACCESS_ERROR`).
-/// Links protected by a password are rejected with `shared_link_password_protected`; links with downloads disabled are
-/// rejected with `link_download_disabled_error`. - External URLs are fetched over HTTPS through the backend's egress
-/// proxy and must point at a supported audio/video file extension. The referenced asset must be an audio or video file
-/// in a supported format; requests against files with no audio track return a `no_audio_error`.
-/// @param timestampLevel Granularity of the time offsets returned for each transcript segment. Defaults to `SENTENCE. -
-/// SENTENCE: one segment per spoken sentence (recommended). - WORD: one segment per word, useful for fine-grained
-/// alignment such as captioning or highlight-as-you-listen experiences.
+/// @param fileIdOrUrl Identifier of the media asset to transcribe. Callers must set exactly one of the `FileIdOrUrl`
+/// variants. The referenced asset must be an audio or video file in a supported format (see the route description for
+/// the list); requests against files with no audio track return a `no_audio_error`.
+/// @param timestampLevel Granularity of the time offsets returned for each transcript segment. Defaults to `SENTENCE`
+/// when the field is omitted. - SENTENCE: one segment per spoken sentence (recommended). - WORD: one segment per word,
+/// useful for fine-grained alignment such as captioning or highlight-as-you-listen experiences.
 /// @param includedSpecialWords Comma-delimited list of non-lexical filler words to preserve in the transcript output,
 /// e.g. `"uh, ah, uhm"`. By default these fillers are stripped. Unrecognized tokens are ignored. Leave empty to use the
 /// default filtering behavior.

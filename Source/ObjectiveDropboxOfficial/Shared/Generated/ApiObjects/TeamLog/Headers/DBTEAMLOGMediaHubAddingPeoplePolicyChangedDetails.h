@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MediaHubAddingPeoplePolicyChangedDetails` struct.
 ///
-/// Changed the policy for adding people to Media Hub content.
+/// Changed the policy for adding people to Replay content.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
