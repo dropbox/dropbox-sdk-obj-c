@@ -473,7 +473,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
   /// (file_operations) Unpinned item from folder overview
   DBTEAMLOGEventTypeArgFolderOverviewItemUnpinned,
 
-  /// (file_operations) Downloaded files in Media Hub
+  /// (file_operations) Downloaded files in Replay
   DBTEAMLOGEventTypeArgMediaHubFileDownloaded,
 
   /// (file_operations) Added a label
@@ -664,6 +664,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 
   /// (members) Deleted team member profile photo
   DBTEAMLOGEventTypeArgMemberDeleteProfilePhoto,
+
+  /// (members) Admin browsed a team member's folder contents
+  DBTEAMLOGEventTypeArgMemberFolderContentsAccessed,
 
   /// (members) Permanently deleted contents of deleted team member account
   DBTEAMLOGEventTypeArgMemberPermanentlyDeleteAccountContents,
@@ -875,6 +878,27 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
   /// (passwords) Reset all team member passwords
   DBTEAMLOGEventTypeArgPasswordResetAll,
 
+  /// (protect) Added collaborators via Dropbox Protect
+  DBTEAMLOGEventTypeArgProtectActionAddCollaborator,
+
+  /// (protect) Added a link via Dropbox Protect
+  DBTEAMLOGEventTypeArgProtectActionAddLink,
+
+  /// (protect) Deleted content via Dropbox Protect
+  DBTEAMLOGEventTypeArgProtectActionDelete,
+
+  /// (protect) Exported content via Dropbox Protect
+  DBTEAMLOGEventTypeArgProtectActionExport,
+
+  /// (protect) Removed collaborators via Dropbox Protect
+  DBTEAMLOGEventTypeArgProtectActionRemoveCollaborator,
+
+  /// (protect) Removed a link via Dropbox Protect
+  DBTEAMLOGEventTypeArgProtectActionRemoveLink,
+
+  /// (protect) Stopped sharing content via Dropbox Protect
+  DBTEAMLOGEventTypeArgProtectActionStopSharing,
+
   /// (protect) Modified Protect internal domains list
   DBTEAMLOGEventTypeArgProtectInternalDomainsChanged,
 
@@ -986,25 +1010,25 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
   /// (sharing) Viewed transfer
   DBTEAMLOGEventTypeArgFileTransfersTransferView,
 
-  /// (sharing) Added member to Media Hub project
+  /// (sharing) Added member to Replay project
   DBTEAMLOGEventTypeArgMediaHubProjectTeamAdd,
 
-  /// (sharing) Removed member from Media Hub project
+  /// (sharing) Removed member from Replay project
   DBTEAMLOGEventTypeArgMediaHubProjectTeamDelete,
 
-  /// (sharing) Changed member role in Media Hub project
+  /// (sharing) Changed member role in Replay project
   DBTEAMLOGEventTypeArgMediaHubProjectTeamRoleChanged,
 
-  /// (sharing) Changed Media Hub shared link audience
+  /// (sharing) Changed Replay shared link audience
   DBTEAMLOGEventTypeArgMediaHubSharedLinkAudienceChanged,
 
-  /// (sharing) Created Media Hub shared link
+  /// (sharing) Created Replay shared link
   DBTEAMLOGEventTypeArgMediaHubSharedLinkCreated,
 
-  /// (sharing) Changed Media Hub shared link download setting
+  /// (sharing) Changed Replay shared link download setting
   DBTEAMLOGEventTypeArgMediaHubSharedLinkDownloadSettingChanged,
 
-  /// (sharing) Revoked Media Hub shared link
+  /// (sharing) Revoked Replay shared link
   DBTEAMLOGEventTypeArgMediaHubSharedLinkRevoked,
 
   /// (sharing) Changed Paper doc to invite-only (deprecated, no longer
@@ -1602,14 +1626,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
   /// (team_policies) Changed invite accept email policy for team
   DBTEAMLOGEventTypeArgInviteAcceptanceEmailPolicyChanged,
 
-  /// (team_policies) Changed the policy for adding people to Media Hub
-  /// content
+  /// (team_policies) Changed the policy for adding people to Replay content
   DBTEAMLOGEventTypeArgMediaHubAddingPeoplePolicyChanged,
 
-  /// (team_policies) Changed the policy for downloading Media Hub content
+  /// (team_policies) Changed the policy for downloading Replay content
   DBTEAMLOGEventTypeArgMediaHubDownloadPolicyChanged,
 
-  /// (team_policies) Changed the policy for sharing Media Hub content
+  /// (team_policies) Changed the policy for sharing Replay content
   DBTEAMLOGEventTypeArgMediaHubLinkSharingPolicyChanged,
 
   /// (team_policies) Changed whether users can find team when not invited
@@ -3488,7 +3511,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// Initializes union class with tag state of "media_hub_file_downloaded".
 ///
 /// Description of the "media_hub_file_downloaded" tag state: (file_operations)
-/// Downloaded files in Media Hub
+/// Downloaded files in Replay
 ///
 /// @return An initialized instance.
 ///
@@ -4109,6 +4132,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithMemberDeleteProfilePhoto;
+
+///
+/// Initializes union class with tag state of "member_folder_contents_accessed".
+///
+/// Description of the "member_folder_contents_accessed" tag state: (members)
+/// Admin browsed a team member's folder contents
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithMemberFolderContentsAccessed;
 
 ///
 /// Initializes union class with tag state of
@@ -4788,6 +4821,77 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 - (instancetype)initWithPasswordResetAll;
 
 ///
+/// Initializes union class with tag state of "protect_action_add_collaborator".
+///
+/// Description of the "protect_action_add_collaborator" tag state: (protect)
+/// Added collaborators via Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionAddCollaborator;
+
+///
+/// Initializes union class with tag state of "protect_action_add_link".
+///
+/// Description of the "protect_action_add_link" tag state: (protect) Added a
+/// link via Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionAddLink;
+
+///
+/// Initializes union class with tag state of "protect_action_delete".
+///
+/// Description of the "protect_action_delete" tag state: (protect) Deleted
+/// content via Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionDelete;
+
+///
+/// Initializes union class with tag state of "protect_action_export".
+///
+/// Description of the "protect_action_export" tag state: (protect) Exported
+/// content via Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionExport;
+
+///
+/// Initializes union class with tag state of
+/// "protect_action_remove_collaborator".
+///
+/// Description of the "protect_action_remove_collaborator" tag state: (protect)
+/// Removed collaborators via Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionRemoveCollaborator;
+
+///
+/// Initializes union class with tag state of "protect_action_remove_link".
+///
+/// Description of the "protect_action_remove_link" tag state: (protect) Removed
+/// a link via Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionRemoveLink;
+
+///
+/// Initializes union class with tag state of "protect_action_stop_sharing".
+///
+/// Description of the "protect_action_stop_sharing" tag state: (protect)
+/// Stopped sharing content via Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionStopSharing;
+
+///
 /// Initializes union class with tag state of
 /// "protect_internal_domains_changed".
 ///
@@ -5179,7 +5283,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// Initializes union class with tag state of "media_hub_project_team_add".
 ///
 /// Description of the "media_hub_project_team_add" tag state: (sharing) Added
-/// member to Media Hub project
+/// member to Replay project
 ///
 /// @return An initialized instance.
 ///
@@ -5189,7 +5293,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// Initializes union class with tag state of "media_hub_project_team_delete".
 ///
 /// Description of the "media_hub_project_team_delete" tag state: (sharing)
-/// Removed member from Media Hub project
+/// Removed member from Replay project
 ///
 /// @return An initialized instance.
 ///
@@ -5200,7 +5304,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "media_hub_project_team_role_changed".
 ///
 /// Description of the "media_hub_project_team_role_changed" tag state:
-/// (sharing) Changed member role in Media Hub project
+/// (sharing) Changed member role in Replay project
 ///
 /// @return An initialized instance.
 ///
@@ -5211,7 +5315,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "media_hub_shared_link_audience_changed".
 ///
 /// Description of the "media_hub_shared_link_audience_changed" tag state:
-/// (sharing) Changed Media Hub shared link audience
+/// (sharing) Changed Replay shared link audience
 ///
 /// @return An initialized instance.
 ///
@@ -5221,7 +5325,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// Initializes union class with tag state of "media_hub_shared_link_created".
 ///
 /// Description of the "media_hub_shared_link_created" tag state: (sharing)
-/// Created Media Hub shared link
+/// Created Replay shared link
 ///
 /// @return An initialized instance.
 ///
@@ -5232,7 +5336,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "media_hub_shared_link_download_setting_changed".
 ///
 /// Description of the "media_hub_shared_link_download_setting_changed" tag
-/// state: (sharing) Changed Media Hub shared link download setting
+/// state: (sharing) Changed Replay shared link download setting
 ///
 /// @return An initialized instance.
 ///
@@ -5242,7 +5346,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// Initializes union class with tag state of "media_hub_shared_link_revoked".
 ///
 /// Description of the "media_hub_shared_link_revoked" tag state: (sharing)
-/// Revoked Media Hub shared link
+/// Revoked Replay shared link
 ///
 /// @return An initialized instance.
 ///
@@ -7187,7 +7291,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "media_hub_adding_people_policy_changed".
 ///
 /// Description of the "media_hub_adding_people_policy_changed" tag state:
-/// (team_policies) Changed the policy for adding people to Media Hub content
+/// (team_policies) Changed the policy for adding people to Replay content
 ///
 /// @return An initialized instance.
 ///
@@ -7198,7 +7302,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "media_hub_download_policy_changed".
 ///
 /// Description of the "media_hub_download_policy_changed" tag state:
-/// (team_policies) Changed the policy for downloading Media Hub content
+/// (team_policies) Changed the policy for downloading Replay content
 ///
 /// @return An initialized instance.
 ///
@@ -7209,7 +7313,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "media_hub_link_sharing_policy_changed".
 ///
 /// Description of the "media_hub_link_sharing_policy_changed" tag state:
-/// (team_policies) Changed the policy for sharing Media Hub content
+/// (team_policies) Changed the policy for sharing Replay content
 ///
 /// @return An initialized instance.
 ///
@@ -10209,6 +10313,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "member_folder_contents_accessed".
+///
+/// @return Whether the union's current tag state has value
+/// "member_folder_contents_accessed".
+///
+- (BOOL)isMemberFolderContentsAccessed;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "member_permanently_delete_account_contents".
 ///
 /// @return Whether the union's current tag state has value
@@ -10793,6 +10906,69 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "password_reset_all".
 ///
 - (BOOL)isPasswordResetAll;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_add_collaborator".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_add_collaborator".
+///
+- (BOOL)isProtectActionAddCollaborator;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_add_link".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_add_link".
+///
+- (BOOL)isProtectActionAddLink;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_delete".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_delete".
+///
+- (BOOL)isProtectActionDelete;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_export".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_export".
+///
+- (BOOL)isProtectActionExport;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_remove_collaborator".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_remove_collaborator".
+///
+- (BOOL)isProtectActionRemoveCollaborator;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_remove_link".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_remove_link".
+///
+- (BOOL)isProtectActionRemoveLink;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_stop_sharing".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_stop_sharing".
+///
+- (BOOL)isProtectActionStopSharing;
 
 ///
 /// Retrieves whether the union's current tag state has value

@@ -43,6 +43,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderRestoreErrorTag) {
   /// (no description).
   DBTEAMTeamFolderRestoreErrorOther,
 
+  /// The team has reached the maximum number of team folders allowed by its
+  /// plan.
+  DBTEAMTeamFolderRestoreErrorFolderCountLimitExceeded,
+
 };
 
 /// Represents the union's current tag state.
@@ -96,6 +100,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderRestoreErrorTag) {
 ///
 - (instancetype)initWithOther;
 
+///
+/// Initializes union class with tag state of "folder_count_limit_exceeded".
+///
+/// Description of the "folder_count_limit_exceeded" tag state: The team has
+/// reached the maximum number of team folders allowed by its plan.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithFolderCountLimitExceeded;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
@@ -139,6 +153,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMTeamFolderRestoreErrorTag) {
 /// @return Whether the union's current tag state has value "other".
 ///
 - (BOOL)isOther;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "folder_count_limit_exceeded".
+///
+/// @return Whether the union's current tag state has value
+/// "folder_count_limit_exceeded".
+///
+- (BOOL)isFolderCountLimitExceeded;
 
 ///
 /// Retrieves string value of union's current tag state.

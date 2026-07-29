@@ -29,6 +29,10 @@
 #import "DBTEAMApiApp.h"
 #import "DBTEAMBaseDfbReport.h"
 #import "DBTEAMBaseTeamFolderError.h"
+#import "DBTEAMBulkSuspendComplete.h"
+#import "DBTEAMBulkSuspendError.h"
+#import "DBTEAMBulkSuspendJobStatus.h"
+#import "DBTEAMBulkSuspendTaskFailure.h"
 #import "DBTEAMCOMMONGroupManagementType.h"
 #import "DBTEAMCOMMONGroupSummary.h"
 #import "DBTEAMCustomQuotaError.h"
@@ -235,6 +239,8 @@ static DBRoute *DBTEAMMembersAdd;
 static DBRoute *DBTEAMMembersAddV2;
 static DBRoute *DBTEAMMembersAddJobStatusGet;
 static DBRoute *DBTEAMMembersAddJobStatusGetV2;
+static DBRoute *DBTEAMMembersBulkSuspend;
+static DBRoute *DBTEAMMembersBulkSuspendJobStatusCheck;
 static DBRoute *DBTEAMMembersDeleteFormerMemberFiles;
 static DBRoute *DBTEAMMembersDeleteProfilePhoto;
 static DBRoute *DBTEAMMembersDeleteProfilePhotoV2;
@@ -1004,6 +1010,39 @@ static NSObject *lockObj = nil;
                                      dataStructDeserialBlock:nil];
     }
     return DBTEAMMembersAddJobStatusGetV2;
+  }
+}
+
++ (DBRoute *)DBTEAMMembersBulkSuspend {
+  @synchronized(lockObj) {
+    if (!DBTEAMMembersBulkSuspend) {
+      DBTEAMMembersBulkSuspend = [[DBRoute alloc] init:@"members/bulk_suspend"
+                                            namespace_:@"team"
+                                            deprecated:@NO
+                                            resultType:[DBASYNCLaunchResultBase class]
+                                             errorType:[DBTEAMBulkSuspendError class]
+                                                 attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                                 dataStructSerialBlock:nil
+                               dataStructDeserialBlock:nil];
+    }
+    return DBTEAMMembersBulkSuspend;
+  }
+}
+
++ (DBRoute *)DBTEAMMembersBulkSuspendJobStatusCheck {
+  @synchronized(lockObj) {
+    if (!DBTEAMMembersBulkSuspendJobStatusCheck) {
+      DBTEAMMembersBulkSuspendJobStatusCheck =
+          [[DBRoute alloc] init:@"members/bulk_suspend/job_status/check"
+                           namespace_:@"team"
+                           deprecated:@NO
+                           resultType:[DBTEAMBulkSuspendJobStatus class]
+                            errorType:[DBASYNCPollError class]
+                                attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                dataStructSerialBlock:nil
+              dataStructDeserialBlock:nil];
+    }
+    return DBTEAMMembersBulkSuspendJobStatusCheck;
   }
 }
 

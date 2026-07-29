@@ -1737,274 +1737,6 @@
 
 @end
 
-#import "DBRIVIERAErrorCode.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-
-#pragma mark - API Object
-
-@implementation DBRIVIERAErrorCode
-
-#pragma mark - Constructors
-
-- (instancetype)initWithUnknownError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAErrorCodeUnknownError;
-  }
-  return self;
-}
-
-- (instancetype)initWithBadRequest {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAErrorCodeBadRequest;
-  }
-  return self;
-}
-
-- (instancetype)initWithApiError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAErrorCodeApiError;
-  }
-  return self;
-}
-
-- (instancetype)initWithAccessError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAErrorCodeAccessError;
-  }
-  return self;
-}
-
-- (instancetype)initWithRatelimitError {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAErrorCodeRatelimitError;
-  }
-  return self;
-}
-
-- (instancetype)initWithUnavailable {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAErrorCodeUnavailable;
-  }
-  return self;
-}
-
-- (instancetype)initWithOther {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERAErrorCodeOther;
-  }
-  return self;
-}
-
-#pragma mark - Instance field accessors
-
-#pragma mark - Tag state methods
-
-- (BOOL)isUnknownError {
-  return _tag == DBRIVIERAErrorCodeUnknownError;
-}
-
-- (BOOL)isBadRequest {
-  return _tag == DBRIVIERAErrorCodeBadRequest;
-}
-
-- (BOOL)isApiError {
-  return _tag == DBRIVIERAErrorCodeApiError;
-}
-
-- (BOOL)isAccessError {
-  return _tag == DBRIVIERAErrorCodeAccessError;
-}
-
-- (BOOL)isRatelimitError {
-  return _tag == DBRIVIERAErrorCodeRatelimitError;
-}
-
-- (BOOL)isUnavailable {
-  return _tag == DBRIVIERAErrorCodeUnavailable;
-}
-
-- (BOOL)isOther {
-  return _tag == DBRIVIERAErrorCodeOther;
-}
-
-- (NSString *)tagName {
-  switch (_tag) {
-  case DBRIVIERAErrorCodeUnknownError:
-    return @"DBRIVIERAErrorCodeUnknownError";
-  case DBRIVIERAErrorCodeBadRequest:
-    return @"DBRIVIERAErrorCodeBadRequest";
-  case DBRIVIERAErrorCodeApiError:
-    return @"DBRIVIERAErrorCodeApiError";
-  case DBRIVIERAErrorCodeAccessError:
-    return @"DBRIVIERAErrorCodeAccessError";
-  case DBRIVIERAErrorCodeRatelimitError:
-    return @"DBRIVIERAErrorCodeRatelimitError";
-  case DBRIVIERAErrorCodeUnavailable:
-    return @"DBRIVIERAErrorCodeUnavailable";
-  case DBRIVIERAErrorCodeOther:
-    return @"DBRIVIERAErrorCodeOther";
-  }
-
-  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAErrorCodeSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAErrorCodeSerializer deserialize:dict];
-}
-
-#pragma mark - Debug Description method
-
-- (NSString *)debugDescription {
-  return [[DBRIVIERAErrorCodeSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  switch (_tag) {
-  case DBRIVIERAErrorCodeUnknownError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAErrorCodeBadRequest:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAErrorCodeApiError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAErrorCodeAccessError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAErrorCodeRatelimitError:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAErrorCodeUnavailable:
-    result = prime * result + [[self tagName] hash];
-    break;
-  case DBRIVIERAErrorCodeOther:
-    result = prime * result + [[self tagName] hash];
-    break;
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToErrorCode:other];
-}
-
-- (BOOL)isEqualToErrorCode:(DBRIVIERAErrorCode *)anErrorCode {
-  if (self == anErrorCode) {
-    return YES;
-  }
-  if (self.tag != anErrorCode.tag) {
-    return NO;
-  }
-  switch (_tag) {
-  case DBRIVIERAErrorCodeUnknownError:
-    return [[self tagName] isEqual:[anErrorCode tagName]];
-  case DBRIVIERAErrorCodeBadRequest:
-    return [[self tagName] isEqual:[anErrorCode tagName]];
-  case DBRIVIERAErrorCodeApiError:
-    return [[self tagName] isEqual:[anErrorCode tagName]];
-  case DBRIVIERAErrorCodeAccessError:
-    return [[self tagName] isEqual:[anErrorCode tagName]];
-  case DBRIVIERAErrorCodeRatelimitError:
-    return [[self tagName] isEqual:[anErrorCode tagName]];
-  case DBRIVIERAErrorCodeUnavailable:
-    return [[self tagName] isEqual:[anErrorCode tagName]];
-  case DBRIVIERAErrorCodeOther:
-    return [[self tagName] isEqual:[anErrorCode tagName]];
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBRIVIERAErrorCodeSerializer
-
-+ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAErrorCode *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  if ([valueObj isUnknownError]) {
-    jsonDict[@".tag"] = @"unknown_error";
-  } else if ([valueObj isBadRequest]) {
-    jsonDict[@".tag"] = @"bad_request";
-  } else if ([valueObj isApiError]) {
-    jsonDict[@".tag"] = @"api_error";
-  } else if ([valueObj isAccessError]) {
-    jsonDict[@".tag"] = @"access_error";
-  } else if ([valueObj isRatelimitError]) {
-    jsonDict[@".tag"] = @"ratelimit_error";
-  } else if ([valueObj isUnavailable]) {
-    jsonDict[@".tag"] = @"unavailable";
-  } else if ([valueObj isOther]) {
-    jsonDict[@".tag"] = @"other";
-  } else {
-    jsonDict[@".tag"] = @"other";
-  }
-
-  return jsonDict;
-}
-
-+ (DBRIVIERAErrorCode *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  NSString *tag = valueDict[@".tag"];
-
-  if ([tag isEqualToString:@"unknown_error"]) {
-    return [[DBRIVIERAErrorCode alloc] initWithUnknownError];
-  } else if ([tag isEqualToString:@"bad_request"]) {
-    return [[DBRIVIERAErrorCode alloc] initWithBadRequest];
-  } else if ([tag isEqualToString:@"api_error"]) {
-    return [[DBRIVIERAErrorCode alloc] initWithApiError];
-  } else if ([tag isEqualToString:@"access_error"]) {
-    return [[DBRIVIERAErrorCode alloc] initWithAccessError];
-  } else if ([tag isEqualToString:@"ratelimit_error"]) {
-    return [[DBRIVIERAErrorCode alloc] initWithRatelimitError];
-  } else if ([tag isEqualToString:@"unavailable"]) {
-    return [[DBRIVIERAErrorCode alloc] initWithUnavailable];
-  } else if ([tag isEqualToString:@"other"]) {
-    return [[DBRIVIERAErrorCode alloc] initWithOther];
-  } else {
-    return [[DBRIVIERAErrorCode alloc] initWithOther];
-  }
-}
-
-@end
-
 #import "DBRIVIERAFileIdOrUrl.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
@@ -2368,8 +2100,8 @@
 @end
 
 #import "DBRIVIERAGetMarkdownAsyncCheckResult.h"
-#import "DBRIVIERAGetMarkdownAsyncError.h"
 #import "DBRIVIERAGetMarkdownResult.h"
+#import "DBRIVIERAMarkdownConversionApiV2Error.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 
@@ -2399,7 +2131,7 @@
   return self;
 }
 
-- (instancetype)initWithFailed:(DBRIVIERAGetMarkdownAsyncError *)failed {
+- (instancetype)initWithFailed:(DBRIVIERAMarkdownConversionApiV2Error *)failed {
   self = [super init];
   if (self) {
     _tag = DBRIVIERAGetMarkdownAsyncCheckResultFailed;
@@ -2427,7 +2159,7 @@
   return _complete;
 }
 
-- (DBRIVIERAGetMarkdownAsyncError *)failed {
+- (DBRIVIERAMarkdownConversionApiV2Error *)failed {
   if (![self isFailed]) {
     [NSException
          raise:@"IllegalStateException"
@@ -2564,7 +2296,7 @@
     [jsonDict addEntriesFromDictionary:[DBRIVIERAGetMarkdownResultSerializer serialize:valueObj.complete]];
     jsonDict[@".tag"] = @"complete";
   } else if ([valueObj isFailed]) {
-    [jsonDict addEntriesFromDictionary:[DBRIVIERAGetMarkdownAsyncErrorSerializer serialize:valueObj.failed]];
+    jsonDict[@"failed"] = [[DBRIVIERAMarkdownConversionApiV2ErrorSerializer serialize:valueObj.failed] mutableCopy];
     jsonDict[@".tag"] = @"failed";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
@@ -2584,136 +2316,14 @@
     DBRIVIERAGetMarkdownResult *complete = [DBRIVIERAGetMarkdownResultSerializer deserialize:valueDict];
     return [[DBRIVIERAGetMarkdownAsyncCheckResult alloc] initWithComplete:complete];
   } else if ([tag isEqualToString:@"failed"]) {
-    DBRIVIERAGetMarkdownAsyncError *failed = [DBRIVIERAGetMarkdownAsyncErrorSerializer deserialize:valueDict];
+    DBRIVIERAMarkdownConversionApiV2Error *failed =
+        [DBRIVIERAMarkdownConversionApiV2ErrorSerializer deserialize:valueDict[@"failed"]];
     return [[DBRIVIERAGetMarkdownAsyncCheckResult alloc] initWithFailed:failed];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBRIVIERAGetMarkdownAsyncCheckResult alloc] initWithOther];
   } else {
     return [[DBRIVIERAGetMarkdownAsyncCheckResult alloc] initWithOther];
   }
-}
-
-@end
-
-#import "DBRIVIERAErrorCode.h"
-#import "DBRIVIERAGetMarkdownAsyncError.h"
-#import "DBRIVIERAMarkdownConversionApiV2Error.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-
-#pragma mark - API Object
-
-@implementation DBRIVIERAGetMarkdownAsyncError
-
-#pragma mark - Constructors
-
-- (instancetype)initWithErrorCode:(DBRIVIERAErrorCode *)errorCode
-                     errorDetails:(DBRIVIERAMarkdownConversionApiV2Error *)errorDetails {
-
-  self = [super init];
-  if (self) {
-    _errorCode = errorCode ?: [[DBRIVIERAErrorCode alloc] initWithUnknownError];
-    _errorDetails = errorDetails;
-  }
-  return self;
-}
-
-- (instancetype)initDefault {
-  return [self initWithErrorCode:nil errorDetails:nil];
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetMarkdownAsyncErrorSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetMarkdownAsyncErrorSerializer deserialize:dict];
-}
-
-#pragma mark - Debug Description method
-
-- (NSString *)debugDescription {
-  return [[DBRIVIERAGetMarkdownAsyncErrorSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  result = prime * result + [self.errorCode hash];
-  if (self.errorDetails != nil) {
-    result = prime * result + [self.errorDetails hash];
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetMarkdownAsyncError:other];
-}
-
-- (BOOL)isEqualToGetMarkdownAsyncError:(DBRIVIERAGetMarkdownAsyncError *)aGetMarkdownAsyncError {
-  if (self == aGetMarkdownAsyncError) {
-    return YES;
-  }
-  if (![self.errorCode isEqual:aGetMarkdownAsyncError.errorCode]) {
-    return NO;
-  }
-  if (self.errorDetails) {
-    if (![self.errorDetails isEqual:aGetMarkdownAsyncError.errorDetails]) {
-      return NO;
-    }
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBRIVIERAGetMarkdownAsyncErrorSerializer
-
-+ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMarkdownAsyncError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  jsonDict[@"error_code"] = [DBRIVIERAErrorCodeSerializer serialize:valueObj.errorCode];
-  if (valueObj.errorDetails) {
-    jsonDict[@"error_details"] = [DBRIVIERAMarkdownConversionApiV2ErrorSerializer serialize:valueObj.errorDetails];
-  }
-
-  return jsonDict;
-}
-
-+ (DBRIVIERAGetMarkdownAsyncError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBRIVIERAErrorCode *errorCode = valueDict[@"error_code"]
-                                      ? [DBRIVIERAErrorCodeSerializer deserialize:valueDict[@"error_code"]]
-                                      : [[DBRIVIERAErrorCode alloc] initWithUnknownError];
-  DBRIVIERAMarkdownConversionApiV2Error *errorDetails =
-      valueDict[@"error_details"]
-          ? [DBRIVIERAMarkdownConversionApiV2ErrorSerializer deserialize:valueDict[@"error_details"]]
-          : nil;
-
-  return [[DBRIVIERAGetMarkdownAsyncError alloc] initWithErrorCode:errorCode errorDetails:errorDetails];
 }
 
 @end
@@ -2931,8 +2541,8 @@
 @end
 
 #import "DBRIVIERAGetMetadataAsyncCheckResult.h"
-#import "DBRIVIERAGetMetadataAsyncError.h"
 #import "DBRIVIERAGetMetadataResult.h"
+#import "DBRIVIERAMetadataExtractionApiV2Error.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 
@@ -2962,7 +2572,7 @@
   return self;
 }
 
-- (instancetype)initWithFailed:(DBRIVIERAGetMetadataAsyncError *)failed {
+- (instancetype)initWithFailed:(DBRIVIERAMetadataExtractionApiV2Error *)failed {
   self = [super init];
   if (self) {
     _tag = DBRIVIERAGetMetadataAsyncCheckResultFailed;
@@ -2990,7 +2600,7 @@
   return _complete;
 }
 
-- (DBRIVIERAGetMetadataAsyncError *)failed {
+- (DBRIVIERAMetadataExtractionApiV2Error *)failed {
   if (![self isFailed]) {
     [NSException
          raise:@"IllegalStateException"
@@ -3127,7 +2737,7 @@
     [jsonDict addEntriesFromDictionary:[DBRIVIERAGetMetadataResultSerializer serialize:valueObj.complete]];
     jsonDict[@".tag"] = @"complete";
   } else if ([valueObj isFailed]) {
-    [jsonDict addEntriesFromDictionary:[DBRIVIERAGetMetadataAsyncErrorSerializer serialize:valueObj.failed]];
+    jsonDict[@"failed"] = [[DBRIVIERAMetadataExtractionApiV2ErrorSerializer serialize:valueObj.failed] mutableCopy];
     jsonDict[@".tag"] = @"failed";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
@@ -3147,136 +2757,14 @@
     DBRIVIERAGetMetadataResult *complete = [DBRIVIERAGetMetadataResultSerializer deserialize:valueDict];
     return [[DBRIVIERAGetMetadataAsyncCheckResult alloc] initWithComplete:complete];
   } else if ([tag isEqualToString:@"failed"]) {
-    DBRIVIERAGetMetadataAsyncError *failed = [DBRIVIERAGetMetadataAsyncErrorSerializer deserialize:valueDict];
+    DBRIVIERAMetadataExtractionApiV2Error *failed =
+        [DBRIVIERAMetadataExtractionApiV2ErrorSerializer deserialize:valueDict[@"failed"]];
     return [[DBRIVIERAGetMetadataAsyncCheckResult alloc] initWithFailed:failed];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBRIVIERAGetMetadataAsyncCheckResult alloc] initWithOther];
   } else {
     return [[DBRIVIERAGetMetadataAsyncCheckResult alloc] initWithOther];
   }
-}
-
-@end
-
-#import "DBRIVIERAErrorCode.h"
-#import "DBRIVIERAGetMetadataAsyncError.h"
-#import "DBRIVIERAMetadataExtractionApiV2Error.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-
-#pragma mark - API Object
-
-@implementation DBRIVIERAGetMetadataAsyncError
-
-#pragma mark - Constructors
-
-- (instancetype)initWithErrorCode:(DBRIVIERAErrorCode *)errorCode
-                     errorDetails:(DBRIVIERAMetadataExtractionApiV2Error *)errorDetails {
-
-  self = [super init];
-  if (self) {
-    _errorCode = errorCode ?: [[DBRIVIERAErrorCode alloc] initWithUnknownError];
-    _errorDetails = errorDetails;
-  }
-  return self;
-}
-
-- (instancetype)initDefault {
-  return [self initWithErrorCode:nil errorDetails:nil];
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetMetadataAsyncErrorSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetMetadataAsyncErrorSerializer deserialize:dict];
-}
-
-#pragma mark - Debug Description method
-
-- (NSString *)debugDescription {
-  return [[DBRIVIERAGetMetadataAsyncErrorSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  result = prime * result + [self.errorCode hash];
-  if (self.errorDetails != nil) {
-    result = prime * result + [self.errorDetails hash];
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetMetadataAsyncError:other];
-}
-
-- (BOOL)isEqualToGetMetadataAsyncError:(DBRIVIERAGetMetadataAsyncError *)aGetMetadataAsyncError {
-  if (self == aGetMetadataAsyncError) {
-    return YES;
-  }
-  if (![self.errorCode isEqual:aGetMetadataAsyncError.errorCode]) {
-    return NO;
-  }
-  if (self.errorDetails) {
-    if (![self.errorDetails isEqual:aGetMetadataAsyncError.errorDetails]) {
-      return NO;
-    }
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBRIVIERAGetMetadataAsyncErrorSerializer
-
-+ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetMetadataAsyncError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  jsonDict[@"error_code"] = [DBRIVIERAErrorCodeSerializer serialize:valueObj.errorCode];
-  if (valueObj.errorDetails) {
-    jsonDict[@"error_details"] = [DBRIVIERAMetadataExtractionApiV2ErrorSerializer serialize:valueObj.errorDetails];
-  }
-
-  return jsonDict;
-}
-
-+ (DBRIVIERAGetMetadataAsyncError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBRIVIERAErrorCode *errorCode = valueDict[@"error_code"]
-                                      ? [DBRIVIERAErrorCodeSerializer deserialize:valueDict[@"error_code"]]
-                                      : [[DBRIVIERAErrorCode alloc] initWithUnknownError];
-  DBRIVIERAMetadataExtractionApiV2Error *errorDetails =
-      valueDict[@"error_details"]
-          ? [DBRIVIERAMetadataExtractionApiV2ErrorSerializer deserialize:valueDict[@"error_details"]]
-          : nil;
-
-  return [[DBRIVIERAGetMetadataAsyncError alloc] initWithErrorCode:errorCode errorDetails:errorDetails];
 }
 
 @end
@@ -3421,7 +2909,7 @@
   self = [super init];
   if (self) {
     _fileIdOrUrl = fileIdOrUrl;
-    _timestampLevel = timestampLevel ?: [[DBRIVIERATimestampLevel alloc] initWithUnknown];
+    _timestampLevel = timestampLevel ?: [[DBRIVIERATimestampLevel alloc] initWithSentence];
     _includedSpecialWords = includedSpecialWords ?: @"";
     _audioLanguage = audioLanguage ?: @"";
   }
@@ -3529,7 +3017,7 @@
       valueDict[@"file_id_or_url"] ? [DBRIVIERAFileIdOrUrlSerializer deserialize:valueDict[@"file_id_or_url"]] : nil;
   DBRIVIERATimestampLevel *timestampLevel =
       valueDict[@"timestamp_level"] ? [DBRIVIERATimestampLevelSerializer deserialize:valueDict[@"timestamp_level"]]
-                                    : [[DBRIVIERATimestampLevel alloc] initWithUnknown];
+                                    : [[DBRIVIERATimestampLevel alloc] initWithSentence];
   NSString *includedSpecialWords = valueDict[@"included_special_words"] ?: @"";
   NSString *audioLanguage = valueDict[@"audio_language"] ?: @"";
 
@@ -3541,8 +3029,8 @@
 
 @end
 
+#import "DBRIVIERAContentApiV2Error.h"
 #import "DBRIVIERAGetTranscriptAsyncCheckResult.h"
-#import "DBRIVIERAGetTranscriptAsyncError.h"
 #import "DBRIVIERAGetTranscriptResult.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
@@ -3573,7 +3061,7 @@
   return self;
 }
 
-- (instancetype)initWithFailed:(DBRIVIERAGetTranscriptAsyncError *)failed {
+- (instancetype)initWithFailed:(DBRIVIERAContentApiV2Error *)failed {
   self = [super init];
   if (self) {
     _tag = DBRIVIERAGetTranscriptAsyncCheckResultFailed;
@@ -3601,7 +3089,7 @@
   return _complete;
 }
 
-- (DBRIVIERAGetTranscriptAsyncError *)failed {
+- (DBRIVIERAContentApiV2Error *)failed {
   if (![self isFailed]) {
     [NSException
          raise:@"IllegalStateException"
@@ -3739,7 +3227,7 @@
     [jsonDict addEntriesFromDictionary:[DBRIVIERAGetTranscriptResultSerializer serialize:valueObj.complete]];
     jsonDict[@".tag"] = @"complete";
   } else if ([valueObj isFailed]) {
-    [jsonDict addEntriesFromDictionary:[DBRIVIERAGetTranscriptAsyncErrorSerializer serialize:valueObj.failed]];
+    jsonDict[@"failed"] = [[DBRIVIERAContentApiV2ErrorSerializer serialize:valueObj.failed] mutableCopy];
     jsonDict[@".tag"] = @"failed";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
@@ -3759,135 +3247,13 @@
     DBRIVIERAGetTranscriptResult *complete = [DBRIVIERAGetTranscriptResultSerializer deserialize:valueDict];
     return [[DBRIVIERAGetTranscriptAsyncCheckResult alloc] initWithComplete:complete];
   } else if ([tag isEqualToString:@"failed"]) {
-    DBRIVIERAGetTranscriptAsyncError *failed = [DBRIVIERAGetTranscriptAsyncErrorSerializer deserialize:valueDict];
+    DBRIVIERAContentApiV2Error *failed = [DBRIVIERAContentApiV2ErrorSerializer deserialize:valueDict[@"failed"]];
     return [[DBRIVIERAGetTranscriptAsyncCheckResult alloc] initWithFailed:failed];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBRIVIERAGetTranscriptAsyncCheckResult alloc] initWithOther];
   } else {
     return [[DBRIVIERAGetTranscriptAsyncCheckResult alloc] initWithOther];
   }
-}
-
-@end
-
-#import "DBRIVIERAContentApiV2Error.h"
-#import "DBRIVIERAErrorCode.h"
-#import "DBRIVIERAGetTranscriptAsyncError.h"
-#import "DBStoneSerializers.h"
-#import "DBStoneValidators.h"
-
-#pragma mark - API Object
-
-@implementation DBRIVIERAGetTranscriptAsyncError
-
-#pragma mark - Constructors
-
-- (instancetype)initWithErrorCode:(DBRIVIERAErrorCode *)errorCode
-                     errorDetails:(DBRIVIERAContentApiV2Error *)errorDetails {
-
-  self = [super init];
-  if (self) {
-    _errorCode = errorCode ?: [[DBRIVIERAErrorCode alloc] initWithUnknownError];
-    _errorDetails = errorDetails;
-  }
-  return self;
-}
-
-- (instancetype)initDefault {
-  return [self initWithErrorCode:nil errorDetails:nil];
-}
-
-#pragma mark - Serialization methods
-
-+ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
-  return [DBRIVIERAGetTranscriptAsyncErrorSerializer serialize:instance];
-}
-
-+ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
-  return [DBRIVIERAGetTranscriptAsyncErrorSerializer deserialize:dict];
-}
-
-#pragma mark - Debug Description method
-
-- (NSString *)debugDescription {
-  return [[DBRIVIERAGetTranscriptAsyncErrorSerializer serialize:self] description];
-}
-
-#pragma mark - Copyable method
-
-- (instancetype)copyWithZone:(NSZone *)zone {
-#pragma unused(zone)
-  /// object is immutable
-  return self;
-}
-
-#pragma mark - Hash method
-
-- (NSUInteger)hash {
-  NSUInteger prime = 31;
-  NSUInteger result = 1;
-
-  result = prime * result + [self.errorCode hash];
-  if (self.errorDetails != nil) {
-    result = prime * result + [self.errorDetails hash];
-  }
-
-  return prime * result;
-}
-
-#pragma mark - Equality method
-
-- (BOOL)isEqual:(id)other {
-  if (other == self) {
-    return YES;
-  }
-  if (!other || ![other isKindOfClass:[self class]]) {
-    return NO;
-  }
-  return [self isEqualToGetTranscriptAsyncError:other];
-}
-
-- (BOOL)isEqualToGetTranscriptAsyncError:(DBRIVIERAGetTranscriptAsyncError *)aGetTranscriptAsyncError {
-  if (self == aGetTranscriptAsyncError) {
-    return YES;
-  }
-  if (![self.errorCode isEqual:aGetTranscriptAsyncError.errorCode]) {
-    return NO;
-  }
-  if (self.errorDetails) {
-    if (![self.errorDetails isEqual:aGetTranscriptAsyncError.errorDetails]) {
-      return NO;
-    }
-  }
-  return YES;
-}
-
-@end
-
-#pragma mark - Serializer Object
-
-@implementation DBRIVIERAGetTranscriptAsyncErrorSerializer
-
-+ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetTranscriptAsyncError *)valueObj {
-  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
-
-  jsonDict[@"error_code"] = [DBRIVIERAErrorCodeSerializer serialize:valueObj.errorCode];
-  if (valueObj.errorDetails) {
-    jsonDict[@"error_details"] = [DBRIVIERAContentApiV2ErrorSerializer serialize:valueObj.errorDetails];
-  }
-
-  return jsonDict;
-}
-
-+ (DBRIVIERAGetTranscriptAsyncError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
-  DBRIVIERAErrorCode *errorCode = valueDict[@"error_code"]
-                                      ? [DBRIVIERAErrorCodeSerializer deserialize:valueDict[@"error_code"]]
-                                      : [[DBRIVIERAErrorCode alloc] initWithUnknownError];
-  DBRIVIERAContentApiV2Error *errorDetails =
-      valueDict[@"error_details"] ? [DBRIVIERAContentApiV2ErrorSerializer deserialize:valueDict[@"error_details"]]
-                                  : nil;
-
-  return [[DBRIVIERAGetTranscriptAsyncError alloc] initWithErrorCode:errorCode errorDetails:errorDetails];
 }
 
 @end
@@ -5312,14 +4678,6 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithUnknown {
-  self = [super init];
-  if (self) {
-    _tag = DBRIVIERATimestampLevelUnknown;
-  }
-  return self;
-}
-
 - (instancetype)initWithSentence {
   self = [super init];
   if (self) {
@@ -5348,10 +4706,6 @@
 
 #pragma mark - Tag state methods
 
-- (BOOL)isUnknown {
-  return _tag == DBRIVIERATimestampLevelUnknown;
-}
-
 - (BOOL)isSentence {
   return _tag == DBRIVIERATimestampLevelSentence;
 }
@@ -5366,8 +4720,6 @@
 
 - (NSString *)tagName {
   switch (_tag) {
-  case DBRIVIERATimestampLevelUnknown:
-    return @"DBRIVIERATimestampLevelUnknown";
   case DBRIVIERATimestampLevelSentence:
     return @"DBRIVIERATimestampLevelSentence";
   case DBRIVIERATimestampLevelWord:
@@ -5410,9 +4762,6 @@
   NSUInteger result = 1;
 
   switch (_tag) {
-  case DBRIVIERATimestampLevelUnknown:
-    result = prime * result + [[self tagName] hash];
-    break;
   case DBRIVIERATimestampLevelSentence:
     result = prime * result + [[self tagName] hash];
     break;
@@ -5447,8 +4796,6 @@
     return NO;
   }
   switch (_tag) {
-  case DBRIVIERATimestampLevelUnknown:
-    return [[self tagName] isEqual:[aTimestampLevel tagName]];
   case DBRIVIERATimestampLevelSentence:
     return [[self tagName] isEqual:[aTimestampLevel tagName]];
   case DBRIVIERATimestampLevelWord:
@@ -5468,9 +4815,7 @@
 + (NSDictionary<NSString *, id> *)serialize:(DBRIVIERATimestampLevel *)valueObj {
   NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
 
-  if ([valueObj isUnknown]) {
-    jsonDict[@".tag"] = @"unknown";
-  } else if ([valueObj isSentence]) {
+  if ([valueObj isSentence]) {
     jsonDict[@".tag"] = @"sentence";
   } else if ([valueObj isWord]) {
     jsonDict[@".tag"] = @"word";
@@ -5486,9 +4831,7 @@
 + (DBRIVIERATimestampLevel *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   NSString *tag = valueDict[@".tag"];
 
-  if ([tag isEqualToString:@"unknown"]) {
-    return [[DBRIVIERATimestampLevel alloc] initWithUnknown];
-  } else if ([tag isEqualToString:@"sentence"]) {
+  if ([tag isEqualToString:@"sentence"]) {
     return [[DBRIVIERATimestampLevel alloc] initWithSentence];
   } else if ([tag isEqualToString:@"word"]) {
     return [[DBRIVIERATimestampLevel alloc] initWithWord];

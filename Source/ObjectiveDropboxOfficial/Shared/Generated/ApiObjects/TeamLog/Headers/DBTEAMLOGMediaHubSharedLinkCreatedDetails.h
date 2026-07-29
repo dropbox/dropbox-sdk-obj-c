@@ -8,6 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBTEAMLOGMediaHubProjectLogInfo;
 @class DBTEAMLOGMediaHubSharedLinkAudience;
 @class DBTEAMLOGMediaHubSharedLinkCreatedDetails;
 @class DBTEAMLOGMediaHubSharedLinkTargetType;
@@ -19,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MediaHubSharedLinkCreatedDetails` struct.
 ///
-/// Created Media Hub shared link.
+/// Created Replay shared link.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -35,10 +36,27 @@ NS_ASSUME_NONNULL_BEGIN
 /// Media Hub shared link audience.
 @property (nonatomic, readonly) DBTEAMLOGMediaHubSharedLinkAudience *audience;
 
+/// Replay project.
+@property (nonatomic, readonly, nullable) DBTEAMLOGMediaHubProjectLogInfo *project;
+
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
+///
+/// @param targetType Media Hub shared link target type.
+/// @param audience Media Hub shared link audience.
+/// @param project Replay project.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTargetType:(DBTEAMLOGMediaHubSharedLinkTargetType *)targetType
+                          audience:(DBTEAMLOGMediaHubSharedLinkAudience *)audience
+                           project:(nullable DBTEAMLOGMediaHubProjectLogInfo *)project;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param targetType Media Hub shared link target type.
 /// @param audience Media Hub shared link audience.

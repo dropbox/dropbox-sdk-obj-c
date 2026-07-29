@@ -8,6 +8,7 @@
 
 #import "DBSerializableProtocol.h"
 
+@class DBTEAMLOGMediaHubProjectLogInfo;
 @class DBTEAMLOGMediaHubProjectRole;
 @class DBTEAMLOGMediaHubProjectTeamRoleChangedDetails;
 
@@ -18,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MediaHubProjectTeamRoleChangedDetails` struct.
 ///
-/// Changed member role in Media Hub project.
+/// Changed member role in Replay project.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -34,10 +35,27 @@ NS_ASSUME_NONNULL_BEGIN
 /// New Media Hub project role.
 @property (nonatomic, readonly) DBTEAMLOGMediaHubProjectRole *dNewRole;
 
+/// Replay project.
+@property (nonatomic, readonly, nullable) DBTEAMLOGMediaHubProjectLogInfo *project;
+
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
+///
+/// @param previousRole Previous Media Hub project role.
+/// @param dNewRole New Media Hub project role.
+/// @param project Replay project.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPreviousRole:(DBTEAMLOGMediaHubProjectRole *)previousRole
+                            dNewRole:(DBTEAMLOGMediaHubProjectRole *)dNewRole
+                             project:(nullable DBTEAMLOGMediaHubProjectLogInfo *)project;
+
+///
+/// Convenience constructor (exposes only non-nullable instance variables with
+/// no default value).
 ///
 /// @param previousRole Previous Media Hub project role.
 /// @param dNewRole New Media Hub project role.

@@ -277,6 +277,7 @@
 @class DBTEAMLOGMemberChangeStatusDetails;
 @class DBTEAMLOGMemberDeleteManualContactsDetails;
 @class DBTEAMLOGMemberDeleteProfilePhotoDetails;
+@class DBTEAMLOGMemberFolderContentsAccessedDetails;
 @class DBTEAMLOGMemberPermanentlyDeleteAccountContentsDetails;
 @class DBTEAMLOGMemberRemoveExternalIdDetails;
 @class DBTEAMLOGMemberRequestsChangePolicyDetails;
@@ -378,6 +379,13 @@
 @class DBTEAMLOGPreviewsAiPolicyChangedDetails;
 @class DBTEAMLOGProductAssignedToMemberDetails;
 @class DBTEAMLOGProductRemovedFromMemberDetails;
+@class DBTEAMLOGProtectActionAddCollaboratorDetails;
+@class DBTEAMLOGProtectActionAddLinkDetails;
+@class DBTEAMLOGProtectActionDeleteDetails;
+@class DBTEAMLOGProtectActionExportDetails;
+@class DBTEAMLOGProtectActionRemoveCollaboratorDetails;
+@class DBTEAMLOGProtectActionRemoveLinkDetails;
+@class DBTEAMLOGProtectActionStopSharingDetails;
 @class DBTEAMLOGProtectInternalDomainsChangedDetails;
 @class DBTEAMLOGRansomwareAlertCreateReportDetails;
 @class DBTEAMLOGRansomwareAlertCreateReportFailedDetails;
@@ -1277,6 +1285,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
   DBTEAMLOGEventDetailsMemberDeleteProfilePhotoDetails,
 
   /// (no description).
+  DBTEAMLOGEventDetailsMemberFolderContentsAccessedDetails,
+
+  /// (no description).
   DBTEAMLOGEventDetailsMemberPermanentlyDeleteAccountContentsDetails,
 
   /// (no description).
@@ -1476,6 +1487,27 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
   /// (no description).
   DBTEAMLOGEventDetailsPasswordResetAllDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectActionAddCollaboratorDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectActionAddLinkDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectActionDeleteDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectActionExportDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectActionRemoveCollaboratorDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectActionRemoveLinkDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectActionStopSharingDetails,
 
   /// (no description).
   DBTEAMLOGEventDetailsProtectInternalDomainsChangedDetails,
@@ -3473,6 +3505,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGMemberDeleteProfilePhotoDetails *memberDeleteProfilePhotoDetails;
 
+/// (no description). @note Ensure the `isMemberFolderContentsAccessedDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGMemberFolderContentsAccessedDetails *memberFolderContentsAccessedDetails;
+
 /// (no description). @note Ensure the
 /// `isMemberPermanentlyDeleteAccountContentsDetails` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
@@ -3766,6 +3803,37 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// (no description). @note Ensure the `isPasswordResetAllDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGPasswordResetAllDetails *passwordResetAllDetails;
+
+/// (no description). @note Ensure the `isProtectActionAddCollaboratorDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionAddCollaboratorDetails *protectActionAddCollaboratorDetails;
+
+/// (no description). @note Ensure the `isProtectActionAddLinkDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionAddLinkDetails *protectActionAddLinkDetails;
+
+/// (no description). @note Ensure the `isProtectActionDeleteDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionDeleteDetails *protectActionDeleteDetails;
+
+/// (no description). @note Ensure the `isProtectActionExportDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionExportDetails *protectActionExportDetails;
+
+/// (no description). @note Ensure the
+/// `isProtectActionRemoveCollaboratorDetails` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionRemoveCollaboratorDetails *protectActionRemoveCollaboratorDetails;
+
+/// (no description). @note Ensure the `isProtectActionRemoveLinkDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionRemoveLinkDetails *protectActionRemoveLinkDetails;
+
+/// (no description). @note Ensure the `isProtectActionStopSharingDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionStopSharingDetails *protectActionStopSharingDetails;
 
 /// (no description). @note Ensure the `isProtectInternalDomainsChangedDetails`
 /// method returns true before accessing, otherwise a runtime exception will be
@@ -7569,6 +7637,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Initializes union class with tag state of
+/// "member_folder_contents_accessed_details".
+///
+/// @param memberFolderContentsAccessedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithMemberFolderContentsAccessedDetails:
+    (DBTEAMLOGMemberFolderContentsAccessedDetails *)memberFolderContentsAccessedDetails;
+
+///
+/// Initializes union class with tag state of
 /// "member_permanently_delete_account_contents_details".
 ///
 /// @param memberPermanentlyDeleteAccountContentsDetails (no description).
@@ -8240,6 +8319,77 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPasswordResetAllDetails:(DBTEAMLOGPasswordResetAllDetails *)passwordResetAllDetails;
+
+///
+/// Initializes union class with tag state of
+/// "protect_action_add_collaborator_details".
+///
+/// @param protectActionAddCollaboratorDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionAddCollaboratorDetails:
+    (DBTEAMLOGProtectActionAddCollaboratorDetails *)protectActionAddCollaboratorDetails;
+
+///
+/// Initializes union class with tag state of "protect_action_add_link_details".
+///
+/// @param protectActionAddLinkDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionAddLinkDetails:(DBTEAMLOGProtectActionAddLinkDetails *)protectActionAddLinkDetails;
+
+///
+/// Initializes union class with tag state of "protect_action_delete_details".
+///
+/// @param protectActionDeleteDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionDeleteDetails:(DBTEAMLOGProtectActionDeleteDetails *)protectActionDeleteDetails;
+
+///
+/// Initializes union class with tag state of "protect_action_export_details".
+///
+/// @param protectActionExportDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionExportDetails:(DBTEAMLOGProtectActionExportDetails *)protectActionExportDetails;
+
+///
+/// Initializes union class with tag state of
+/// "protect_action_remove_collaborator_details".
+///
+/// @param protectActionRemoveCollaboratorDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionRemoveCollaboratorDetails:
+    (DBTEAMLOGProtectActionRemoveCollaboratorDetails *)protectActionRemoveCollaboratorDetails;
+
+///
+/// Initializes union class with tag state of
+/// "protect_action_remove_link_details".
+///
+/// @param protectActionRemoveLinkDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionRemoveLinkDetails:
+    (DBTEAMLOGProtectActionRemoveLinkDetails *)protectActionRemoveLinkDetails;
+
+///
+/// Initializes union class with tag state of
+/// "protect_action_stop_sharing_details".
+///
+/// @param protectActionStopSharingDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionStopSharingDetails:
+    (DBTEAMLOGProtectActionStopSharingDetails *)protectActionStopSharingDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -14532,6 +14682,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
 ///
 /// Retrieves whether the union's current tag state has value
+/// "member_folder_contents_accessed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `memberFolderContentsAccessedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "member_folder_contents_accessed_details".
+///
+- (BOOL)isMemberFolderContentsAccessedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
 /// "member_permanently_delete_account_contents_details".
 ///
 /// @note Call this method and ensure it returns true before accessing the
@@ -15400,6 +15563,97 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "password_reset_all_details".
 ///
 - (BOOL)isPasswordResetAllDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_add_collaborator_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionAddCollaboratorDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_add_collaborator_details".
+///
+- (BOOL)isProtectActionAddCollaboratorDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_add_link_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionAddLinkDetails` property, otherwise a runtime exception will
+/// be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_add_link_details".
+///
+- (BOOL)isProtectActionAddLinkDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_delete_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionDeleteDetails` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_delete_details".
+///
+- (BOOL)isProtectActionDeleteDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_export_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionExportDetails` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_export_details".
+///
+- (BOOL)isProtectActionExportDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_remove_collaborator_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionRemoveCollaboratorDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_remove_collaborator_details".
+///
+- (BOOL)isProtectActionRemoveCollaboratorDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_remove_link_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionRemoveLinkDetails` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_remove_link_details".
+///
+- (BOOL)isProtectActionRemoveLinkDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_stop_sharing_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionStopSharingDetails` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_stop_sharing_details".
+///
+- (BOOL)isProtectActionStopSharingDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value

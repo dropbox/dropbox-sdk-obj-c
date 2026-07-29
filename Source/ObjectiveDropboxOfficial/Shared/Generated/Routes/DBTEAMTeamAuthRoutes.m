@@ -36,6 +36,12 @@
 #import "DBTEAMApiApp.h"
 #import "DBTEAMBaseDfbReport.h"
 #import "DBTEAMBaseTeamFolderError.h"
+#import "DBTEAMBulkSuspendArg.h"
+#import "DBTEAMBulkSuspendComplete.h"
+#import "DBTEAMBulkSuspendError.h"
+#import "DBTEAMBulkSuspendJobStatus.h"
+#import "DBTEAMBulkSuspendMemberTarget.h"
+#import "DBTEAMBulkSuspendTaskFailure.h"
 #import "DBTEAMCOMMONGroupManagementType.h"
 #import "DBTEAMCOMMONGroupSummary.h"
 #import "DBTEAMCustomQuotaError.h"
@@ -743,6 +749,18 @@
 
 - (DBRpcTask *)membersAddJobStatusGetV2:(NSString *)asyncJobId {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersAddJobStatusGetV2;
+  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)membersBulkSuspend:(NSArray<DBTEAMBulkSuspendMemberTarget *> *)members {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersBulkSuspend;
+  DBTEAMBulkSuspendArg *arg = [[DBTEAMBulkSuspendArg alloc] initWithMembers:members];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)membersBulkSuspendJobStatusCheck:(NSString *)asyncJobId {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersBulkSuspendJobStatusCheck;
   DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
   return [self.client requestRpc:route arg:arg];
 }

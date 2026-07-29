@@ -143,6 +143,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the membersAddJobStatusGetV2 route object.
 + (DBRoute *)DBTEAMMembersAddJobStatusGetV2;
 
+/// Accessor method for the membersBulkSuspend route object.
++ (DBRoute *)DBTEAMMembersBulkSuspend;
+
+/// Accessor method for the membersBulkSuspendJobStatusCheck route object.
++ (DBRoute *)DBTEAMMembersBulkSuspendJobStatusCheck;
+
 /// Accessor method for the membersDeleteFormerMemberFiles route object.
 + (DBRoute *)DBTEAMMembersDeleteFormerMemberFiles;
 

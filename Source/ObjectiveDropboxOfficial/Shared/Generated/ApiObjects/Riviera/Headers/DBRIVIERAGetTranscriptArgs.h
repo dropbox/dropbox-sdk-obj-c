@@ -32,27 +32,16 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// Identifier of the media asset to transcribe. Callers must set exactly one of
-/// the oneof variants: - file_id: a Dropbox-issued file id (format: "id:<id>")
-/// for a file the authenticated user has access to. - path: an absolute Dropbox
-/// path, e.g. "/folder/recording.mp4". - url: either a Dropbox shared link
-/// (www.dropbox.com) or an external HTTPS URL pointing to a supported
-/// audio/video file. - Dropbox shared links are resolved internally using the
-/// caller's authenticated identity and the link's visibility / download
-/// settings. They therefore require an authenticated user context (anonymous
-/// `url` requests against Dropbox links are rejected with an `ACCESS_ERROR`).
-/// Links protected by a password are rejected with
-/// `shared_link_password_protected`; links with downloads disabled are rejected
-/// with `link_download_disabled_error`. - External URLs are fetched over HTTPS
-/// through the backend's egress proxy and must point at a supported audio/video
-/// file extension. The referenced asset must be an audio or video file in a
-/// supported format; requests against files with no audio track return a
-/// `no_audio_error`.
+/// the `FileIdOrUrl` variants. The referenced asset must be an audio or video
+/// file in a supported format (see the route description for the list);
+/// requests against files with no audio track return a `no_audio_error`.
 @property (nonatomic, readonly, nullable) DBRIVIERAFileIdOrUrl *fileIdOrUrl;
 
 /// Granularity of the time offsets returned for each transcript segment.
-/// Defaults to `SENTENCE. - SENTENCE: one segment per spoken sentence
-/// (recommended). - WORD: one segment per word, useful for fine-grained
-/// alignment such as captioning or highlight-as-you-listen experiences.
+/// Defaults to `SENTENCE` when the field is omitted. - SENTENCE: one segment
+/// per spoken sentence (recommended). - WORD: one segment per word, useful for
+/// fine-grained alignment such as captioning or highlight-as-you-listen
+/// experiences.
 @property (nonatomic, readonly) DBRIVIERATimestampLevel *timestampLevel;
 
 /// Comma-delimited list of non-lexical filler words to preserve in the
@@ -73,26 +62,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param fileIdOrUrl Identifier of the media asset to transcribe. Callers must
-/// set exactly one of the oneof variants: - file_id: a Dropbox-issued file id
-/// (format: "id:<id>") for a file the authenticated user has access to. - path:
-/// an absolute Dropbox path, e.g. "/folder/recording.mp4". - url: either a
-/// Dropbox shared link (www.dropbox.com) or an external HTTPS URL pointing to a
-/// supported audio/video file. - Dropbox shared links are resolved internally
-/// using the caller's authenticated identity and the link's visibility /
-/// download settings. They therefore require an authenticated user context
-/// (anonymous `url` requests against Dropbox links are rejected with an
-/// `ACCESS_ERROR`). Links protected by a password are rejected with
-/// `shared_link_password_protected`; links with downloads disabled are rejected
-/// with `link_download_disabled_error`. - External URLs are fetched over HTTPS
-/// through the backend's egress proxy and must point at a supported audio/video
-/// file extension. The referenced asset must be an audio or video file in a
-/// supported format; requests against files with no audio track return a
+/// set exactly one of the `FileIdOrUrl` variants. The referenced asset must be
+/// an audio or video file in a supported format (see the route description for
+/// the list); requests against files with no audio track return a
 /// `no_audio_error`.
 /// @param timestampLevel Granularity of the time offsets returned for each
-/// transcript segment. Defaults to `SENTENCE. - SENTENCE: one segment per
-/// spoken sentence (recommended). - WORD: one segment per word, useful for
-/// fine-grained alignment such as captioning or highlight-as-you-listen
-/// experiences.
+/// transcript segment. Defaults to `SENTENCE` when the field is omitted. -
+/// SENTENCE: one segment per spoken sentence (recommended). - WORD: one segment
+/// per word, useful for fine-grained alignment such as captioning or
+/// highlight-as-you-listen experiences.
 /// @param includedSpecialWords Comma-delimited list of non-lexical filler words
 /// to preserve in the transcript output, e.g. `"uh, ah, uhm"`. By default these
 /// fillers are stripped. Unrecognized tokens are ignored. Leave empty to use
