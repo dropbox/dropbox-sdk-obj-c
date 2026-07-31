@@ -902,6 +902,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
   /// (protect) Modified Protect internal domains list
   DBTEAMLOGEventTypeArgProtectInternalDomainsChanged,
 
+  /// (protect) Activated a Dropbox Protect policy
+  DBTEAMLOGEventTypeArgProtectPolicyActivated,
+
+  /// (protect) Deactivated a Dropbox Protect policy
+  DBTEAMLOGEventTypeArgProtectPolicyDeactivated,
+
+  /// (protect) Updated a Dropbox Protect policy
+  DBTEAMLOGEventTypeArgProtectPolicyUpdated,
+
   /// (reports) Created Classification report
   DBTEAMLOGEventTypeArgClassificationCreateReport,
 
@@ -4901,6 +4910,36 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithProtectInternalDomainsChanged;
+
+///
+/// Initializes union class with tag state of "protect_policy_activated".
+///
+/// Description of the "protect_policy_activated" tag state: (protect) Activated
+/// a Dropbox Protect policy
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectPolicyActivated;
+
+///
+/// Initializes union class with tag state of "protect_policy_deactivated".
+///
+/// Description of the "protect_policy_deactivated" tag state: (protect)
+/// Deactivated a Dropbox Protect policy
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectPolicyDeactivated;
+
+///
+/// Initializes union class with tag state of "protect_policy_updated".
+///
+/// Description of the "protect_policy_updated" tag state: (protect) Updated a
+/// Dropbox Protect policy
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectPolicyUpdated;
 
 ///
 /// Initializes union class with tag state of "classification_create_report".
@@ -10978,6 +11017,33 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "protect_internal_domains_changed".
 ///
 - (BOOL)isProtectInternalDomainsChanged;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_policy_activated".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_policy_activated".
+///
+- (BOOL)isProtectPolicyActivated;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_policy_deactivated".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_policy_deactivated".
+///
+- (BOOL)isProtectPolicyDeactivated;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_policy_updated".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_policy_updated".
+///
+- (BOOL)isProtectPolicyUpdated;
 
 ///
 /// Retrieves whether the union's current tag state has value

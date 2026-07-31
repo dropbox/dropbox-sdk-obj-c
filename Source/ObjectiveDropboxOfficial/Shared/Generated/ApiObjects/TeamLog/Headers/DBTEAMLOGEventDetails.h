@@ -387,6 +387,9 @@
 @class DBTEAMLOGProtectActionRemoveLinkDetails;
 @class DBTEAMLOGProtectActionStopSharingDetails;
 @class DBTEAMLOGProtectInternalDomainsChangedDetails;
+@class DBTEAMLOGProtectPolicyActivatedDetails;
+@class DBTEAMLOGProtectPolicyDeactivatedDetails;
+@class DBTEAMLOGProtectPolicyUpdatedDetails;
 @class DBTEAMLOGRansomwareAlertCreateReportDetails;
 @class DBTEAMLOGRansomwareAlertCreateReportFailedDetails;
 @class DBTEAMLOGRansomwareRestoreProcessCompletedDetails;
@@ -1511,6 +1514,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
   /// (no description).
   DBTEAMLOGEventDetailsProtectInternalDomainsChangedDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectPolicyActivatedDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectPolicyDeactivatedDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectPolicyUpdatedDetails,
 
   /// (no description).
   DBTEAMLOGEventDetailsClassificationCreateReportDetails,
@@ -3839,6 +3851,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGProtectInternalDomainsChangedDetails *protectInternalDomainsChangedDetails;
+
+/// (no description). @note Ensure the `isProtectPolicyActivatedDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectPolicyActivatedDetails *protectPolicyActivatedDetails;
+
+/// (no description). @note Ensure the `isProtectPolicyDeactivatedDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectPolicyDeactivatedDetails *protectPolicyDeactivatedDetails;
+
+/// (no description). @note Ensure the `isProtectPolicyUpdatedDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectPolicyUpdatedDetails *protectPolicyUpdatedDetails;
 
 /// (no description). @note Ensure the `isClassificationCreateReportDetails`
 /// method returns true before accessing, otherwise a runtime exception will be
@@ -8401,6 +8426,37 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 ///
 - (instancetype)initWithProtectInternalDomainsChangedDetails:
     (DBTEAMLOGProtectInternalDomainsChangedDetails *)protectInternalDomainsChangedDetails;
+
+///
+/// Initializes union class with tag state of
+/// "protect_policy_activated_details".
+///
+/// @param protectPolicyActivatedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectPolicyActivatedDetails:
+    (DBTEAMLOGProtectPolicyActivatedDetails *)protectPolicyActivatedDetails;
+
+///
+/// Initializes union class with tag state of
+/// "protect_policy_deactivated_details".
+///
+/// @param protectPolicyDeactivatedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectPolicyDeactivatedDetails:
+    (DBTEAMLOGProtectPolicyDeactivatedDetails *)protectPolicyDeactivatedDetails;
+
+///
+/// Initializes union class with tag state of "protect_policy_updated_details".
+///
+/// @param protectPolicyUpdatedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectPolicyUpdatedDetails:(DBTEAMLOGProtectPolicyUpdatedDetails *)protectPolicyUpdatedDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -15667,6 +15723,45 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "protect_internal_domains_changed_details".
 ///
 - (BOOL)isProtectInternalDomainsChangedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_policy_activated_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectPolicyActivatedDetails` property, otherwise a runtime exception will
+/// be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_policy_activated_details".
+///
+- (BOOL)isProtectPolicyActivatedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_policy_deactivated_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectPolicyDeactivatedDetails` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_policy_deactivated_details".
+///
+- (BOOL)isProtectPolicyDeactivatedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_policy_updated_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectPolicyUpdatedDetails` property, otherwise a runtime exception will
+/// be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_policy_updated_details".
+///
+- (BOOL)isProtectPolicyUpdatedDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value
