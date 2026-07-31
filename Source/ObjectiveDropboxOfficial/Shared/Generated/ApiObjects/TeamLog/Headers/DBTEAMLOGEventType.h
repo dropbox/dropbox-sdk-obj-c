@@ -386,6 +386,9 @@
 @class DBTEAMLOGProtectActionRemoveLinkType;
 @class DBTEAMLOGProtectActionStopSharingType;
 @class DBTEAMLOGProtectInternalDomainsChangedType;
+@class DBTEAMLOGProtectPolicyActivatedType;
+@class DBTEAMLOGProtectPolicyDeactivatedType;
+@class DBTEAMLOGProtectPolicyUpdatedType;
 @class DBTEAMLOGRansomwareAlertCreateReportFailedType;
 @class DBTEAMLOGRansomwareAlertCreateReportType;
 @class DBTEAMLOGRansomwareRestoreProcessCompletedType;
@@ -1527,6 +1530,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
   /// (protect) Modified Protect internal domains list
   DBTEAMLOGEventTypeProtectInternalDomainsChanged,
+
+  /// (protect) Activated a Dropbox Protect policy
+  DBTEAMLOGEventTypeProtectPolicyActivated,
+
+  /// (protect) Deactivated a Dropbox Protect policy
+  DBTEAMLOGEventTypeProtectPolicyDeactivated,
+
+  /// (protect) Updated a Dropbox Protect policy
+  DBTEAMLOGEventTypeProtectPolicyUpdated,
 
   /// (reports) Created Classification report
   DBTEAMLOGEventTypeClassificationCreateReport,
@@ -4024,6 +4036,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// `isProtectInternalDomainsChanged` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGProtectInternalDomainsChangedType *protectInternalDomainsChanged;
+
+/// (protect) Activated a Dropbox Protect policy @note Ensure the
+/// `isProtectPolicyActivated` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectPolicyActivatedType *protectPolicyActivated;
+
+/// (protect) Deactivated a Dropbox Protect policy @note Ensure the
+/// `isProtectPolicyDeactivated` method returns true before accessing, otherwise
+/// a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectPolicyDeactivatedType *protectPolicyDeactivated;
+
+/// (protect) Updated a Dropbox Protect policy @note Ensure the
+/// `isProtectPolicyUpdated` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectPolicyUpdatedType *protectPolicyUpdated;
 
 /// (reports) Created Classification report @note Ensure the
 /// `isClassificationCreateReport` method returns true before accessing,
@@ -9466,6 +9493,43 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 - (instancetype)initWithProtectInternalDomainsChanged:
     (DBTEAMLOGProtectInternalDomainsChangedType *)protectInternalDomainsChanged;
+
+///
+/// Initializes union class with tag state of "protect_policy_activated".
+///
+/// Description of the "protect_policy_activated" tag state: (protect) Activated
+/// a Dropbox Protect policy
+///
+/// @param protectPolicyActivated (protect) Activated a Dropbox Protect policy
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectPolicyActivated:(DBTEAMLOGProtectPolicyActivatedType *)protectPolicyActivated;
+
+///
+/// Initializes union class with tag state of "protect_policy_deactivated".
+///
+/// Description of the "protect_policy_deactivated" tag state: (protect)
+/// Deactivated a Dropbox Protect policy
+///
+/// @param protectPolicyDeactivated (protect) Deactivated a Dropbox Protect
+/// policy
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectPolicyDeactivated:(DBTEAMLOGProtectPolicyDeactivatedType *)protectPolicyDeactivated;
+
+///
+/// Initializes union class with tag state of "protect_policy_updated".
+///
+/// Description of the "protect_policy_updated" tag state: (protect) Updated a
+/// Dropbox Protect policy
+///
+/// @param protectPolicyUpdated (protect) Updated a Dropbox Protect policy
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectPolicyUpdated:(DBTEAMLOGProtectPolicyUpdatedType *)protectPolicyUpdated;
 
 ///
 /// Initializes union class with tag state of "classification_create_report".
@@ -17702,6 +17766,45 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "protect_internal_domains_changed".
 ///
 - (BOOL)isProtectInternalDomainsChanged;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_policy_activated".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectPolicyActivated` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_policy_activated".
+///
+- (BOOL)isProtectPolicyActivated;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_policy_deactivated".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectPolicyDeactivated` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_policy_deactivated".
+///
+- (BOOL)isProtectPolicyDeactivated;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_policy_updated".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectPolicyUpdated` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_policy_updated".
+///
+- (BOOL)isProtectPolicyUpdated;
 
 ///
 /// Retrieves whether the union's current tag state has value
