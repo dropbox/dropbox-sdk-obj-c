@@ -17,10 +17,13 @@
 @class DBRIVIERAGetMarkdownResult;
 @class DBRIVIERAGetMetadataAsyncCheckResult;
 @class DBRIVIERAGetMetadataResult;
+@class DBRIVIERAGetTextAsyncCheckResult;
+@class DBRIVIERAGetTextResult;
 @class DBRIVIERAGetTranscriptAsyncCheckResult;
 @class DBRIVIERAGetTranscriptResult;
 @class DBRIVIERAMarkdownConversionApiV2Error;
 @class DBRIVIERAMetadataExtractionApiV2Error;
+@class DBRIVIERATextExtractionApiV2Error;
 @class DBRIVIERATimestampLevel;
 
 @protocol DBTransportClient;
@@ -127,6 +130,49 @@ NS_ASSUME_NONNULL_BEGIN
 /// success or a `DBASYNCPollError` object on failure.
 ///
 - (DBRpcTask<DBRIVIERAGetMetadataAsyncCheckResult *, DBASYNCPollError *> *)getMetadataAsyncCheck:(NSString *)asyncJobId;
+
+///
+/// Asynchronous plain-text extraction from documents. Supported formats include: - Word processing: .doc, .docx, .docm,
+/// .rtf. - Presentations: .ppt, .pptx, .pptm. - Spreadsheets: .xls, .xlsx, .xlsm. - PDF: .pdf. - Dropbox document
+/// types: .paper, .papert, .binder, .gdoc, .gsheet, .gslides. - Plain text / subtitles: .txt, .vtt. Unsupported formats
+/// return an `unsupported_format_error`. For the `url` variant only Dropbox shared links are supported; external URLs
+/// return `unsupported_format_error`.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
+/// `void` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getTextAsync;
+
+///
+/// Asynchronous plain-text extraction from documents. Supported formats include: - Word processing: .doc, .docx, .docm,
+/// .rtf. - Presentations: .ppt, .pptx, .pptm. - Spreadsheets: .xls, .xlsx, .xlsm. - PDF: .pdf. - Dropbox document
+/// types: .paper, .papert, .binder, .gdoc, .gsheet, .gslides. - Plain text / subtitles: .txt, .vtt. Unsupported formats
+/// return an `unsupported_format_error`. For the `url` variant only Dropbox shared links are supported; external URLs
+/// return `unsupported_format_error`.
+///
+/// @param fileIdOrUrl Identifier of the document to extract text from. Callers must set exactly one of the
+/// `FileIdOrUrl` variants. Text extraction is supported for common document formats (Word, PowerPoint, Excel, PDF, RTF,
+/// and Dropbox document types); see the route description for the supported formats. Requests against unsupported
+/// formats return `unsupported_format_error`. NOTE: for the `url` variant, only Dropbox shared links (www.dropbox.com)
+/// are supported. External (non-Dropbox) URLs are not supported and return `unsupported_format_error`; import the file
+/// into Dropbox and reference it by `file_id` or `path` instead.
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
+/// `void` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getTextAsync:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl;
+
+///
+/// Returns the status or result of specified get_text_async task.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBRIVIERAGetTextAsyncCheckResult` object on
+/// success or a `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBRIVIERAGetTextAsyncCheckResult *, DBASYNCPollError *> *)getTextAsyncCheck:(NSString *)asyncJobId;
 
 ///
 /// Asynchronous transcript generation for audio and video files. Supported audio formats: .aac, .aif, .aiff, .flac,

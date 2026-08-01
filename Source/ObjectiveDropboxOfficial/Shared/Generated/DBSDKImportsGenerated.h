@@ -475,6 +475,9 @@
 #import "DBRIVIERAGetMetadataArgs.h"
 #import "DBRIVIERAGetMetadataAsyncCheckResult.h"
 #import "DBRIVIERAGetMetadataResult.h"
+#import "DBRIVIERAGetTextArgs.h"
+#import "DBRIVIERAGetTextAsyncCheckResult.h"
+#import "DBRIVIERAGetTextResult.h"
 #import "DBRIVIERAGetTranscriptArgs.h"
 #import "DBRIVIERAGetTranscriptAsyncCheckResult.h"
 #import "DBRIVIERAGetTranscriptResult.h"
@@ -484,6 +487,7 @@
 #import "DBRIVIERAMetadataType.h"
 #import "DBRIVIERAMetadataUnion.h"
 #import "DBRIVIERAOfficeFileType.h"
+#import "DBRIVIERATextExtractionApiV2Error.h"
 #import "DBRIVIERATimestampLevel.h"
 
 
