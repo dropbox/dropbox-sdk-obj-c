@@ -2890,6 +2890,445 @@
 @end
 
 #import "DBRIVIERAFileIdOrUrl.h"
+#import "DBRIVIERAGetTextArgs.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAGetTextArgs
+
+#pragma mark - Constructors
+
+- (instancetype)initWithFileIdOrUrl:(DBRIVIERAFileIdOrUrl *)fileIdOrUrl {
+
+  self = [super init];
+  if (self) {
+    _fileIdOrUrl = fileIdOrUrl;
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithFileIdOrUrl:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAGetTextArgsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAGetTextArgsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAGetTextArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.fileIdOrUrl != nil) {
+    result = prime * result + [self.fileIdOrUrl hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGetTextArgs:other];
+}
+
+- (BOOL)isEqualToGetTextArgs:(DBRIVIERAGetTextArgs *)aGetTextArgs {
+  if (self == aGetTextArgs) {
+    return YES;
+  }
+  if (self.fileIdOrUrl) {
+    if (![self.fileIdOrUrl isEqual:aGetTextArgs.fileIdOrUrl]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAGetTextArgsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetTextArgs *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if (valueObj.fileIdOrUrl) {
+    jsonDict[@"file_id_or_url"] = [DBRIVIERAFileIdOrUrlSerializer serialize:valueObj.fileIdOrUrl];
+  }
+
+  return jsonDict;
+}
+
++ (DBRIVIERAGetTextArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBRIVIERAFileIdOrUrl *fileIdOrUrl =
+      valueDict[@"file_id_or_url"] ? [DBRIVIERAFileIdOrUrlSerializer deserialize:valueDict[@"file_id_or_url"]] : nil;
+
+  return [[DBRIVIERAGetTextArgs alloc] initWithFileIdOrUrl:fileIdOrUrl];
+}
+
+@end
+
+#import "DBRIVIERAGetTextAsyncCheckResult.h"
+#import "DBRIVIERAGetTextResult.h"
+#import "DBRIVIERATextExtractionApiV2Error.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAGetTextAsyncCheckResult
+
+@synthesize complete = _complete;
+@synthesize failed = _failed;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithInProgress {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAGetTextAsyncCheckResultInProgress;
+  }
+  return self;
+}
+
+- (instancetype)initWithComplete:(DBRIVIERAGetTextResult *)complete {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAGetTextAsyncCheckResultComplete;
+    _complete = complete;
+  }
+  return self;
+}
+
+- (instancetype)initWithFailed:(DBRIVIERATextExtractionApiV2Error *)failed {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAGetTextAsyncCheckResultFailed;
+    _failed = failed;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAGetTextAsyncCheckResultOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBRIVIERAGetTextResult *)complete {
+  if (![self isComplete]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBRIVIERAGetTextAsyncCheckResultComplete, but was %@.", [self tagName]];
+  }
+  return _complete;
+}
+
+- (DBRIVIERATextExtractionApiV2Error *)failed {
+  if (![self isFailed]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBRIVIERAGetTextAsyncCheckResultFailed, but was %@.", [self tagName]];
+  }
+  return _failed;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isInProgress {
+  return _tag == DBRIVIERAGetTextAsyncCheckResultInProgress;
+}
+
+- (BOOL)isComplete {
+  return _tag == DBRIVIERAGetTextAsyncCheckResultComplete;
+}
+
+- (BOOL)isFailed {
+  return _tag == DBRIVIERAGetTextAsyncCheckResultFailed;
+}
+
+- (BOOL)isOther {
+  return _tag == DBRIVIERAGetTextAsyncCheckResultOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBRIVIERAGetTextAsyncCheckResultInProgress:
+    return @"DBRIVIERAGetTextAsyncCheckResultInProgress";
+  case DBRIVIERAGetTextAsyncCheckResultComplete:
+    return @"DBRIVIERAGetTextAsyncCheckResultComplete";
+  case DBRIVIERAGetTextAsyncCheckResultFailed:
+    return @"DBRIVIERAGetTextAsyncCheckResultFailed";
+  case DBRIVIERAGetTextAsyncCheckResultOther:
+    return @"DBRIVIERAGetTextAsyncCheckResultOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAGetTextAsyncCheckResultSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAGetTextAsyncCheckResultSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAGetTextAsyncCheckResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBRIVIERAGetTextAsyncCheckResultInProgress:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAGetTextAsyncCheckResultComplete:
+    result = prime * result + [self.complete hash];
+    break;
+  case DBRIVIERAGetTextAsyncCheckResultFailed:
+    result = prime * result + [self.failed hash];
+    break;
+  case DBRIVIERAGetTextAsyncCheckResultOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGetTextAsyncCheckResult:other];
+}
+
+- (BOOL)isEqualToGetTextAsyncCheckResult:(DBRIVIERAGetTextAsyncCheckResult *)aGetTextAsyncCheckResult {
+  if (self == aGetTextAsyncCheckResult) {
+    return YES;
+  }
+  if (self.tag != aGetTextAsyncCheckResult.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBRIVIERAGetTextAsyncCheckResultInProgress:
+    return [[self tagName] isEqual:[aGetTextAsyncCheckResult tagName]];
+  case DBRIVIERAGetTextAsyncCheckResultComplete:
+    return [self.complete isEqual:aGetTextAsyncCheckResult.complete];
+  case DBRIVIERAGetTextAsyncCheckResultFailed:
+    return [self.failed isEqual:aGetTextAsyncCheckResult.failed];
+  case DBRIVIERAGetTextAsyncCheckResultOther:
+    return [[self tagName] isEqual:[aGetTextAsyncCheckResult tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAGetTextAsyncCheckResultSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetTextAsyncCheckResult *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isInProgress]) {
+    jsonDict[@".tag"] = @"in_progress";
+  } else if ([valueObj isComplete]) {
+    [jsonDict addEntriesFromDictionary:[DBRIVIERAGetTextResultSerializer serialize:valueObj.complete]];
+    jsonDict[@".tag"] = @"complete";
+  } else if ([valueObj isFailed]) {
+    jsonDict[@"failed"] = [[DBRIVIERATextExtractionApiV2ErrorSerializer serialize:valueObj.failed] mutableCopy];
+    jsonDict[@".tag"] = @"failed";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBRIVIERAGetTextAsyncCheckResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"in_progress"]) {
+    return [[DBRIVIERAGetTextAsyncCheckResult alloc] initWithInProgress];
+  } else if ([tag isEqualToString:@"complete"]) {
+    DBRIVIERAGetTextResult *complete = [DBRIVIERAGetTextResultSerializer deserialize:valueDict];
+    return [[DBRIVIERAGetTextAsyncCheckResult alloc] initWithComplete:complete];
+  } else if ([tag isEqualToString:@"failed"]) {
+    DBRIVIERATextExtractionApiV2Error *failed =
+        [DBRIVIERATextExtractionApiV2ErrorSerializer deserialize:valueDict[@"failed"]];
+    return [[DBRIVIERAGetTextAsyncCheckResult alloc] initWithFailed:failed];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBRIVIERAGetTextAsyncCheckResult alloc] initWithOther];
+  } else {
+    return [[DBRIVIERAGetTextAsyncCheckResult alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBRIVIERAGetTextResult.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAGetTextResult
+
+#pragma mark - Constructors
+
+- (instancetype)initWithText:(NSString *)text {
+
+  self = [super init];
+  if (self) {
+    _text = text ?: @"";
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithText:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAGetTextResultSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAGetTextResultSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAGetTextResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.text hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGetTextResult:other];
+}
+
+- (BOOL)isEqualToGetTextResult:(DBRIVIERAGetTextResult *)aGetTextResult {
+  if (self == aGetTextResult) {
+    return YES;
+  }
+  if (![self.text isEqual:aGetTextResult.text]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAGetTextResultSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetTextResult *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"text"] = valueObj.text;
+
+  return jsonDict;
+}
+
++ (DBRIVIERAGetTextResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *text = valueDict[@"text"] ?: @"";
+
+  return [[DBRIVIERAGetTextResult alloc] initWithText:text];
+}
+
+@end
+
+#import "DBRIVIERAFileIdOrUrl.h"
 #import "DBRIVIERAGetTranscriptArgs.h"
 #import "DBRIVIERATimestampLevel.h"
 #import "DBStoneSerializers.h"
@@ -4663,6 +5102,370 @@
     return [[DBRIVIERAOfficeFileType alloc] initWithOther];
   } else {
     return [[DBRIVIERAOfficeFileType alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBRIVIERATextExtractionApiV2Error.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERATextExtractionApiV2Error
+
+@synthesize serverError = _serverError;
+@synthesize userError = _userError;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithServerError:(NSString *)serverError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATextExtractionApiV2ErrorServerError;
+    _serverError = serverError;
+  }
+  return self;
+}
+
+- (instancetype)initWithUserError:(NSString *)userError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATextExtractionApiV2ErrorUserError;
+    _userError = userError;
+  }
+  return self;
+}
+
+- (instancetype)initWithUnsupportedFormatError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATextExtractionApiV2ErrorUnsupportedFormatError;
+  }
+  return self;
+}
+
+- (instancetype)initWithLinkDownloadDisabledError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATextExtractionApiV2ErrorLinkDownloadDisabledError;
+  }
+  return self;
+}
+
+- (instancetype)initWithSharedLinkPasswordProtected {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATextExtractionApiV2ErrorSharedLinkPasswordProtected;
+  }
+  return self;
+}
+
+- (instancetype)initWithLimitExceededError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATextExtractionApiV2ErrorLimitExceededError;
+  }
+  return self;
+}
+
+- (instancetype)initWithConversionFailureError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATextExtractionApiV2ErrorConversionFailureError;
+  }
+  return self;
+}
+
+- (instancetype)initWithNotFoundError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATextExtractionApiV2ErrorNotFoundError;
+  }
+  return self;
+}
+
+- (instancetype)initWithIsAFolderError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATextExtractionApiV2ErrorIsAFolderError;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATextExtractionApiV2ErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (NSString *)serverError {
+  if (![self isServerError]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBRIVIERATextExtractionApiV2ErrorServerError, but was %@.", [self tagName]];
+  }
+  return _serverError;
+}
+
+- (NSString *)userError {
+  if (![self isUserError]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBRIVIERATextExtractionApiV2ErrorUserError, but was %@.", [self tagName]];
+  }
+  return _userError;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isServerError {
+  return _tag == DBRIVIERATextExtractionApiV2ErrorServerError;
+}
+
+- (BOOL)isUserError {
+  return _tag == DBRIVIERATextExtractionApiV2ErrorUserError;
+}
+
+- (BOOL)isUnsupportedFormatError {
+  return _tag == DBRIVIERATextExtractionApiV2ErrorUnsupportedFormatError;
+}
+
+- (BOOL)isLinkDownloadDisabledError {
+  return _tag == DBRIVIERATextExtractionApiV2ErrorLinkDownloadDisabledError;
+}
+
+- (BOOL)isSharedLinkPasswordProtected {
+  return _tag == DBRIVIERATextExtractionApiV2ErrorSharedLinkPasswordProtected;
+}
+
+- (BOOL)isLimitExceededError {
+  return _tag == DBRIVIERATextExtractionApiV2ErrorLimitExceededError;
+}
+
+- (BOOL)isConversionFailureError {
+  return _tag == DBRIVIERATextExtractionApiV2ErrorConversionFailureError;
+}
+
+- (BOOL)isNotFoundError {
+  return _tag == DBRIVIERATextExtractionApiV2ErrorNotFoundError;
+}
+
+- (BOOL)isIsAFolderError {
+  return _tag == DBRIVIERATextExtractionApiV2ErrorIsAFolderError;
+}
+
+- (BOOL)isOther {
+  return _tag == DBRIVIERATextExtractionApiV2ErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBRIVIERATextExtractionApiV2ErrorServerError:
+    return @"DBRIVIERATextExtractionApiV2ErrorServerError";
+  case DBRIVIERATextExtractionApiV2ErrorUserError:
+    return @"DBRIVIERATextExtractionApiV2ErrorUserError";
+  case DBRIVIERATextExtractionApiV2ErrorUnsupportedFormatError:
+    return @"DBRIVIERATextExtractionApiV2ErrorUnsupportedFormatError";
+  case DBRIVIERATextExtractionApiV2ErrorLinkDownloadDisabledError:
+    return @"DBRIVIERATextExtractionApiV2ErrorLinkDownloadDisabledError";
+  case DBRIVIERATextExtractionApiV2ErrorSharedLinkPasswordProtected:
+    return @"DBRIVIERATextExtractionApiV2ErrorSharedLinkPasswordProtected";
+  case DBRIVIERATextExtractionApiV2ErrorLimitExceededError:
+    return @"DBRIVIERATextExtractionApiV2ErrorLimitExceededError";
+  case DBRIVIERATextExtractionApiV2ErrorConversionFailureError:
+    return @"DBRIVIERATextExtractionApiV2ErrorConversionFailureError";
+  case DBRIVIERATextExtractionApiV2ErrorNotFoundError:
+    return @"DBRIVIERATextExtractionApiV2ErrorNotFoundError";
+  case DBRIVIERATextExtractionApiV2ErrorIsAFolderError:
+    return @"DBRIVIERATextExtractionApiV2ErrorIsAFolderError";
+  case DBRIVIERATextExtractionApiV2ErrorOther:
+    return @"DBRIVIERATextExtractionApiV2ErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERATextExtractionApiV2ErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERATextExtractionApiV2ErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERATextExtractionApiV2ErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBRIVIERATextExtractionApiV2ErrorServerError:
+    result = prime * result + [self.serverError hash];
+    break;
+  case DBRIVIERATextExtractionApiV2ErrorUserError:
+    result = prime * result + [self.userError hash];
+    break;
+  case DBRIVIERATextExtractionApiV2ErrorUnsupportedFormatError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATextExtractionApiV2ErrorLinkDownloadDisabledError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATextExtractionApiV2ErrorSharedLinkPasswordProtected:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATextExtractionApiV2ErrorLimitExceededError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATextExtractionApiV2ErrorConversionFailureError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATextExtractionApiV2ErrorNotFoundError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATextExtractionApiV2ErrorIsAFolderError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATextExtractionApiV2ErrorOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTextExtractionApiV2Error:other];
+}
+
+- (BOOL)isEqualToTextExtractionApiV2Error:(DBRIVIERATextExtractionApiV2Error *)aTextExtractionApiV2Error {
+  if (self == aTextExtractionApiV2Error) {
+    return YES;
+  }
+  if (self.tag != aTextExtractionApiV2Error.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBRIVIERATextExtractionApiV2ErrorServerError:
+    return [self.serverError isEqual:aTextExtractionApiV2Error.serverError];
+  case DBRIVIERATextExtractionApiV2ErrorUserError:
+    return [self.userError isEqual:aTextExtractionApiV2Error.userError];
+  case DBRIVIERATextExtractionApiV2ErrorUnsupportedFormatError:
+    return [[self tagName] isEqual:[aTextExtractionApiV2Error tagName]];
+  case DBRIVIERATextExtractionApiV2ErrorLinkDownloadDisabledError:
+    return [[self tagName] isEqual:[aTextExtractionApiV2Error tagName]];
+  case DBRIVIERATextExtractionApiV2ErrorSharedLinkPasswordProtected:
+    return [[self tagName] isEqual:[aTextExtractionApiV2Error tagName]];
+  case DBRIVIERATextExtractionApiV2ErrorLimitExceededError:
+    return [[self tagName] isEqual:[aTextExtractionApiV2Error tagName]];
+  case DBRIVIERATextExtractionApiV2ErrorConversionFailureError:
+    return [[self tagName] isEqual:[aTextExtractionApiV2Error tagName]];
+  case DBRIVIERATextExtractionApiV2ErrorNotFoundError:
+    return [[self tagName] isEqual:[aTextExtractionApiV2Error tagName]];
+  case DBRIVIERATextExtractionApiV2ErrorIsAFolderError:
+    return [[self tagName] isEqual:[aTextExtractionApiV2Error tagName]];
+  case DBRIVIERATextExtractionApiV2ErrorOther:
+    return [[self tagName] isEqual:[aTextExtractionApiV2Error tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERATextExtractionApiV2ErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERATextExtractionApiV2Error *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isServerError]) {
+    jsonDict[@"server_error"] = valueObj.serverError;
+    jsonDict[@".tag"] = @"server_error";
+  } else if ([valueObj isUserError]) {
+    jsonDict[@"user_error"] = valueObj.userError;
+    jsonDict[@".tag"] = @"user_error";
+  } else if ([valueObj isUnsupportedFormatError]) {
+    jsonDict[@".tag"] = @"unsupported_format_error";
+  } else if ([valueObj isLinkDownloadDisabledError]) {
+    jsonDict[@".tag"] = @"link_download_disabled_error";
+  } else if ([valueObj isSharedLinkPasswordProtected]) {
+    jsonDict[@".tag"] = @"shared_link_password_protected";
+  } else if ([valueObj isLimitExceededError]) {
+    jsonDict[@".tag"] = @"limit_exceeded_error";
+  } else if ([valueObj isConversionFailureError]) {
+    jsonDict[@".tag"] = @"conversion_failure_error";
+  } else if ([valueObj isNotFoundError]) {
+    jsonDict[@".tag"] = @"not_found_error";
+  } else if ([valueObj isIsAFolderError]) {
+    jsonDict[@".tag"] = @"is_a_folder_error";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBRIVIERATextExtractionApiV2Error *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"server_error"]) {
+    NSString *serverError = valueDict[@"server_error"];
+    return [[DBRIVIERATextExtractionApiV2Error alloc] initWithServerError:serverError];
+  } else if ([tag isEqualToString:@"user_error"]) {
+    NSString *userError = valueDict[@"user_error"];
+    return [[DBRIVIERATextExtractionApiV2Error alloc] initWithUserError:userError];
+  } else if ([tag isEqualToString:@"unsupported_format_error"]) {
+    return [[DBRIVIERATextExtractionApiV2Error alloc] initWithUnsupportedFormatError];
+  } else if ([tag isEqualToString:@"link_download_disabled_error"]) {
+    return [[DBRIVIERATextExtractionApiV2Error alloc] initWithLinkDownloadDisabledError];
+  } else if ([tag isEqualToString:@"shared_link_password_protected"]) {
+    return [[DBRIVIERATextExtractionApiV2Error alloc] initWithSharedLinkPasswordProtected];
+  } else if ([tag isEqualToString:@"limit_exceeded_error"]) {
+    return [[DBRIVIERATextExtractionApiV2Error alloc] initWithLimitExceededError];
+  } else if ([tag isEqualToString:@"conversion_failure_error"]) {
+    return [[DBRIVIERATextExtractionApiV2Error alloc] initWithConversionFailureError];
+  } else if ([tag isEqualToString:@"not_found_error"]) {
+    return [[DBRIVIERATextExtractionApiV2Error alloc] initWithNotFoundError];
+  } else if ([tag isEqualToString:@"is_a_folder_error"]) {
+    return [[DBRIVIERATextExtractionApiV2Error alloc] initWithIsAFolderError];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBRIVIERATextExtractionApiV2Error alloc] initWithOther];
+  } else {
+    return [[DBRIVIERATextExtractionApiV2Error alloc] initWithOther];
   }
 }
 

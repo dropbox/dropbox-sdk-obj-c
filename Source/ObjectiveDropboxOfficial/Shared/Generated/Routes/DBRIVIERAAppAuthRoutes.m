@@ -16,12 +16,16 @@
 #import "DBRIVIERAGetMetadataArgs.h"
 #import "DBRIVIERAGetMetadataAsyncCheckResult.h"
 #import "DBRIVIERAGetMetadataResult.h"
+#import "DBRIVIERAGetTextArgs.h"
+#import "DBRIVIERAGetTextAsyncCheckResult.h"
+#import "DBRIVIERAGetTextResult.h"
 #import "DBRIVIERAGetTranscriptArgs.h"
 #import "DBRIVIERAGetTranscriptAsyncCheckResult.h"
 #import "DBRIVIERAGetTranscriptResult.h"
 #import "DBRIVIERAMarkdownConversionApiV2Error.h"
 #import "DBRIVIERAMetadataExtractionApiV2Error.h"
 #import "DBRIVIERARouteObjects.h"
+#import "DBRIVIERATextExtractionApiV2Error.h"
 #import "DBRIVIERATimestampLevel.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
@@ -73,6 +77,24 @@
 
 - (DBRpcTask *)getMetadataAsyncCheck:(NSString *)asyncJobId {
   DBRoute *route = DBRIVIERARouteObjects.DBRIVIERAGetMetadataAsyncCheck;
+  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)getTextAsync {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERAGetTextAsync;
+  DBRIVIERAGetTextArgs *arg = [[DBRIVIERAGetTextArgs alloc] initDefault];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)getTextAsync:(DBRIVIERAFileIdOrUrl *)fileIdOrUrl {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERAGetTextAsync;
+  DBRIVIERAGetTextArgs *arg = [[DBRIVIERAGetTextArgs alloc] initWithFileIdOrUrl:fileIdOrUrl];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)getTextAsyncCheck:(NSString *)asyncJobId {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERAGetTextAsyncCheck;
   DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
   return [self.client requestRpc:route arg:arg];
 }

@@ -13,10 +13,13 @@
 #import "DBRIVIERAGetMarkdownResult.h"
 #import "DBRIVIERAGetMetadataAsyncCheckResult.h"
 #import "DBRIVIERAGetMetadataResult.h"
+#import "DBRIVIERAGetTextAsyncCheckResult.h"
+#import "DBRIVIERAGetTextResult.h"
 #import "DBRIVIERAGetTranscriptAsyncCheckResult.h"
 #import "DBRIVIERAGetTranscriptResult.h"
 #import "DBRIVIERAMarkdownConversionApiV2Error.h"
 #import "DBRIVIERAMetadataExtractionApiV2Error.h"
+#import "DBRIVIERATextExtractionApiV2Error.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 
@@ -26,6 +29,8 @@ static DBRoute *DBRIVIERAGetMarkdownAsync;
 static DBRoute *DBRIVIERAGetMarkdownAsyncCheck;
 static DBRoute *DBRIVIERAGetMetadataAsync;
 static DBRoute *DBRIVIERAGetMetadataAsyncCheck;
+static DBRoute *DBRIVIERAGetTextAsync;
+static DBRoute *DBRIVIERAGetTextAsyncCheck;
 static DBRoute *DBRIVIERAGetTranscriptAsync;
 static DBRoute *DBRIVIERAGetTranscriptAsyncCheck;
 
@@ -100,6 +105,38 @@ static NSObject *lockObj = nil;
               dataStructDeserialBlock:nil];
     }
     return DBRIVIERAGetMetadataAsyncCheck;
+  }
+}
+
++ (DBRoute *)DBRIVIERAGetTextAsync {
+  @synchronized(lockObj) {
+    if (!DBRIVIERAGetTextAsync) {
+      DBRIVIERAGetTextAsync = [[DBRoute alloc] init:@"get_text_async"
+                                         namespace_:@"riviera"
+                                         deprecated:@NO
+                                         resultType:[DBASYNCLaunchResultBase class]
+                                          errorType:nil
+                                              attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
+                              dataStructSerialBlock:nil
+                            dataStructDeserialBlock:nil];
+    }
+    return DBRIVIERAGetTextAsync;
+  }
+}
+
++ (DBRoute *)DBRIVIERAGetTextAsyncCheck {
+  @synchronized(lockObj) {
+    if (!DBRIVIERAGetTextAsyncCheck) {
+      DBRIVIERAGetTextAsyncCheck = [[DBRoute alloc] init:@"get_text_async/check"
+                                              namespace_:@"riviera"
+                                              deprecated:@NO
+                                              resultType:[DBRIVIERAGetTextAsyncCheckResult class]
+                                               errorType:[DBASYNCPollError class]
+                                                   attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
+                                   dataStructSerialBlock:nil
+                                 dataStructDeserialBlock:nil];
+    }
+    return DBRIVIERAGetTextAsyncCheck;
   }
 }
 
