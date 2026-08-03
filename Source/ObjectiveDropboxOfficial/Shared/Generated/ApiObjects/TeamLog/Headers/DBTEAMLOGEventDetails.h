@@ -389,6 +389,7 @@
 @class DBTEAMLOGProtectInternalDomainsChangedDetails;
 @class DBTEAMLOGProtectPolicyActivatedDetails;
 @class DBTEAMLOGProtectPolicyDeactivatedDetails;
+@class DBTEAMLOGProtectPolicyScheduledDetails;
 @class DBTEAMLOGProtectPolicyUpdatedDetails;
 @class DBTEAMLOGRansomwareAlertCreateReportDetails;
 @class DBTEAMLOGRansomwareAlertCreateReportFailedDetails;
@@ -1520,6 +1521,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
   /// (no description).
   DBTEAMLOGEventDetailsProtectPolicyDeactivatedDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectPolicyScheduledDetails,
 
   /// (no description).
   DBTEAMLOGEventDetailsProtectPolicyUpdatedDetails,
@@ -3860,6 +3864,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGProtectPolicyDeactivatedDetails *protectPolicyDeactivatedDetails;
+
+/// (no description). @note Ensure the `isProtectPolicyScheduledDetails` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectPolicyScheduledDetails *protectPolicyScheduledDetails;
 
 /// (no description). @note Ensure the `isProtectPolicyUpdatedDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
@@ -8448,6 +8456,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 ///
 - (instancetype)initWithProtectPolicyDeactivatedDetails:
     (DBTEAMLOGProtectPolicyDeactivatedDetails *)protectPolicyDeactivatedDetails;
+
+///
+/// Initializes union class with tag state of
+/// "protect_policy_scheduled_details".
+///
+/// @param protectPolicyScheduledDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectPolicyScheduledDetails:
+    (DBTEAMLOGProtectPolicyScheduledDetails *)protectPolicyScheduledDetails;
 
 ///
 /// Initializes union class with tag state of "protect_policy_updated_details".
@@ -15749,6 +15768,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "protect_policy_deactivated_details".
 ///
 - (BOOL)isProtectPolicyDeactivatedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_policy_scheduled_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectPolicyScheduledDetails` property, otherwise a runtime exception will
+/// be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_policy_scheduled_details".
+///
+- (BOOL)isProtectPolicyScheduledDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value
