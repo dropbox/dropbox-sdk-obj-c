@@ -1876,6 +1876,8 @@
 #import "DBTEAMLOGProtectPolicyActivatedType.h"
 #import "DBTEAMLOGProtectPolicyDeactivatedDetails.h"
 #import "DBTEAMLOGProtectPolicyDeactivatedType.h"
+#import "DBTEAMLOGProtectPolicyScheduledDetails.h"
+#import "DBTEAMLOGProtectPolicyScheduledType.h"
 #import "DBTEAMLOGProtectPolicyUpdatedDetails.h"
 #import "DBTEAMLOGProtectPolicyUpdatedType.h"
 #import "DBTEAMLOGQuickActionType.h"

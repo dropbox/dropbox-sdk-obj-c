@@ -388,6 +388,7 @@
 @class DBTEAMLOGProtectInternalDomainsChangedType;
 @class DBTEAMLOGProtectPolicyActivatedType;
 @class DBTEAMLOGProtectPolicyDeactivatedType;
+@class DBTEAMLOGProtectPolicyScheduledType;
 @class DBTEAMLOGProtectPolicyUpdatedType;
 @class DBTEAMLOGRansomwareAlertCreateReportFailedType;
 @class DBTEAMLOGRansomwareAlertCreateReportType;
@@ -1536,6 +1537,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
   /// (protect) Deactivated a Dropbox Protect policy
   DBTEAMLOGEventTypeProtectPolicyDeactivated,
+
+  /// (protect) Scheduled a Dropbox Protect policy
+  DBTEAMLOGEventTypeProtectPolicyScheduled,
 
   /// (protect) Updated a Dropbox Protect policy
   DBTEAMLOGEventTypeProtectPolicyUpdated,
@@ -4046,6 +4050,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// `isProtectPolicyDeactivated` method returns true before accessing, otherwise
 /// a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGProtectPolicyDeactivatedType *protectPolicyDeactivated;
+
+/// (protect) Scheduled a Dropbox Protect policy @note Ensure the
+/// `isProtectPolicyScheduled` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectPolicyScheduledType *protectPolicyScheduled;
 
 /// (protect) Updated a Dropbox Protect policy @note Ensure the
 /// `isProtectPolicyUpdated` method returns true before accessing, otherwise a
@@ -9518,6 +9527,18 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithProtectPolicyDeactivated:(DBTEAMLOGProtectPolicyDeactivatedType *)protectPolicyDeactivated;
+
+///
+/// Initializes union class with tag state of "protect_policy_scheduled".
+///
+/// Description of the "protect_policy_scheduled" tag state: (protect) Scheduled
+/// a Dropbox Protect policy
+///
+/// @param protectPolicyScheduled (protect) Scheduled a Dropbox Protect policy
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectPolicyScheduled:(DBTEAMLOGProtectPolicyScheduledType *)protectPolicyScheduled;
 
 ///
 /// Initializes union class with tag state of "protect_policy_updated".
@@ -17792,6 +17813,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "protect_policy_deactivated".
 ///
 - (BOOL)isProtectPolicyDeactivated;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_policy_scheduled".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectPolicyScheduled` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_policy_scheduled".
+///
+- (BOOL)isProtectPolicyScheduled;
 
 ///
 /// Retrieves whether the union's current tag state has value
