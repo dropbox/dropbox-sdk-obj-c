@@ -13,12 +13,15 @@
 #import "DBRIVIERAGetMarkdownResult.h"
 #import "DBRIVIERAGetMetadataAsyncCheckResult.h"
 #import "DBRIVIERAGetMetadataResult.h"
+#import "DBRIVIERAGetOcrAsyncCheckResult.h"
+#import "DBRIVIERAGetOcrResult.h"
 #import "DBRIVIERAGetTextAsyncCheckResult.h"
 #import "DBRIVIERAGetTextResult.h"
 #import "DBRIVIERAGetTranscriptAsyncCheckResult.h"
 #import "DBRIVIERAGetTranscriptResult.h"
 #import "DBRIVIERAMarkdownConversionApiV2Error.h"
 #import "DBRIVIERAMetadataExtractionApiV2Error.h"
+#import "DBRIVIERAOcrExtractionApiV2Error.h"
 #import "DBRIVIERATextExtractionApiV2Error.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
@@ -29,6 +32,8 @@ static DBRoute *DBRIVIERAGetMarkdownAsync;
 static DBRoute *DBRIVIERAGetMarkdownAsyncCheck;
 static DBRoute *DBRIVIERAGetMetadataAsync;
 static DBRoute *DBRIVIERAGetMetadataAsyncCheck;
+static DBRoute *DBRIVIERAGetOcrAsync;
+static DBRoute *DBRIVIERAGetOcrAsyncCheck;
 static DBRoute *DBRIVIERAGetTextAsync;
 static DBRoute *DBRIVIERAGetTextAsyncCheck;
 static DBRoute *DBRIVIERAGetTranscriptAsync;
@@ -105,6 +110,38 @@ static NSObject *lockObj = nil;
               dataStructDeserialBlock:nil];
     }
     return DBRIVIERAGetMetadataAsyncCheck;
+  }
+}
+
++ (DBRoute *)DBRIVIERAGetOcrAsync {
+  @synchronized(lockObj) {
+    if (!DBRIVIERAGetOcrAsync) {
+      DBRIVIERAGetOcrAsync = [[DBRoute alloc] init:@"get_ocr_async"
+                                        namespace_:@"riviera"
+                                        deprecated:@NO
+                                        resultType:[DBASYNCLaunchResultBase class]
+                                         errorType:nil
+                                             attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
+                             dataStructSerialBlock:nil
+                           dataStructDeserialBlock:nil];
+    }
+    return DBRIVIERAGetOcrAsync;
+  }
+}
+
++ (DBRoute *)DBRIVIERAGetOcrAsyncCheck {
+  @synchronized(lockObj) {
+    if (!DBRIVIERAGetOcrAsyncCheck) {
+      DBRIVIERAGetOcrAsyncCheck = [[DBRoute alloc] init:@"get_ocr_async/check"
+                                             namespace_:@"riviera"
+                                             deprecated:@NO
+                                             resultType:[DBRIVIERAGetOcrAsyncCheckResult class]
+                                              errorType:[DBASYNCPollError class]
+                                                  attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
+                                  dataStructSerialBlock:nil
+                                dataStructDeserialBlock:nil];
+    }
+    return DBRIVIERAGetOcrAsyncCheck;
   }
 }
 

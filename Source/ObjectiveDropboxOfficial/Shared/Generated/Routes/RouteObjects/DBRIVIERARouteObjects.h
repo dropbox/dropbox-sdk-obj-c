@@ -29,6 +29,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the getMetadataAsyncCheck route object.
 + (DBRoute *)DBRIVIERAGetMetadataAsyncCheck;
 
+/// Accessor method for the getOcrAsync route object.
++ (DBRoute *)DBRIVIERAGetOcrAsync;
+
+/// Accessor method for the getOcrAsyncCheck route object.
++ (DBRoute *)DBRIVIERAGetOcrAsyncCheck;
+
 /// Accessor method for the getTextAsync route object.
 + (DBRoute *)DBRIVIERAGetTextAsync;
 

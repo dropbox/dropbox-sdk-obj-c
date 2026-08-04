@@ -17,12 +17,15 @@
 @class DBRIVIERAGetMarkdownResult;
 @class DBRIVIERAGetMetadataAsyncCheckResult;
 @class DBRIVIERAGetMetadataResult;
+@class DBRIVIERAGetOcrAsyncCheckResult;
+@class DBRIVIERAGetOcrResult;
 @class DBRIVIERAGetTextAsyncCheckResult;
 @class DBRIVIERAGetTextResult;
 @class DBRIVIERAGetTranscriptAsyncCheckResult;
 @class DBRIVIERAGetTranscriptResult;
 @class DBRIVIERAMarkdownConversionApiV2Error;
 @class DBRIVIERAMetadataExtractionApiV2Error;
+@class DBRIVIERAOcrExtractionApiV2Error;
 @class DBRIVIERATextExtractionApiV2Error;
 @class DBRIVIERATimestampLevel;
 
@@ -130,6 +133,50 @@ NS_ASSUME_NONNULL_BEGIN
 /// success or a `DBASYNCPollError` object on failure.
 ///
 - (DBRpcTask<DBRIVIERAGetMetadataAsyncCheckResult *, DBASYNCPollError *> *)getMetadataAsyncCheck:(NSString *)asyncJobId;
+
+///
+/// Asynchronous OCR (optical character recognition) text extraction for images and PDFs, including scanned / non-text
+/// PDFs. Supported formats: - Image formats: .bmp, .gif, .heic, .jpeg, .jpg, .png, .tif, .tiff, .webp. - PDF format:
+/// .pdf. Unsupported formats return an `unsupported_format_error`. For the `url` variant only Dropbox shared links are
+/// supported; external URLs return `unsupported_format_error`. Text-based PDFs already carry a text layer, so OCR is
+/// not run against them and the result is empty; use `get_text_async` to read the embedded text layer of such a PDF.
+/// The result carries the extracted words as plain text, plus the same content as hOCR with per-word coordinates.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
+/// `void` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getOcrAsync;
+
+///
+/// Asynchronous OCR (optical character recognition) text extraction for images and PDFs, including scanned / non-text
+/// PDFs. Supported formats: - Image formats: .bmp, .gif, .heic, .jpeg, .jpg, .png, .tif, .tiff, .webp. - PDF format:
+/// .pdf. Unsupported formats return an `unsupported_format_error`. For the `url` variant only Dropbox shared links are
+/// supported; external URLs return `unsupported_format_error`. Text-based PDFs already carry a text layer, so OCR is
+/// not run against them and the result is empty; use `get_text_async` to read the embedded text layer of such a PDF.
+/// The result carries the extracted words as plain text, plus the same content as hOCR with per-word coordinates.
+///
+/// @param fileIdOrUrl Identifier of the file to run OCR on. Callers must set exactly one of the `FileIdOrUrl` variants.
+/// OCR is supported for image files and PDFs, including scanned / non-text PDFs; see the route description for the
+/// supported formats. Requests against unsupported formats return `unsupported_format_error`. NOTE: for the `url`
+/// variant, only Dropbox shared links (www.dropbox.com) are supported. External (non-Dropbox) URLs are not supported
+/// and return `unsupported_format_error`; import the file into Dropbox and reference it by `file_id` or `path` instead.
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
+/// `void` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getOcrAsync:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl;
+
+///
+/// Returns the status or result of specified get_ocr_async task.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBRIVIERAGetOcrAsyncCheckResult` object on success
+/// or a `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBRIVIERAGetOcrAsyncCheckResult *, DBASYNCPollError *> *)getOcrAsyncCheck:(NSString *)asyncJobId;
 
 ///
 /// Asynchronous plain-text extraction from documents. Supported formats include: - Word processing: .doc, .docx, .docm,
