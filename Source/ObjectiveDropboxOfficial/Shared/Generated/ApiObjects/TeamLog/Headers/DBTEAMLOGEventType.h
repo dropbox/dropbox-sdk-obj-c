@@ -390,6 +390,7 @@
 @class DBTEAMLOGProtectPolicyDeactivatedType;
 @class DBTEAMLOGProtectPolicyScheduledType;
 @class DBTEAMLOGProtectPolicyUpdatedType;
+@class DBTEAMLOGProtectReportViewType;
 @class DBTEAMLOGRansomwareAlertCreateReportFailedType;
 @class DBTEAMLOGRansomwareAlertCreateReportType;
 @class DBTEAMLOGRansomwareRestoreProcessCompletedType;
@@ -1543,6 +1544,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
   /// (protect) Updated a Dropbox Protect policy
   DBTEAMLOGEventTypeProtectPolicyUpdated,
+
+  /// (protect) Viewed a Dropbox Protect report
+  DBTEAMLOGEventTypeProtectReportView,
 
   /// (reports) Created Classification report
   DBTEAMLOGEventTypeClassificationCreateReport,
@@ -4060,6 +4064,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// `isProtectPolicyUpdated` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGProtectPolicyUpdatedType *protectPolicyUpdated;
+
+/// (protect) Viewed a Dropbox Protect report @note Ensure the
+/// `isProtectReportView` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectReportViewType *protectReportView;
 
 /// (reports) Created Classification report @note Ensure the
 /// `isClassificationCreateReport` method returns true before accessing,
@@ -9551,6 +9560,18 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithProtectPolicyUpdated:(DBTEAMLOGProtectPolicyUpdatedType *)protectPolicyUpdated;
+
+///
+/// Initializes union class with tag state of "protect_report_view".
+///
+/// Description of the "protect_report_view" tag state: (protect) Viewed a
+/// Dropbox Protect report
+///
+/// @param protectReportView (protect) Viewed a Dropbox Protect report
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectReportView:(DBTEAMLOGProtectReportViewType *)protectReportView;
 
 ///
 /// Initializes union class with tag state of "classification_create_report".
@@ -17839,6 +17860,18 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "protect_policy_updated".
 ///
 - (BOOL)isProtectPolicyUpdated;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_report_view".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectReportView` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_report_view".
+///
+- (BOOL)isProtectReportView;
 
 ///
 /// Retrieves whether the union's current tag state has value

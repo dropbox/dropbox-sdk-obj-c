@@ -914,6 +914,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
   /// (protect) Updated a Dropbox Protect policy
   DBTEAMLOGEventTypeArgProtectPolicyUpdated,
 
+  /// (protect) Viewed a Dropbox Protect report
+  DBTEAMLOGEventTypeArgProtectReportView,
+
   /// (reports) Created Classification report
   DBTEAMLOGEventTypeArgClassificationCreateReport,
 
@@ -4953,6 +4956,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithProtectPolicyUpdated;
+
+///
+/// Initializes union class with tag state of "protect_report_view".
+///
+/// Description of the "protect_report_view" tag state: (protect) Viewed a
+/// Dropbox Protect report
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectReportView;
 
 ///
 /// Initializes union class with tag state of "classification_create_report".
@@ -11066,6 +11079,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "protect_policy_updated".
 ///
 - (BOOL)isProtectPolicyUpdated;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_report_view".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_report_view".
+///
+- (BOOL)isProtectReportView;
 
 ///
 /// Retrieves whether the union's current tag state has value
