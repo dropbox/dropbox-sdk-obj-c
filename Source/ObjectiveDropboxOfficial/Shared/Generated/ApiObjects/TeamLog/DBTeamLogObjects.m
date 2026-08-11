@@ -139390,6 +139390,14 @@
   return self;
 }
 
+- (instancetype)initWithPublicLoggedInOnly {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGMediaHubSharedLinkAudiencePublicLoggedInOnly;
+  }
+  return self;
+}
+
 - (instancetype)initWithTeamOnly {
   self = [super init];
   if (self) {
@@ -139418,6 +139426,10 @@
   return _tag == DBTEAMLOGMediaHubSharedLinkAudiencePublic;
 }
 
+- (BOOL)isPublicLoggedInOnly {
+  return _tag == DBTEAMLOGMediaHubSharedLinkAudiencePublicLoggedInOnly;
+}
+
 - (BOOL)isTeamOnly {
   return _tag == DBTEAMLOGMediaHubSharedLinkAudienceTeamOnly;
 }
@@ -139432,6 +139444,8 @@
     return @"DBTEAMLOGMediaHubSharedLinkAudienceNoOne";
   case DBTEAMLOGMediaHubSharedLinkAudiencePublic:
     return @"DBTEAMLOGMediaHubSharedLinkAudiencePublic";
+  case DBTEAMLOGMediaHubSharedLinkAudiencePublicLoggedInOnly:
+    return @"DBTEAMLOGMediaHubSharedLinkAudiencePublicLoggedInOnly";
   case DBTEAMLOGMediaHubSharedLinkAudienceTeamOnly:
     return @"DBTEAMLOGMediaHubSharedLinkAudienceTeamOnly";
   case DBTEAMLOGMediaHubSharedLinkAudienceOther:
@@ -139478,6 +139492,9 @@
   case DBTEAMLOGMediaHubSharedLinkAudiencePublic:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBTEAMLOGMediaHubSharedLinkAudiencePublicLoggedInOnly:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLOGMediaHubSharedLinkAudienceTeamOnly:
     result = prime * result + [[self tagName] hash];
     break;
@@ -139513,6 +139530,8 @@
     return [[self tagName] isEqual:[aMediaHubSharedLinkAudience tagName]];
   case DBTEAMLOGMediaHubSharedLinkAudiencePublic:
     return [[self tagName] isEqual:[aMediaHubSharedLinkAudience tagName]];
+  case DBTEAMLOGMediaHubSharedLinkAudiencePublicLoggedInOnly:
+    return [[self tagName] isEqual:[aMediaHubSharedLinkAudience tagName]];
   case DBTEAMLOGMediaHubSharedLinkAudienceTeamOnly:
     return [[self tagName] isEqual:[aMediaHubSharedLinkAudience tagName]];
   case DBTEAMLOGMediaHubSharedLinkAudienceOther:
@@ -139534,6 +139553,8 @@
     jsonDict[@".tag"] = @"no_one";
   } else if ([valueObj isPublic]) {
     jsonDict[@".tag"] = @"public";
+  } else if ([valueObj isPublicLoggedInOnly]) {
+    jsonDict[@".tag"] = @"public_logged_in_only";
   } else if ([valueObj isTeamOnly]) {
     jsonDict[@".tag"] = @"team_only";
   } else if ([valueObj isOther]) {
@@ -139552,6 +139573,8 @@
     return [[DBTEAMLOGMediaHubSharedLinkAudience alloc] initWithNoOne];
   } else if ([tag isEqualToString:@"public"]) {
     return [[DBTEAMLOGMediaHubSharedLinkAudience alloc] initWithPublic];
+  } else if ([tag isEqualToString:@"public_logged_in_only"]) {
+    return [[DBTEAMLOGMediaHubSharedLinkAudience alloc] initWithPublicLoggedInOnly];
   } else if ([tag isEqualToString:@"team_only"]) {
     return [[DBTEAMLOGMediaHubSharedLinkAudience alloc] initWithTeamOnly];
   } else if ([tag isEqualToString:@"other"]) {

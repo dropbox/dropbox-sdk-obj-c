@@ -38,6 +38,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGMediaHubSharedLinkAudienceTag) {
   DBTEAMLOGMediaHubSharedLinkAudiencePublic,
 
   /// (no description).
+  DBTEAMLOGMediaHubSharedLinkAudiencePublicLoggedInOnly,
+
+  /// (no description).
   DBTEAMLOGMediaHubSharedLinkAudienceTeamOnly,
 
   /// (no description).
@@ -63,6 +66,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGMediaHubSharedLinkAudienceTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPublic;
+
+///
+/// Initializes union class with tag state of "public_logged_in_only".
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPublicLoggedInOnly;
 
 ///
 /// Initializes union class with tag state of "team_only".
@@ -95,6 +105,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGMediaHubSharedLinkAudienceTag) {
 /// @return Whether the union's current tag state has value "public".
 ///
 - (BOOL)isPublic;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "public_logged_in_only".
+///
+/// @return Whether the union's current tag state has value
+/// "public_logged_in_only".
+///
+- (BOOL)isPublicLoggedInOnly;
 
 ///
 /// Retrieves whether the union's current tag state has value "team_only".
