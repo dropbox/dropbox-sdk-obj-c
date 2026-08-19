@@ -31,16 +31,22 @@ NS_ASSUME_NONNULL_BEGIN
 /// Replay project.
 @property (nonatomic, readonly, nullable) DBTEAMLOGMediaHubProjectLogInfo *project;
 
+/// The email address of the Replay project member targeted by the event.
+@property (nonatomic, readonly, copy, nullable) NSString *invitee;
+
 #pragma mark - Constructors
 
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param project Replay project.
+/// @param invitee The email address of the Replay project member targeted by
+/// the event.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithProject:(nullable DBTEAMLOGMediaHubProjectLogInfo *)project;
+- (instancetype)initWithProject:(nullable DBTEAMLOGMediaHubProjectLogInfo *)project
+                        invitee:(nullable NSString *)invitee;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

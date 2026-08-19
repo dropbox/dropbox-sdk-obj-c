@@ -38,6 +38,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Replay project.
 @property (nonatomic, readonly, nullable) DBTEAMLOGMediaHubProjectLogInfo *project;
 
+/// The email address of the Replay project member targeted by the event.
+@property (nonatomic, readonly, copy, nullable) NSString *invitee;
+
 #pragma mark - Constructors
 
 ///
@@ -46,12 +49,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param previousRole Previous Media Hub project role.
 /// @param dNewRole New Media Hub project role.
 /// @param project Replay project.
+/// @param invitee The email address of the Replay project member targeted by
+/// the event.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithPreviousRole:(DBTEAMLOGMediaHubProjectRole *)previousRole
                             dNewRole:(DBTEAMLOGMediaHubProjectRole *)dNewRole
-                             project:(nullable DBTEAMLOGMediaHubProjectLogInfo *)project;
+                             project:(nullable DBTEAMLOGMediaHubProjectLogInfo *)project
+                             invitee:(nullable NSString *)invitee;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

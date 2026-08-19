@@ -138720,17 +138720,19 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithProject:(DBTEAMLOGMediaHubProjectLogInfo *)project {
+- (instancetype)initWithProject:(DBTEAMLOGMediaHubProjectLogInfo *)project invitee:(NSString *)invitee {
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(255) pattern:nil]](invitee);
 
   self = [super init];
   if (self) {
     _project = project;
+    _invitee = invitee;
   }
   return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithProject:nil];
+  return [self initWithProject:nil invitee:nil];
 }
 
 #pragma mark - Serialization methods
@@ -138766,6 +138768,9 @@
   if (self.project != nil) {
     result = prime * result + [self.project hash];
   }
+  if (self.invitee != nil) {
+    result = prime * result + [self.invitee hash];
+  }
 
   return prime * result;
 }
@@ -138792,6 +138797,11 @@
       return NO;
     }
   }
+  if (self.invitee) {
+    if (![self.invitee isEqual:aMediaHubProjectTeamAddDetails.invitee]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -138807,6 +138817,9 @@
   if (valueObj.project) {
     jsonDict[@"project"] = [DBTEAMLOGMediaHubProjectLogInfoSerializer serialize:valueObj.project];
   }
+  if (valueObj.invitee) {
+    jsonDict[@"invitee"] = valueObj.invitee;
+  }
 
   return jsonDict;
 }
@@ -138814,8 +138827,9 @@
 + (DBTEAMLOGMediaHubProjectTeamAddDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGMediaHubProjectLogInfo *project =
       valueDict[@"project"] ? [DBTEAMLOGMediaHubProjectLogInfoSerializer deserialize:valueDict[@"project"]] : nil;
+  NSString *invitee = valueDict[@"invitee"] ?: nil;
 
-  return [[DBTEAMLOGMediaHubProjectTeamAddDetails alloc] initWithProject:project];
+  return [[DBTEAMLOGMediaHubProjectTeamAddDetails alloc] initWithProject:project invitee:invitee];
 }
 
 @end
@@ -138930,17 +138944,19 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithProject:(DBTEAMLOGMediaHubProjectLogInfo *)project {
+- (instancetype)initWithProject:(DBTEAMLOGMediaHubProjectLogInfo *)project invitee:(NSString *)invitee {
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(255) pattern:nil]](invitee);
 
   self = [super init];
   if (self) {
     _project = project;
+    _invitee = invitee;
   }
   return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithProject:nil];
+  return [self initWithProject:nil invitee:nil];
 }
 
 #pragma mark - Serialization methods
@@ -138976,6 +138992,9 @@
   if (self.project != nil) {
     result = prime * result + [self.project hash];
   }
+  if (self.invitee != nil) {
+    result = prime * result + [self.invitee hash];
+  }
 
   return prime * result;
 }
@@ -139002,6 +139021,11 @@
       return NO;
     }
   }
+  if (self.invitee) {
+    if (![self.invitee isEqual:aMediaHubProjectTeamDeleteDetails.invitee]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -139017,6 +139041,9 @@
   if (valueObj.project) {
     jsonDict[@"project"] = [DBTEAMLOGMediaHubProjectLogInfoSerializer serialize:valueObj.project];
   }
+  if (valueObj.invitee) {
+    jsonDict[@"invitee"] = valueObj.invitee;
+  }
 
   return jsonDict;
 }
@@ -139024,8 +139051,9 @@
 + (DBTEAMLOGMediaHubProjectTeamDeleteDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
   DBTEAMLOGMediaHubProjectLogInfo *project =
       valueDict[@"project"] ? [DBTEAMLOGMediaHubProjectLogInfoSerializer deserialize:valueDict[@"project"]] : nil;
+  NSString *invitee = valueDict[@"invitee"] ?: nil;
 
-  return [[DBTEAMLOGMediaHubProjectTeamDeleteDetails alloc] initWithProject:project];
+  return [[DBTEAMLOGMediaHubProjectTeamDeleteDetails alloc] initWithProject:project invitee:invitee];
 }
 
 @end
@@ -139144,22 +139172,25 @@
 
 - (instancetype)initWithPreviousRole:(DBTEAMLOGMediaHubProjectRole *)previousRole
                             dNewRole:(DBTEAMLOGMediaHubProjectRole *)dNewRole
-                             project:(DBTEAMLOGMediaHubProjectLogInfo *)project {
+                             project:(DBTEAMLOGMediaHubProjectLogInfo *)project
+                             invitee:(NSString *)invitee {
   [DBStoneValidators nonnullValidator:nil](previousRole);
   [DBStoneValidators nonnullValidator:nil](dNewRole);
+  [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:nil maxLength:@(255) pattern:nil]](invitee);
 
   self = [super init];
   if (self) {
     _previousRole = previousRole;
     _dNewRole = dNewRole;
     _project = project;
+    _invitee = invitee;
   }
   return self;
 }
 
 - (instancetype)initWithPreviousRole:(DBTEAMLOGMediaHubProjectRole *)previousRole
                             dNewRole:(DBTEAMLOGMediaHubProjectRole *)dNewRole {
-  return [self initWithPreviousRole:previousRole dNewRole:dNewRole project:nil];
+  return [self initWithPreviousRole:previousRole dNewRole:dNewRole project:nil invitee:nil];
 }
 
 #pragma mark - Serialization methods
@@ -139197,6 +139228,9 @@
   if (self.project != nil) {
     result = prime * result + [self.project hash];
   }
+  if (self.invitee != nil) {
+    result = prime * result + [self.invitee hash];
+  }
 
   return prime * result;
 }
@@ -139229,6 +139263,11 @@
       return NO;
     }
   }
+  if (self.invitee) {
+    if (![self.invitee isEqual:aMediaHubProjectTeamRoleChangedDetails.invitee]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -139246,6 +139285,9 @@
   if (valueObj.project) {
     jsonDict[@"project"] = [DBTEAMLOGMediaHubProjectLogInfoSerializer serialize:valueObj.project];
   }
+  if (valueObj.invitee) {
+    jsonDict[@"invitee"] = valueObj.invitee;
+  }
 
   return jsonDict;
 }
@@ -139256,10 +139298,12 @@
   DBTEAMLOGMediaHubProjectRole *dNewRole = [DBTEAMLOGMediaHubProjectRoleSerializer deserialize:valueDict[@"new_role"]];
   DBTEAMLOGMediaHubProjectLogInfo *project =
       valueDict[@"project"] ? [DBTEAMLOGMediaHubProjectLogInfoSerializer deserialize:valueDict[@"project"]] : nil;
+  NSString *invitee = valueDict[@"invitee"] ?: nil;
 
   return [[DBTEAMLOGMediaHubProjectTeamRoleChangedDetails alloc] initWithPreviousRole:previousRole
                                                                              dNewRole:dNewRole
-                                                                              project:project];
+                                                                              project:project
+                                                                              invitee:invitee];
 }
 
 @end
