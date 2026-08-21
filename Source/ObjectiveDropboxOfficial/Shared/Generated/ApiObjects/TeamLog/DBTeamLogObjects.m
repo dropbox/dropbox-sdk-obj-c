@@ -42169,6 +42169,8 @@
 #import "DBTEAMLOGTeamEncryptionKeyRotateKeyDetails.h"
 #import "DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails.h"
 #import "DBTEAMLOGTeamExtensionsPolicyChangedDetails.h"
+#import "DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetails.h"
+#import "DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetails.h"
 #import "DBTEAMLOGTeamFolderChangeStatusDetails.h"
 #import "DBTEAMLOGTeamFolderCreateDetails.h"
 #import "DBTEAMLOGTeamFolderDowngradeDetails.h"
@@ -42812,6 +42814,10 @@
 @synthesize stackCrossTeamAccessPolicyChangedDetails = _stackCrossTeamAccessPolicyChangedDetails;
 @synthesize teamBrandingPolicyChangedDetails = _teamBrandingPolicyChangedDetails;
 @synthesize teamExtensionsPolicyChangedDetails = _teamExtensionsPolicyChangedDetails;
+@synthesize teamExternalSharingControlsActivationStateChangedDetails =
+    _teamExternalSharingControlsActivationStateChangedDetails;
+@synthesize teamExternalSharingControlsRecipientListsChangedDetails =
+    _teamExternalSharingControlsRecipientListsChangedDetails;
 @synthesize teamMemberStorageRequestPolicyChangedDetails = _teamMemberStorageRequestPolicyChangedDetails;
 @synthesize teamSelectiveSyncPolicyChangedDetails = _teamSelectiveSyncPolicyChangedDetails;
 @synthesize teamSharingWhitelistSubjectsChangedDetails = _teamSharingWhitelistSubjectsChangedDetails;
@@ -48427,6 +48433,29 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails;
     _teamExtensionsPolicyChangedDetails = teamExtensionsPolicyChangedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamExternalSharingControlsActivationStateChangedDetails:
+    (DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetails *)
+        teamExternalSharingControlsActivationStateChangedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamExternalSharingControlsActivationStateChangedDetails;
+    _teamExternalSharingControlsActivationStateChangedDetails =
+        teamExternalSharingControlsActivationStateChangedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamExternalSharingControlsRecipientListsChangedDetails:
+    (DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetails *)
+        teamExternalSharingControlsRecipientListsChangedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsTeamExternalSharingControlsRecipientListsChangedDetails;
+    _teamExternalSharingControlsRecipientListsChangedDetails = teamExternalSharingControlsRecipientListsChangedDetails;
   }
   return self;
 }
@@ -54243,6 +54272,28 @@
   return _teamExtensionsPolicyChangedDetails;
 }
 
+- (DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetails *)
+    teamExternalSharingControlsActivationStateChangedDetails {
+  if (![self isTeamExternalSharingControlsActivationStateChangedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required "
+                       @"DBTEAMLOGEventDetailsTeamExternalSharingControlsActivationStateChangedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamExternalSharingControlsActivationStateChangedDetails;
+}
+
+- (DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetails *)
+    teamExternalSharingControlsRecipientListsChangedDetails {
+  if (![self isTeamExternalSharingControlsRecipientListsChangedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required "
+                       @"DBTEAMLOGEventDetailsTeamExternalSharingControlsRecipientListsChangedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _teamExternalSharingControlsRecipientListsChangedDetails;
+}
+
 - (DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails *)teamMemberStorageRequestPolicyChangedDetails {
   if (![self isTeamMemberStorageRequestPolicyChangedDetails]) {
     [NSException
@@ -57089,6 +57140,14 @@
   return _tag == DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails;
 }
 
+- (BOOL)isTeamExternalSharingControlsActivationStateChangedDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamExternalSharingControlsActivationStateChangedDetails;
+}
+
+- (BOOL)isTeamExternalSharingControlsRecipientListsChangedDetails {
+  return _tag == DBTEAMLOGEventDetailsTeamExternalSharingControlsRecipientListsChangedDetails;
+}
+
 - (BOOL)isTeamMemberStorageRequestPolicyChangedDetails {
   return _tag == DBTEAMLOGEventDetailsTeamMemberStorageRequestPolicyChangedDetails;
 }
@@ -58479,6 +58538,10 @@
     return @"DBTEAMLOGEventDetailsTeamBrandingPolicyChangedDetails";
   case DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails:
     return @"DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails";
+  case DBTEAMLOGEventDetailsTeamExternalSharingControlsActivationStateChangedDetails:
+    return @"DBTEAMLOGEventDetailsTeamExternalSharingControlsActivationStateChangedDetails";
+  case DBTEAMLOGEventDetailsTeamExternalSharingControlsRecipientListsChangedDetails:
+    return @"DBTEAMLOGEventDetailsTeamExternalSharingControlsRecipientListsChangedDetails";
   case DBTEAMLOGEventDetailsTeamMemberStorageRequestPolicyChangedDetails:
     return @"DBTEAMLOGEventDetailsTeamMemberStorageRequestPolicyChangedDetails";
   case DBTEAMLOGEventDetailsTeamSelectiveSyncPolicyChangedDetails:
@@ -60353,6 +60416,12 @@
   case DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails:
     result = prime * result + [self.teamExtensionsPolicyChangedDetails hash];
     break;
+  case DBTEAMLOGEventDetailsTeamExternalSharingControlsActivationStateChangedDetails:
+    result = prime * result + [self.teamExternalSharingControlsActivationStateChangedDetails hash];
+    break;
+  case DBTEAMLOGEventDetailsTeamExternalSharingControlsRecipientListsChangedDetails:
+    result = prime * result + [self.teamExternalSharingControlsRecipientListsChangedDetails hash];
+    break;
   case DBTEAMLOGEventDetailsTeamMemberStorageRequestPolicyChangedDetails:
     result = prime * result + [self.teamMemberStorageRequestPolicyChangedDetails hash];
     break;
@@ -61792,6 +61861,12 @@
     return [self.teamBrandingPolicyChangedDetails isEqual:anEventDetails.teamBrandingPolicyChangedDetails];
   case DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails:
     return [self.teamExtensionsPolicyChangedDetails isEqual:anEventDetails.teamExtensionsPolicyChangedDetails];
+  case DBTEAMLOGEventDetailsTeamExternalSharingControlsActivationStateChangedDetails:
+    return [self.teamExternalSharingControlsActivationStateChangedDetails
+        isEqual:anEventDetails.teamExternalSharingControlsActivationStateChangedDetails];
+  case DBTEAMLOGEventDetailsTeamExternalSharingControlsRecipientListsChangedDetails:
+    return [self.teamExternalSharingControlsRecipientListsChangedDetails
+        isEqual:anEventDetails.teamExternalSharingControlsRecipientListsChangedDetails];
   case DBTEAMLOGEventDetailsTeamMemberStorageRequestPolicyChangedDetails:
     return [self.teamMemberStorageRequestPolicyChangedDetails
         isEqual:anEventDetails.teamMemberStorageRequestPolicyChangedDetails];
@@ -64201,6 +64276,15 @@
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGTeamExtensionsPolicyChangedDetailsSerializer
                                            serialize:valueObj.teamExtensionsPolicyChangedDetails]];
     jsonDict[@".tag"] = @"team_extensions_policy_changed_details";
+  } else if ([valueObj isTeamExternalSharingControlsActivationStateChangedDetails]) {
+    [jsonDict
+        addEntriesFromDictionary:[DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetailsSerializer
+                                     serialize:valueObj.teamExternalSharingControlsActivationStateChangedDetails]];
+    jsonDict[@".tag"] = @"team_external_sharing_controls_activation_state_changed_details";
+  } else if ([valueObj isTeamExternalSharingControlsRecipientListsChangedDetails]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetailsSerializer
+                                           serialize:valueObj.teamExternalSharingControlsRecipientListsChangedDetails]];
+    jsonDict[@".tag"] = @"team_external_sharing_controls_recipient_lists_changed_details";
   } else if ([valueObj isTeamMemberStorageRequestPolicyChangedDetails]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetailsSerializer
                                            serialize:valueObj.teamMemberStorageRequestPolicyChangedDetails]];
@@ -66914,6 +66998,18 @@
         [DBTEAMLOGTeamExtensionsPolicyChangedDetailsSerializer deserialize:valueDict];
     return
         [[DBTEAMLOGEventDetails alloc] initWithTeamExtensionsPolicyChangedDetails:teamExtensionsPolicyChangedDetails];
+  } else if ([tag isEqualToString:@"team_external_sharing_controls_activation_state_changed_details"]) {
+    DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetails
+        *teamExternalSharingControlsActivationStateChangedDetails =
+            [DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithTeamExternalSharingControlsActivationStateChangedDetails:
+                                              teamExternalSharingControlsActivationStateChangedDetails];
+  } else if ([tag isEqualToString:@"team_external_sharing_controls_recipient_lists_changed_details"]) {
+    DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetails
+        *teamExternalSharingControlsRecipientListsChangedDetails =
+            [DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithTeamExternalSharingControlsRecipientListsChangedDetails:
+                                              teamExternalSharingControlsRecipientListsChangedDetails];
   } else if ([tag isEqualToString:@"team_member_storage_request_policy_changed_details"]) {
     DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetails *teamMemberStorageRequestPolicyChangedDetails =
         [DBTEAMLOGTeamMemberStorageRequestPolicyChangedDetailsSerializer deserialize:valueDict];
@@ -67757,6 +67853,8 @@
 #import "DBTEAMLOGTeamEncryptionKeyRotateKeyType.h"
 #import "DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionType.h"
 #import "DBTEAMLOGTeamExtensionsPolicyChangedType.h"
+#import "DBTEAMLOGTeamExternalSharingControlsActivationStateChangedType.h"
+#import "DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedType.h"
 #import "DBTEAMLOGTeamFolderChangeStatusType.h"
 #import "DBTEAMLOGTeamFolderCreateType.h"
 #import "DBTEAMLOGTeamFolderDowngradeType.h"
@@ -68399,6 +68497,8 @@
 @synthesize stackCrossTeamAccessPolicyChanged = _stackCrossTeamAccessPolicyChanged;
 @synthesize teamBrandingPolicyChanged = _teamBrandingPolicyChanged;
 @synthesize teamExtensionsPolicyChanged = _teamExtensionsPolicyChanged;
+@synthesize teamExternalSharingControlsActivationStateChanged = _teamExternalSharingControlsActivationStateChanged;
+@synthesize teamExternalSharingControlsRecipientListsChanged = _teamExternalSharingControlsRecipientListsChanged;
 @synthesize teamMemberStorageRequestPolicyChanged = _teamMemberStorageRequestPolicyChanged;
 @synthesize teamSelectiveSyncPolicyChanged = _teamSelectiveSyncPolicyChanged;
 @synthesize teamSharingWhitelistSubjectsChanged = _teamSharingWhitelistSubjectsChanged;
@@ -73852,6 +73952,27 @@
   return self;
 }
 
+- (instancetype)initWithTeamExternalSharingControlsActivationStateChanged:
+    (DBTEAMLOGTeamExternalSharingControlsActivationStateChangedType *)
+        teamExternalSharingControlsActivationStateChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamExternalSharingControlsActivationStateChanged;
+    _teamExternalSharingControlsActivationStateChanged = teamExternalSharingControlsActivationStateChanged;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamExternalSharingControlsRecipientListsChanged:
+    (DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedType *)teamExternalSharingControlsRecipientListsChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeTeamExternalSharingControlsRecipientListsChanged;
+    _teamExternalSharingControlsRecipientListsChanged = teamExternalSharingControlsRecipientListsChanged;
+  }
+  return self;
+}
+
 - (instancetype)initWithTeamMemberStorageRequestPolicyChanged:
     (DBTEAMLOGTeamMemberStorageRequestPolicyChangedType *)teamMemberStorageRequestPolicyChanged {
   self = [super init];
@@ -79301,6 +79422,26 @@
   return _teamExtensionsPolicyChanged;
 }
 
+- (DBTEAMLOGTeamExternalSharingControlsActivationStateChangedType *)teamExternalSharingControlsActivationStateChanged {
+  if (![self isTeamExternalSharingControlsActivationStateChanged]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeTeamExternalSharingControlsActivationStateChanged, "
+                       @"but was %@.",
+                       [self tagName]];
+  }
+  return _teamExternalSharingControlsActivationStateChanged;
+}
+
+- (DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedType *)teamExternalSharingControlsRecipientListsChanged {
+  if (![self isTeamExternalSharingControlsRecipientListsChanged]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeTeamExternalSharingControlsRecipientListsChanged, but was %@.",
+               [self tagName]];
+  }
+  return _teamExternalSharingControlsRecipientListsChanged;
+}
+
 - (DBTEAMLOGTeamMemberStorageRequestPolicyChangedType *)teamMemberStorageRequestPolicyChanged {
   if (![self isTeamMemberStorageRequestPolicyChanged]) {
     [NSException raise:@"IllegalStateException"
@@ -82110,6 +82251,14 @@
   return _tag == DBTEAMLOGEventTypeTeamExtensionsPolicyChanged;
 }
 
+- (BOOL)isTeamExternalSharingControlsActivationStateChanged {
+  return _tag == DBTEAMLOGEventTypeTeamExternalSharingControlsActivationStateChanged;
+}
+
+- (BOOL)isTeamExternalSharingControlsRecipientListsChanged {
+  return _tag == DBTEAMLOGEventTypeTeamExternalSharingControlsRecipientListsChanged;
+}
+
 - (BOOL)isTeamMemberStorageRequestPolicyChanged {
   return _tag == DBTEAMLOGEventTypeTeamMemberStorageRequestPolicyChanged;
 }
@@ -83496,6 +83645,10 @@
     return @"DBTEAMLOGEventTypeTeamBrandingPolicyChanged";
   case DBTEAMLOGEventTypeTeamExtensionsPolicyChanged:
     return @"DBTEAMLOGEventTypeTeamExtensionsPolicyChanged";
+  case DBTEAMLOGEventTypeTeamExternalSharingControlsActivationStateChanged:
+    return @"DBTEAMLOGEventTypeTeamExternalSharingControlsActivationStateChanged";
+  case DBTEAMLOGEventTypeTeamExternalSharingControlsRecipientListsChanged:
+    return @"DBTEAMLOGEventTypeTeamExternalSharingControlsRecipientListsChanged";
   case DBTEAMLOGEventTypeTeamMemberStorageRequestPolicyChanged:
     return @"DBTEAMLOGEventTypeTeamMemberStorageRequestPolicyChanged";
   case DBTEAMLOGEventTypeTeamSelectiveSyncPolicyChanged:
@@ -85368,6 +85521,12 @@
   case DBTEAMLOGEventTypeTeamExtensionsPolicyChanged:
     result = prime * result + [self.teamExtensionsPolicyChanged hash];
     break;
+  case DBTEAMLOGEventTypeTeamExternalSharingControlsActivationStateChanged:
+    result = prime * result + [self.teamExternalSharingControlsActivationStateChanged hash];
+    break;
+  case DBTEAMLOGEventTypeTeamExternalSharingControlsRecipientListsChanged:
+    result = prime * result + [self.teamExternalSharingControlsRecipientListsChanged hash];
+    break;
   case DBTEAMLOGEventTypeTeamMemberStorageRequestPolicyChanged:
     result = prime * result + [self.teamMemberStorageRequestPolicyChanged hash];
     break;
@@ -86726,6 +86885,12 @@
     return [self.teamBrandingPolicyChanged isEqual:anEventType.teamBrandingPolicyChanged];
   case DBTEAMLOGEventTypeTeamExtensionsPolicyChanged:
     return [self.teamExtensionsPolicyChanged isEqual:anEventType.teamExtensionsPolicyChanged];
+  case DBTEAMLOGEventTypeTeamExternalSharingControlsActivationStateChanged:
+    return [self.teamExternalSharingControlsActivationStateChanged
+        isEqual:anEventType.teamExternalSharingControlsActivationStateChanged];
+  case DBTEAMLOGEventTypeTeamExternalSharingControlsRecipientListsChanged:
+    return [self.teamExternalSharingControlsRecipientListsChanged
+        isEqual:anEventType.teamExternalSharingControlsRecipientListsChanged];
   case DBTEAMLOGEventTypeTeamMemberStorageRequestPolicyChanged:
     return [self.teamMemberStorageRequestPolicyChanged isEqual:anEventType.teamMemberStorageRequestPolicyChanged];
   case DBTEAMLOGEventTypeTeamSelectiveSyncPolicyChanged:
@@ -89032,6 +89197,14 @@
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGTeamExtensionsPolicyChangedTypeSerializer
                                            serialize:valueObj.teamExtensionsPolicyChanged]];
     jsonDict[@".tag"] = @"team_extensions_policy_changed";
+  } else if ([valueObj isTeamExternalSharingControlsActivationStateChanged]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGTeamExternalSharingControlsActivationStateChangedTypeSerializer
+                                           serialize:valueObj.teamExternalSharingControlsActivationStateChanged]];
+    jsonDict[@".tag"] = @"team_external_sharing_controls_activation_state_changed";
+  } else if ([valueObj isTeamExternalSharingControlsRecipientListsChanged]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedTypeSerializer
+                                           serialize:valueObj.teamExternalSharingControlsRecipientListsChanged]];
+    jsonDict[@".tag"] = @"team_external_sharing_controls_recipient_lists_changed";
   } else if ([valueObj isTeamMemberStorageRequestPolicyChanged]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGTeamMemberStorageRequestPolicyChangedTypeSerializer
                                            serialize:valueObj.teamMemberStorageRequestPolicyChanged]];
@@ -91491,6 +91664,16 @@
     DBTEAMLOGTeamExtensionsPolicyChangedType *teamExtensionsPolicyChanged =
         [DBTEAMLOGTeamExtensionsPolicyChangedTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithTeamExtensionsPolicyChanged:teamExtensionsPolicyChanged];
+  } else if ([tag isEqualToString:@"team_external_sharing_controls_activation_state_changed"]) {
+    DBTEAMLOGTeamExternalSharingControlsActivationStateChangedType *teamExternalSharingControlsActivationStateChanged =
+        [DBTEAMLOGTeamExternalSharingControlsActivationStateChangedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc]
+        initWithTeamExternalSharingControlsActivationStateChanged:teamExternalSharingControlsActivationStateChanged];
+  } else if ([tag isEqualToString:@"team_external_sharing_controls_recipient_lists_changed"]) {
+    DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedType *teamExternalSharingControlsRecipientListsChanged =
+        [DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc]
+        initWithTeamExternalSharingControlsRecipientListsChanged:teamExternalSharingControlsRecipientListsChanged];
   } else if ([tag isEqualToString:@"team_member_storage_request_policy_changed"]) {
     DBTEAMLOGTeamMemberStorageRequestPolicyChangedType *teamMemberStorageRequestPolicyChanged =
         [DBTEAMLOGTeamMemberStorageRequestPolicyChangedTypeSerializer deserialize:valueDict];
@@ -96331,6 +96514,22 @@
   return self;
 }
 
+- (instancetype)initWithTeamExternalSharingControlsActivationStateChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeArgTeamExternalSharingControlsActivationStateChanged;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamExternalSharingControlsRecipientListsChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeArgTeamExternalSharingControlsRecipientListsChanged;
+  }
+  return self;
+}
+
 - (instancetype)initWithTeamMemberStorageRequestPolicyChanged {
   self = [super init];
   if (self) {
@@ -99103,6 +99302,14 @@
   return _tag == DBTEAMLOGEventTypeArgTeamExtensionsPolicyChanged;
 }
 
+- (BOOL)isTeamExternalSharingControlsActivationStateChanged {
+  return _tag == DBTEAMLOGEventTypeArgTeamExternalSharingControlsActivationStateChanged;
+}
+
+- (BOOL)isTeamExternalSharingControlsRecipientListsChanged {
+  return _tag == DBTEAMLOGEventTypeArgTeamExternalSharingControlsRecipientListsChanged;
+}
+
 - (BOOL)isTeamMemberStorageRequestPolicyChanged {
   return _tag == DBTEAMLOGEventTypeArgTeamMemberStorageRequestPolicyChanged;
 }
@@ -100489,6 +100696,10 @@
     return @"DBTEAMLOGEventTypeArgTeamBrandingPolicyChanged";
   case DBTEAMLOGEventTypeArgTeamExtensionsPolicyChanged:
     return @"DBTEAMLOGEventTypeArgTeamExtensionsPolicyChanged";
+  case DBTEAMLOGEventTypeArgTeamExternalSharingControlsActivationStateChanged:
+    return @"DBTEAMLOGEventTypeArgTeamExternalSharingControlsActivationStateChanged";
+  case DBTEAMLOGEventTypeArgTeamExternalSharingControlsRecipientListsChanged:
+    return @"DBTEAMLOGEventTypeArgTeamExternalSharingControlsRecipientListsChanged";
   case DBTEAMLOGEventTypeArgTeamMemberStorageRequestPolicyChanged:
     return @"DBTEAMLOGEventTypeArgTeamMemberStorageRequestPolicyChanged";
   case DBTEAMLOGEventTypeArgTeamSelectiveSyncPolicyChanged:
@@ -102361,6 +102572,12 @@
   case DBTEAMLOGEventTypeArgTeamExtensionsPolicyChanged:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBTEAMLOGEventTypeArgTeamExternalSharingControlsActivationStateChanged:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGEventTypeArgTeamExternalSharingControlsRecipientListsChanged:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLOGEventTypeArgTeamMemberStorageRequestPolicyChanged:
     result = prime * result + [[self tagName] hash];
     break;
@@ -103710,6 +103927,10 @@
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgTeamExtensionsPolicyChanged:
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
+  case DBTEAMLOGEventTypeArgTeamExternalSharingControlsActivationStateChanged:
+    return [[self tagName] isEqual:[anEventTypeArg tagName]];
+  case DBTEAMLOGEventTypeArgTeamExternalSharingControlsRecipientListsChanged:
+    return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgTeamMemberStorageRequestPolicyChanged:
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgTeamSelectiveSyncPolicyChanged:
@@ -104987,6 +105208,10 @@
     jsonDict[@".tag"] = @"team_branding_policy_changed";
   } else if ([valueObj isTeamExtensionsPolicyChanged]) {
     jsonDict[@".tag"] = @"team_extensions_policy_changed";
+  } else if ([valueObj isTeamExternalSharingControlsActivationStateChanged]) {
+    jsonDict[@".tag"] = @"team_external_sharing_controls_activation_state_changed";
+  } else if ([valueObj isTeamExternalSharingControlsRecipientListsChanged]) {
+    jsonDict[@".tag"] = @"team_external_sharing_controls_recipient_lists_changed";
   } else if ([valueObj isTeamMemberStorageRequestPolicyChanged]) {
     jsonDict[@".tag"] = @"team_member_storage_request_policy_changed";
   } else if ([valueObj isTeamSelectiveSyncPolicyChanged]) {
@@ -106261,6 +106486,10 @@
     return [[DBTEAMLOGEventTypeArg alloc] initWithTeamBrandingPolicyChanged];
   } else if ([tag isEqualToString:@"team_extensions_policy_changed"]) {
     return [[DBTEAMLOGEventTypeArg alloc] initWithTeamExtensionsPolicyChanged];
+  } else if ([tag isEqualToString:@"team_external_sharing_controls_activation_state_changed"]) {
+    return [[DBTEAMLOGEventTypeArg alloc] initWithTeamExternalSharingControlsActivationStateChanged];
+  } else if ([tag isEqualToString:@"team_external_sharing_controls_recipient_lists_changed"]) {
+    return [[DBTEAMLOGEventTypeArg alloc] initWithTeamExternalSharingControlsRecipientListsChanged];
   } else if ([tag isEqualToString:@"team_member_storage_request_policy_changed"]) {
     return [[DBTEAMLOGEventTypeArg alloc] initWithTeamMemberStorageRequestPolicyChanged];
   } else if ([tag isEqualToString:@"team_selective_sync_policy_changed"]) {
@@ -108557,6 +108786,206 @@
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGExternalDriveBackupStatusChangedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGExternalSharingControlsActivationState.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGExternalSharingControlsActivationState
+
+#pragma mark - Constructors
+
+- (instancetype)initWithActive {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGExternalSharingControlsActivationStateActive;
+  }
+  return self;
+}
+
+- (instancetype)initWithDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGExternalSharingControlsActivationStateDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithLegacy {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGExternalSharingControlsActivationStateLegacy;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGExternalSharingControlsActivationStateOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isActive {
+  return _tag == DBTEAMLOGExternalSharingControlsActivationStateActive;
+}
+
+- (BOOL)isDisabled {
+  return _tag == DBTEAMLOGExternalSharingControlsActivationStateDisabled;
+}
+
+- (BOOL)isLegacy {
+  return _tag == DBTEAMLOGExternalSharingControlsActivationStateLegacy;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGExternalSharingControlsActivationStateOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGExternalSharingControlsActivationStateActive:
+    return @"DBTEAMLOGExternalSharingControlsActivationStateActive";
+  case DBTEAMLOGExternalSharingControlsActivationStateDisabled:
+    return @"DBTEAMLOGExternalSharingControlsActivationStateDisabled";
+  case DBTEAMLOGExternalSharingControlsActivationStateLegacy:
+    return @"DBTEAMLOGExternalSharingControlsActivationStateLegacy";
+  case DBTEAMLOGExternalSharingControlsActivationStateOther:
+    return @"DBTEAMLOGExternalSharingControlsActivationStateOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGExternalSharingControlsActivationStateSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGExternalSharingControlsActivationStateSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGExternalSharingControlsActivationStateSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGExternalSharingControlsActivationStateActive:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGExternalSharingControlsActivationStateDisabled:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGExternalSharingControlsActivationStateLegacy:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGExternalSharingControlsActivationStateOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToExternalSharingControlsActivationState:other];
+}
+
+- (BOOL)isEqualToExternalSharingControlsActivationState:
+    (DBTEAMLOGExternalSharingControlsActivationState *)anExternalSharingControlsActivationState {
+  if (self == anExternalSharingControlsActivationState) {
+    return YES;
+  }
+  if (self.tag != anExternalSharingControlsActivationState.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGExternalSharingControlsActivationStateActive:
+    return [[self tagName] isEqual:[anExternalSharingControlsActivationState tagName]];
+  case DBTEAMLOGExternalSharingControlsActivationStateDisabled:
+    return [[self tagName] isEqual:[anExternalSharingControlsActivationState tagName]];
+  case DBTEAMLOGExternalSharingControlsActivationStateLegacy:
+    return [[self tagName] isEqual:[anExternalSharingControlsActivationState tagName]];
+  case DBTEAMLOGExternalSharingControlsActivationStateOther:
+    return [[self tagName] isEqual:[anExternalSharingControlsActivationState tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGExternalSharingControlsActivationStateSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGExternalSharingControlsActivationState *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isActive]) {
+    jsonDict[@".tag"] = @"active";
+  } else if ([valueObj isDisabled]) {
+    jsonDict[@".tag"] = @"disabled";
+  } else if ([valueObj isLegacy]) {
+    jsonDict[@".tag"] = @"legacy";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGExternalSharingControlsActivationState *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"active"]) {
+    return [[DBTEAMLOGExternalSharingControlsActivationState alloc] initWithActive];
+  } else if ([tag isEqualToString:@"disabled"]) {
+    return [[DBTEAMLOGExternalSharingControlsActivationState alloc] initWithDisabled];
+  } else if ([tag isEqualToString:@"legacy"]) {
+    return [[DBTEAMLOGExternalSharingControlsActivationState alloc] initWithLegacy];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGExternalSharingControlsActivationState alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGExternalSharingControlsActivationState alloc] initWithOther];
+  }
 }
 
 @end
@@ -220786,6 +221215,545 @@
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGTeamExtensionsPolicyChangedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGExternalSharingControlsActivationState.h"
+#import "DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPreviousActivationState:
+                    (DBTEAMLOGExternalSharingControlsActivationState *)previousActivationState
+                            dNewActivationState:(DBTEAMLOGExternalSharingControlsActivationState *)dNewActivationState {
+  [DBStoneValidators nonnullValidator:nil](previousActivationState);
+  [DBStoneValidators nonnullValidator:nil](dNewActivationState);
+
+  self = [super init];
+  if (self) {
+    _previousActivationState = previousActivationState;
+    _dNewActivationState = dNewActivationState;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.previousActivationState hash];
+  result = prime * result + [self.dNewActivationState hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamExternalSharingControlsActivationStateChangedDetails:other];
+}
+
+- (BOOL)isEqualToTeamExternalSharingControlsActivationStateChangedDetails:
+    (DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetails *)
+        aTeamExternalSharingControlsActivationStateChangedDetails {
+  if (self == aTeamExternalSharingControlsActivationStateChangedDetails) {
+    return YES;
+  }
+  if (![self.previousActivationState
+          isEqual:aTeamExternalSharingControlsActivationStateChangedDetails.previousActivationState]) {
+    return NO;
+  }
+  if (![self.dNewActivationState
+          isEqual:aTeamExternalSharingControlsActivationStateChangedDetails.dNewActivationState]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:
+    (DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"previous_activation_state"] =
+      [DBTEAMLOGExternalSharingControlsActivationStateSerializer serialize:valueObj.previousActivationState];
+  jsonDict[@"new_activation_state"] =
+      [DBTEAMLOGExternalSharingControlsActivationStateSerializer serialize:valueObj.dNewActivationState];
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetails *)deserialize:
+    (NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGExternalSharingControlsActivationState *previousActivationState =
+      [DBTEAMLOGExternalSharingControlsActivationStateSerializer deserialize:valueDict[@"previous_activation_state"]];
+  DBTEAMLOGExternalSharingControlsActivationState *dNewActivationState =
+      [DBTEAMLOGExternalSharingControlsActivationStateSerializer deserialize:valueDict[@"new_activation_state"]];
+
+  return [[DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetails alloc]
+      initWithPreviousActivationState:previousActivationState
+                  dNewActivationState:dNewActivationState];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamExternalSharingControlsActivationStateChangedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamExternalSharingControlsActivationStateChangedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamExternalSharingControlsActivationStateChangedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamExternalSharingControlsActivationStateChangedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGTeamExternalSharingControlsActivationStateChangedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamExternalSharingControlsActivationStateChangedType:other];
+}
+
+- (BOOL)isEqualToTeamExternalSharingControlsActivationStateChangedType:
+    (DBTEAMLOGTeamExternalSharingControlsActivationStateChangedType *)
+        aTeamExternalSharingControlsActivationStateChangedType {
+  if (self == aTeamExternalSharingControlsActivationStateChangedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamExternalSharingControlsActivationStateChangedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamExternalSharingControlsActivationStateChangedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamExternalSharingControlsActivationStateChangedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGTeamExternalSharingControlsActivationStateChangedType *)deserialize:
+    (NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamExternalSharingControlsActivationStateChangedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithAddedApprovedEntries:(NSArray<NSString *> *)addedApprovedEntries
+                      removedApprovedEntries:(NSArray<NSString *> *)removedApprovedEntries
+                         addedBlockedEntries:(NSArray<NSString *> *)addedBlockedEntries
+                       removedBlockedEntries:(NSArray<NSString *> *)removedBlockedEntries {
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators arrayValidator:@(1)
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](addedApprovedEntries);
+  [DBStoneValidators nullableValidator:[DBStoneValidators arrayValidator:@(1)
+                                                                maxItems:nil
+                                                           itemValidator:[DBStoneValidators nonnullValidator:nil]]](
+      removedApprovedEntries);
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators arrayValidator:@(1)
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](addedBlockedEntries);
+  [DBStoneValidators nullableValidator:[DBStoneValidators arrayValidator:@(1)
+                                                                maxItems:nil
+                                                           itemValidator:[DBStoneValidators nonnullValidator:nil]]](
+      removedBlockedEntries);
+
+  self = [super init];
+  if (self) {
+    _addedApprovedEntries = addedApprovedEntries;
+    _removedApprovedEntries = removedApprovedEntries;
+    _addedBlockedEntries = addedBlockedEntries;
+    _removedBlockedEntries = removedBlockedEntries;
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithAddedApprovedEntries:nil
+                     removedApprovedEntries:nil
+                        addedBlockedEntries:nil
+                      removedBlockedEntries:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.addedApprovedEntries != nil) {
+    result = prime * result + [self.addedApprovedEntries hash];
+  }
+  if (self.removedApprovedEntries != nil) {
+    result = prime * result + [self.removedApprovedEntries hash];
+  }
+  if (self.addedBlockedEntries != nil) {
+    result = prime * result + [self.addedBlockedEntries hash];
+  }
+  if (self.removedBlockedEntries != nil) {
+    result = prime * result + [self.removedBlockedEntries hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamExternalSharingControlsRecipientListsChangedDetails:other];
+}
+
+- (BOOL)isEqualToTeamExternalSharingControlsRecipientListsChangedDetails:
+    (DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetails *)
+        aTeamExternalSharingControlsRecipientListsChangedDetails {
+  if (self == aTeamExternalSharingControlsRecipientListsChangedDetails) {
+    return YES;
+  }
+  if (self.addedApprovedEntries) {
+    if (![self.addedApprovedEntries
+            isEqual:aTeamExternalSharingControlsRecipientListsChangedDetails.addedApprovedEntries]) {
+      return NO;
+    }
+  }
+  if (self.removedApprovedEntries) {
+    if (![self.removedApprovedEntries
+            isEqual:aTeamExternalSharingControlsRecipientListsChangedDetails.removedApprovedEntries]) {
+      return NO;
+    }
+  }
+  if (self.addedBlockedEntries) {
+    if (![self.addedBlockedEntries
+            isEqual:aTeamExternalSharingControlsRecipientListsChangedDetails.addedBlockedEntries]) {
+      return NO;
+    }
+  }
+  if (self.removedBlockedEntries) {
+    if (![self.removedBlockedEntries
+            isEqual:aTeamExternalSharingControlsRecipientListsChangedDetails.removedBlockedEntries]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:
+    (DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if (valueObj.addedApprovedEntries) {
+    jsonDict[@"added_approved_entries"] = [DBArraySerializer serialize:valueObj.addedApprovedEntries
+                                                             withBlock:^id(id elem0) {
+                                                               return elem0;
+                                                             }];
+  }
+  if (valueObj.removedApprovedEntries) {
+    jsonDict[@"removed_approved_entries"] = [DBArraySerializer serialize:valueObj.removedApprovedEntries
+                                                               withBlock:^id(id elem0) {
+                                                                 return elem0;
+                                                               }];
+  }
+  if (valueObj.addedBlockedEntries) {
+    jsonDict[@"added_blocked_entries"] = [DBArraySerializer serialize:valueObj.addedBlockedEntries
+                                                            withBlock:^id(id elem0) {
+                                                              return elem0;
+                                                            }];
+  }
+  if (valueObj.removedBlockedEntries) {
+    jsonDict[@"removed_blocked_entries"] = [DBArraySerializer serialize:valueObj.removedBlockedEntries
+                                                              withBlock:^id(id elem0) {
+                                                                return elem0;
+                                                              }];
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetails *)deserialize:
+    (NSDictionary<NSString *, id> *)valueDict {
+  NSArray<NSString *> *addedApprovedEntries = valueDict[@"added_approved_entries"]
+                                                  ? [DBArraySerializer deserialize:valueDict[@"added_approved_entries"]
+                                                                         withBlock:^id(id elem0) {
+                                                                           return elem0;
+                                                                         }]
+                                                  : nil;
+  NSArray<NSString *> *removedApprovedEntries =
+      valueDict[@"removed_approved_entries"] ? [DBArraySerializer deserialize:valueDict[@"removed_approved_entries"]
+                                                                    withBlock:^id(id elem0) {
+                                                                      return elem0;
+                                                                    }]
+                                             : nil;
+  NSArray<NSString *> *addedBlockedEntries = valueDict[@"added_blocked_entries"]
+                                                 ? [DBArraySerializer deserialize:valueDict[@"added_blocked_entries"]
+                                                                        withBlock:^id(id elem0) {
+                                                                          return elem0;
+                                                                        }]
+                                                 : nil;
+  NSArray<NSString *> *removedBlockedEntries =
+      valueDict[@"removed_blocked_entries"] ? [DBArraySerializer deserialize:valueDict[@"removed_blocked_entries"]
+                                                                   withBlock:^id(id elem0) {
+                                                                     return elem0;
+                                                                   }]
+                                            : nil;
+
+  return [[DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetails alloc]
+      initWithAddedApprovedEntries:addedApprovedEntries
+            removedApprovedEntries:removedApprovedEntries
+               addedBlockedEntries:addedBlockedEntries
+             removedBlockedEntries:removedBlockedEntries];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamExternalSharingControlsRecipientListsChangedType:other];
+}
+
+- (BOOL)isEqualToTeamExternalSharingControlsRecipientListsChangedType:
+    (DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedType *)
+        aTeamExternalSharingControlsRecipientListsChangedType {
+  if (self == aTeamExternalSharingControlsRecipientListsChangedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aTeamExternalSharingControlsRecipientListsChangedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedType *)deserialize:
+    (NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedType alloc] initWithDescription_:description_];
 }
 
 @end

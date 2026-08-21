@@ -1815,6 +1815,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
   /// (team_policies) Changed App Integrations setting for team
   DBTEAMLOGEventTypeArgTeamExtensionsPolicyChanged,
 
+  /// (team_policies) Changed external sharing controls activation state
+  DBTEAMLOGEventTypeArgTeamExternalSharingControlsActivationStateChanged,
+
+  /// (team_policies) Changed approved or blocked entries for external sharing
+  /// controls
+  DBTEAMLOGEventTypeArgTeamExternalSharingControlsRecipientListsChanged,
+
   /// (team_policies) Changed team member storage request policy for team
   DBTEAMLOGEventTypeArgTeamMemberStorageRequestPolicyChanged,
 
@@ -7924,6 +7931,30 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 
 ///
 /// Initializes union class with tag state of
+/// "team_external_sharing_controls_activation_state_changed".
+///
+/// Description of the "team_external_sharing_controls_activation_state_changed"
+/// tag state: (team_policies) Changed external sharing controls activation
+/// state
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamExternalSharingControlsActivationStateChanged;
+
+///
+/// Initializes union class with tag state of
+/// "team_external_sharing_controls_recipient_lists_changed".
+///
+/// Description of the "team_external_sharing_controls_recipient_lists_changed"
+/// tag state: (team_policies) Changed approved or blocked entries for external
+/// sharing controls
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamExternalSharingControlsRecipientListsChanged;
+
+///
+/// Initializes union class with tag state of
 /// "team_member_storage_request_policy_changed".
 ///
 /// Description of the "team_member_storage_request_policy_changed" tag state:
@@ -13585,6 +13616,24 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "team_extensions_policy_changed".
 ///
 - (BOOL)isTeamExtensionsPolicyChanged;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_external_sharing_controls_activation_state_changed".
+///
+/// @return Whether the union's current tag state has value
+/// "team_external_sharing_controls_activation_state_changed".
+///
+- (BOOL)isTeamExternalSharingControlsActivationStateChanged;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_external_sharing_controls_recipient_lists_changed".
+///
+/// @return Whether the union's current tag state has value
+/// "team_external_sharing_controls_recipient_lists_changed".
+///
+- (BOOL)isTeamExternalSharingControlsRecipientListsChanged;
 
 ///
 /// Retrieves whether the union's current tag state has value

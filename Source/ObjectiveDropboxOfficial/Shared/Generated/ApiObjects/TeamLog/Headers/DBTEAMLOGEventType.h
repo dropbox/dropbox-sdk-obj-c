@@ -575,6 +575,8 @@
 @class DBTEAMLOGTeamEncryptionKeyRotateKeyType;
 @class DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionType;
 @class DBTEAMLOGTeamExtensionsPolicyChangedType;
+@class DBTEAMLOGTeamExternalSharingControlsActivationStateChangedType;
+@class DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedType;
 @class DBTEAMLOGTeamFolderChangeStatusType;
 @class DBTEAMLOGTeamFolderCreateType;
 @class DBTEAMLOGTeamFolderDowngradeType;
@@ -2445,6 +2447,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
   /// (team_policies) Changed App Integrations setting for team
   DBTEAMLOGEventTypeTeamExtensionsPolicyChanged,
+
+  /// (team_policies) Changed external sharing controls activation state
+  DBTEAMLOGEventTypeTeamExternalSharingControlsActivationStateChanged,
+
+  /// (team_policies) Changed approved or blocked entries for external sharing
+  /// controls
+  DBTEAMLOGEventTypeTeamExternalSharingControlsRecipientListsChanged,
 
   /// (team_policies) Changed team member storage request policy for team
   DBTEAMLOGEventTypeTeamMemberStorageRequestPolicyChanged,
@@ -5498,6 +5507,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// `isTeamExtensionsPolicyChanged` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamExtensionsPolicyChangedType *teamExtensionsPolicyChanged;
+
+/// (team_policies) Changed external sharing controls activation state @note
+/// Ensure the `isTeamExternalSharingControlsActivationStateChanged` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly)
+    DBTEAMLOGTeamExternalSharingControlsActivationStateChangedType *teamExternalSharingControlsActivationStateChanged;
+
+/// (team_policies) Changed approved or blocked entries for external sharing
+/// controls @note Ensure the
+/// `isTeamExternalSharingControlsRecipientListsChanged` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly)
+    DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedType *teamExternalSharingControlsRecipientListsChanged;
 
 /// (team_policies) Changed team member storage request policy for team @note
 /// Ensure the `isTeamMemberStorageRequestPolicyChanged` method returns true
@@ -13427,6 +13449,38 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 - (instancetype)initWithTeamExtensionsPolicyChanged:
     (DBTEAMLOGTeamExtensionsPolicyChangedType *)teamExtensionsPolicyChanged;
+
+///
+/// Initializes union class with tag state of
+/// "team_external_sharing_controls_activation_state_changed".
+///
+/// Description of the "team_external_sharing_controls_activation_state_changed"
+/// tag state: (team_policies) Changed external sharing controls activation
+/// state
+///
+/// @param teamExternalSharingControlsActivationStateChanged (team_policies)
+/// Changed external sharing controls activation state
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamExternalSharingControlsActivationStateChanged:
+    (DBTEAMLOGTeamExternalSharingControlsActivationStateChangedType *)teamExternalSharingControlsActivationStateChanged;
+
+///
+/// Initializes union class with tag state of
+/// "team_external_sharing_controls_recipient_lists_changed".
+///
+/// Description of the "team_external_sharing_controls_recipient_lists_changed"
+/// tag state: (team_policies) Changed approved or blocked entries for external
+/// sharing controls
+///
+/// @param teamExternalSharingControlsRecipientListsChanged (team_policies)
+/// Changed approved or blocked entries for external sharing controls
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamExternalSharingControlsRecipientListsChanged:
+    (DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedType *)teamExternalSharingControlsRecipientListsChanged;
 
 ///
 /// Initializes union class with tag state of
@@ -21438,6 +21492,32 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "team_extensions_policy_changed".
 ///
 - (BOOL)isTeamExtensionsPolicyChanged;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_external_sharing_controls_activation_state_changed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `teamExternalSharingControlsActivationStateChanged` property, otherwise a
+/// runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "team_external_sharing_controls_activation_state_changed".
+///
+- (BOOL)isTeamExternalSharingControlsActivationStateChanged;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_external_sharing_controls_recipient_lists_changed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `teamExternalSharingControlsRecipientListsChanged` property, otherwise a
+/// runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "team_external_sharing_controls_recipient_lists_changed".
+///
+- (BOOL)isTeamExternalSharingControlsRecipientListsChanged;
 
 ///
 /// Retrieves whether the union's current tag state has value

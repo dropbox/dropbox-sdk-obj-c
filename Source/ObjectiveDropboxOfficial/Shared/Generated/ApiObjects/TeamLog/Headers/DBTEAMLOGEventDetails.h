@@ -576,6 +576,8 @@
 @class DBTEAMLOGTeamEncryptionKeyRotateKeyDetails;
 @class DBTEAMLOGTeamEncryptionKeyScheduleKeyDeletionDetails;
 @class DBTEAMLOGTeamExtensionsPolicyChangedDetails;
+@class DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetails;
+@class DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetails;
 @class DBTEAMLOGTeamFolderChangeStatusDetails;
 @class DBTEAMLOGTeamFolderCreateDetails;
 @class DBTEAMLOGTeamFolderDowngradeDetails;
@@ -2377,6 +2379,12 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
   /// (no description).
   DBTEAMLOGEventDetailsTeamExtensionsPolicyChangedDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsTeamExternalSharingControlsActivationStateChangedDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsTeamExternalSharingControlsRecipientListsChangedDetails,
 
   /// (no description).
   DBTEAMLOGEventDetailsTeamMemberStorageRequestPolicyChangedDetails,
@@ -5234,6 +5242,18 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGTeamExtensionsPolicyChangedDetails *teamExtensionsPolicyChangedDetails;
+
+/// (no description). @note Ensure the
+/// `isTeamExternalSharingControlsActivationStateChangedDetails` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetails
+    *teamExternalSharingControlsActivationStateChangedDetails;
+
+/// (no description). @note Ensure the
+/// `isTeamExternalSharingControlsRecipientListsChangedDetails` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetails
+    *teamExternalSharingControlsRecipientListsChangedDetails;
 
 /// (no description). @note Ensure the
 /// `isTeamMemberStorageRequestPolicyChangedDetails` method returns true before
@@ -11438,6 +11458,32 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 ///
 - (instancetype)initWithTeamExtensionsPolicyChangedDetails:
     (DBTEAMLOGTeamExtensionsPolicyChangedDetails *)teamExtensionsPolicyChangedDetails;
+
+///
+/// Initializes union class with tag state of
+/// "team_external_sharing_controls_activation_state_changed_details".
+///
+/// @param teamExternalSharingControlsActivationStateChangedDetails (no
+/// description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamExternalSharingControlsActivationStateChangedDetails:
+    (DBTEAMLOGTeamExternalSharingControlsActivationStateChangedDetails *)
+        teamExternalSharingControlsActivationStateChangedDetails;
+
+///
+/// Initializes union class with tag state of
+/// "team_external_sharing_controls_recipient_lists_changed_details".
+///
+/// @param teamExternalSharingControlsRecipientListsChangedDetails (no
+/// description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamExternalSharingControlsRecipientListsChangedDetails:
+    (DBTEAMLOGTeamExternalSharingControlsRecipientListsChangedDetails *)
+        teamExternalSharingControlsRecipientListsChangedDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -19484,6 +19530,32 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "team_extensions_policy_changed_details".
 ///
 - (BOOL)isTeamExtensionsPolicyChangedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_external_sharing_controls_activation_state_changed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `teamExternalSharingControlsActivationStateChangedDetails` property,
+/// otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "team_external_sharing_controls_activation_state_changed_details".
+///
+- (BOOL)isTeamExternalSharingControlsActivationStateChangedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_external_sharing_controls_recipient_lists_changed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `teamExternalSharingControlsRecipientListsChangedDetails` property,
+/// otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "team_external_sharing_controls_recipient_lists_changed_details".
+///
+- (BOOL)isTeamExternalSharingControlsRecipientListsChangedDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value
