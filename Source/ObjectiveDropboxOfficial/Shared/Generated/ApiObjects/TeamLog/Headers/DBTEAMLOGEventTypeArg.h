@@ -893,6 +893,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
   /// (protect) Removed collaborators via Dropbox Protect
   DBTEAMLOGEventTypeArgProtectActionRemoveCollaborator,
 
+  /// (protect) Removed domains via Dropbox Protect
+  DBTEAMLOGEventTypeArgProtectActionRemoveDomains,
+
   /// (protect) Removed a link via Dropbox Protect
   DBTEAMLOGEventTypeArgProtectActionRemoveLink,
 
@@ -4892,6 +4895,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithProtectActionRemoveCollaborator;
+
+///
+/// Initializes union class with tag state of "protect_action_remove_domains".
+///
+/// Description of the "protect_action_remove_domains" tag state: (protect)
+/// Removed domains via Dropbox Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionRemoveDomains;
 
 ///
 /// Initializes union class with tag state of "protect_action_remove_link".
@@ -11047,6 +11060,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "protect_action_remove_collaborator".
 ///
 - (BOOL)isProtectActionRemoveCollaborator;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_remove_domains".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_remove_domains".
+///
+- (BOOL)isProtectActionRemoveDomains;
 
 ///
 /// Retrieves whether the union's current tag state has value

@@ -41977,6 +41977,7 @@
 #import "DBTEAMLOGProtectActionDeleteDetails.h"
 #import "DBTEAMLOGProtectActionExportDetails.h"
 #import "DBTEAMLOGProtectActionRemoveCollaboratorDetails.h"
+#import "DBTEAMLOGProtectActionRemoveDomainsDetails.h"
 #import "DBTEAMLOGProtectActionRemoveLinkDetails.h"
 #import "DBTEAMLOGProtectActionStopSharingDetails.h"
 #import "DBTEAMLOGProtectInternalDomainsChangedDetails.h"
@@ -42523,6 +42524,7 @@
 @synthesize protectActionDeleteDetails = _protectActionDeleteDetails;
 @synthesize protectActionExportDetails = _protectActionExportDetails;
 @synthesize protectActionRemoveCollaboratorDetails = _protectActionRemoveCollaboratorDetails;
+@synthesize protectActionRemoveDomainsDetails = _protectActionRemoveDomainsDetails;
 @synthesize protectActionRemoveLinkDetails = _protectActionRemoveLinkDetails;
 @synthesize protectActionStopSharingDetails = _protectActionStopSharingDetails;
 @synthesize protectInternalDomainsChangedDetails = _protectInternalDomainsChangedDetails;
@@ -45600,6 +45602,16 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsProtectActionRemoveCollaboratorDetails;
     _protectActionRemoveCollaboratorDetails = protectActionRemoveCollaboratorDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectActionRemoveDomainsDetails:
+    (DBTEAMLOGProtectActionRemoveDomainsDetails *)protectActionRemoveDomainsDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsProtectActionRemoveDomainsDetails;
+    _protectActionRemoveDomainsDetails = protectActionRemoveDomainsDetails;
   }
   return self;
 }
@@ -51604,6 +51616,15 @@
   return _protectActionRemoveCollaboratorDetails;
 }
 
+- (DBTEAMLOGProtectActionRemoveDomainsDetails *)protectActionRemoveDomainsDetails {
+  if (![self isProtectActionRemoveDomainsDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsProtectActionRemoveDomainsDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _protectActionRemoveDomainsDetails;
+}
+
 - (DBTEAMLOGProtectActionRemoveLinkDetails *)protectActionRemoveLinkDetails {
   if (![self isProtectActionRemoveLinkDetails]) {
     [NSException raise:@"IllegalStateException"
@@ -55980,6 +56001,10 @@
   return _tag == DBTEAMLOGEventDetailsProtectActionRemoveCollaboratorDetails;
 }
 
+- (BOOL)isProtectActionRemoveDomainsDetails {
+  return _tag == DBTEAMLOGEventDetailsProtectActionRemoveDomainsDetails;
+}
+
 - (BOOL)isProtectActionRemoveLinkDetails {
   return _tag == DBTEAMLOGEventDetailsProtectActionRemoveLinkDetails;
 }
@@ -57958,6 +57983,8 @@
     return @"DBTEAMLOGEventDetailsProtectActionExportDetails";
   case DBTEAMLOGEventDetailsProtectActionRemoveCollaboratorDetails:
     return @"DBTEAMLOGEventDetailsProtectActionRemoveCollaboratorDetails";
+  case DBTEAMLOGEventDetailsProtectActionRemoveDomainsDetails:
+    return @"DBTEAMLOGEventDetailsProtectActionRemoveDomainsDetails";
   case DBTEAMLOGEventDetailsProtectActionRemoveLinkDetails:
     return @"DBTEAMLOGEventDetailsProtectActionRemoveLinkDetails";
   case DBTEAMLOGEventDetailsProtectActionStopSharingDetails:
@@ -59545,6 +59572,9 @@
     break;
   case DBTEAMLOGEventDetailsProtectActionRemoveCollaboratorDetails:
     result = prime * result + [self.protectActionRemoveCollaboratorDetails hash];
+    break;
+  case DBTEAMLOGEventDetailsProtectActionRemoveDomainsDetails:
+    result = prime * result + [self.protectActionRemoveDomainsDetails hash];
     break;
   case DBTEAMLOGEventDetailsProtectActionRemoveLinkDetails:
     result = prime * result + [self.protectActionRemoveLinkDetails hash];
@@ -61225,6 +61255,8 @@
     return [self.protectActionExportDetails isEqual:anEventDetails.protectActionExportDetails];
   case DBTEAMLOGEventDetailsProtectActionRemoveCollaboratorDetails:
     return [self.protectActionRemoveCollaboratorDetails isEqual:anEventDetails.protectActionRemoveCollaboratorDetails];
+  case DBTEAMLOGEventDetailsProtectActionRemoveDomainsDetails:
+    return [self.protectActionRemoveDomainsDetails isEqual:anEventDetails.protectActionRemoveDomainsDetails];
   case DBTEAMLOGEventDetailsProtectActionRemoveLinkDetails:
     return [self.protectActionRemoveLinkDetails isEqual:anEventDetails.protectActionRemoveLinkDetails];
   case DBTEAMLOGEventDetailsProtectActionStopSharingDetails:
@@ -63125,6 +63157,10 @@
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectActionRemoveCollaboratorDetailsSerializer
                                            serialize:valueObj.protectActionRemoveCollaboratorDetails]];
     jsonDict[@".tag"] = @"protect_action_remove_collaborator_details";
+  } else if ([valueObj isProtectActionRemoveDomainsDetails]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectActionRemoveDomainsDetailsSerializer
+                                           serialize:valueObj.protectActionRemoveDomainsDetails]];
+    jsonDict[@".tag"] = @"protect_action_remove_domains_details";
   } else if ([valueObj isProtectActionRemoveLinkDetails]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectActionRemoveLinkDetailsSerializer
                                            serialize:valueObj.protectActionRemoveLinkDetails]];
@@ -65716,6 +65752,10 @@
         [DBTEAMLOGProtectActionRemoveCollaboratorDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc]
         initWithProtectActionRemoveCollaboratorDetails:protectActionRemoveCollaboratorDetails];
+  } else if ([tag isEqualToString:@"protect_action_remove_domains_details"]) {
+    DBTEAMLOGProtectActionRemoveDomainsDetails *protectActionRemoveDomainsDetails =
+        [DBTEAMLOGProtectActionRemoveDomainsDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc] initWithProtectActionRemoveDomainsDetails:protectActionRemoveDomainsDetails];
   } else if ([tag isEqualToString:@"protect_action_remove_link_details"]) {
     DBTEAMLOGProtectActionRemoveLinkDetails *protectActionRemoveLinkDetails =
         [DBTEAMLOGProtectActionRemoveLinkDetailsSerializer deserialize:valueDict];
@@ -67661,6 +67701,7 @@
 #import "DBTEAMLOGProtectActionDeleteType.h"
 #import "DBTEAMLOGProtectActionExportType.h"
 #import "DBTEAMLOGProtectActionRemoveCollaboratorType.h"
+#import "DBTEAMLOGProtectActionRemoveDomainsType.h"
 #import "DBTEAMLOGProtectActionRemoveLinkType.h"
 #import "DBTEAMLOGProtectActionStopSharingType.h"
 #import "DBTEAMLOGProtectInternalDomainsChangedType.h"
@@ -68207,6 +68248,7 @@
 @synthesize protectActionDelete = _protectActionDelete;
 @synthesize protectActionExport = _protectActionExport;
 @synthesize protectActionRemoveCollaborator = _protectActionRemoveCollaborator;
+@synthesize protectActionRemoveDomains = _protectActionRemoveDomains;
 @synthesize protectActionRemoveLink = _protectActionRemoveLink;
 @synthesize protectActionStopSharing = _protectActionStopSharing;
 @synthesize protectInternalDomainsChanged = _protectInternalDomainsChanged;
@@ -71192,6 +71234,16 @@
   if (self) {
     _tag = DBTEAMLOGEventTypeProtectActionRemoveCollaborator;
     _protectActionRemoveCollaborator = protectActionRemoveCollaborator;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectActionRemoveDomains:
+    (DBTEAMLOGProtectActionRemoveDomainsType *)protectActionRemoveDomains {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeProtectActionRemoveDomains;
+    _protectActionRemoveDomains = protectActionRemoveDomains;
   }
   return self;
 }
@@ -76922,6 +76974,15 @@
   return _protectActionRemoveCollaborator;
 }
 
+- (DBTEAMLOGProtectActionRemoveDomainsType *)protectActionRemoveDomains {
+  if (![self isProtectActionRemoveDomains]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeProtectActionRemoveDomains, but was %@.", [self tagName]];
+  }
+  return _protectActionRemoveDomains;
+}
+
 - (DBTEAMLOGProtectActionRemoveLinkType *)protectActionRemoveLink {
   if (![self isProtectActionRemoveLink]) {
     [NSException raise:@"IllegalStateException"
@@ -81091,6 +81152,10 @@
   return _tag == DBTEAMLOGEventTypeProtectActionRemoveCollaborator;
 }
 
+- (BOOL)isProtectActionRemoveDomains {
+  return _tag == DBTEAMLOGEventTypeProtectActionRemoveDomains;
+}
+
 - (BOOL)isProtectActionRemoveLink {
   return _tag == DBTEAMLOGEventTypeProtectActionRemoveLink;
 }
@@ -83065,6 +83130,8 @@
     return @"DBTEAMLOGEventTypeProtectActionExport";
   case DBTEAMLOGEventTypeProtectActionRemoveCollaborator:
     return @"DBTEAMLOGEventTypeProtectActionRemoveCollaborator";
+  case DBTEAMLOGEventTypeProtectActionRemoveDomains:
+    return @"DBTEAMLOGEventTypeProtectActionRemoveDomains";
   case DBTEAMLOGEventTypeProtectActionRemoveLink:
     return @"DBTEAMLOGEventTypeProtectActionRemoveLink";
   case DBTEAMLOGEventTypeProtectActionStopSharing:
@@ -84650,6 +84717,9 @@
     break;
   case DBTEAMLOGEventTypeProtectActionRemoveCollaborator:
     result = prime * result + [self.protectActionRemoveCollaborator hash];
+    break;
+  case DBTEAMLOGEventTypeProtectActionRemoveDomains:
+    result = prime * result + [self.protectActionRemoveDomains hash];
     break;
   case DBTEAMLOGEventTypeProtectActionRemoveLink:
     result = prime * result + [self.protectActionRemoveLink hash];
@@ -86298,6 +86368,8 @@
     return [self.protectActionExport isEqual:anEventType.protectActionExport];
   case DBTEAMLOGEventTypeProtectActionRemoveCollaborator:
     return [self.protectActionRemoveCollaborator isEqual:anEventType.protectActionRemoveCollaborator];
+  case DBTEAMLOGEventTypeProtectActionRemoveDomains:
+    return [self.protectActionRemoveDomains isEqual:anEventType.protectActionRemoveDomains];
   case DBTEAMLOGEventTypeProtectActionRemoveLink:
     return [self.protectActionRemoveLink isEqual:anEventType.protectActionRemoveLink];
   case DBTEAMLOGEventTypeProtectActionStopSharing:
@@ -88090,6 +88162,10 @@
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectActionRemoveCollaboratorTypeSerializer
                                            serialize:valueObj.protectActionRemoveCollaborator]];
     jsonDict[@".tag"] = @"protect_action_remove_collaborator";
+  } else if ([valueObj isProtectActionRemoveDomains]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectActionRemoveDomainsTypeSerializer
+                                           serialize:valueObj.protectActionRemoveDomains]];
+    jsonDict[@".tag"] = @"protect_action_remove_domains";
   } else if ([valueObj isProtectActionRemoveLink]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectActionRemoveLinkTypeSerializer
                                            serialize:valueObj.protectActionRemoveLink]];
@@ -90522,6 +90598,10 @@
     DBTEAMLOGProtectActionRemoveCollaboratorType *protectActionRemoveCollaborator =
         [DBTEAMLOGProtectActionRemoveCollaboratorTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithProtectActionRemoveCollaborator:protectActionRemoveCollaborator];
+  } else if ([tag isEqualToString:@"protect_action_remove_domains"]) {
+    DBTEAMLOGProtectActionRemoveDomainsType *protectActionRemoveDomains =
+        [DBTEAMLOGProtectActionRemoveDomainsTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithProtectActionRemoveDomains:protectActionRemoveDomains];
   } else if ([tag isEqualToString:@"protect_action_remove_link"]) {
     DBTEAMLOGProtectActionRemoveLinkType *protectActionRemoveLink =
         [DBTEAMLOGProtectActionRemoveLinkTypeSerializer deserialize:valueDict];
@@ -94190,6 +94270,14 @@
   self = [super init];
   if (self) {
     _tag = DBTEAMLOGEventTypeArgProtectActionRemoveCollaborator;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectActionRemoveDomains {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeArgProtectActionRemoveDomains;
   }
   return self;
 }
@@ -98142,6 +98230,10 @@
   return _tag == DBTEAMLOGEventTypeArgProtectActionRemoveCollaborator;
 }
 
+- (BOOL)isProtectActionRemoveDomains {
+  return _tag == DBTEAMLOGEventTypeArgProtectActionRemoveDomains;
+}
+
 - (BOOL)isProtectActionRemoveLink {
   return _tag == DBTEAMLOGEventTypeArgProtectActionRemoveLink;
 }
@@ -100116,6 +100208,8 @@
     return @"DBTEAMLOGEventTypeArgProtectActionExport";
   case DBTEAMLOGEventTypeArgProtectActionRemoveCollaborator:
     return @"DBTEAMLOGEventTypeArgProtectActionRemoveCollaborator";
+  case DBTEAMLOGEventTypeArgProtectActionRemoveDomains:
+    return @"DBTEAMLOGEventTypeArgProtectActionRemoveDomains";
   case DBTEAMLOGEventTypeArgProtectActionRemoveLink:
     return @"DBTEAMLOGEventTypeArgProtectActionRemoveLink";
   case DBTEAMLOGEventTypeArgProtectActionStopSharing:
@@ -101700,6 +101794,9 @@
     result = prime * result + [[self tagName] hash];
     break;
   case DBTEAMLOGEventTypeArgProtectActionRemoveCollaborator:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGEventTypeArgProtectActionRemoveDomains:
     result = prime * result + [[self tagName] hash];
     break;
   case DBTEAMLOGEventTypeArgProtectActionRemoveLink:
@@ -103347,6 +103444,8 @@
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgProtectActionRemoveCollaborator:
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
+  case DBTEAMLOGEventTypeArgProtectActionRemoveDomains:
+    return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgProtectActionRemoveLink:
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgProtectActionStopSharing:
@@ -104628,6 +104727,8 @@
     jsonDict[@".tag"] = @"protect_action_export";
   } else if ([valueObj isProtectActionRemoveCollaborator]) {
     jsonDict[@".tag"] = @"protect_action_remove_collaborator";
+  } else if ([valueObj isProtectActionRemoveDomains]) {
+    jsonDict[@".tag"] = @"protect_action_remove_domains";
   } else if ([valueObj isProtectActionRemoveLink]) {
     jsonDict[@".tag"] = @"protect_action_remove_link";
   } else if ([valueObj isProtectActionStopSharing]) {
@@ -105906,6 +106007,8 @@
     return [[DBTEAMLOGEventTypeArg alloc] initWithProtectActionExport];
   } else if ([tag isEqualToString:@"protect_action_remove_collaborator"]) {
     return [[DBTEAMLOGEventTypeArg alloc] initWithProtectActionRemoveCollaborator];
+  } else if ([tag isEqualToString:@"protect_action_remove_domains"]) {
+    return [[DBTEAMLOGEventTypeArg alloc] initWithProtectActionRemoveDomains];
   } else if ([tag isEqualToString:@"protect_action_remove_link"]) {
     return [[DBTEAMLOGEventTypeArg alloc] initWithProtectActionRemoveLink];
   } else if ([tag isEqualToString:@"protect_action_stop_sharing"]) {
@@ -172096,6 +172199,206 @@
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGProtectActionRemoveCollaboratorType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGProtectActionRemoveDomainsDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGProtectActionRemoveDomainsDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithActionId:(NSString *)actionId {
+  [DBStoneValidators nonnullValidator:nil](actionId);
+
+  self = [super init];
+  if (self) {
+    _actionId = actionId;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGProtectActionRemoveDomainsDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGProtectActionRemoveDomainsDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGProtectActionRemoveDomainsDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.actionId hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToProtectActionRemoveDomainsDetails:other];
+}
+
+- (BOOL)isEqualToProtectActionRemoveDomainsDetails:
+    (DBTEAMLOGProtectActionRemoveDomainsDetails *)aProtectActionRemoveDomainsDetails {
+  if (self == aProtectActionRemoveDomainsDetails) {
+    return YES;
+  }
+  if (![self.actionId isEqual:aProtectActionRemoveDomainsDetails.actionId]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGProtectActionRemoveDomainsDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProtectActionRemoveDomainsDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"action_id"] = valueObj.actionId;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGProtectActionRemoveDomainsDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *actionId = valueDict[@"action_id"];
+
+  return [[DBTEAMLOGProtectActionRemoveDomainsDetails alloc] initWithActionId:actionId];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGProtectActionRemoveDomainsType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGProtectActionRemoveDomainsType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGProtectActionRemoveDomainsTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGProtectActionRemoveDomainsTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGProtectActionRemoveDomainsTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToProtectActionRemoveDomainsType:other];
+}
+
+- (BOOL)isEqualToProtectActionRemoveDomainsType:
+    (DBTEAMLOGProtectActionRemoveDomainsType *)aProtectActionRemoveDomainsType {
+  if (self == aProtectActionRemoveDomainsType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aProtectActionRemoveDomainsType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGProtectActionRemoveDomainsTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProtectActionRemoveDomainsType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGProtectActionRemoveDomainsType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGProtectActionRemoveDomainsType alloc] initWithDescription_:description_];
 }
 
 @end

@@ -383,6 +383,7 @@
 @class DBTEAMLOGProtectActionDeleteType;
 @class DBTEAMLOGProtectActionExportType;
 @class DBTEAMLOGProtectActionRemoveCollaboratorType;
+@class DBTEAMLOGProtectActionRemoveDomainsType;
 @class DBTEAMLOGProtectActionRemoveLinkType;
 @class DBTEAMLOGProtectActionStopSharingType;
 @class DBTEAMLOGProtectInternalDomainsChangedType;
@@ -1525,6 +1526,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
   /// (protect) Removed collaborators via Dropbox Protect
   DBTEAMLOGEventTypeProtectActionRemoveCollaborator,
+
+  /// (protect) Removed domains via Dropbox Protect
+  DBTEAMLOGEventTypeProtectActionRemoveDomains,
 
   /// (protect) Removed a link via Dropbox Protect
   DBTEAMLOGEventTypeProtectActionRemoveLink,
@@ -4038,6 +4042,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// `isProtectActionRemoveCollaborator` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGProtectActionRemoveCollaboratorType *protectActionRemoveCollaborator;
+
+/// (protect) Removed domains via Dropbox Protect @note Ensure the
+/// `isProtectActionRemoveDomains` method returns true before accessing,
+/// otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectActionRemoveDomainsType *protectActionRemoveDomains;
 
 /// (protect) Removed a link via Dropbox Protect @note Ensure the
 /// `isProtectActionRemoveLink` method returns true before accessing, otherwise
@@ -9493,6 +9502,20 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 - (instancetype)initWithProtectActionRemoveCollaborator:
     (DBTEAMLOGProtectActionRemoveCollaboratorType *)protectActionRemoveCollaborator;
+
+///
+/// Initializes union class with tag state of "protect_action_remove_domains".
+///
+/// Description of the "protect_action_remove_domains" tag state: (protect)
+/// Removed domains via Dropbox Protect
+///
+/// @param protectActionRemoveDomains (protect) Removed domains via Dropbox
+/// Protect
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectActionRemoveDomains:
+    (DBTEAMLOGProtectActionRemoveDomainsType *)protectActionRemoveDomains;
 
 ///
 /// Initializes union class with tag state of "protect_action_remove_link".
@@ -17823,6 +17846,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "protect_action_remove_collaborator".
 ///
 - (BOOL)isProtectActionRemoveCollaborator;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_action_remove_domains".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectActionRemoveDomains` property, otherwise a runtime exception will be
+/// thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_action_remove_domains".
+///
+- (BOOL)isProtectActionRemoveDomains;
 
 ///
 /// Retrieves whether the union's current tag state has value

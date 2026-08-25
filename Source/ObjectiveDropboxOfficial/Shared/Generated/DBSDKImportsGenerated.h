@@ -1871,6 +1871,8 @@
 #import "DBTEAMLOGProtectActionExportType.h"
 #import "DBTEAMLOGProtectActionRemoveCollaboratorDetails.h"
 #import "DBTEAMLOGProtectActionRemoveCollaboratorType.h"
+#import "DBTEAMLOGProtectActionRemoveDomainsDetails.h"
+#import "DBTEAMLOGProtectActionRemoveDomainsType.h"
 #import "DBTEAMLOGProtectActionRemoveLinkDetails.h"
 #import "DBTEAMLOGProtectActionRemoveLinkType.h"
 #import "DBTEAMLOGProtectActionStopSharingDetails.h"
