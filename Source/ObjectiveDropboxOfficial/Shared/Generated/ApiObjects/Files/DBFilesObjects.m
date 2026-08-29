@@ -29367,7 +29367,7 @@
                     contentHash:(NSString *)contentHash {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators arrayValidator:nil
-                                             maxItems:@(1000)
+                                             maxItems:@(500)
                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](entries);
   [DBStoneValidators nullableValidator:[DBStoneValidators stringValidator:@(64) maxLength:@(64)
                                                                   pattern:nil]](contentHash);
