@@ -82,6 +82,12 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESRelocationErrorTag) {
   /// circumstances, see detailed error.
   DBFILESRelocationErrorCantMoveIntoFamily,
 
+  /// The destination team folder has reached its storage limit.
+  DBFILESRelocationErrorTeamFolderInsufficientQuota,
+
+  /// The user's member folder has reached its storage limit.
+  DBFILESRelocationErrorMemberFolderInsufficientQuota,
+
   /// (no description).
   DBFILESRelocationErrorOther,
 
@@ -263,6 +269,27 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESRelocationErrorTag) {
 - (instancetype)initWithCantMoveIntoFamily:(DBFILESMoveIntoFamilyError *)cantMoveIntoFamily;
 
 ///
+/// Initializes union class with tag state of "team_folder_insufficient_quota".
+///
+/// Description of the "team_folder_insufficient_quota" tag state: The
+/// destination team folder has reached its storage limit.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamFolderInsufficientQuota;
+
+///
+/// Initializes union class with tag state of
+/// "member_folder_insufficient_quota".
+///
+/// Description of the "member_folder_insufficient_quota" tag state: The user's
+/// member folder has reached its storage limit.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithMemberFolderInsufficientQuota;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -403,6 +430,24 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESRelocationErrorTag) {
 /// "cant_move_into_family".
 ///
 - (BOOL)isCantMoveIntoFamily;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_folder_insufficient_quota".
+///
+/// @return Whether the union's current tag state has value
+/// "team_folder_insufficient_quota".
+///
+- (BOOL)isTeamFolderInsufficientQuota;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "member_folder_insufficient_quota".
+///
+/// @return Whether the union's current tag state has value
+/// "member_folder_insufficient_quota".
+///
+- (BOOL)isMemberFolderInsufficientQuota;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

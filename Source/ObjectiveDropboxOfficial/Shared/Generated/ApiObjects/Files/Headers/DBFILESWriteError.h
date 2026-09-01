@@ -62,6 +62,12 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESWriteErrorTag) {
   /// restrictions set by a team administrator
   DBFILESWriteErrorAccessRestricted,
 
+  /// The destination team folder has reached its storage limit.
+  DBFILESWriteErrorTeamFolderInsufficientSpace,
+
+  /// The user's member folder has reached its storage limit.
+  DBFILESWriteErrorMemberFolderInsufficientSpace,
+
   /// (no description).
   DBFILESWriteErrorOther,
 
@@ -187,6 +193,27 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESWriteErrorTag) {
 - (instancetype)initWithAccessRestricted;
 
 ///
+/// Initializes union class with tag state of "team_folder_insufficient_space".
+///
+/// Description of the "team_folder_insufficient_space" tag state: The
+/// destination team folder has reached its storage limit.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTeamFolderInsufficientSpace;
+
+///
+/// Initializes union class with tag state of
+/// "member_folder_insufficient_space".
+///
+/// Description of the "member_folder_insufficient_space" tag state: The user's
+/// member folder has reached its storage limit.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithMemberFolderInsufficientSpace;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -274,6 +301,24 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESWriteErrorTag) {
 /// @return Whether the union's current tag state has value "access_restricted".
 ///
 - (BOOL)isAccessRestricted;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "team_folder_insufficient_space".
+///
+/// @return Whether the union's current tag state has value
+/// "team_folder_insufficient_space".
+///
+- (BOOL)isTeamFolderInsufficientSpace;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "member_folder_insufficient_space".
+///
+/// @return Whether the union's current tag state has value
+/// "member_folder_insufficient_space".
+///
+- (BOOL)isMemberFolderInsufficientSpace;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

@@ -18855,6 +18855,22 @@
   return self;
 }
 
+- (instancetype)initWithTeamFolderInsufficientQuota {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationErrorTeamFolderInsufficientQuota;
+  }
+  return self;
+}
+
+- (instancetype)initWithMemberFolderInsufficientQuota {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationErrorMemberFolderInsufficientQuota;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -18963,6 +18979,14 @@
   return _tag == DBFILESRelocationErrorCantMoveIntoFamily;
 }
 
+- (BOOL)isTeamFolderInsufficientQuota {
+  return _tag == DBFILESRelocationErrorTeamFolderInsufficientQuota;
+}
+
+- (BOOL)isMemberFolderInsufficientQuota {
+  return _tag == DBFILESRelocationErrorMemberFolderInsufficientQuota;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESRelocationErrorOther;
 }
@@ -18997,6 +19021,10 @@
     return @"DBFILESRelocationErrorCantMoveIntoVault";
   case DBFILESRelocationErrorCantMoveIntoFamily:
     return @"DBFILESRelocationErrorCantMoveIntoFamily";
+  case DBFILESRelocationErrorTeamFolderInsufficientQuota:
+    return @"DBFILESRelocationErrorTeamFolderInsufficientQuota";
+  case DBFILESRelocationErrorMemberFolderInsufficientQuota:
+    return @"DBFILESRelocationErrorMemberFolderInsufficientQuota";
   case DBFILESRelocationErrorOther:
     return @"DBFILESRelocationErrorOther";
   }
@@ -19077,6 +19105,12 @@
   case DBFILESRelocationErrorCantMoveIntoFamily:
     result = prime * result + [self.cantMoveIntoFamily hash];
     break;
+  case DBFILESRelocationErrorTeamFolderInsufficientQuota:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBFILESRelocationErrorMemberFolderInsufficientQuota:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationErrorOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -19133,6 +19167,10 @@
     return [self.cantMoveIntoVault isEqual:aRelocationError.cantMoveIntoVault];
   case DBFILESRelocationErrorCantMoveIntoFamily:
     return [self.cantMoveIntoFamily isEqual:aRelocationError.cantMoveIntoFamily];
+  case DBFILESRelocationErrorTeamFolderInsufficientQuota:
+    return [[self tagName] isEqual:[aRelocationError tagName]];
+  case DBFILESRelocationErrorMemberFolderInsufficientQuota:
+    return [[self tagName] isEqual:[aRelocationError tagName]];
   case DBFILESRelocationErrorOther:
     return [[self tagName] isEqual:[aRelocationError tagName]];
   }
@@ -19183,6 +19221,10 @@
     jsonDict[@"cant_move_into_family"] =
         [[DBFILESMoveIntoFamilyErrorSerializer serialize:valueObj.cantMoveIntoFamily] mutableCopy];
     jsonDict[@".tag"] = @"cant_move_into_family";
+  } else if ([valueObj isTeamFolderInsufficientQuota]) {
+    jsonDict[@".tag"] = @"team_folder_insufficient_quota";
+  } else if ([valueObj isMemberFolderInsufficientQuota]) {
+    jsonDict[@".tag"] = @"member_folder_insufficient_quota";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -19230,6 +19272,10 @@
     DBFILESMoveIntoFamilyError *cantMoveIntoFamily =
         [DBFILESMoveIntoFamilyErrorSerializer deserialize:valueDict[@"cant_move_into_family"]];
     return [[DBFILESRelocationError alloc] initWithCantMoveIntoFamily:cantMoveIntoFamily];
+  } else if ([tag isEqualToString:@"team_folder_insufficient_quota"]) {
+    return [[DBFILESRelocationError alloc] initWithTeamFolderInsufficientQuota];
+  } else if ([tag isEqualToString:@"member_folder_insufficient_quota"]) {
+    return [[DBFILESRelocationError alloc] initWithMemberFolderInsufficientQuota];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESRelocationError alloc] initWithOther];
   } else {
@@ -19377,6 +19423,22 @@
   return self;
 }
 
+- (instancetype)initWithTeamFolderInsufficientQuota {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchErrorTeamFolderInsufficientQuota;
+  }
+  return self;
+}
+
+- (instancetype)initWithMemberFolderInsufficientQuota {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESRelocationBatchErrorMemberFolderInsufficientQuota;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -19495,6 +19557,14 @@
   return _tag == DBFILESRelocationBatchErrorCantMoveIntoFamily;
 }
 
+- (BOOL)isTeamFolderInsufficientQuota {
+  return _tag == DBFILESRelocationBatchErrorTeamFolderInsufficientQuota;
+}
+
+- (BOOL)isMemberFolderInsufficientQuota {
+  return _tag == DBFILESRelocationBatchErrorMemberFolderInsufficientQuota;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESRelocationBatchErrorOther;
 }
@@ -19533,6 +19603,10 @@
     return @"DBFILESRelocationBatchErrorCantMoveIntoVault";
   case DBFILESRelocationBatchErrorCantMoveIntoFamily:
     return @"DBFILESRelocationBatchErrorCantMoveIntoFamily";
+  case DBFILESRelocationBatchErrorTeamFolderInsufficientQuota:
+    return @"DBFILESRelocationBatchErrorTeamFolderInsufficientQuota";
+  case DBFILESRelocationBatchErrorMemberFolderInsufficientQuota:
+    return @"DBFILESRelocationBatchErrorMemberFolderInsufficientQuota";
   case DBFILESRelocationBatchErrorOther:
     return @"DBFILESRelocationBatchErrorOther";
   case DBFILESRelocationBatchErrorTooManyWriteOperations:
@@ -19615,6 +19689,12 @@
   case DBFILESRelocationBatchErrorCantMoveIntoFamily:
     result = prime * result + [self.cantMoveIntoFamily hash];
     break;
+  case DBFILESRelocationBatchErrorTeamFolderInsufficientQuota:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBFILESRelocationBatchErrorMemberFolderInsufficientQuota:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESRelocationBatchErrorOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -19674,6 +19754,10 @@
     return [self.cantMoveIntoVault isEqual:aRelocationBatchError.cantMoveIntoVault];
   case DBFILESRelocationBatchErrorCantMoveIntoFamily:
     return [self.cantMoveIntoFamily isEqual:aRelocationBatchError.cantMoveIntoFamily];
+  case DBFILESRelocationBatchErrorTeamFolderInsufficientQuota:
+    return [[self tagName] isEqual:[aRelocationBatchError tagName]];
+  case DBFILESRelocationBatchErrorMemberFolderInsufficientQuota:
+    return [[self tagName] isEqual:[aRelocationBatchError tagName]];
   case DBFILESRelocationBatchErrorOther:
     return [[self tagName] isEqual:[aRelocationBatchError tagName]];
   case DBFILESRelocationBatchErrorTooManyWriteOperations:
@@ -19726,6 +19810,10 @@
     jsonDict[@"cant_move_into_family"] =
         [[DBFILESMoveIntoFamilyErrorSerializer serialize:valueObj.cantMoveIntoFamily] mutableCopy];
     jsonDict[@".tag"] = @"cant_move_into_family";
+  } else if ([valueObj isTeamFolderInsufficientQuota]) {
+    jsonDict[@".tag"] = @"team_folder_insufficient_quota";
+  } else if ([valueObj isMemberFolderInsufficientQuota]) {
+    jsonDict[@".tag"] = @"member_folder_insufficient_quota";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else if ([valueObj isTooManyWriteOperations]) {
@@ -19775,6 +19863,10 @@
     DBFILESMoveIntoFamilyError *cantMoveIntoFamily =
         [DBFILESMoveIntoFamilyErrorSerializer deserialize:valueDict[@"cant_move_into_family"]];
     return [[DBFILESRelocationBatchError alloc] initWithCantMoveIntoFamily:cantMoveIntoFamily];
+  } else if ([tag isEqualToString:@"team_folder_insufficient_quota"]) {
+    return [[DBFILESRelocationBatchError alloc] initWithTeamFolderInsufficientQuota];
+  } else if ([tag isEqualToString:@"member_folder_insufficient_quota"]) {
+    return [[DBFILESRelocationBatchError alloc] initWithMemberFolderInsufficientQuota];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESRelocationBatchError alloc] initWithOther];
   } else if ([tag isEqualToString:@"too_many_write_operations"]) {
@@ -34103,6 +34195,22 @@
   return self;
 }
 
+- (instancetype)initWithTeamFolderInsufficientSpace {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESWriteErrorTeamFolderInsufficientSpace;
+  }
+  return self;
+}
+
+- (instancetype)initWithMemberFolderInsufficientSpace {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESWriteErrorMemberFolderInsufficientSpace;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -34167,6 +34275,14 @@
   return _tag == DBFILESWriteErrorAccessRestricted;
 }
 
+- (BOOL)isTeamFolderInsufficientSpace {
+  return _tag == DBFILESWriteErrorTeamFolderInsufficientSpace;
+}
+
+- (BOOL)isMemberFolderInsufficientSpace {
+  return _tag == DBFILESWriteErrorMemberFolderInsufficientSpace;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESWriteErrorOther;
 }
@@ -34191,6 +34307,10 @@
     return @"DBFILESWriteErrorTooManyWriteOperations";
   case DBFILESWriteErrorAccessRestricted:
     return @"DBFILESWriteErrorAccessRestricted";
+  case DBFILESWriteErrorTeamFolderInsufficientSpace:
+    return @"DBFILESWriteErrorTeamFolderInsufficientSpace";
+  case DBFILESWriteErrorMemberFolderInsufficientSpace:
+    return @"DBFILESWriteErrorMemberFolderInsufficientSpace";
   case DBFILESWriteErrorOther:
     return @"DBFILESWriteErrorOther";
   }
@@ -34258,6 +34378,12 @@
   case DBFILESWriteErrorAccessRestricted:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBFILESWriteErrorTeamFolderInsufficientSpace:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBFILESWriteErrorMemberFolderInsufficientSpace:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESWriteErrorOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -34306,6 +34432,10 @@
     return [[self tagName] isEqual:[aWriteError tagName]];
   case DBFILESWriteErrorAccessRestricted:
     return [[self tagName] isEqual:[aWriteError tagName]];
+  case DBFILESWriteErrorTeamFolderInsufficientSpace:
+    return [[self tagName] isEqual:[aWriteError tagName]];
+  case DBFILESWriteErrorMemberFolderInsufficientSpace:
+    return [[self tagName] isEqual:[aWriteError tagName]];
   case DBFILESWriteErrorOther:
     return [[self tagName] isEqual:[aWriteError tagName]];
   }
@@ -34343,6 +34473,10 @@
     jsonDict[@".tag"] = @"too_many_write_operations";
   } else if ([valueObj isAccessRestricted]) {
     jsonDict[@".tag"] = @"access_restricted";
+  } else if ([valueObj isTeamFolderInsufficientSpace]) {
+    jsonDict[@".tag"] = @"team_folder_insufficient_space";
+  } else if ([valueObj isMemberFolderInsufficientSpace]) {
+    jsonDict[@".tag"] = @"member_folder_insufficient_space";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -34375,6 +34509,10 @@
     return [[DBFILESWriteError alloc] initWithTooManyWriteOperations];
   } else if ([tag isEqualToString:@"access_restricted"]) {
     return [[DBFILESWriteError alloc] initWithAccessRestricted];
+  } else if ([tag isEqualToString:@"team_folder_insufficient_space"]) {
+    return [[DBFILESWriteError alloc] initWithTeamFolderInsufficientSpace];
+  } else if ([tag isEqualToString:@"member_folder_insufficient_space"]) {
+    return [[DBFILESWriteError alloc] initWithMemberFolderInsufficientSpace];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESWriteError alloc] initWithOther];
   } else {
