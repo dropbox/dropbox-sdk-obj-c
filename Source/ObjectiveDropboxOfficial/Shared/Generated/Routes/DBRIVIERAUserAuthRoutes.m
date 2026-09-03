@@ -10,6 +10,9 @@
 #import "DBASYNCPollError.h"
 #import "DBRIVIERAContentApiV2Error.h"
 #import "DBRIVIERAFileIdOrUrl.h"
+#import "DBRIVIERAGetKeyframesArgs.h"
+#import "DBRIVIERAGetKeyframesAsyncCheckResult.h"
+#import "DBRIVIERAGetKeyframesResult.h"
 #import "DBRIVIERAGetMarkdownArgs.h"
 #import "DBRIVIERAGetMarkdownAsyncCheckResult.h"
 #import "DBRIVIERAGetMarkdownResult.h"
@@ -25,6 +28,7 @@
 #import "DBRIVIERAGetTranscriptArgs.h"
 #import "DBRIVIERAGetTranscriptAsyncCheckResult.h"
 #import "DBRIVIERAGetTranscriptResult.h"
+#import "DBRIVIERAKeyframesExtractionApiV2Error.h"
 #import "DBRIVIERAMarkdownConversionApiV2Error.h"
 #import "DBRIVIERAMetadataExtractionApiV2Error.h"
 #import "DBRIVIERAOcrExtractionApiV2Error.h"
@@ -43,6 +47,28 @@
     _client = client;
   }
   return self;
+}
+
+- (DBRpcTask *)getKeyframesAsync {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERAGetKeyframesAsync;
+  DBRIVIERAGetKeyframesArgs *arg = [[DBRIVIERAGetKeyframesArgs alloc] initDefault];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)getKeyframesAsync:(DBRIVIERAFileIdOrUrl *)fileIdOrUrl
+            sceneChangeThreshold:(NSNumber *)sceneChangeThreshold
+                   includeImages:(NSNumber *)includeImages {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERAGetKeyframesAsync;
+  DBRIVIERAGetKeyframesArgs *arg = [[DBRIVIERAGetKeyframesArgs alloc] initWithFileIdOrUrl:fileIdOrUrl
+                                                                     sceneChangeThreshold:sceneChangeThreshold
+                                                                            includeImages:includeImages];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)getKeyframesAsyncCheck:(NSString *)asyncJobId {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERAGetKeyframesAsyncCheck;
+  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
+  return [self.client requestRpc:route arg:arg];
 }
 
 - (DBRpcTask *)getMarkdownAsync {

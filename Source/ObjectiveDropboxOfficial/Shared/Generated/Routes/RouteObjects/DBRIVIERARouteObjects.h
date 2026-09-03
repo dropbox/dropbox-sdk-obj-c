@@ -17,6 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @interface DBRIVIERARouteObjects : NSObject
 
+/// Accessor method for the getKeyframesAsync route object.
++ (DBRoute *)DBRIVIERAGetKeyframesAsync;
+
+/// Accessor method for the getKeyframesAsyncCheck route object.
++ (DBRoute *)DBRIVIERAGetKeyframesAsyncCheck;
+
 /// Accessor method for the getMarkdownAsync route object.
 + (DBRoute *)DBRIVIERAGetMarkdownAsync;
 

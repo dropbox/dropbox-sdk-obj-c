@@ -9,6 +9,8 @@
 #import "DBASYNCPollError.h"
 #import "DBRIVIERAAppAuthRoutes.h"
 #import "DBRIVIERAContentApiV2Error.h"
+#import "DBRIVIERAGetKeyframesAsyncCheckResult.h"
+#import "DBRIVIERAGetKeyframesResult.h"
 #import "DBRIVIERAGetMarkdownAsyncCheckResult.h"
 #import "DBRIVIERAGetMarkdownResult.h"
 #import "DBRIVIERAGetMetadataAsyncCheckResult.h"
@@ -19,6 +21,7 @@
 #import "DBRIVIERAGetTextResult.h"
 #import "DBRIVIERAGetTranscriptAsyncCheckResult.h"
 #import "DBRIVIERAGetTranscriptResult.h"
+#import "DBRIVIERAKeyframesExtractionApiV2Error.h"
 #import "DBRIVIERAMarkdownConversionApiV2Error.h"
 #import "DBRIVIERAMetadataExtractionApiV2Error.h"
 #import "DBRIVIERAOcrExtractionApiV2Error.h"
@@ -28,6 +31,8 @@
 
 @implementation DBRIVIERARouteObjects
 
+static DBRoute *DBRIVIERAGetKeyframesAsync;
+static DBRoute *DBRIVIERAGetKeyframesAsyncCheck;
 static DBRoute *DBRIVIERAGetMarkdownAsync;
 static DBRoute *DBRIVIERAGetMarkdownAsyncCheck;
 static DBRoute *DBRIVIERAGetMetadataAsync;
@@ -45,6 +50,39 @@ static NSObject *lockObj = nil;
   dispatch_once(&onceToken, ^{
     lockObj = [[NSObject alloc] init];
   });
+}
+
++ (DBRoute *)DBRIVIERAGetKeyframesAsync {
+  @synchronized(lockObj) {
+    if (!DBRIVIERAGetKeyframesAsync) {
+      DBRIVIERAGetKeyframesAsync = [[DBRoute alloc] init:@"get_keyframes_async"
+                                              namespace_:@"riviera"
+                                              deprecated:@NO
+                                              resultType:[DBASYNCLaunchResultBase class]
+                                               errorType:nil
+                                                   attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
+                                   dataStructSerialBlock:nil
+                                 dataStructDeserialBlock:nil];
+    }
+    return DBRIVIERAGetKeyframesAsync;
+  }
+}
+
++ (DBRoute *)DBRIVIERAGetKeyframesAsyncCheck {
+  @synchronized(lockObj) {
+    if (!DBRIVIERAGetKeyframesAsyncCheck) {
+      DBRIVIERAGetKeyframesAsyncCheck =
+          [[DBRoute alloc] init:@"get_keyframes_async/check"
+                           namespace_:@"riviera"
+                           deprecated:@NO
+                           resultType:[DBRIVIERAGetKeyframesAsyncCheckResult class]
+                            errorType:[DBASYNCPollError class]
+                                attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
+                dataStructSerialBlock:nil
+              dataStructDeserialBlock:nil];
+    }
+    return DBRIVIERAGetKeyframesAsyncCheck;
+  }
 }
 
 + (DBRoute *)DBRIVIERAGetMarkdownAsync {

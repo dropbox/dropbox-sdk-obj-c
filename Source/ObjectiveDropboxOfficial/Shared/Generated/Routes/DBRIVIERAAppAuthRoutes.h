@@ -13,6 +13,8 @@
 @class DBNilObject;
 @class DBRIVIERAContentApiV2Error;
 @class DBRIVIERAFileIdOrUrl;
+@class DBRIVIERAGetKeyframesAsyncCheckResult;
+@class DBRIVIERAGetKeyframesResult;
 @class DBRIVIERAGetMarkdownAsyncCheckResult;
 @class DBRIVIERAGetMarkdownResult;
 @class DBRIVIERAGetMetadataAsyncCheckResult;
@@ -23,6 +25,7 @@
 @class DBRIVIERAGetTextResult;
 @class DBRIVIERAGetTranscriptAsyncCheckResult;
 @class DBRIVIERAGetTranscriptResult;
+@class DBRIVIERAKeyframesExtractionApiV2Error;
 @class DBRIVIERAMarkdownConversionApiV2Error;
 @class DBRIVIERAMetadataExtractionApiV2Error;
 @class DBRIVIERAOcrExtractionApiV2Error;
@@ -46,6 +49,64 @@ NS_ASSUME_NONNULL_BEGIN
 /// Initializes the `DBRIVIERAAppAuthRoutes` namespace container object with a
 /// networking client.
 - (instancetype)init:(id<DBTransportClient>)client;
+
+///
+/// Asynchronous scene-change keyframe extraction for video files. Detects scene changes in the source video and returns
+/// one representative keyframe per detected scene, each tagged with its timestamp (seconds from the start of the video)
+/// and scene-change score. Set `include_images = true` to also receive each frame as a base64-encoded JPEG; when the
+/// field is omitted the response carries keyframe metadata only. Supported video formats: .3gp, .3gpp, .3gpp2, .asf,
+/// .avi, .dv, .flv, .m2t, .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob,
+/// .webm, .wmv. Unsupported formats return an `unsupported_format_error`. Limits: the source file must be at most 10
+/// GB. To keep responses within service limits the number of keyframes and the total image payload are bounded;
+/// requests that would exceed these limits return a `limit_exceeded_error` -- raise `scene_change_threshold` or set
+/// `include_images = false` to stay within bounds.
+///
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
+/// `void` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getKeyframesAsync;
+
+///
+/// Asynchronous scene-change keyframe extraction for video files. Detects scene changes in the source video and returns
+/// one representative keyframe per detected scene, each tagged with its timestamp (seconds from the start of the video)
+/// and scene-change score. Set `include_images = true` to also receive each frame as a base64-encoded JPEG; when the
+/// field is omitted the response carries keyframe metadata only. Supported video formats: .3gp, .3gpp, .3gpp2, .asf,
+/// .avi, .dv, .flv, .m2t, .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob,
+/// .webm, .wmv. Unsupported formats return an `unsupported_format_error`. Limits: the source file must be at most 10
+/// GB. To keep responses within service limits the number of keyframes and the total image payload are bounded;
+/// requests that would exceed these limits return a `limit_exceeded_error` -- raise `scene_change_threshold` or set
+/// `include_images = false` to stay within bounds.
+///
+/// @param fileIdOrUrl Identifier of the video file to extract keyframes from. Callers must set exactly one of the
+/// `FileIdOrUrl` variants. Keyframe extraction is supported for video files only; see the route description for the
+/// supported formats. Requests against unsupported formats return `unsupported_format_error`.
+/// @param sceneChangeThreshold Sensitivity of scene-change detection. A keyframe is emitted whenever the frame-to-frame
+/// scene score crosses this threshold, so a LOWER value yields MORE keyframes. Valid range is (0.0, 1.0]. When omitted
+/// (0.0) the service uses a default of 0.3, which is a good starting point for most videos.
+/// @param includeImages When true, each returned keyframe includes the JPEG image bytes, base64-encoded, in
+/// `ApiKeyframe.image_base64`. When false, the response contains only per-keyframe metadata (timestamp and scene score)
+/// and `image_base64` is left empty -- useful when you only need the scene boundaries and want a small response. NOTE:
+/// because the field defaults to false in proto3, callers who want images must set this explicitly to true.
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
+/// `void` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getKeyframesAsync:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl
+                                                      sceneChangeThreshold:(nullable NSNumber *)sceneChangeThreshold
+                                                             includeImages:(nullable NSNumber *)includeImages;
+
+///
+/// Returns the status or result of specified get_keyframes_async task.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBRIVIERAGetKeyframesAsyncCheckResult` object on
+/// success or a `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBRIVIERAGetKeyframesAsyncCheckResult *, DBASYNCPollError *> *)getKeyframesAsyncCheck:
+    (NSString *)asyncJobId;
 
 ///
 /// Asynchronous document-to-markdown conversion for supported file formats. Supported formats: .binder, .docx, .html,

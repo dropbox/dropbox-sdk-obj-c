@@ -404,6 +404,124 @@
 
 @end
 
+#import "DBRIVIERAApiKeyframe.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAApiKeyframe
+
+#pragma mark - Constructors
+
+- (instancetype)initWithTimestamp:(NSNumber *)timestamp
+                       sceneScore:(NSNumber *)sceneScore
+                      imageBase64:(NSString *)imageBase64 {
+
+  self = [super init];
+  if (self) {
+    _timestamp = timestamp ?: @(0.0);
+    _sceneScore = sceneScore ?: @(0.0);
+    _imageBase64 = imageBase64 ?: @"";
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithTimestamp:nil sceneScore:nil imageBase64:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAApiKeyframeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAApiKeyframeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAApiKeyframeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.timestamp hash];
+  result = prime * result + [self.sceneScore hash];
+  result = prime * result + [self.imageBase64 hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToApiKeyframe:other];
+}
+
+- (BOOL)isEqualToApiKeyframe:(DBRIVIERAApiKeyframe *)anApiKeyframe {
+  if (self == anApiKeyframe) {
+    return YES;
+  }
+  if (![self.timestamp isEqual:anApiKeyframe.timestamp]) {
+    return NO;
+  }
+  if (![self.sceneScore isEqual:anApiKeyframe.sceneScore]) {
+    return NO;
+  }
+  if (![self.imageBase64 isEqual:anApiKeyframe.imageBase64]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAApiKeyframeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAApiKeyframe *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"timestamp"] = valueObj.timestamp;
+  jsonDict[@"scene_score"] = valueObj.sceneScore;
+  jsonDict[@"image_base64"] = valueObj.imageBase64;
+
+  return jsonDict;
+}
+
++ (DBRIVIERAApiKeyframe *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSNumber *timestamp = valueDict[@"timestamp"] ?: @(0.0);
+  NSNumber *sceneScore = valueDict[@"scene_score"] ?: @(0.0);
+  NSString *imageBase64 = valueDict[@"image_base64"] ?: @"";
+
+  return [[DBRIVIERAApiKeyframe alloc] initWithTimestamp:timestamp sceneScore:sceneScore imageBase64:imageBase64];
+}
+
+@end
+
 #import "DBRIVIERAApiMediaMetadata.h"
 #import "DBRIVIERAApiMediaStream.h"
 #import "DBStoneSerializers.h"
@@ -1969,6 +2087,484 @@
   } else {
     return [[DBRIVIERAFileIdOrUrl alloc] initWithOther];
   }
+}
+
+@end
+
+#import "DBRIVIERAFileIdOrUrl.h"
+#import "DBRIVIERAGetKeyframesArgs.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAGetKeyframesArgs
+
+#pragma mark - Constructors
+
+- (instancetype)initWithFileIdOrUrl:(DBRIVIERAFileIdOrUrl *)fileIdOrUrl
+               sceneChangeThreshold:(NSNumber *)sceneChangeThreshold
+                      includeImages:(NSNumber *)includeImages {
+
+  self = [super init];
+  if (self) {
+    _fileIdOrUrl = fileIdOrUrl;
+    _sceneChangeThreshold = sceneChangeThreshold ?: @(0.0);
+    _includeImages = includeImages ?: @NO;
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithFileIdOrUrl:nil sceneChangeThreshold:nil includeImages:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAGetKeyframesArgsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAGetKeyframesArgsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAGetKeyframesArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.fileIdOrUrl != nil) {
+    result = prime * result + [self.fileIdOrUrl hash];
+  }
+  result = prime * result + [self.sceneChangeThreshold hash];
+  result = prime * result + [self.includeImages hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGetKeyframesArgs:other];
+}
+
+- (BOOL)isEqualToGetKeyframesArgs:(DBRIVIERAGetKeyframesArgs *)aGetKeyframesArgs {
+  if (self == aGetKeyframesArgs) {
+    return YES;
+  }
+  if (self.fileIdOrUrl) {
+    if (![self.fileIdOrUrl isEqual:aGetKeyframesArgs.fileIdOrUrl]) {
+      return NO;
+    }
+  }
+  if (![self.sceneChangeThreshold isEqual:aGetKeyframesArgs.sceneChangeThreshold]) {
+    return NO;
+  }
+  if (![self.includeImages isEqual:aGetKeyframesArgs.includeImages]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAGetKeyframesArgsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetKeyframesArgs *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if (valueObj.fileIdOrUrl) {
+    jsonDict[@"file_id_or_url"] = [DBRIVIERAFileIdOrUrlSerializer serialize:valueObj.fileIdOrUrl];
+  }
+  jsonDict[@"scene_change_threshold"] = valueObj.sceneChangeThreshold;
+  jsonDict[@"include_images"] = valueObj.includeImages;
+
+  return jsonDict;
+}
+
++ (DBRIVIERAGetKeyframesArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBRIVIERAFileIdOrUrl *fileIdOrUrl =
+      valueDict[@"file_id_or_url"] ? [DBRIVIERAFileIdOrUrlSerializer deserialize:valueDict[@"file_id_or_url"]] : nil;
+  NSNumber *sceneChangeThreshold = valueDict[@"scene_change_threshold"] ?: @(0.0);
+  NSNumber *includeImages = valueDict[@"include_images"] ?: @NO;
+
+  return [[DBRIVIERAGetKeyframesArgs alloc] initWithFileIdOrUrl:fileIdOrUrl
+                                           sceneChangeThreshold:sceneChangeThreshold
+                                                  includeImages:includeImages];
+}
+
+@end
+
+#import "DBRIVIERAGetKeyframesAsyncCheckResult.h"
+#import "DBRIVIERAGetKeyframesResult.h"
+#import "DBRIVIERAKeyframesExtractionApiV2Error.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAGetKeyframesAsyncCheckResult
+
+@synthesize complete = _complete;
+@synthesize failed = _failed;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithInProgress {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAGetKeyframesAsyncCheckResultInProgress;
+  }
+  return self;
+}
+
+- (instancetype)initWithComplete:(DBRIVIERAGetKeyframesResult *)complete {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAGetKeyframesAsyncCheckResultComplete;
+    _complete = complete;
+  }
+  return self;
+}
+
+- (instancetype)initWithFailed:(DBRIVIERAKeyframesExtractionApiV2Error *)failed {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAGetKeyframesAsyncCheckResultFailed;
+    _failed = failed;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAGetKeyframesAsyncCheckResultOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBRIVIERAGetKeyframesResult *)complete {
+  if (![self isComplete]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBRIVIERAGetKeyframesAsyncCheckResultComplete, but was %@.", [self tagName]];
+  }
+  return _complete;
+}
+
+- (DBRIVIERAKeyframesExtractionApiV2Error *)failed {
+  if (![self isFailed]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBRIVIERAGetKeyframesAsyncCheckResultFailed, but was %@.", [self tagName]];
+  }
+  return _failed;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isInProgress {
+  return _tag == DBRIVIERAGetKeyframesAsyncCheckResultInProgress;
+}
+
+- (BOOL)isComplete {
+  return _tag == DBRIVIERAGetKeyframesAsyncCheckResultComplete;
+}
+
+- (BOOL)isFailed {
+  return _tag == DBRIVIERAGetKeyframesAsyncCheckResultFailed;
+}
+
+- (BOOL)isOther {
+  return _tag == DBRIVIERAGetKeyframesAsyncCheckResultOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBRIVIERAGetKeyframesAsyncCheckResultInProgress:
+    return @"DBRIVIERAGetKeyframesAsyncCheckResultInProgress";
+  case DBRIVIERAGetKeyframesAsyncCheckResultComplete:
+    return @"DBRIVIERAGetKeyframesAsyncCheckResultComplete";
+  case DBRIVIERAGetKeyframesAsyncCheckResultFailed:
+    return @"DBRIVIERAGetKeyframesAsyncCheckResultFailed";
+  case DBRIVIERAGetKeyframesAsyncCheckResultOther:
+    return @"DBRIVIERAGetKeyframesAsyncCheckResultOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAGetKeyframesAsyncCheckResultSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAGetKeyframesAsyncCheckResultSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAGetKeyframesAsyncCheckResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBRIVIERAGetKeyframesAsyncCheckResultInProgress:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAGetKeyframesAsyncCheckResultComplete:
+    result = prime * result + [self.complete hash];
+    break;
+  case DBRIVIERAGetKeyframesAsyncCheckResultFailed:
+    result = prime * result + [self.failed hash];
+    break;
+  case DBRIVIERAGetKeyframesAsyncCheckResultOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGetKeyframesAsyncCheckResult:other];
+}
+
+- (BOOL)isEqualToGetKeyframesAsyncCheckResult:(DBRIVIERAGetKeyframesAsyncCheckResult *)aGetKeyframesAsyncCheckResult {
+  if (self == aGetKeyframesAsyncCheckResult) {
+    return YES;
+  }
+  if (self.tag != aGetKeyframesAsyncCheckResult.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBRIVIERAGetKeyframesAsyncCheckResultInProgress:
+    return [[self tagName] isEqual:[aGetKeyframesAsyncCheckResult tagName]];
+  case DBRIVIERAGetKeyframesAsyncCheckResultComplete:
+    return [self.complete isEqual:aGetKeyframesAsyncCheckResult.complete];
+  case DBRIVIERAGetKeyframesAsyncCheckResultFailed:
+    return [self.failed isEqual:aGetKeyframesAsyncCheckResult.failed];
+  case DBRIVIERAGetKeyframesAsyncCheckResultOther:
+    return [[self tagName] isEqual:[aGetKeyframesAsyncCheckResult tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAGetKeyframesAsyncCheckResultSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetKeyframesAsyncCheckResult *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isInProgress]) {
+    jsonDict[@".tag"] = @"in_progress";
+  } else if ([valueObj isComplete]) {
+    [jsonDict addEntriesFromDictionary:[DBRIVIERAGetKeyframesResultSerializer serialize:valueObj.complete]];
+    jsonDict[@".tag"] = @"complete";
+  } else if ([valueObj isFailed]) {
+    jsonDict[@"failed"] = [[DBRIVIERAKeyframesExtractionApiV2ErrorSerializer serialize:valueObj.failed] mutableCopy];
+    jsonDict[@".tag"] = @"failed";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBRIVIERAGetKeyframesAsyncCheckResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"in_progress"]) {
+    return [[DBRIVIERAGetKeyframesAsyncCheckResult alloc] initWithInProgress];
+  } else if ([tag isEqualToString:@"complete"]) {
+    DBRIVIERAGetKeyframesResult *complete = [DBRIVIERAGetKeyframesResultSerializer deserialize:valueDict];
+    return [[DBRIVIERAGetKeyframesAsyncCheckResult alloc] initWithComplete:complete];
+  } else if ([tag isEqualToString:@"failed"]) {
+    DBRIVIERAKeyframesExtractionApiV2Error *failed =
+        [DBRIVIERAKeyframesExtractionApiV2ErrorSerializer deserialize:valueDict[@"failed"]];
+    return [[DBRIVIERAGetKeyframesAsyncCheckResult alloc] initWithFailed:failed];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBRIVIERAGetKeyframesAsyncCheckResult alloc] initWithOther];
+  } else {
+    return [[DBRIVIERAGetKeyframesAsyncCheckResult alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBRIVIERAApiKeyframe.h"
+#import "DBRIVIERAGetKeyframesResult.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAGetKeyframesResult
+
+#pragma mark - Constructors
+
+- (instancetype)initWithFrames:(NSArray<DBRIVIERAApiKeyframe *> *)frames {
+  [DBStoneValidators
+   nullableValidator:[DBStoneValidators arrayValidator:nil
+                                              maxItems:nil
+                                         itemValidator:[DBStoneValidators nonnullValidator:nil]]](frames);
+
+  self = [super init];
+  if (self) {
+    _frames = frames;
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithFrames:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAGetKeyframesResultSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAGetKeyframesResultSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAGetKeyframesResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  if (self.frames != nil) {
+    result = prime * result + [self.frames hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGetKeyframesResult:other];
+}
+
+- (BOOL)isEqualToGetKeyframesResult:(DBRIVIERAGetKeyframesResult *)aGetKeyframesResult {
+  if (self == aGetKeyframesResult) {
+    return YES;
+  }
+  if (self.frames) {
+    if (![self.frames isEqual:aGetKeyframesResult.frames]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAGetKeyframesResultSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetKeyframesResult *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if (valueObj.frames) {
+    jsonDict[@"frames"] = [DBArraySerializer serialize:valueObj.frames
+                                             withBlock:^id(id elem0) {
+                                               return [DBRIVIERAApiKeyframeSerializer serialize:elem0];
+                                             }];
+  }
+
+  return jsonDict;
+}
+
++ (DBRIVIERAGetKeyframesResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSArray<DBRIVIERAApiKeyframe *> *frames =
+      valueDict[@"frames"] ? [DBArraySerializer deserialize:valueDict[@"frames"]
+                                                  withBlock:^id(id elem0) {
+                                                    return [DBRIVIERAApiKeyframeSerializer deserialize:elem0];
+                                                  }]
+                           : nil;
+
+  return [[DBRIVIERAGetKeyframesResult alloc] initWithFrames:frames];
 }
 
 @end
@@ -4252,6 +4848,371 @@
           : nil;
 
   return [[DBRIVIERAGetTranscriptResult alloc] initWithStructuredTranscript:structuredTranscript];
+}
+
+@end
+
+#import "DBRIVIERAKeyframesExtractionApiV2Error.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAKeyframesExtractionApiV2Error
+
+@synthesize serverError = _serverError;
+@synthesize userError = _userError;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithServerError:(NSString *)serverError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAKeyframesExtractionApiV2ErrorServerError;
+    _serverError = serverError;
+  }
+  return self;
+}
+
+- (instancetype)initWithUserError:(NSString *)userError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAKeyframesExtractionApiV2ErrorUserError;
+    _userError = userError;
+  }
+  return self;
+}
+
+- (instancetype)initWithUnsupportedFormatError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAKeyframesExtractionApiV2ErrorUnsupportedFormatError;
+  }
+  return self;
+}
+
+- (instancetype)initWithLinkDownloadDisabledError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAKeyframesExtractionApiV2ErrorLinkDownloadDisabledError;
+  }
+  return self;
+}
+
+- (instancetype)initWithSharedLinkPasswordProtected {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAKeyframesExtractionApiV2ErrorSharedLinkPasswordProtected;
+  }
+  return self;
+}
+
+- (instancetype)initWithLimitExceededError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAKeyframesExtractionApiV2ErrorLimitExceededError;
+  }
+  return self;
+}
+
+- (instancetype)initWithConversionFailureError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAKeyframesExtractionApiV2ErrorConversionFailureError;
+  }
+  return self;
+}
+
+- (instancetype)initWithNotFoundError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAKeyframesExtractionApiV2ErrorNotFoundError;
+  }
+  return self;
+}
+
+- (instancetype)initWithIsAFolderError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAKeyframesExtractionApiV2ErrorIsAFolderError;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAKeyframesExtractionApiV2ErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (NSString *)serverError {
+  if (![self isServerError]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBRIVIERAKeyframesExtractionApiV2ErrorServerError, but was %@.", [self tagName]];
+  }
+  return _serverError;
+}
+
+- (NSString *)userError {
+  if (![self isUserError]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBRIVIERAKeyframesExtractionApiV2ErrorUserError, but was %@.", [self tagName]];
+  }
+  return _userError;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isServerError {
+  return _tag == DBRIVIERAKeyframesExtractionApiV2ErrorServerError;
+}
+
+- (BOOL)isUserError {
+  return _tag == DBRIVIERAKeyframesExtractionApiV2ErrorUserError;
+}
+
+- (BOOL)isUnsupportedFormatError {
+  return _tag == DBRIVIERAKeyframesExtractionApiV2ErrorUnsupportedFormatError;
+}
+
+- (BOOL)isLinkDownloadDisabledError {
+  return _tag == DBRIVIERAKeyframesExtractionApiV2ErrorLinkDownloadDisabledError;
+}
+
+- (BOOL)isSharedLinkPasswordProtected {
+  return _tag == DBRIVIERAKeyframesExtractionApiV2ErrorSharedLinkPasswordProtected;
+}
+
+- (BOOL)isLimitExceededError {
+  return _tag == DBRIVIERAKeyframesExtractionApiV2ErrorLimitExceededError;
+}
+
+- (BOOL)isConversionFailureError {
+  return _tag == DBRIVIERAKeyframesExtractionApiV2ErrorConversionFailureError;
+}
+
+- (BOOL)isNotFoundError {
+  return _tag == DBRIVIERAKeyframesExtractionApiV2ErrorNotFoundError;
+}
+
+- (BOOL)isIsAFolderError {
+  return _tag == DBRIVIERAKeyframesExtractionApiV2ErrorIsAFolderError;
+}
+
+- (BOOL)isOther {
+  return _tag == DBRIVIERAKeyframesExtractionApiV2ErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBRIVIERAKeyframesExtractionApiV2ErrorServerError:
+    return @"DBRIVIERAKeyframesExtractionApiV2ErrorServerError";
+  case DBRIVIERAKeyframesExtractionApiV2ErrorUserError:
+    return @"DBRIVIERAKeyframesExtractionApiV2ErrorUserError";
+  case DBRIVIERAKeyframesExtractionApiV2ErrorUnsupportedFormatError:
+    return @"DBRIVIERAKeyframesExtractionApiV2ErrorUnsupportedFormatError";
+  case DBRIVIERAKeyframesExtractionApiV2ErrorLinkDownloadDisabledError:
+    return @"DBRIVIERAKeyframesExtractionApiV2ErrorLinkDownloadDisabledError";
+  case DBRIVIERAKeyframesExtractionApiV2ErrorSharedLinkPasswordProtected:
+    return @"DBRIVIERAKeyframesExtractionApiV2ErrorSharedLinkPasswordProtected";
+  case DBRIVIERAKeyframesExtractionApiV2ErrorLimitExceededError:
+    return @"DBRIVIERAKeyframesExtractionApiV2ErrorLimitExceededError";
+  case DBRIVIERAKeyframesExtractionApiV2ErrorConversionFailureError:
+    return @"DBRIVIERAKeyframesExtractionApiV2ErrorConversionFailureError";
+  case DBRIVIERAKeyframesExtractionApiV2ErrorNotFoundError:
+    return @"DBRIVIERAKeyframesExtractionApiV2ErrorNotFoundError";
+  case DBRIVIERAKeyframesExtractionApiV2ErrorIsAFolderError:
+    return @"DBRIVIERAKeyframesExtractionApiV2ErrorIsAFolderError";
+  case DBRIVIERAKeyframesExtractionApiV2ErrorOther:
+    return @"DBRIVIERAKeyframesExtractionApiV2ErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAKeyframesExtractionApiV2ErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAKeyframesExtractionApiV2ErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAKeyframesExtractionApiV2ErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBRIVIERAKeyframesExtractionApiV2ErrorServerError:
+    result = prime * result + [self.serverError hash];
+    break;
+  case DBRIVIERAKeyframesExtractionApiV2ErrorUserError:
+    result = prime * result + [self.userError hash];
+    break;
+  case DBRIVIERAKeyframesExtractionApiV2ErrorUnsupportedFormatError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAKeyframesExtractionApiV2ErrorLinkDownloadDisabledError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAKeyframesExtractionApiV2ErrorSharedLinkPasswordProtected:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAKeyframesExtractionApiV2ErrorLimitExceededError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAKeyframesExtractionApiV2ErrorConversionFailureError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAKeyframesExtractionApiV2ErrorNotFoundError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAKeyframesExtractionApiV2ErrorIsAFolderError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAKeyframesExtractionApiV2ErrorOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToKeyframesExtractionApiV2Error:other];
+}
+
+- (BOOL)isEqualToKeyframesExtractionApiV2Error:
+    (DBRIVIERAKeyframesExtractionApiV2Error *)aKeyframesExtractionApiV2Error {
+  if (self == aKeyframesExtractionApiV2Error) {
+    return YES;
+  }
+  if (self.tag != aKeyframesExtractionApiV2Error.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBRIVIERAKeyframesExtractionApiV2ErrorServerError:
+    return [self.serverError isEqual:aKeyframesExtractionApiV2Error.serverError];
+  case DBRIVIERAKeyframesExtractionApiV2ErrorUserError:
+    return [self.userError isEqual:aKeyframesExtractionApiV2Error.userError];
+  case DBRIVIERAKeyframesExtractionApiV2ErrorUnsupportedFormatError:
+    return [[self tagName] isEqual:[aKeyframesExtractionApiV2Error tagName]];
+  case DBRIVIERAKeyframesExtractionApiV2ErrorLinkDownloadDisabledError:
+    return [[self tagName] isEqual:[aKeyframesExtractionApiV2Error tagName]];
+  case DBRIVIERAKeyframesExtractionApiV2ErrorSharedLinkPasswordProtected:
+    return [[self tagName] isEqual:[aKeyframesExtractionApiV2Error tagName]];
+  case DBRIVIERAKeyframesExtractionApiV2ErrorLimitExceededError:
+    return [[self tagName] isEqual:[aKeyframesExtractionApiV2Error tagName]];
+  case DBRIVIERAKeyframesExtractionApiV2ErrorConversionFailureError:
+    return [[self tagName] isEqual:[aKeyframesExtractionApiV2Error tagName]];
+  case DBRIVIERAKeyframesExtractionApiV2ErrorNotFoundError:
+    return [[self tagName] isEqual:[aKeyframesExtractionApiV2Error tagName]];
+  case DBRIVIERAKeyframesExtractionApiV2ErrorIsAFolderError:
+    return [[self tagName] isEqual:[aKeyframesExtractionApiV2Error tagName]];
+  case DBRIVIERAKeyframesExtractionApiV2ErrorOther:
+    return [[self tagName] isEqual:[aKeyframesExtractionApiV2Error tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAKeyframesExtractionApiV2ErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAKeyframesExtractionApiV2Error *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isServerError]) {
+    jsonDict[@"server_error"] = valueObj.serverError;
+    jsonDict[@".tag"] = @"server_error";
+  } else if ([valueObj isUserError]) {
+    jsonDict[@"user_error"] = valueObj.userError;
+    jsonDict[@".tag"] = @"user_error";
+  } else if ([valueObj isUnsupportedFormatError]) {
+    jsonDict[@".tag"] = @"unsupported_format_error";
+  } else if ([valueObj isLinkDownloadDisabledError]) {
+    jsonDict[@".tag"] = @"link_download_disabled_error";
+  } else if ([valueObj isSharedLinkPasswordProtected]) {
+    jsonDict[@".tag"] = @"shared_link_password_protected";
+  } else if ([valueObj isLimitExceededError]) {
+    jsonDict[@".tag"] = @"limit_exceeded_error";
+  } else if ([valueObj isConversionFailureError]) {
+    jsonDict[@".tag"] = @"conversion_failure_error";
+  } else if ([valueObj isNotFoundError]) {
+    jsonDict[@".tag"] = @"not_found_error";
+  } else if ([valueObj isIsAFolderError]) {
+    jsonDict[@".tag"] = @"is_a_folder_error";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBRIVIERAKeyframesExtractionApiV2Error *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"server_error"]) {
+    NSString *serverError = valueDict[@"server_error"];
+    return [[DBRIVIERAKeyframesExtractionApiV2Error alloc] initWithServerError:serverError];
+  } else if ([tag isEqualToString:@"user_error"]) {
+    NSString *userError = valueDict[@"user_error"];
+    return [[DBRIVIERAKeyframesExtractionApiV2Error alloc] initWithUserError:userError];
+  } else if ([tag isEqualToString:@"unsupported_format_error"]) {
+    return [[DBRIVIERAKeyframesExtractionApiV2Error alloc] initWithUnsupportedFormatError];
+  } else if ([tag isEqualToString:@"link_download_disabled_error"]) {
+    return [[DBRIVIERAKeyframesExtractionApiV2Error alloc] initWithLinkDownloadDisabledError];
+  } else if ([tag isEqualToString:@"shared_link_password_protected"]) {
+    return [[DBRIVIERAKeyframesExtractionApiV2Error alloc] initWithSharedLinkPasswordProtected];
+  } else if ([tag isEqualToString:@"limit_exceeded_error"]) {
+    return [[DBRIVIERAKeyframesExtractionApiV2Error alloc] initWithLimitExceededError];
+  } else if ([tag isEqualToString:@"conversion_failure_error"]) {
+    return [[DBRIVIERAKeyframesExtractionApiV2Error alloc] initWithConversionFailureError];
+  } else if ([tag isEqualToString:@"not_found_error"]) {
+    return [[DBRIVIERAKeyframesExtractionApiV2Error alloc] initWithNotFoundError];
+  } else if ([tag isEqualToString:@"is_a_folder_error"]) {
+    return [[DBRIVIERAKeyframesExtractionApiV2Error alloc] initWithIsAFolderError];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBRIVIERAKeyframesExtractionApiV2Error alloc] initWithOther];
+  } else {
+    return [[DBRIVIERAKeyframesExtractionApiV2Error alloc] initWithOther];
+  }
 }
 
 @end

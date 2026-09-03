@@ -28,8 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBAUTHInvalidAccountTypeErrorTag` enum type represents the possible tag
 /// states with which the `DBAUTHInvalidAccountTypeError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBAUTHInvalidAccountTypeErrorTag) {
-  /// Current account type doesn't have permission to access this route
-  /// endpoint.
+  /// Current account type doesn't have permission to access this endpoint.
   DBAUTHInvalidAccountTypeErrorEndpoint,
 
   /// Current account type doesn't have permission to access this feature.
@@ -49,7 +48,7 @@ typedef NS_CLOSED_ENUM(NSInteger, DBAUTHInvalidAccountTypeErrorTag) {
 /// Initializes union class with tag state of "endpoint".
 ///
 /// Description of the "endpoint" tag state: Current account type doesn't have
-/// permission to access this route endpoint.
+/// permission to access this endpoint.
 ///
 /// @return An initialized instance.
 ///

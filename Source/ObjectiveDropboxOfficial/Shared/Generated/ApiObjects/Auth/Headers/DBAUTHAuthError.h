@@ -31,7 +31,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBAUTHAuthErrorTag` enum type represents the possible tag states with
 /// which the `DBAUTHAuthError` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBAUTHAuthErrorTag) {
-  /// The access token is invalid.
+  /// The access token is invalid. This can happen if the access token has
+  /// been revoked by Dropbox or the user. To fix this, you should
+  /// re-authenticate the user. Note: Access tokens that are not returned
+  /// exactly as provisioned will return this error. Be sure not to truncate
+  /// or otherwise malform access tokens provided by Dropbox.
   DBAUTHAuthErrorInvalidAccessToken,
 
   /// The user specified in 'Dropbox-API-Select-User' is no longer on the
@@ -73,7 +77,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBAUTHAuthErrorTag) {
 /// Initializes union class with tag state of "invalid_access_token".
 ///
 /// Description of the "invalid_access_token" tag state: The access token is
-/// invalid.
+/// invalid. This can happen if the access token has been revoked by Dropbox or
+/// the user. To fix this, you should re-authenticate the user. Note: Access
+/// tokens that are not returned exactly as provisioned will return this error.
+/// Be sure not to truncate or otherwise malform access tokens provided by
+/// Dropbox.
 ///
 /// @return An initialized instance.
 ///
