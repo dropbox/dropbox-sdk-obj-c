@@ -29,10 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// Append information for each file in the batch.
 @property (nonatomic, readonly) NSArray<DBFILESUploadSessionAppendBatchArgEntry *> *entries;
 
-/// A hash of the entire request body which is all the concatenated pieces of
-/// file content that were uploaded in this call. If provided and the uploaded
-/// content does not match this hash, an error will be returned. For more
-/// information see our Content hash
+/// A single hash of all the concatenated file contents uploaded in this call.
+/// If provided and the uploaded content does not match this hash, an error will
+/// be returned. Optional, but recommended to avoid committing data corrupted in
+/// transit. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 @property (nonatomic, readonly, copy, nullable) NSString *contentHash;
 
@@ -42,11 +42,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param entries Append information for each file in the batch.
-/// @param contentHash A hash of the entire request body which is all the
-/// concatenated pieces of file content that were uploaded in this call. If
-/// provided and the uploaded content does not match this hash, an error will be
-/// returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// @param contentHash A single hash of all the concatenated file contents
+/// uploaded in this call. If provided and the uploaded content does not match
+/// this hash, an error will be returned. Optional, but recommended to avoid
+/// committing data corrupted in transit. For more information see our Content
+/// hash https://www.dropbox.com/developers/reference/content-hash page.
 ///
 /// @return An initialized instance.
 ///
