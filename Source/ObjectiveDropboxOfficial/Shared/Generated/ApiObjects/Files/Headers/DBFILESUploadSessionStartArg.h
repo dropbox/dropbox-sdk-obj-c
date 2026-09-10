@@ -35,7 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, nullable) DBFILESUploadSessionType *sessionType;
 
 /// A hash of the file content uploaded in this call. If provided and the
-/// uploaded content does not match this hash, an error will be returned. For
+/// uploaded content does not match this hash, an error will be returned.
+/// Optional, but recommended to avoid committing data corrupted in transit. For
 /// more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 @property (nonatomic, readonly, copy, nullable) NSString *contentHash;
@@ -52,7 +53,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// specified, default is `sequential` in `DBFILESUploadSessionType`.
 /// @param contentHash A hash of the file content uploaded in this call. If
 /// provided and the uploaded content does not match this hash, an error will be
-/// returned. For more information see our Content hash
+/// returned. Optional, but recommended to avoid committing data corrupted in
+/// transit. For more information see our Content hash
 /// https://www.dropbox.com/developers/reference/content-hash page.
 ///
 /// @return An initialized instance.

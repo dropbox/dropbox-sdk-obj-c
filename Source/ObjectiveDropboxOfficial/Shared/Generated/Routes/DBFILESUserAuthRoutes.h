@@ -219,8 +219,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// upload session with `uploadSessionStart`.
 ///
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -257,8 +257,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// upload session with `uploadSessionStart`.
 ///
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -295,8 +295,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// upload session with `uploadSessionStart`.
 ///
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -2490,8 +2490,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -2529,8 +2529,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -2568,8 +2568,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// information, see the Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -2675,8 +2675,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param close If true, the current session will be closed, at which point you won't be able to call
 /// `uploadSessionAppend` anymore with the current session.
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
@@ -2716,8 +2716,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param close If true, the current session will be closed, at which point you won't be able to call
 /// `uploadSessionAppend` anymore with the current session.
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
@@ -2757,8 +2757,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param close If true, the current session will be closed, at which point you won't be able to call
 /// `uploadSessionAppend` anymore with the current session.
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
@@ -2799,9 +2799,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
 /// @param entries Append information for each file in the batch.
-/// @param contentHash A hash of the entire request body which is all the concatenated pieces of file content that were
-/// uploaded in this call. If provided and the uploaded content does not match this hash, an error will be returned. For
-/// more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
+/// @param contentHash A single hash of all the concatenated file contents uploaded in this call. If provided and the
+/// uploaded content does not match this hash, an error will be returned. Optional, but recommended to avoid committing
+/// data corrupted in transit. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESUploadSessionAppendBatchResult` object on
@@ -2841,9 +2842,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
 /// @param entries Append information for each file in the batch.
-/// @param contentHash A hash of the entire request body which is all the concatenated pieces of file content that were
-/// uploaded in this call. If provided and the uploaded content does not match this hash, an error will be returned. For
-/// more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
+/// @param contentHash A single hash of all the concatenated file contents uploaded in this call. If provided and the
+/// uploaded content does not match this hash, an error will be returned. Optional, but recommended to avoid committing
+/// data corrupted in transit. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESUploadSessionAppendBatchResult` object on
@@ -2883,9 +2885,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// limit page https://www.dropbox.com/developers/reference/data-transport-limit.
 ///
 /// @param entries Append information for each file in the batch.
-/// @param contentHash A hash of the entire request body which is all the concatenated pieces of file content that were
-/// uploaded in this call. If provided and the uploaded content does not match this hash, an error will be returned. For
-/// more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
+/// @param contentHash A single hash of all the concatenated file contents uploaded in this call. If provided and the
+/// uploaded content does not match this hash, an error will be returned. Optional, but recommended to avoid committing
+/// data corrupted in transit. For more information see our Content hash
+/// https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESUploadSessionAppendBatchResult` object on
@@ -2925,8 +2928,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param cursor Contains the upload session ID and the offset.
 /// @param commit Contains the path and other optional modifiers for the commit.
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -2967,8 +2970,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param cursor Contains the upload session ID and the offset.
 /// @param commit Contains the path and other optional modifiers for the commit.
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -3009,8 +3012,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param cursor Contains the upload session ID and the offset.
 /// @param commit Contains the path and other optional modifiers for the commit.
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESFileMetadata` object on success or a
@@ -3136,8 +3139,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param sessionType Type of upload session you want to start. If not specified, default is `sequential` in
 /// `DBFILESUploadSessionType`.
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputUrl The file to upload, as an NSString * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESUploadSessionStartResult` object on success
@@ -3208,8 +3211,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param sessionType Type of upload session you want to start. If not specified, default is `sequential` in
 /// `DBFILESUploadSessionType`.
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputData The file to upload, as an NSData * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESUploadSessionStartResult` object on success
@@ -3280,8 +3283,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param sessionType Type of upload session you want to start. If not specified, default is `sequential` in
 /// `DBFILESUploadSessionType`.
 /// @param contentHash A hash of the file content uploaded in this call. If provided and the uploaded content does not
-/// match this hash, an error will be returned. For more information see our Content hash
-/// https://www.dropbox.com/developers/reference/content-hash page.
+/// match this hash, an error will be returned. Optional, but recommended to avoid committing data corrupted in transit.
+/// For more information see our Content hash https://www.dropbox.com/developers/reference/content-hash page.
 /// @param inputStream The file to upload, as an NSInputStream * object.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESUploadSessionStartResult` object on success
