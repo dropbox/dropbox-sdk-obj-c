@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `ApiStructuredTranscript` struct.
 ///
-/// Structured transcript for APIv2
+/// A transcript, split into segments.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -28,10 +28,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// (no description).
+/// The segments of the transcript, in playback order.
 @property (nonatomic, readonly, nullable) NSArray<DBRIVIERAApiTranscriptSegment *> *segments;
 
-/// (no description).
+/// The language of the transcript, as an ISO 639-1 code (e.g. "en"). This is
+/// the language detected in the audio, or the one supplied in `audioLanguage`
+/// in `DBRIVIERAGetTranscriptArgs`.
 @property (nonatomic, readonly, copy) NSString *transcriptLocale;
 
 #pragma mark - Constructors
@@ -39,8 +41,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param segments (no description).
-/// @param transcriptLocale (no description).
+/// @param segments The segments of the transcript, in playback order.
+/// @param transcriptLocale The language of the transcript, as an ISO 639-1 code
+/// (e.g. "en"). This is the language detected in the audio, or the one supplied
+/// in `audioLanguage` in `DBRIVIERAGetTranscriptArgs`.
 ///
 /// @return An initialized instance.
 ///

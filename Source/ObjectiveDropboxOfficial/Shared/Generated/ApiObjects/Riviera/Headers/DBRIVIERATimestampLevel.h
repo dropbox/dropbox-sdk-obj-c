@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `TimestampLevel` union.
 ///
+/// Granularity of the time offsets returned for each transcript segment.
+///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
@@ -28,10 +30,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBRIVIERATimestampLevelTag` enum type represents the possible tag
 /// states with which the `DBRIVIERATimestampLevel` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERATimestampLevelTag) {
-  /// (no description).
+  /// One segment per spoken sentence (recommended). This is the default when
+  /// `timestampLevel` in `DBRIVIERAGetTranscriptArgs` is omitted.
   DBRIVIERATimestampLevelSentence,
 
-  /// (no description).
+  /// One segment per word, useful for fine-grained alignment such as
+  /// captioning or highlight-as-you-listen experiences.
   DBRIVIERATimestampLevelWord,
 
   /// (no description).
@@ -47,12 +51,20 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERATimestampLevelTag) {
 ///
 /// Initializes union class with tag state of "sentence".
 ///
+/// Description of the "sentence" tag state: One segment per spoken sentence
+/// (recommended). This is the default when `timestampLevel` in
+/// `DBRIVIERAGetTranscriptArgs` is omitted.
+///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSentence;
 
 ///
 /// Initializes union class with tag state of "word".
+///
+/// Description of the "word" tag state: One segment per word, useful for
+/// fine-grained alignment such as captioning or highlight-as-you-listen
+/// experiences.
 ///
 /// @return An initialized instance.
 ///

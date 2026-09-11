@@ -44,19 +44,23 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAOcrExtractionApiV2ErrorTag) {
   /// same request will not help.
   DBRIVIERAOcrExtractionApiV2ErrorUserError,
 
-  /// (no description).
+  /// The source file is not in a format this route supports.
   DBRIVIERAOcrExtractionApiV2ErrorUnsupportedFormatError,
 
-  /// (no description).
+  /// `url` in `DBRIVIERAFileIdOrUrl` referenced a Dropbox shared link whose
+  /// owner has disabled downloads.
   DBRIVIERAOcrExtractionApiV2ErrorLinkDownloadDisabledError,
 
-  /// (no description).
+  /// `url` in `DBRIVIERAFileIdOrUrl` referenced a password-protected Dropbox
+  /// shared link. Riviera cannot supply the password, so such links cannot be
+  /// processed.
   DBRIVIERAOcrExtractionApiV2ErrorSharedLinkPasswordProtected,
 
-  /// (no description).
+  /// A resource limit was exceeded while producing the result.
   DBRIVIERAOcrExtractionApiV2ErrorLimitExceededError,
 
-  /// (no description).
+  /// The source file was readable but could not be processed, for example
+  /// because it is corrupt.
   DBRIVIERAOcrExtractionApiV2ErrorConversionFailureError,
 
   /// The referenced file does not exist or is not accessible.
@@ -119,12 +123,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAOcrExtractionApiV2ErrorTag) {
 ///
 /// Initializes union class with tag state of "unsupported_format_error".
 ///
+/// Description of the "unsupported_format_error" tag state: The source file is
+/// not in a format this route supports.
+///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithUnsupportedFormatError;
 
 ///
 /// Initializes union class with tag state of "link_download_disabled_error".
+///
+/// Description of the "link_download_disabled_error" tag state: `url` in
+/// `DBRIVIERAFileIdOrUrl` referenced a Dropbox shared link whose owner has
+/// disabled downloads.
 ///
 /// @return An initialized instance.
 ///
@@ -133,6 +144,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAOcrExtractionApiV2ErrorTag) {
 ///
 /// Initializes union class with tag state of "shared_link_password_protected".
 ///
+/// Description of the "shared_link_password_protected" tag state: `url` in
+/// `DBRIVIERAFileIdOrUrl` referenced a password-protected Dropbox shared link.
+/// Riviera cannot supply the password, so such links cannot be processed.
+///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSharedLinkPasswordProtected;
@@ -140,12 +155,18 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAOcrExtractionApiV2ErrorTag) {
 ///
 /// Initializes union class with tag state of "limit_exceeded_error".
 ///
+/// Description of the "limit_exceeded_error" tag state: A resource limit was
+/// exceeded while producing the result.
+///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithLimitExceededError;
 
 ///
 /// Initializes union class with tag state of "conversion_failure_error".
+///
+/// Description of the "conversion_failure_error" tag state: The source file was
+/// readable but could not be processed, for example because it is corrupt.
 ///
 /// @return An initialized instance.
 ///

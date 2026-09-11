@@ -18,11 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `ContentApiV2Error` union.
 ///
-/// Reason a transcript job failed. Returned in the `failed` variant of
-/// `GetTranscriptAsyncCheckResult`. This is a semantic error union: the HTTP
-/// status of the poll request itself is unaffected (a poll that surfaces a
-/// failed job is still a normal successful poll response). Callers should
-/// branch on the variant.
+/// Reason a transcript job failed. Returned in the `failed` in
+/// `DBRIVIERAGetTranscriptAsyncCheckResult` variant. This is a semantic error
+/// union: the HTTP status of the poll request itself is unaffected (a poll that
+/// surfaces a failed job is still a normal successful poll response). Callers
+/// should branch on the variant.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -44,19 +44,23 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAContentApiV2ErrorTag) {
   /// same request will not help.
   DBRIVIERAContentApiV2ErrorUserError,
 
-  /// (no description).
+  /// The audio to transcribe is longer than the supported maximum.
   DBRIVIERAContentApiV2ErrorMediaDurationError,
 
-  /// (no description).
+  /// The file has no audio track, or no audio content could be detected in
+  /// it.
   DBRIVIERAContentApiV2ErrorNoAudioError,
 
-  /// (no description).
+  /// `url` in `DBRIVIERAFileIdOrUrl` referenced a Dropbox shared link whose
+  /// owner has disabled downloads.
   DBRIVIERAContentApiV2ErrorLinkDownloadDisabledError,
 
-  /// (no description).
+  /// `url` in `DBRIVIERAFileIdOrUrl` referenced a password-protected Dropbox
+  /// shared link. Riviera cannot supply the password, so such links cannot be
+  /// transcribed.
   DBRIVIERAContentApiV2ErrorSharedLinkPasswordProtected,
 
-  /// (no description).
+  /// A resource limit was exceeded while producing the result.
   DBRIVIERAContentApiV2ErrorLimitExceededError,
 
   /// The referenced file does not exist or is not accessible.
@@ -85,8 +89,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAContentApiV2ErrorTag) {
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly, copy) NSString *userError;
 
-/// (no description). @note Ensure the `isMediaDurationError` method returns
-/// true before accessing, otherwise a runtime exception will be raised.
+/// The audio to transcribe is longer than the supported maximum. @note Ensure
+/// the `isMediaDurationError` method returns true before accessing, otherwise a
+/// runtime exception will be raised.
 @property (nonatomic, readonly) DBRIVIERAMediaDurationError *mediaDurationError;
 
 #pragma mark - Constructors
@@ -123,7 +128,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAContentApiV2ErrorTag) {
 ///
 /// Initializes union class with tag state of "media_duration_error".
 ///
-/// @param mediaDurationError (no description).
+/// Description of the "media_duration_error" tag state: The audio to transcribe
+/// is longer than the supported maximum.
+///
+/// @param mediaDurationError The audio to transcribe is longer than the
+/// supported maximum.
 ///
 /// @return An initialized instance.
 ///
@@ -132,12 +141,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAContentApiV2ErrorTag) {
 ///
 /// Initializes union class with tag state of "no_audio_error".
 ///
+/// Description of the "no_audio_error" tag state: The file has no audio track,
+/// or no audio content could be detected in it.
+///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithNoAudioError;
 
 ///
 /// Initializes union class with tag state of "link_download_disabled_error".
+///
+/// Description of the "link_download_disabled_error" tag state: `url` in
+/// `DBRIVIERAFileIdOrUrl` referenced a Dropbox shared link whose owner has
+/// disabled downloads.
 ///
 /// @return An initialized instance.
 ///
@@ -146,12 +162,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAContentApiV2ErrorTag) {
 ///
 /// Initializes union class with tag state of "shared_link_password_protected".
 ///
+/// Description of the "shared_link_password_protected" tag state: `url` in
+/// `DBRIVIERAFileIdOrUrl` referenced a password-protected Dropbox shared link.
+/// Riviera cannot supply the password, so such links cannot be transcribed.
+///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSharedLinkPasswordProtected;
 
 ///
 /// Initializes union class with tag state of "limit_exceeded_error".
+///
+/// Description of the "limit_exceeded_error" tag state: A resource limit was
+/// exceeded while producing the result.
 ///
 /// @return An initialized instance.
 ///

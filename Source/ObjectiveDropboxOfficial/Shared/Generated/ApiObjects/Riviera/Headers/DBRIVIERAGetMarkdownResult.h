@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// The converted markdown content
+/// The markdown the source document was converted to.
 @property (nonatomic, readonly, copy) NSString *markdown;
 
 #pragma mark - Constructors
@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param markdown The converted markdown content
+/// @param markdown The markdown the source document was converted to.
 ///
 /// @return An initialized instance.
 ///

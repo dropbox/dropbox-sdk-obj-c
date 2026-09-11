@@ -17,11 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MarkdownConversionApiV2Error` union.
 ///
-/// Reason a markdown conversion job failed. Returned in the `failed` variant of
-/// `GetMarkdownAsyncCheckResult`. This is a semantic error union: the HTTP
-/// status of the poll request itself is unaffected (a poll that surfaces a
-/// failed job is still a normal successful poll response). Callers should
-/// branch on the variant.
+/// Reason a markdown conversion job failed. Returned in the `failed` in
+/// `DBRIVIERAGetMarkdownAsyncCheckResult` variant. This is a semantic error
+/// union: the HTTP status of the poll request itself is unaffected (a poll that
+/// surfaces a failed job is still a normal successful poll response). Callers
+/// should branch on the variant.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -40,23 +40,28 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMarkdownConversionApiV2ErrorTag) {
   DBRIVIERAMarkdownConversionApiV2ErrorServerError,
 
   /// The request could not be processed as supplied (a problem with the
-  /// caller's input). The string is a human-readable message; retrying the
+  /// caller's input) -- for example an unsupported file format or a file over
+  /// the size limit. The string is a human-readable message; retrying the
   /// same request will not help.
   DBRIVIERAMarkdownConversionApiV2ErrorUserError,
 
-  /// (no description).
+  /// The source file is not in a format this route can convert.
   DBRIVIERAMarkdownConversionApiV2ErrorUnsupportedFormatError,
 
-  /// (no description).
+  /// `url` in `DBRIVIERAFileIdOrUrl` referenced a Dropbox shared link whose
+  /// owner has disabled downloads.
   DBRIVIERAMarkdownConversionApiV2ErrorLinkDownloadDisabledError,
 
-  /// (no description).
+  /// `url` in `DBRIVIERAFileIdOrUrl` referenced a password-protected Dropbox
+  /// shared link. Riviera cannot supply the password, so such links cannot be
+  /// converted.
   DBRIVIERAMarkdownConversionApiV2ErrorSharedLinkPasswordProtected,
 
-  /// (no description).
+  /// A resource limit was exceeded while producing the result.
   DBRIVIERAMarkdownConversionApiV2ErrorLimitExceededError,
 
-  /// (no description).
+  /// The source file was readable but could not be converted, for example
+  /// because it is corrupt.
   DBRIVIERAMarkdownConversionApiV2ErrorConversionFailureError,
 
   /// The referenced file does not exist or is not accessible.
@@ -80,7 +85,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMarkdownConversionApiV2ErrorTag) {
 @property (nonatomic, readonly, copy) NSString *serverError;
 
 /// The request could not be processed as supplied (a problem with the caller's
-/// input). The string is a human-readable message; retrying the same request
+/// input) -- for example an unsupported file format or a file over the size
+/// limit. The string is a human-readable message; retrying the same request
 /// will not help. @note Ensure the `isUserError` method returns true before
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly, copy) NSString *userError;
@@ -105,12 +111,14 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMarkdownConversionApiV2ErrorTag) {
 /// Initializes union class with tag state of "user_error".
 ///
 /// Description of the "user_error" tag state: The request could not be
-/// processed as supplied (a problem with the caller's input). The string is a
+/// processed as supplied (a problem with the caller's input) -- for example an
+/// unsupported file format or a file over the size limit. The string is a
 /// human-readable message; retrying the same request will not help.
 ///
 /// @param userError The request could not be processed as supplied (a problem
-/// with the caller's input). The string is a human-readable message; retrying
-/// the same request will not help.
+/// with the caller's input) -- for example an unsupported file format or a file
+/// over the size limit. The string is a human-readable message; retrying the
+/// same request will not help.
 ///
 /// @return An initialized instance.
 ///
@@ -119,12 +127,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMarkdownConversionApiV2ErrorTag) {
 ///
 /// Initializes union class with tag state of "unsupported_format_error".
 ///
+/// Description of the "unsupported_format_error" tag state: The source file is
+/// not in a format this route can convert.
+///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithUnsupportedFormatError;
 
 ///
 /// Initializes union class with tag state of "link_download_disabled_error".
+///
+/// Description of the "link_download_disabled_error" tag state: `url` in
+/// `DBRIVIERAFileIdOrUrl` referenced a Dropbox shared link whose owner has
+/// disabled downloads.
 ///
 /// @return An initialized instance.
 ///
@@ -133,6 +148,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMarkdownConversionApiV2ErrorTag) {
 ///
 /// Initializes union class with tag state of "shared_link_password_protected".
 ///
+/// Description of the "shared_link_password_protected" tag state: `url` in
+/// `DBRIVIERAFileIdOrUrl` referenced a password-protected Dropbox shared link.
+/// Riviera cannot supply the password, so such links cannot be converted.
+///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSharedLinkPasswordProtected;
@@ -140,12 +159,18 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMarkdownConversionApiV2ErrorTag) {
 ///
 /// Initializes union class with tag state of "limit_exceeded_error".
 ///
+/// Description of the "limit_exceeded_error" tag state: A resource limit was
+/// exceeded while producing the result.
+///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithLimitExceededError;
 
 ///
 /// Initializes union class with tag state of "conversion_failure_error".
+///
+/// Description of the "conversion_failure_error" tag state: The source file was
+/// readable but could not be converted, for example because it is corrupt.
 ///
 /// @return An initialized instance.
 ///

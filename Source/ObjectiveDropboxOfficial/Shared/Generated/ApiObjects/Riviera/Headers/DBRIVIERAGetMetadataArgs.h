@@ -18,9 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `GetMetadataArgs` struct.
 ///
-/// Arguments for the asynchronous `get_metadata_async` route. Exactly one of
-/// `file_id`, `path`, or `url` must be supplied via `file_id_or_url` to
-/// identify the file whose metadata should be extracted.
+/// Arguments for the asynchronous `getMetadataAsync` route. Exactly one of
+/// `fileId` in `DBRIVIERAFileIdOrUrl`, `path` in `DBRIVIERAFileIdOrUrl`, or
+/// `url` in `DBRIVIERAFileIdOrUrl` must be supplied via `fileIdOrUrl` in
+/// `DBSHARINGGetMetadataArgs` to identify the file whose metadata should be
+/// extracted.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -31,12 +33,12 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// Identifier of the file to extract metadata from. Callers must set exactly
-/// one of the `FileIdOrUrl` variants. The kind of metadata returned is
-/// determined by the file type: image files return EXIF metadata, audio/video
-/// files return media metadata, PDFs return PDF metadata, and MS Office
-/// documents (docx, pptx, xlsx) return Office metadata. See the route
-/// description for the supported formats. Requests against unsupported formats
-/// return `unsupported_format_error`.
+/// one of the FileIdOrUrl variants. The kind of metadata returned is determined
+/// by the file type: image files return EXIF metadata, audio/video files return
+/// media metadata, PDFs return PDF metadata, and MS Office documents (docx,
+/// pptx, xlsx) return Office metadata. See the route description for the
+/// supported formats. Requests against unsupported formats fail with
+/// `userError` in `DBRIVIERAMetadataExtractionApiV2Error`.
 @property (nonatomic, readonly, nullable) DBRIVIERAFileIdOrUrl *fileIdOrUrl;
 
 #pragma mark - Constructors
@@ -45,12 +47,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param fileIdOrUrl Identifier of the file to extract metadata from. Callers
-/// must set exactly one of the `FileIdOrUrl` variants. The kind of metadata
+/// must set exactly one of the FileIdOrUrl variants. The kind of metadata
 /// returned is determined by the file type: image files return EXIF metadata,
 /// audio/video files return media metadata, PDFs return PDF metadata, and MS
 /// Office documents (docx, pptx, xlsx) return Office metadata. See the route
 /// description for the supported formats. Requests against unsupported formats
-/// return `unsupported_format_error`.
+/// fail with `userError` in `DBRIVIERAMetadataExtractionApiV2Error`.
 ///
 /// @return An initialized instance.
 ///
