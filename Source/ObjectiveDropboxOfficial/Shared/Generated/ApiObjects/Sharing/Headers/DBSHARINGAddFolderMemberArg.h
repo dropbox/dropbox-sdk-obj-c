@@ -40,10 +40,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// Optional message to display to added members in their invitation.
 @property (nonatomic, readonly, copy, nullable) NSString *customMessage;
 
-/// Field is only returned for "internal" callers. The FingerprintJS Sealed
-/// Client Result value
-@property (nonatomic, readonly, copy, nullable) NSString *fpSealedResult;
-
 #pragma mark - Constructors
 
 ///
@@ -56,16 +52,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// notifications of their invite.
 /// @param customMessage Optional message to display to added members in their
 /// invitation.
-/// @param fpSealedResult Field is only returned for "internal" callers. The
-/// FingerprintJS Sealed Client Result value
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId
                                members:(NSArray<DBSHARINGAddMember *> *)members
                                  quiet:(nullable NSNumber *)quiet
-                         customMessage:(nullable NSString *)customMessage
-                        fpSealedResult:(nullable NSString *)fpSealedResult;
+                         customMessage:(nullable NSString *)customMessage;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

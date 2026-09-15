@@ -26853,7 +26853,6 @@
 #import "DBFILESThumbnailArg.h"
 #import "DBFILESThumbnailFormat.h"
 #import "DBFILESThumbnailMode.h"
-#import "DBFILESThumbnailQuality.h"
 #import "DBFILESThumbnailSize.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
@@ -26868,7 +26867,6 @@
                       format:(DBFILESThumbnailFormat *)format
                         size:(DBFILESThumbnailSize *)size
                         mode:(DBFILESThumbnailMode *)mode
-                     quality:(DBFILESThumbnailQuality *)quality
             excludeMediaInfo:(NSNumber *)excludeMediaInfo {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:nil
@@ -26882,14 +26880,13 @@
     _format = format ?: [[DBFILESThumbnailFormat alloc] initWithJpeg];
     _size = size ?: [[DBFILESThumbnailSize alloc] initWithW64h64];
     _mode = mode ?: [[DBFILESThumbnailMode alloc] initWithStrict];
-    _quality = quality ?: [[DBFILESThumbnailQuality alloc] initWithQuality80];
     _excludeMediaInfo = excludeMediaInfo;
   }
   return self;
 }
 
 - (instancetype)initWithPath:(NSString *)path {
-  return [self initWithPath:path format:nil size:nil mode:nil quality:nil excludeMediaInfo:nil];
+  return [self initWithPath:path format:nil size:nil mode:nil excludeMediaInfo:nil];
 }
 
 #pragma mark - Serialization methods
@@ -26926,7 +26923,6 @@
   result = prime * result + [self.format hash];
   result = prime * result + [self.size hash];
   result = prime * result + [self.mode hash];
-  result = prime * result + [self.quality hash];
   if (self.excludeMediaInfo != nil) {
     result = prime * result + [self.excludeMediaInfo hash];
   }
@@ -26962,9 +26958,6 @@
   if (![self.mode isEqual:aThumbnailArg.mode]) {
     return NO;
   }
-  if (![self.quality isEqual:aThumbnailArg.quality]) {
-    return NO;
-  }
   if (self.excludeMediaInfo) {
     if (![self.excludeMediaInfo isEqual:aThumbnailArg.excludeMediaInfo]) {
       return NO;
@@ -26986,7 +26979,6 @@
   jsonDict[@"format"] = [DBFILESThumbnailFormatSerializer serialize:valueObj.format];
   jsonDict[@"size"] = [DBFILESThumbnailSizeSerializer serialize:valueObj.size];
   jsonDict[@"mode"] = [DBFILESThumbnailModeSerializer serialize:valueObj.mode];
-  jsonDict[@"quality"] = [DBFILESThumbnailQualitySerializer serialize:valueObj.quality];
   if (valueObj.excludeMediaInfo) {
     jsonDict[@"exclude_media_info"] = valueObj.excludeMediaInfo;
   }
@@ -27003,16 +26995,12 @@
                                                   : [[DBFILESThumbnailSize alloc] initWithW64h64];
   DBFILESThumbnailMode *mode = valueDict[@"mode"] ? [DBFILESThumbnailModeSerializer deserialize:valueDict[@"mode"]]
                                                   : [[DBFILESThumbnailMode alloc] initWithStrict];
-  DBFILESThumbnailQuality *quality = valueDict[@"quality"]
-                                         ? [DBFILESThumbnailQualitySerializer deserialize:valueDict[@"quality"]]
-                                         : [[DBFILESThumbnailQuality alloc] initWithQuality80];
   NSNumber *excludeMediaInfo = valueDict[@"exclude_media_info"] ?: nil;
 
   return [[DBFILESThumbnailArg alloc] initWithPath:path
                                             format:format
                                               size:size
                                               mode:mode
-                                           quality:quality
                                   excludeMediaInfo:excludeMediaInfo];
 }
 
@@ -27884,14 +27872,6 @@
   return self;
 }
 
-- (instancetype)initWithW3200h2400 {
-  self = [super init];
-  if (self) {
-    _tag = DBFILESThumbnailSizeW3200h2400;
-  }
-  return self;
-}
-
 #pragma mark - Instance field accessors
 
 #pragma mark - Tag state methods
@@ -27932,10 +27912,6 @@
   return _tag == DBFILESThumbnailSizeW2048h1536;
 }
 
-- (BOOL)isW3200h2400 {
-  return _tag == DBFILESThumbnailSizeW3200h2400;
-}
-
 - (NSString *)tagName {
   switch (_tag) {
   case DBFILESThumbnailSizeW32h32:
@@ -27956,8 +27932,6 @@
     return @"DBFILESThumbnailSizeW1024h768";
   case DBFILESThumbnailSizeW2048h1536:
     return @"DBFILESThumbnailSizeW2048h1536";
-  case DBFILESThumbnailSizeW3200h2400:
-    return @"DBFILESThumbnailSizeW3200h2400";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -28021,9 +27995,6 @@
   case DBFILESThumbnailSizeW2048h1536:
     result = prime * result + [[self tagName] hash];
     break;
-  case DBFILESThumbnailSizeW3200h2400:
-    result = prime * result + [[self tagName] hash];
-    break;
   }
 
   return prime * result;
@@ -28067,8 +28038,6 @@
     return [[self tagName] isEqual:[aThumbnailSize tagName]];
   case DBFILESThumbnailSizeW2048h1536:
     return [[self tagName] isEqual:[aThumbnailSize tagName]];
-  case DBFILESThumbnailSizeW3200h2400:
-    return [[self tagName] isEqual:[aThumbnailSize tagName]];
   }
   return YES;
 }
@@ -28100,8 +28069,6 @@
     jsonDict[@".tag"] = @"w1024h768";
   } else if ([valueObj isW2048h1536]) {
     jsonDict[@".tag"] = @"w2048h1536";
-  } else if ([valueObj isW3200h2400]) {
-    jsonDict[@".tag"] = @"w3200h2400";
   } else {
     @throw([NSException exceptionWithName:@"InvalidTag"
                                    reason:@"Object not properly initialized. Tag has an unknown value."
@@ -28132,8 +28099,6 @@
     return [[DBFILESThumbnailSize alloc] initWithW1024h768];
   } else if ([tag isEqualToString:@"w2048h1536"]) {
     return [[DBFILESThumbnailSize alloc] initWithW2048h1536];
-  } else if ([tag isEqualToString:@"w3200h2400"]) {
-    return [[DBFILESThumbnailSize alloc] initWithW3200h2400];
   } else {
     @throw([NSException
         exceptionWithName:@"InvalidTag"
@@ -28147,7 +28112,6 @@
 #import "DBFILESPathOrLink.h"
 #import "DBFILESThumbnailFormat.h"
 #import "DBFILESThumbnailMode.h"
-#import "DBFILESThumbnailQuality.h"
 #import "DBFILESThumbnailSize.h"
 #import "DBFILESThumbnailV2Arg.h"
 #import "DBStoneSerializers.h"
@@ -28163,7 +28127,6 @@
                           format:(DBFILESThumbnailFormat *)format
                             size:(DBFILESThumbnailSize *)size
                             mode:(DBFILESThumbnailMode *)mode
-                         quality:(DBFILESThumbnailQuality *)quality
                 excludeMediaInfo:(NSNumber *)excludeMediaInfo
             preserveTransparency:(NSNumber *)preserveTransparency {
   [DBStoneValidators nonnullValidator:nil](resource);
@@ -28174,7 +28137,6 @@
     _format = format ?: [[DBFILESThumbnailFormat alloc] initWithJpeg];
     _size = size ?: [[DBFILESThumbnailSize alloc] initWithW64h64];
     _mode = mode ?: [[DBFILESThumbnailMode alloc] initWithStrict];
-    _quality = quality ?: [[DBFILESThumbnailQuality alloc] initWithQuality80];
     _excludeMediaInfo = excludeMediaInfo;
     _preserveTransparency = preserveTransparency ?: @NO;
   }
@@ -28182,13 +28144,7 @@
 }
 
 - (instancetype)initWithResource:(DBFILESPathOrLink *)resource {
-  return [self initWithResource:resource
-                         format:nil
-                           size:nil
-                           mode:nil
-                        quality:nil
-               excludeMediaInfo:nil
-           preserveTransparency:nil];
+  return [self initWithResource:resource format:nil size:nil mode:nil excludeMediaInfo:nil preserveTransparency:nil];
 }
 
 #pragma mark - Serialization methods
@@ -28225,7 +28181,6 @@
   result = prime * result + [self.format hash];
   result = prime * result + [self.size hash];
   result = prime * result + [self.mode hash];
-  result = prime * result + [self.quality hash];
   if (self.excludeMediaInfo != nil) {
     result = prime * result + [self.excludeMediaInfo hash];
   }
@@ -28262,9 +28217,6 @@
   if (![self.mode isEqual:aThumbnailV2Arg.mode]) {
     return NO;
   }
-  if (![self.quality isEqual:aThumbnailV2Arg.quality]) {
-    return NO;
-  }
   if (self.excludeMediaInfo) {
     if (![self.excludeMediaInfo isEqual:aThumbnailV2Arg.excludeMediaInfo]) {
       return NO;
@@ -28289,7 +28241,6 @@
   jsonDict[@"format"] = [DBFILESThumbnailFormatSerializer serialize:valueObj.format];
   jsonDict[@"size"] = [DBFILESThumbnailSizeSerializer serialize:valueObj.size];
   jsonDict[@"mode"] = [DBFILESThumbnailModeSerializer serialize:valueObj.mode];
-  jsonDict[@"quality"] = [DBFILESThumbnailQualitySerializer serialize:valueObj.quality];
   if (valueObj.excludeMediaInfo) {
     jsonDict[@"exclude_media_info"] = valueObj.excludeMediaInfo;
   }
@@ -28307,9 +28258,6 @@
                                                   : [[DBFILESThumbnailSize alloc] initWithW64h64];
   DBFILESThumbnailMode *mode = valueDict[@"mode"] ? [DBFILESThumbnailModeSerializer deserialize:valueDict[@"mode"]]
                                                   : [[DBFILESThumbnailMode alloc] initWithStrict];
-  DBFILESThumbnailQuality *quality = valueDict[@"quality"]
-                                         ? [DBFILESThumbnailQualitySerializer deserialize:valueDict[@"quality"]]
-                                         : [[DBFILESThumbnailQuality alloc] initWithQuality80];
   NSNumber *excludeMediaInfo = valueDict[@"exclude_media_info"] ?: nil;
   NSNumber *preserveTransparency = valueDict[@"preserve_transparency"] ?: @NO;
 
@@ -28317,7 +28265,6 @@
                                                   format:format
                                                     size:size
                                                     mode:mode
-                                                 quality:quality
                                         excludeMediaInfo:excludeMediaInfo
                                     preserveTransparency:preserveTransparency];
 }
