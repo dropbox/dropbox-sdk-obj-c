@@ -429,7 +429,7 @@ Or if your app is iOS13+, or your app also supports Scenes, add the following co
 
 // custom handler
 - (void)handleAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
-  NSURL *url = [NSURL URLWithString:[[event paramDescriptorForKeyword:keyDirectObject] stringValue]];
+  NSURL *url = [NSURL URLWithString:[[replyEvent paramDescriptorForKeyword:keyDirectObject] stringValue]];
   DBOAuthCompletion oauthCompletion = ^(DBOAuthResult *authResult) {
     if (authResult != nil) {
       if ([authResult isSuccess]) {
