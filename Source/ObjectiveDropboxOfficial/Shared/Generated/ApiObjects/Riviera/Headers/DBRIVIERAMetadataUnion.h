@@ -21,7 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MetadataUnion` union.
 ///
-/// Exactly one variant is populated, corresponding to `metadata_type`.
+/// The extracted metadata. Exactly one variant is populated, corresponding to
+/// `metadataType` in `DBRIVIERAGetMetadataResult`.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -34,16 +35,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBRIVIERAMetadataUnionTag` enum type represents the possible tag states
 /// with which the `DBRIVIERAMetadataUnion` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataUnionTag) {
-  /// (no description).
+  /// EXIF metadata, for image files.
   DBRIVIERAMetadataUnionExif,
 
-  /// (no description).
+  /// Container and per-stream metadata, for audio and video files.
   DBRIVIERAMetadataUnionMedia,
 
-  /// (no description).
+  /// Document metadata, for PDFs.
   DBRIVIERAMetadataUnionPdf,
 
-  /// (no description).
+  /// Document metadata, for MS Office files.
   DBRIVIERAMetadataUnionOffice,
 
   /// (no description).
@@ -54,20 +55,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataUnionTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBRIVIERAMetadataUnionTag tag;
 
-/// (no description). @note Ensure the `isExif` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// EXIF metadata, for image files. @note Ensure the `isExif` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBRIVIERAApiExifMetadata *exif;
 
-/// (no description). @note Ensure the `isMedia` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// Container and per-stream metadata, for audio and video files. @note Ensure
+/// the `isMedia` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
 @property (nonatomic, readonly) DBRIVIERAApiMediaMetadata *media;
 
-/// (no description). @note Ensure the `isPdf` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// Document metadata, for PDFs. @note Ensure the `isPdf` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBRIVIERAApiPdfMetadata *pdf;
 
-/// (no description). @note Ensure the `isOffice` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// Document metadata, for MS Office files. @note Ensure the `isOffice` method
+/// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBRIVIERAApiOfficeMetadata *office;
 
 #pragma mark - Constructors
@@ -75,7 +77,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataUnionTag) {
 ///
 /// Initializes union class with tag state of "exif".
 ///
-/// @param exif (no description).
+/// Description of the "exif" tag state: EXIF metadata, for image files.
+///
+/// @param exif EXIF metadata, for image files.
 ///
 /// @return An initialized instance.
 ///
@@ -84,7 +88,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataUnionTag) {
 ///
 /// Initializes union class with tag state of "media".
 ///
-/// @param media (no description).
+/// Description of the "media" tag state: Container and per-stream metadata, for
+/// audio and video files.
+///
+/// @param media Container and per-stream metadata, for audio and video files.
 ///
 /// @return An initialized instance.
 ///
@@ -93,7 +100,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataUnionTag) {
 ///
 /// Initializes union class with tag state of "pdf".
 ///
-/// @param pdf (no description).
+/// Description of the "pdf" tag state: Document metadata, for PDFs.
+///
+/// @param pdf Document metadata, for PDFs.
 ///
 /// @return An initialized instance.
 ///
@@ -102,7 +111,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataUnionTag) {
 ///
 /// Initializes union class with tag state of "office".
 ///
-/// @param office (no description).
+/// Description of the "office" tag state: Document metadata, for MS Office
+/// files.
+///
+/// @param office Document metadata, for MS Office files.
 ///
 /// @return An initialized instance.
 ///

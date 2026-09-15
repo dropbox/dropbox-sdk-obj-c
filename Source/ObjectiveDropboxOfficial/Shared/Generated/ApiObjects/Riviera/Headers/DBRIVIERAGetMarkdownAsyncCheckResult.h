@@ -19,7 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `GetMarkdownAsyncCheckResult` union.
 ///
-/// Result type for EventBus async check
+/// Status of a markdown conversion job started by `getMarkdownAsync`, as
+/// returned by `getMarkdownAsyncCheck`.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -33,13 +34,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBRIVIERAGetMarkdownAsyncCheckResult`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetMarkdownAsyncCheckResultTag) {
-  /// (no description).
+  /// The job has not finished yet. Poll again.
   DBRIVIERAGetMarkdownAsyncCheckResultInProgress,
 
-  /// (no description).
+  /// The job finished successfully.
   DBRIVIERAGetMarkdownAsyncCheckResultComplete,
 
-  /// (no description).
+  /// The job finished unsuccessfully.
   DBRIVIERAGetMarkdownAsyncCheckResultFailed,
 
   /// (no description).
@@ -50,18 +51,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetMarkdownAsyncCheckResultTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBRIVIERAGetMarkdownAsyncCheckResultTag tag;
 
-/// (no description). @note Ensure the `isComplete` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// The job finished successfully. @note Ensure the `isComplete` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBRIVIERAGetMarkdownResult *complete;
 
-/// (no description). @note Ensure the `isFailed` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// The job finished unsuccessfully. @note Ensure the `isFailed` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBRIVIERAMarkdownConversionApiV2Error *failed;
 
 #pragma mark - Constructors
 
 ///
 /// Initializes union class with tag state of "in_progress".
+///
+/// Description of the "in_progress" tag state: The job has not finished yet.
+/// Poll again.
 ///
 /// @return An initialized instance.
 ///
@@ -70,7 +74,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetMarkdownAsyncCheckResultTag) {
 ///
 /// Initializes union class with tag state of "complete".
 ///
-/// @param complete (no description).
+/// Description of the "complete" tag state: The job finished successfully.
+///
+/// @param complete The job finished successfully.
 ///
 /// @return An initialized instance.
 ///
@@ -79,7 +85,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetMarkdownAsyncCheckResultTag) {
 ///
 /// Initializes union class with tag state of "failed".
 ///
-/// @param failed (no description).
+/// Description of the "failed" tag state: The job finished unsuccessfully.
+///
+/// @param failed The job finished unsuccessfully.
 ///
 /// @return An initialized instance.
 ///

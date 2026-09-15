@@ -18,8 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `ApiMediaMetadata` struct.
 ///
-/// Audio/video container and per-stream metadata. Mirrors the useful subset of
-/// the internal `riviera.MediaMetadata` message.
+/// Audio/video container and per-stream metadata. Fields are populated on a
+/// best-effort basis and may be empty when absent from the source file.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -29,16 +29,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// (no description).
+/// Overall bitrate of the container, in bits per second.
 @property (nonatomic, readonly) NSNumber *bitrateBps;
 
-/// (no description).
+/// Duration of the media, in seconds.
 @property (nonatomic, readonly) NSNumber *durationS;
 
 /// Container-level creation time, when present.
 @property (nonatomic, readonly, copy) NSString *creationTime;
 
-/// (no description).
+/// The audio and video streams the container holds, in container order.
 @property (nonatomic, readonly, nullable) NSArray<DBRIVIERAApiMediaStream *> *streams;
 
 #pragma mark - Constructors
@@ -46,10 +46,11 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param bitrateBps (no description).
-/// @param durationS (no description).
+/// @param bitrateBps Overall bitrate of the container, in bits per second.
+/// @param durationS Duration of the media, in seconds.
 /// @param creationTime Container-level creation time, when present.
-/// @param streams (no description).
+/// @param streams The audio and video streams the container holds, in container
+/// order.
 ///
 /// @return An initialized instance.
 ///

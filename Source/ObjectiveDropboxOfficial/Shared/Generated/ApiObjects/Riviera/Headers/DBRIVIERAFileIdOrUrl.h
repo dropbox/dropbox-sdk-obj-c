@@ -28,20 +28,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBRIVIERAFileIdOrUrlTag` enum type represents the possible tag states
 /// with which the `DBRIVIERAFileIdOrUrl` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAFileIdOrUrlTag) {
-  /// A Dropbox-issued file id (format: "id:<id>") for a file the
-  /// authenticated user has access to.
+  /// A Dropbox-issued file ID for a file the authenticated user has access
+  /// to, e.g. "id:a4ayc_80_OEAAAAAAAAAYa".
   DBRIVIERAFileIdOrUrlFileId,
 
-  /// Either a Dropbox shared link (www.dropbox.com) or an external HTTP or
-  /// HTTPS URL pointing to a supported file. - Dropbox shared links are
-  /// resolved internally using the caller's authenticated identity and the
-  /// link's visibility / download settings. They therefore require an
-  /// authenticated user context (anonymous `url` requests against Dropbox
-  /// links are rejected with an `access_error`). Links protected by a
-  /// password are rejected with `shared_link_password_protected`; links with
-  /// downloads disabled are rejected with `link_download_disabled_error`. -
-  /// External URLs are fetched through the backend's egress proxy and must
-  /// point at a supported file extension.
+  /// Either a Dropbox shared link (www.dropbox.com) or an internet-accessible
+  /// URL pointing to a supported file. - Dropbox shared links are resolved
+  /// internally using the caller's authenticated identity and the link's
+  /// visibility / download settings. They therefore require an authenticated
+  /// user context; requests made with app auth alone are rejected.
+  /// Password-protected links and links with downloads disabled are rejected
+  /// as well. - Other URLs are fetched by Dropbox's servers, so they must be
+  /// reachable from the public internet -- not only from the calling
+  /// application's network -- and must point at a supported file extension.
   DBRIVIERAFileIdOrUrlUrl,
 
   /// An absolute Dropbox path, e.g. "/folder/example.pdf".
@@ -55,22 +54,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAFileIdOrUrlTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBRIVIERAFileIdOrUrlTag tag;
 
-/// A Dropbox-issued file id (format: "id:<id>") for a file the authenticated
-/// user has access to. @note Ensure the `isFileId` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// A Dropbox-issued file ID for a file the authenticated user has access to,
+/// e.g. "id:a4ayc_80_OEAAAAAAAAAYa". @note Ensure the `isFileId` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly, copy) NSString *fileId;
 
-/// Either a Dropbox shared link (www.dropbox.com) or an external HTTP or HTTPS
-/// URL pointing to a supported file. - Dropbox shared links are resolved
-/// internally using the caller's authenticated identity and the link's
-/// visibility / download settings. They therefore require an authenticated user
-/// context (anonymous `url` requests against Dropbox links are rejected with an
-/// `access_error`). Links protected by a password are rejected with
-/// `shared_link_password_protected`; links with downloads disabled are rejected
-/// with `link_download_disabled_error`. - External URLs are fetched through the
-/// backend's egress proxy and must point at a supported file extension. @note
-/// Ensure the `isUrl` method returns true before accessing, otherwise a runtime
-/// exception will be raised.
+/// Either a Dropbox shared link (www.dropbox.com) or an internet-accessible URL
+/// pointing to a supported file. - Dropbox shared links are resolved internally
+/// using the caller's authenticated identity and the link's visibility /
+/// download settings. They therefore require an authenticated user context;
+/// requests made with app auth alone are rejected. Password-protected links and
+/// links with downloads disabled are rejected as well. - Other URLs are fetched
+/// by Dropbox's servers, so they must be reachable from the public internet --
+/// not only from the calling application's network -- and must point at a
+/// supported file extension. @note Ensure the `isUrl` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly, copy) NSString *url;
 
 /// An absolute Dropbox path, e.g. "/folder/example.pdf". @note Ensure the
@@ -83,11 +81,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAFileIdOrUrlTag) {
 ///
 /// Initializes union class with tag state of "file_id".
 ///
-/// Description of the "file_id" tag state: A Dropbox-issued file id (format:
-/// "id:<id>") for a file the authenticated user has access to.
+/// Description of the "file_id" tag state: A Dropbox-issued file ID for a file
+/// the authenticated user has access to, e.g. "id:a4ayc_80_OEAAAAAAAAAYa".
 ///
-/// @param fileId A Dropbox-issued file id (format: "id:<id>") for a file the
-/// authenticated user has access to.
+/// @param fileId A Dropbox-issued file ID for a file the authenticated user has
+/// access to, e.g. "id:a4ayc_80_OEAAAAAAAAAYa".
 ///
 /// @return An initialized instance.
 ///
@@ -97,25 +95,25 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAFileIdOrUrlTag) {
 /// Initializes union class with tag state of "url".
 ///
 /// Description of the "url" tag state: Either a Dropbox shared link
-/// (www.dropbox.com) or an external HTTP or HTTPS URL pointing to a supported
+/// (www.dropbox.com) or an internet-accessible URL pointing to a supported
 /// file. - Dropbox shared links are resolved internally using the caller's
 /// authenticated identity and the link's visibility / download settings. They
-/// therefore require an authenticated user context (anonymous `url` requests
-/// against Dropbox links are rejected with an `access_error`). Links protected
-/// by a password are rejected with `shared_link_password_protected`; links with
-/// downloads disabled are rejected with `link_download_disabled_error`. -
-/// External URLs are fetched through the backend's egress proxy and must point
-/// at a supported file extension.
+/// therefore require an authenticated user context; requests made with app auth
+/// alone are rejected. Password-protected links and links with downloads
+/// disabled are rejected as well. - Other URLs are fetched by Dropbox's
+/// servers, so they must be reachable from the public internet -- not only from
+/// the calling application's network -- and must point at a supported file
+/// extension.
 ///
-/// @param url Either a Dropbox shared link (www.dropbox.com) or an external
-/// HTTP or HTTPS URL pointing to a supported file. - Dropbox shared links are
-/// resolved internally using the caller's authenticated identity and the link's
-/// visibility / download settings. They therefore require an authenticated user
-/// context (anonymous `url` requests against Dropbox links are rejected with an
-/// `access_error`). Links protected by a password are rejected with
-/// `shared_link_password_protected`; links with downloads disabled are rejected
-/// with `link_download_disabled_error`. - External URLs are fetched through the
-/// backend's egress proxy and must point at a supported file extension.
+/// @param url Either a Dropbox shared link (www.dropbox.com) or an
+/// internet-accessible URL pointing to a supported file. - Dropbox shared links
+/// are resolved internally using the caller's authenticated identity and the
+/// link's visibility / download settings. They therefore require an
+/// authenticated user context; requests made with app auth alone are rejected.
+/// Password-protected links and links with downloads disabled are rejected as
+/// well. - Other URLs are fetched by Dropbox's servers, so they must be
+/// reachable from the public internet -- not only from the calling
+/// application's network -- and must point at a supported file extension.
 ///
 /// @return An initialized instance.
 ///

@@ -17,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `ApiTranscriptSegment` struct.
 ///
-/// Transcript segment for APIv2
+/// A contiguous span of transcribed speech. The span covered by a segment
+/// depends on the requested TimestampLevel.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -27,13 +28,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// (no description).
+/// The transcribed text of this segment.
 @property (nonatomic, readonly, copy) NSString *text;
 
-/// (no description).
+/// Offset of the start of this segment, in seconds from the beginning of the
+/// media.
 @property (nonatomic, readonly) NSNumber *startTime;
 
-/// (no description).
+/// Offset of the end of this segment, in seconds from the beginning of the
+/// media.
 @property (nonatomic, readonly) NSNumber *endTime;
 
 #pragma mark - Constructors
@@ -41,9 +44,11 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param text (no description).
-/// @param startTime (no description).
-/// @param endTime (no description).
+/// @param text The transcribed text of this segment.
+/// @param startTime Offset of the start of this segment, in seconds from the
+/// beginning of the media.
+/// @param endTime Offset of the end of this segment, in seconds from the
+/// beginning of the media.
 ///
 /// @return An initialized instance.
 ///

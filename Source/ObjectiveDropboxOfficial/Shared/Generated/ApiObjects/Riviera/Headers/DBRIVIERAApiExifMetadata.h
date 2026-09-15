@@ -18,8 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `ApiExifMetadata` struct.
 ///
-/// Image EXIF metadata. Mirrors the useful subset of the internal
-/// `riviera.ExifMetadata` message. Fields are best-effort and may be empty.
+/// Image EXIF metadata. Fields are populated on a best-effort basis and may be
+/// empty when absent from the source file.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -29,53 +29,55 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// (no description).
+/// Width of the image, in pixels.
 @property (nonatomic, readonly) NSNumber *imageWidth;
 
-/// (no description).
+/// Height of the image, in pixels.
 @property (nonatomic, readonly) NSNumber *imageHeight;
 
-/// (no description).
+/// Manufacturer of the device that captured the image, e.g. "Apple".
 @property (nonatomic, readonly, copy) NSString *cameraMake;
 
-/// (no description).
+/// Model of the device that captured the image, e.g. "iPhone 15 Pro".
 @property (nonatomic, readonly, copy) NSString *cameraModel;
 
-/// (no description).
+/// Model of the lens the image was captured with, when the source records it.
 @property (nonatomic, readonly, copy) NSString *lensModel;
 
 /// Capture time in the EXIF-provided format (local time of the camera).
 @property (nonatomic, readonly, copy) NSString *dateTimeOriginal;
 
-/// Timezone offset for `date_time_original`, e.g. "+09:00".
+/// Timezone offset for `dateTimeOriginal` in `DBRIVIERAApiExifMetadata`, e.g.
+/// "+09:00".
 @property (nonatomic, readonly, copy) NSString *offsetTimeOriginal;
 
 /// EXIF orientation value (1-8). See the EXIF spec; 1 is the normal upright
 /// orientation.
 @property (nonatomic, readonly) NSNumber *orientation;
 
-/// fraction in string form, e.g. "1/250"
+/// Exposure time the image was captured with, as a fractional-second string,
+/// e.g. "1/250".
 @property (nonatomic, readonly, copy) NSString *exposureTime;
 
-/// (no description).
+/// Aperture the image was captured at, as reported by the EXIF aperture tag.
 @property (nonatomic, readonly) NSNumber *apertureValue;
 
-/// (no description).
+/// ISO sensitivity the image was captured at.
 @property (nonatomic, readonly) NSNumber *isoSpeed;
 
-/// e.g. "26.0 mm"
+/// Focal length the image was captured at, including the unit, e.g. "26.0 mm".
 @property (nonatomic, readonly, copy) NSString *focalLength;
 
-/// (no description).
+/// Total pixel count of the image, in megapixels.
 @property (nonatomic, readonly) NSNumber *megapixels;
 
-/// (no description).
+/// Creator credited in the EXIF artist tag.
 @property (nonatomic, readonly, copy) NSString *artist;
 
-/// (no description).
+/// Copyright notice from the EXIF copyright tag.
 @property (nonatomic, readonly, copy) NSString *dCopyright;
 
-/// (no description).
+/// Location tags from the image, when the source recorded a location.
 @property (nonatomic, readonly, nullable) DBRIVIERAApiExifGpsMetadata *gpsMetadata;
 
 #pragma mark - Constructors
@@ -83,25 +85,32 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param imageWidth (no description).
-/// @param imageHeight (no description).
-/// @param cameraMake (no description).
-/// @param cameraModel (no description).
-/// @param lensModel (no description).
+/// @param imageWidth Width of the image, in pixels.
+/// @param imageHeight Height of the image, in pixels.
+/// @param cameraMake Manufacturer of the device that captured the image, e.g.
+/// "Apple".
+/// @param cameraModel Model of the device that captured the image, e.g. "iPhone
+/// 15 Pro".
+/// @param lensModel Model of the lens the image was captured with, when the
+/// source records it.
 /// @param dateTimeOriginal Capture time in the EXIF-provided format (local time
 /// of the camera).
-/// @param offsetTimeOriginal Timezone offset for `date_time_original`, e.g.
-/// "+09:00".
+/// @param offsetTimeOriginal Timezone offset for `dateTimeOriginal` in
+/// `DBRIVIERAApiExifMetadata`, e.g. "+09:00".
 /// @param orientation EXIF orientation value (1-8). See the EXIF spec; 1 is the
 /// normal upright orientation.
-/// @param exposureTime fraction in string form, e.g. "1/250"
-/// @param apertureValue (no description).
-/// @param isoSpeed (no description).
-/// @param focalLength e.g. "26.0 mm"
-/// @param megapixels (no description).
-/// @param artist (no description).
-/// @param dCopyright (no description).
-/// @param gpsMetadata (no description).
+/// @param exposureTime Exposure time the image was captured with, as a
+/// fractional-second string, e.g. "1/250".
+/// @param apertureValue Aperture the image was captured at, as reported by the
+/// EXIF aperture tag.
+/// @param isoSpeed ISO sensitivity the image was captured at.
+/// @param focalLength Focal length the image was captured at, including the
+/// unit, e.g. "26.0 mm".
+/// @param megapixels Total pixel count of the image, in megapixels.
+/// @param artist Creator credited in the EXIF artist tag.
+/// @param dCopyright Copyright notice from the EXIF copyright tag.
+/// @param gpsMetadata Location tags from the image, when the source recorded a
+/// location.
 ///
 /// @return An initialized instance.
 ///

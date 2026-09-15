@@ -19,9 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `GetTranscriptArgs` struct.
 ///
-/// Arguments for the asynchronous `get_transcript_async` route. Exactly one of
-/// `file_id`, `path`, or `url` must be supplied via `file_id_or_url` to
-/// identify the audio or video asset to transcribe.
+/// Arguments for the asynchronous `getTranscriptAsync` route. Exactly one of
+/// `fileId` in `DBRIVIERAFileIdOrUrl`, `path` in `DBRIVIERAFileIdOrUrl`, or
+/// `url` in `DBRIVIERAFileIdOrUrl` must be supplied via `fileIdOrUrl` in
+/// `DBRIVIERAGetTranscriptArgs` to identify the audio or video asset to
+/// transcribe.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -32,16 +34,15 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// Identifier of the media asset to transcribe. Callers must set exactly one of
-/// the `FileIdOrUrl` variants. The referenced asset must be an audio or video
+/// the FileIdOrUrl variants. The referenced asset must be an audio or video
 /// file in a supported format (see the route description for the list);
-/// requests against files with no audio track return a `no_audio_error`.
+/// requests against files with no audio track fail with `noAudioError` in
+/// `DBRIVIERAContentApiV2Error`.
 @property (nonatomic, readonly, nullable) DBRIVIERAFileIdOrUrl *fileIdOrUrl;
 
 /// Granularity of the time offsets returned for each transcript segment.
-/// Defaults to `SENTENCE` when the field is omitted. - SENTENCE: one segment
-/// per spoken sentence (recommended). - WORD: one segment per word, useful for
-/// fine-grained alignment such as captioning or highlight-as-you-listen
-/// experiences.
+/// Defaults to `sentence` in `DBRIVIERATimestampLevel` when the field is
+/// omitted.
 @property (nonatomic, readonly) DBRIVIERATimestampLevel *timestampLevel;
 
 /// Comma-delimited list of non-lexical filler words to preserve in the
@@ -50,10 +51,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// filtering behavior.
 @property (nonatomic, readonly, copy) NSString *includedSpecialWords;
 
-/// Optional ISO 639-1 two-letter language code hinting the spoken language of
-/// the source audio (e.g. "en", "ja"). When empty, the service auto-detects the
-/// language; supplying a hint improves accuracy and latency for short or
-/// ambiguous clips. Unsupported languages fall back to auto-detection.
+/// Hint for the spoken language of the source audio, as an ISO 639-1 code (e.g.
+/// "en", "ja"). When empty, the service auto-detects the language; supplying a
+/// hint improves accuracy and latency for short or ambiguous clips. Languages
+/// the service does not support fall back to auto-detection.
 @property (nonatomic, readonly, copy) NSString *audioLanguage;
 
 #pragma mark - Constructors
@@ -62,23 +63,21 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param fileIdOrUrl Identifier of the media asset to transcribe. Callers must
-/// set exactly one of the `FileIdOrUrl` variants. The referenced asset must be
-/// an audio or video file in a supported format (see the route description for
-/// the list); requests against files with no audio track return a
-/// `no_audio_error`.
+/// set exactly one of the FileIdOrUrl variants. The referenced asset must be an
+/// audio or video file in a supported format (see the route description for the
+/// list); requests against files with no audio track fail with `noAudioError`
+/// in `DBRIVIERAContentApiV2Error`.
 /// @param timestampLevel Granularity of the time offsets returned for each
-/// transcript segment. Defaults to `SENTENCE` when the field is omitted. -
-/// SENTENCE: one segment per spoken sentence (recommended). - WORD: one segment
-/// per word, useful for fine-grained alignment such as captioning or
-/// highlight-as-you-listen experiences.
+/// transcript segment. Defaults to `sentence` in `DBRIVIERATimestampLevel` when
+/// the field is omitted.
 /// @param includedSpecialWords Comma-delimited list of non-lexical filler words
 /// to preserve in the transcript output, e.g. `"uh, ah, uhm"`. By default these
 /// fillers are stripped. Unrecognized tokens are ignored. Leave empty to use
 /// the default filtering behavior.
-/// @param audioLanguage Optional ISO 639-1 two-letter language code hinting the
-/// spoken language of the source audio (e.g. "en", "ja"). When empty, the
-/// service auto-detects the language; supplying a hint improves accuracy and
-/// latency for short or ambiguous clips. Unsupported languages fall back to
+/// @param audioLanguage Hint for the spoken language of the source audio, as an
+/// ISO 639-1 code (e.g. "en", "ja"). When empty, the service auto-detects the
+/// language; supplying a hint improves accuracy and latency for short or
+/// ambiguous clips. Languages the service does not support fall back to
 /// auto-detection.
 ///
 /// @return An initialized instance.

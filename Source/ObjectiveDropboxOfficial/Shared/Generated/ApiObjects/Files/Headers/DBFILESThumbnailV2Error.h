@@ -50,6 +50,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailV2ErrorTag) {
   /// The shared link does not exist.
   DBFILESThumbnailV2ErrorNotFound,
 
+  /// Transparency preservation is supported only for PNG and WebP output.
+  DBFILESThumbnailV2ErrorUnsupportedOutputFormat,
+
   /// (no description).
   DBFILESThumbnailV2ErrorOther,
 
@@ -137,6 +140,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailV2ErrorTag) {
 - (instancetype)initWithNotFound;
 
 ///
+/// Initializes union class with tag state of "unsupported_output_format".
+///
+/// Description of the "unsupported_output_format" tag state: Transparency
+/// preservation is supported only for PNG and WebP output.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUnsupportedOutputFormat;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -203,6 +216,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailV2ErrorTag) {
 /// @return Whether the union's current tag state has value "not_found".
 ///
 - (BOOL)isNotFound;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "unsupported_output_format".
+///
+/// @return Whether the union's current tag state has value
+/// "unsupported_output_format".
+///
+- (BOOL)isUnsupportedOutputFormat;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

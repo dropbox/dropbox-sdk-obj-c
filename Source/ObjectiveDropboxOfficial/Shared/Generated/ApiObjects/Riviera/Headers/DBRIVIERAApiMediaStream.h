@@ -27,43 +27,46 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// (no description).
+/// Zero-based index of the stream within the container.
 @property (nonatomic, readonly) NSNumber *index;
 
-/// "audio", "video", etc.
+/// Kind of media the stream carries, e.g. "audio" or "video".
 @property (nonatomic, readonly, copy) NSString *codecType;
 
-/// (no description).
+/// Name of the codec the stream is encoded with, e.g. "h264" or "aac".
 @property (nonatomic, readonly, copy) NSString *codecName;
 
-/// (no description).
+/// Bitrate of this stream, in bits per second.
 @property (nonatomic, readonly) NSNumber *bitrateBps;
 
-/// (no description).
+/// Duration of this stream, in seconds.
 @property (nonatomic, readonly) NSNumber *durationS;
 
-/// Video-specific fields (zero / empty for audio streams).
+/// Width of the video frame, in pixels. Zero for audio streams.
 @property (nonatomic, readonly) NSNumber *width;
 
-/// (no description).
+/// Height of the video frame, in pixels. Zero for audio streams.
 @property (nonatomic, readonly) NSNumber *height;
 
-/// (no description).
+/// Frame rate of the stream, in frames per second. Zero for audio streams.
 @property (nonatomic, readonly) NSNumber *framesPerSecond;
 
-/// (no description).
+/// Rotation to apply on playback, in degrees, as recorded in the stream
+/// metadata. Zero for audio streams and for video that needs no rotation.
 @property (nonatomic, readonly) NSNumber *rotation;
 
-/// e.g. "16:9"
+/// Aspect ratio the video should be displayed at, as a "width:height" string,
+/// e.g. "16:9". Empty for audio streams.
 @property (nonatomic, readonly, copy) NSString *displayAspectRatio;
 
-/// Audio-specific fields (zero / empty for video streams).
+/// Number of audio channels in the stream. Zero for video streams.
 @property (nonatomic, readonly) NSNumber *channels;
 
-/// (no description).
+/// Layout of the audio channels, e.g. "stereo". Empty for video streams.
 @property (nonatomic, readonly, copy) NSString *channelLayout;
 
-/// (no description).
+/// Sample rate of the audio stream, in samples per second. Zero for video
+/// streams.
 @property (nonatomic, readonly) NSNumber *sampleRateS;
 
 /// ISO 639 language code for the stream, when present.
@@ -74,19 +77,27 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param index (no description).
-/// @param codecType "audio", "video", etc.
-/// @param codecName (no description).
-/// @param bitrateBps (no description).
-/// @param durationS (no description).
-/// @param width Video-specific fields (zero / empty for audio streams).
-/// @param height (no description).
-/// @param framesPerSecond (no description).
-/// @param rotation (no description).
-/// @param displayAspectRatio e.g. "16:9"
-/// @param channels Audio-specific fields (zero / empty for video streams).
-/// @param channelLayout (no description).
-/// @param sampleRateS (no description).
+/// @param index Zero-based index of the stream within the container.
+/// @param codecType Kind of media the stream carries, e.g. "audio" or "video".
+/// @param codecName Name of the codec the stream is encoded with, e.g. "h264"
+/// or "aac".
+/// @param bitrateBps Bitrate of this stream, in bits per second.
+/// @param durationS Duration of this stream, in seconds.
+/// @param width Width of the video frame, in pixels. Zero for audio streams.
+/// @param height Height of the video frame, in pixels. Zero for audio streams.
+/// @param framesPerSecond Frame rate of the stream, in frames per second. Zero
+/// for audio streams.
+/// @param rotation Rotation to apply on playback, in degrees, as recorded in
+/// the stream metadata. Zero for audio streams and for video that needs no
+/// rotation.
+/// @param displayAspectRatio Aspect ratio the video should be displayed at, as
+/// a "width:height" string, e.g. "16:9". Empty for audio streams.
+/// @param channels Number of audio channels in the stream. Zero for video
+/// streams.
+/// @param channelLayout Layout of the audio channels, e.g. "stereo". Empty for
+/// video streams.
+/// @param sampleRateS Sample rate of the audio stream, in samples per second.
+/// Zero for video streams.
 /// @param languageIso639 ISO 639 language code for the stream, when present.
 ///
 /// @return An initialized instance.

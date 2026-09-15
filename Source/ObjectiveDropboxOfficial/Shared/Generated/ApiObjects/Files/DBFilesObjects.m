@@ -28164,7 +28164,8 @@
                             size:(DBFILESThumbnailSize *)size
                             mode:(DBFILESThumbnailMode *)mode
                          quality:(DBFILESThumbnailQuality *)quality
-                excludeMediaInfo:(NSNumber *)excludeMediaInfo {
+                excludeMediaInfo:(NSNumber *)excludeMediaInfo
+            preserveTransparency:(NSNumber *)preserveTransparency {
   [DBStoneValidators nonnullValidator:nil](resource);
 
   self = [super init];
@@ -28175,12 +28176,19 @@
     _mode = mode ?: [[DBFILESThumbnailMode alloc] initWithStrict];
     _quality = quality ?: [[DBFILESThumbnailQuality alloc] initWithQuality80];
     _excludeMediaInfo = excludeMediaInfo;
+    _preserveTransparency = preserveTransparency ?: @NO;
   }
   return self;
 }
 
 - (instancetype)initWithResource:(DBFILESPathOrLink *)resource {
-  return [self initWithResource:resource format:nil size:nil mode:nil quality:nil excludeMediaInfo:nil];
+  return [self initWithResource:resource
+                         format:nil
+                           size:nil
+                           mode:nil
+                        quality:nil
+               excludeMediaInfo:nil
+           preserveTransparency:nil];
 }
 
 #pragma mark - Serialization methods
@@ -28221,6 +28229,7 @@
   if (self.excludeMediaInfo != nil) {
     result = prime * result + [self.excludeMediaInfo hash];
   }
+  result = prime * result + [self.preserveTransparency hash];
 
   return prime * result;
 }
@@ -28261,6 +28270,9 @@
       return NO;
     }
   }
+  if (![self.preserveTransparency isEqual:aThumbnailV2Arg.preserveTransparency]) {
+    return NO;
+  }
   return YES;
 }
 
@@ -28281,6 +28293,7 @@
   if (valueObj.excludeMediaInfo) {
     jsonDict[@"exclude_media_info"] = valueObj.excludeMediaInfo;
   }
+  jsonDict[@"preserve_transparency"] = valueObj.preserveTransparency;
 
   return jsonDict;
 }
@@ -28298,13 +28311,15 @@
                                          ? [DBFILESThumbnailQualitySerializer deserialize:valueDict[@"quality"]]
                                          : [[DBFILESThumbnailQuality alloc] initWithQuality80];
   NSNumber *excludeMediaInfo = valueDict[@"exclude_media_info"] ?: nil;
+  NSNumber *preserveTransparency = valueDict[@"preserve_transparency"] ?: @NO;
 
   return [[DBFILESThumbnailV2Arg alloc] initWithResource:resource
                                                   format:format
                                                     size:size
                                                     mode:mode
                                                  quality:quality
-                                        excludeMediaInfo:excludeMediaInfo];
+                                        excludeMediaInfo:excludeMediaInfo
+                                    preserveTransparency:preserveTransparency];
 }
 
 @end
@@ -28379,6 +28394,14 @@
   return self;
 }
 
+- (instancetype)initWithUnsupportedOutputFormat {
+  self = [super init];
+  if (self) {
+    _tag = DBFILESThumbnailV2ErrorUnsupportedOutputFormat;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -28427,6 +28450,10 @@
   return _tag == DBFILESThumbnailV2ErrorNotFound;
 }
 
+- (BOOL)isUnsupportedOutputFormat {
+  return _tag == DBFILESThumbnailV2ErrorUnsupportedOutputFormat;
+}
+
 - (BOOL)isOther {
   return _tag == DBFILESThumbnailV2ErrorOther;
 }
@@ -28447,6 +28474,8 @@
     return @"DBFILESThumbnailV2ErrorAccessDenied";
   case DBFILESThumbnailV2ErrorNotFound:
     return @"DBFILESThumbnailV2ErrorNotFound";
+  case DBFILESThumbnailV2ErrorUnsupportedOutputFormat:
+    return @"DBFILESThumbnailV2ErrorUnsupportedOutputFormat";
   case DBFILESThumbnailV2ErrorOther:
     return @"DBFILESThumbnailV2ErrorOther";
   }
@@ -28506,6 +28535,9 @@
   case DBFILESThumbnailV2ErrorNotFound:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBFILESThumbnailV2ErrorUnsupportedOutputFormat:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBFILESThumbnailV2ErrorOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -28548,6 +28580,8 @@
     return [[self tagName] isEqual:[aThumbnailV2Error tagName]];
   case DBFILESThumbnailV2ErrorNotFound:
     return [[self tagName] isEqual:[aThumbnailV2Error tagName]];
+  case DBFILESThumbnailV2ErrorUnsupportedOutputFormat:
+    return [[self tagName] isEqual:[aThumbnailV2Error tagName]];
   case DBFILESThumbnailV2ErrorOther:
     return [[self tagName] isEqual:[aThumbnailV2Error tagName]];
   }
@@ -28578,6 +28612,8 @@
     jsonDict[@".tag"] = @"access_denied";
   } else if ([valueObj isNotFound]) {
     jsonDict[@".tag"] = @"not_found";
+  } else if ([valueObj isUnsupportedOutputFormat]) {
+    jsonDict[@".tag"] = @"unsupported_output_format";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -28605,6 +28641,8 @@
     return [[DBFILESThumbnailV2Error alloc] initWithAccessDenied];
   } else if ([tag isEqualToString:@"not_found"]) {
     return [[DBFILESThumbnailV2Error alloc] initWithNotFound];
+  } else if ([tag isEqualToString:@"unsupported_output_format"]) {
+    return [[DBFILESThumbnailV2Error alloc] initWithUnsupportedOutputFormat];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBFILESThumbnailV2Error alloc] initWithOther];
   } else {

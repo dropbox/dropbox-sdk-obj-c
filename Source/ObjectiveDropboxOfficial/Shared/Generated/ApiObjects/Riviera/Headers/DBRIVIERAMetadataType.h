@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MetadataType` union.
 ///
-/// Which metadata variant is populated in a `GetMetadataResult`, derived from
-/// the file type.
+/// Which metadata variant is populated in a GetMetadataResult, derived from the
+/// file type.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -31,19 +31,25 @@ NS_ASSUME_NONNULL_BEGIN
 /// The `DBRIVIERAMetadataTypeTag` enum type represents the possible tag states
 /// with which the `DBRIVIERAMetadataType` union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataTypeTag) {
-  /// (no description).
+  /// No metadata kind applies to the file, so no variant of `metadata` in
+  /// `DBRIVIERAGetMetadataResult` is populated. Riviera only produces
+  /// metadata for the formats listed on `getMetadataAsync`; a request for any
+  /// other file normally fails with `userError` in
+  /// `DBRIVIERAMetadataExtractionApiV2Error` rather than completing with this
+  /// value. An app that does receive it should treat the file as having no
+  /// extractable metadata; retrying will not change the outcome.
   DBRIVIERAMetadataTypeMetadataTypeUnknown,
 
-  /// (no description).
+  /// `exif` in `DBRIVIERAMetadataUnion` is populated.
   DBRIVIERAMetadataTypeMetadataTypeExif,
 
-  /// (no description).
+  /// `media` in `DBRIVIERAMetadataUnion` is populated.
   DBRIVIERAMetadataTypeMetadataTypeMedia,
 
-  /// (no description).
+  /// `pdf` in `DBRIVIERAMetadataUnion` is populated.
   DBRIVIERAMetadataTypeMetadataTypePdf,
 
-  /// (no description).
+  /// `office` in `DBRIVIERAMetadataUnion` is populated.
   DBRIVIERAMetadataTypeMetadataTypeOffice,
 
   /// (no description).
@@ -59,12 +65,24 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataTypeTag) {
 ///
 /// Initializes union class with tag state of "metadata_type_unknown".
 ///
+/// Description of the "metadata_type_unknown" tag state: No metadata kind
+/// applies to the file, so no variant of `metadata` in
+/// `DBRIVIERAGetMetadataResult` is populated. Riviera only produces metadata
+/// for the formats listed on `getMetadataAsync`; a request for any other file
+/// normally fails with `userError` in `DBRIVIERAMetadataExtractionApiV2Error`
+/// rather than completing with this value. An app that does receive it should
+/// treat the file as having no extractable metadata; retrying will not change
+/// the outcome.
+///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithMetadataTypeUnknown;
 
 ///
 /// Initializes union class with tag state of "metadata_type_exif".
+///
+/// Description of the "metadata_type_exif" tag state: `exif` in
+/// `DBRIVIERAMetadataUnion` is populated.
 ///
 /// @return An initialized instance.
 ///
@@ -73,6 +91,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataTypeTag) {
 ///
 /// Initializes union class with tag state of "metadata_type_media".
 ///
+/// Description of the "metadata_type_media" tag state: `media` in
+/// `DBRIVIERAMetadataUnion` is populated.
+///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithMetadataTypeMedia;
@@ -80,12 +101,18 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAMetadataTypeTag) {
 ///
 /// Initializes union class with tag state of "metadata_type_pdf".
 ///
+/// Description of the "metadata_type_pdf" tag state: `pdf` in
+/// `DBRIVIERAMetadataUnion` is populated.
+///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithMetadataTypePdf;
 
 ///
 /// Initializes union class with tag state of "metadata_type_office".
+///
+/// Description of the "metadata_type_office" tag state: `office` in
+/// `DBRIVIERAMetadataUnion` is populated.
 ///
 /// @return An initialized instance.
 ///

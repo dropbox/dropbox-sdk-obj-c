@@ -27,13 +27,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// (no description).
+/// Number of pages in the document.
 @property (nonatomic, readonly) NSNumber *pages;
 
-/// Width / height of the first page, in PDF points.
+/// Width of the first page, in PDF points.
 @property (nonatomic, readonly) NSNumber *width;
 
-/// (no description).
+/// Height of the first page, in PDF points.
 @property (nonatomic, readonly) NSNumber *height;
 
 #pragma mark - Constructors
@@ -41,9 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param pages (no description).
-/// @param width Width / height of the first page, in PDF points.
-/// @param height (no description).
+/// @param pages Number of pages in the document.
+/// @param width Width of the first page, in PDF points.
+/// @param height Height of the first page, in PDF points.
 ///
 /// @return An initialized instance.
 ///

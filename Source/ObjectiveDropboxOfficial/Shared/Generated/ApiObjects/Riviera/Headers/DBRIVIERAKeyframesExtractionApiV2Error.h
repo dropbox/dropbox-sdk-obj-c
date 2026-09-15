@@ -44,13 +44,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAKeyframesExtractionApiV2ErrorTag) {
   /// same request will not help.
   DBRIVIERAKeyframesExtractionApiV2ErrorUserError,
 
-  /// (no description).
+  /// The source file is not in a format this route supports.
   DBRIVIERAKeyframesExtractionApiV2ErrorUnsupportedFormatError,
 
-  /// (no description).
+  /// `url` in `DBRIVIERAFileIdOrUrl` referenced a Dropbox shared link whose
+  /// owner has disabled downloads.
   DBRIVIERAKeyframesExtractionApiV2ErrorLinkDownloadDisabledError,
 
-  /// (no description).
+  /// `url` in `DBRIVIERAFileIdOrUrl` referenced a password-protected Dropbox
+  /// shared link. Riviera cannot supply the password, so such links cannot be
+  /// processed.
   DBRIVIERAKeyframesExtractionApiV2ErrorSharedLinkPasswordProtected,
 
   /// The request exceeded a service limit -- for example the source video is
@@ -59,7 +62,8 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAKeyframesExtractionApiV2ErrorTag) {
   /// `scene_change_threshold`, or set `include_images = false`.
   DBRIVIERAKeyframesExtractionApiV2ErrorLimitExceededError,
 
-  /// (no description).
+  /// The source file was readable but could not be processed, for example
+  /// because it is corrupt.
   DBRIVIERAKeyframesExtractionApiV2ErrorConversionFailureError,
 
   /// The referenced file does not exist or is not accessible.
@@ -122,6 +126,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAKeyframesExtractionApiV2ErrorTag) {
 ///
 /// Initializes union class with tag state of "unsupported_format_error".
 ///
+/// Description of the "unsupported_format_error" tag state: The source file is
+/// not in a format this route supports.
+///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithUnsupportedFormatError;
@@ -129,12 +136,20 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAKeyframesExtractionApiV2ErrorTag) {
 ///
 /// Initializes union class with tag state of "link_download_disabled_error".
 ///
+/// Description of the "link_download_disabled_error" tag state: `url` in
+/// `DBRIVIERAFileIdOrUrl` referenced a Dropbox shared link whose owner has
+/// disabled downloads.
+///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithLinkDownloadDisabledError;
 
 ///
 /// Initializes union class with tag state of "shared_link_password_protected".
+///
+/// Description of the "shared_link_password_protected" tag state: `url` in
+/// `DBRIVIERAFileIdOrUrl` referenced a password-protected Dropbox shared link.
+/// Riviera cannot supply the password, so such links cannot be processed.
 ///
 /// @return An initialized instance.
 ///
@@ -155,6 +170,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAKeyframesExtractionApiV2ErrorTag) {
 
 ///
 /// Initializes union class with tag state of "conversion_failure_error".
+///
+/// Description of the "conversion_failure_error" tag state: The source file was
+/// readable but could not be processed, for example because it is corrupt.
 ///
 /// @return An initialized instance.
 ///
