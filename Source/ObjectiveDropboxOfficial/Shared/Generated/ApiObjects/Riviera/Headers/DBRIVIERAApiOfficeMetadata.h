@@ -18,9 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `ApiOfficeMetadata` struct.
 ///
-/// MS Office document metadata. Mirrors the internal `riviera.OfficeMetadata`
-/// message. Some fields apply only to specific document types (e.g. `slides`
-/// for PowerPoint, `words`/`pages` for Word).
+/// MS Office document metadata. Some fields apply only to specific document
+/// types (e.g. `slides` in `DBRIVIERAApiOfficeMetadata` for PowerPoint, `words`
+/// in `DBRIVIERAApiOfficeMetadata` and `pages` in `DBRIVIERAApiOfficeMetadata`
+/// for Word).
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -30,40 +31,44 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// (no description).
+/// Which kind of Office document this metadata was extracted from.
 @property (nonatomic, readonly) DBRIVIERAOfficeFileType *fileType;
 
-/// (no description).
+/// Author recorded in the document properties.
 @property (nonatomic, readonly, copy) NSString *creator;
 
-/// (no description).
+/// Company recorded in the document properties.
 @property (nonatomic, readonly, copy) NSString *company;
 
-/// (no description).
+/// Title recorded in the document properties.
 @property (nonatomic, readonly, copy) NSString *title;
 
-/// (no description).
+/// Subject recorded in the document properties.
 @property (nonatomic, readonly, copy) NSString *subject;
 
-/// (no description).
+/// Keywords recorded in the document properties, in the document's own
+/// formatting (typically a single comma- or space-separated string).
 @property (nonatomic, readonly, copy) NSString *keywords;
 
-/// (no description).
+/// Description recorded in the document properties.
 @property (nonatomic, readonly, copy) NSString *description_;
 
-/// (no description).
+/// Total editing time recorded in the document properties, in minutes.
 @property (nonatomic, readonly) NSNumber *totalEditTimeMinutes;
 
-/// Word only.
+/// Page count recorded in the document properties. Word documents only; zero
+/// for PowerPoint and Excel.
 @property (nonatomic, readonly) NSNumber *pages;
 
-/// (no description).
+/// Word count recorded in the document properties. Word documents only; zero
+/// for PowerPoint and Excel.
 @property (nonatomic, readonly) NSNumber *words;
 
-/// PowerPoint only.
+/// Slide count recorded in the document properties. PowerPoint documents only;
+/// zero for Word and Excel.
 @property (nonatomic, readonly) NSNumber *slides;
 
-/// (no description).
+/// Revision number recorded in the document properties.
 @property (nonatomic, readonly, copy) NSString *revisionNumber;
 
 #pragma mark - Constructors
@@ -71,18 +76,25 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param fileType (no description).
-/// @param creator (no description).
-/// @param company (no description).
-/// @param title (no description).
-/// @param subject (no description).
-/// @param keywords (no description).
-/// @param description_ (no description).
-/// @param totalEditTimeMinutes (no description).
-/// @param pages Word only.
-/// @param words (no description).
-/// @param slides PowerPoint only.
-/// @param revisionNumber (no description).
+/// @param fileType Which kind of Office document this metadata was extracted
+/// from.
+/// @param creator Author recorded in the document properties.
+/// @param company Company recorded in the document properties.
+/// @param title Title recorded in the document properties.
+/// @param subject Subject recorded in the document properties.
+/// @param keywords Keywords recorded in the document properties, in the
+/// document's own formatting (typically a single comma- or space-separated
+/// string).
+/// @param description_ Description recorded in the document properties.
+/// @param totalEditTimeMinutes Total editing time recorded in the document
+/// properties, in minutes.
+/// @param pages Page count recorded in the document properties. Word documents
+/// only; zero for PowerPoint and Excel.
+/// @param words Word count recorded in the document properties. Word documents
+/// only; zero for PowerPoint and Excel.
+/// @param slides Slide count recorded in the document properties. PowerPoint
+/// documents only; zero for Word and Excel.
+/// @param revisionNumber Revision number recorded in the document properties.
 ///
 /// @return An initialized instance.
 ///

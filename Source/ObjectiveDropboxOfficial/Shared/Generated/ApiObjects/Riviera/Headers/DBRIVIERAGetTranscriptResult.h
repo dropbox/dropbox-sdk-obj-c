@@ -26,9 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// The structured transcript produced for the requested media asset, with
-/// per-segment text, start/end offsets (in seconds from the beginning of the
-/// media), and the detected or caller-supplied locale.
+/// The transcript produced for the requested media asset.
 @property (nonatomic, readonly, nullable) DBRIVIERAApiStructuredTranscript *structuredTranscript;
 
 #pragma mark - Constructors
@@ -36,10 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param structuredTranscript The structured transcript produced for the
-/// requested media asset, with per-segment text, start/end offsets (in seconds
-/// from the beginning of the media), and the detected or caller-supplied
-/// locale.
+/// @param structuredTranscript The transcript produced for the requested media
+/// asset.
 ///
 /// @return An initialized instance.
 ///

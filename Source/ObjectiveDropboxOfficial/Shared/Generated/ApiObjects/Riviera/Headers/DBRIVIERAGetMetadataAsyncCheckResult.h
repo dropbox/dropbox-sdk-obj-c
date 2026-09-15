@@ -19,7 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `GetMetadataAsyncCheckResult` union.
 ///
-/// Result type for EventBus async check - must end in "CheckResult"
+/// Status of a metadata extraction job started by `getMetadataAsync`, as
+/// returned by `getMetadataAsyncCheck`.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -33,13 +34,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// possible tag states with which the `DBRIVIERAGetMetadataAsyncCheckResult`
 /// union can exist.
 typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetMetadataAsyncCheckResultTag) {
-  /// (no description).
+  /// The job has not finished yet. Poll again.
   DBRIVIERAGetMetadataAsyncCheckResultInProgress,
 
-  /// (no description).
+  /// The job finished successfully.
   DBRIVIERAGetMetadataAsyncCheckResultComplete,
 
-  /// (no description).
+  /// The job finished unsuccessfully.
   DBRIVIERAGetMetadataAsyncCheckResultFailed,
 
   /// (no description).
@@ -50,18 +51,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetMetadataAsyncCheckResultTag) {
 /// Represents the union's current tag state.
 @property (nonatomic, readonly) DBRIVIERAGetMetadataAsyncCheckResultTag tag;
 
-/// (no description). @note Ensure the `isComplete` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// The job finished successfully. @note Ensure the `isComplete` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBRIVIERAGetMetadataResult *complete;
 
-/// (no description). @note Ensure the `isFailed` method returns true before
-/// accessing, otherwise a runtime exception will be raised.
+/// The job finished unsuccessfully. @note Ensure the `isFailed` method returns
+/// true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBRIVIERAMetadataExtractionApiV2Error *failed;
 
 #pragma mark - Constructors
 
 ///
 /// Initializes union class with tag state of "in_progress".
+///
+/// Description of the "in_progress" tag state: The job has not finished yet.
+/// Poll again.
 ///
 /// @return An initialized instance.
 ///
@@ -70,7 +74,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetMetadataAsyncCheckResultTag) {
 ///
 /// Initializes union class with tag state of "complete".
 ///
-/// @param complete (no description).
+/// Description of the "complete" tag state: The job finished successfully.
+///
+/// @param complete The job finished successfully.
 ///
 /// @return An initialized instance.
 ///
@@ -79,7 +85,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBRIVIERAGetMetadataAsyncCheckResultTag) {
 ///
 /// Initializes union class with tag state of "failed".
 ///
-/// @param failed (no description).
+/// Description of the "failed" tag state: The job finished unsuccessfully.
+///
+/// @param failed The job finished unsuccessfully.
 ///
 /// @return An initialized instance.
 ///

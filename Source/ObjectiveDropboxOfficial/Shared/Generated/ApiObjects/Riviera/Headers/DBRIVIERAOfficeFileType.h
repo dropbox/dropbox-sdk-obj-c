@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `OfficeFileType` union.
 ///
-/// The kind of MS Office document that produced an `ApiOfficeMetadata` result.
+/// The kind of MS Office document that produced an ApiOfficeMetadata result.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route

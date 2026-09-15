@@ -29,20 +29,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// Latitude / longitude in decimal degrees (positive = N/E, negative = S/W).
+/// Latitude in decimal degrees (positive = north, negative = south).
 @property (nonatomic, readonly) NSNumber *latitude;
 
-/// (no description).
+/// Longitude in decimal degrees (positive = east, negative = west).
 @property (nonatomic, readonly) NSNumber *longitude;
 
 /// Altitude in meters, as reported by the source (string to preserve the
 /// original representation, which may include a reference direction).
 @property (nonatomic, readonly, copy) NSString *altitude;
 
-/// Timestamp / datestamp of the GPS fix, in the EXIF-provided format.
+/// Time of the GPS fix, in the EXIF-provided format.
 @property (nonatomic, readonly, copy) NSString *timestamp;
 
-/// (no description).
+/// Date of the GPS fix, in the EXIF-provided format.
 @property (nonatomic, readonly, copy) NSString *datestamp;
 
 #pragma mark - Constructors
@@ -50,15 +50,15 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param latitude Latitude / longitude in decimal degrees (positive = N/E,
-/// negative = S/W).
-/// @param longitude (no description).
+/// @param latitude Latitude in decimal degrees (positive = north, negative =
+/// south).
+/// @param longitude Longitude in decimal degrees (positive = east, negative =
+/// west).
 /// @param altitude Altitude in meters, as reported by the source (string to
 /// preserve the original representation, which may include a reference
 /// direction).
-/// @param timestamp Timestamp / datestamp of the GPS fix, in the EXIF-provided
-/// format.
-/// @param datestamp (no description).
+/// @param timestamp Time of the GPS fix, in the EXIF-provided format.
+/// @param datestamp Date of the GPS fix, in the EXIF-provided format.
 ///
 /// @return An initialized instance.
 ///

@@ -1507,6 +1507,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
 /// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
 /// is not needed.
+/// @param preserveTransparency Whether to preserve the original image's transparency in the thumbnail. This is
+/// supported only when the output format is PNG or WebP. Requests that set this flag with JPEG output return an error.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
@@ -1516,14 +1518,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// `DBFILESThumbnailV2Error` object on failure.
 ///
 - (DBDownloadUrlTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)
-    getThumbnailV2Url:(DBFILESPathOrLink *)resource
-               format:(nullable DBFILESThumbnailFormat *)format
-                 size:(nullable DBFILESThumbnailSize *)size
-                 mode:(nullable DBFILESThumbnailMode *)mode
-              quality:(nullable DBFILESThumbnailQuality *)quality
-     excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
-            overwrite:(BOOL)overwrite
-          destination:(NSURL *)destination;
+       getThumbnailV2Url:(DBFILESPathOrLink *)resource
+                  format:(nullable DBFILESThumbnailFormat *)format
+                    size:(nullable DBFILESThumbnailSize *)size
+                    mode:(nullable DBFILESThumbnailMode *)mode
+                 quality:(nullable DBFILESThumbnailQuality *)quality
+        excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
+    preserveTransparency:(nullable NSNumber *)preserveTransparency
+               overwrite:(BOOL)overwrite
+             destination:(NSURL *)destination;
 
 ///
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
@@ -1564,6 +1567,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
 /// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
 /// is not needed.
+/// @param preserveTransparency Whether to preserve the original image's transparency in the thumbnail. This is
+/// supported only when the output format is PNG or WebP. Requests that set this flag with JPEG output return an error.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
 /// at destination. `NO` will take no action, resulting in an `NSError` returned to the response handler in the event of
 /// a file conflict.
@@ -1577,16 +1582,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// `DBFILESThumbnailV2Error` object on failure.
 ///
 - (DBDownloadUrlTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)
-    getThumbnailV2Url:(DBFILESPathOrLink *)resource
-               format:(nullable DBFILESThumbnailFormat *)format
-                 size:(nullable DBFILESThumbnailSize *)size
-                 mode:(nullable DBFILESThumbnailMode *)mode
-              quality:(nullable DBFILESThumbnailQuality *)quality
-     excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
-            overwrite:(BOOL)overwrite
-          destination:(NSURL *)destination
-      byteOffsetStart:(NSNumber *)byteOffsetStart
-        byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+       getThumbnailV2Url:(DBFILESPathOrLink *)resource
+                  format:(nullable DBFILESThumbnailFormat *)format
+                    size:(nullable DBFILESThumbnailSize *)size
+                    mode:(nullable DBFILESThumbnailMode *)mode
+                 quality:(nullable DBFILESThumbnailQuality *)quality
+        excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
+    preserveTransparency:(nullable NSNumber *)preserveTransparency
+               overwrite:(BOOL)overwrite
+             destination:(NSURL *)destination
+         byteOffsetStart:(NSNumber *)byteOffsetStart
+           byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
@@ -1615,17 +1621,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
 /// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
 /// is not needed.
+/// @param preserveTransparency Whether to preserve the original image's transparency in the thumbnail. This is
+/// supported only when the output format is PNG or WebP. Requests that set this flag with JPEG output return an error.
 ///
 /// @return Through the response callback, the caller will receive a `DBFILESPreviewResult` object on success or a
 /// `DBFILESThumbnailV2Error` object on failure.
 ///
 - (DBDownloadDataTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)
-    getThumbnailV2Data:(DBFILESPathOrLink *)resource
-                format:(nullable DBFILESThumbnailFormat *)format
-                  size:(nullable DBFILESThumbnailSize *)size
-                  mode:(nullable DBFILESThumbnailMode *)mode
-               quality:(nullable DBFILESThumbnailQuality *)quality
-      excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo;
+      getThumbnailV2Data:(DBFILESPathOrLink *)resource
+                  format:(nullable DBFILESThumbnailFormat *)format
+                    size:(nullable DBFILESThumbnailSize *)size
+                    mode:(nullable DBFILESThumbnailMode *)mode
+                 quality:(nullable DBFILESThumbnailQuality *)quality
+        excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
+    preserveTransparency:(nullable NSNumber *)preserveTransparency;
 
 ///
 /// Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg,
@@ -1660,6 +1669,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
 /// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
 /// is not needed.
+/// @param preserveTransparency Whether to preserve the original image's transparency in the thumbnail. This is
+/// supported only when the output format is PNG or WebP. Requests that set this flag with JPEG output return an error.
 /// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
 /// include valid end range value.
 /// @param byteOffsetEnd For partial file download. Download file up until this ending byte position. Must include valid
@@ -1669,14 +1680,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// `DBFILESThumbnailV2Error` object on failure.
 ///
 - (DBDownloadDataTask<DBFILESPreviewResult *, DBFILESThumbnailV2Error *> *)
-    getThumbnailV2Data:(DBFILESPathOrLink *)resource
-                format:(nullable DBFILESThumbnailFormat *)format
-                  size:(nullable DBFILESThumbnailSize *)size
-                  mode:(nullable DBFILESThumbnailMode *)mode
-               quality:(nullable DBFILESThumbnailQuality *)quality
-      excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
-       byteOffsetStart:(NSNumber *)byteOffsetStart
-         byteOffsetEnd:(NSNumber *)byteOffsetEnd;
+      getThumbnailV2Data:(DBFILESPathOrLink *)resource
+                  format:(nullable DBFILESThumbnailFormat *)format
+                    size:(nullable DBFILESThumbnailSize *)size
+                    mode:(nullable DBFILESThumbnailMode *)mode
+                 quality:(nullable DBFILESThumbnailQuality *)quality
+        excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
+    preserveTransparency:(nullable NSNumber *)preserveTransparency
+         byteOffsetStart:(NSNumber *)byteOffsetStart
+           byteOffsetEnd:(NSNumber *)byteOffsetEnd;
 
 ///
 /// Get thumbnails for a list of images. We allow up to 25 thumbnails in a single batch. This method currently supports

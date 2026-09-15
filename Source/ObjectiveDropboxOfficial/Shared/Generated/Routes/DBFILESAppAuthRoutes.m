@@ -221,6 +221,7 @@
                                     mode:(DBFILESThumbnailMode *)mode
                                  quality:(DBFILESThumbnailQuality *)quality
                         excludeMediaInfo:(NSNumber *)excludeMediaInfo
+                    preserveTransparency:(NSNumber *)preserveTransparency
                                overwrite:(BOOL)overwrite
                              destination:(NSURL *)destination {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnailV2;
@@ -229,7 +230,8 @@
                                                                           size:size
                                                                           mode:mode
                                                                        quality:quality
-                                                              excludeMediaInfo:excludeMediaInfo];
+                                                              excludeMediaInfo:excludeMediaInfo
+                                                          preserveTransparency:preserveTransparency];
   return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
 
@@ -254,6 +256,7 @@
                                     mode:(DBFILESThumbnailMode *)mode
                                  quality:(DBFILESThumbnailQuality *)quality
                         excludeMediaInfo:(NSNumber *)excludeMediaInfo
+                    preserveTransparency:(NSNumber *)preserveTransparency
                                overwrite:(BOOL)overwrite
                              destination:(NSURL *)destination
                          byteOffsetStart:(NSNumber *)byteOffsetStart
@@ -264,7 +267,8 @@
                                                                           size:size
                                                                           mode:mode
                                                                        quality:quality
-                                                              excludeMediaInfo:excludeMediaInfo];
+                                                              excludeMediaInfo:excludeMediaInfo
+                                                          preserveTransparency:preserveTransparency];
   return [self.client requestDownload:route
                                   arg:arg
                             overwrite:overwrite
@@ -284,14 +288,16 @@
                                       size:(DBFILESThumbnailSize *)size
                                       mode:(DBFILESThumbnailMode *)mode
                                    quality:(DBFILESThumbnailQuality *)quality
-                          excludeMediaInfo:(NSNumber *)excludeMediaInfo {
+                          excludeMediaInfo:(NSNumber *)excludeMediaInfo
+                      preserveTransparency:(NSNumber *)preserveTransparency {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnailV2;
   DBFILESThumbnailV2Arg *arg = [[DBFILESThumbnailV2Arg alloc] initWithResource:resource
                                                                         format:format
                                                                           size:size
                                                                           mode:mode
                                                                        quality:quality
-                                                              excludeMediaInfo:excludeMediaInfo];
+                                                              excludeMediaInfo:excludeMediaInfo
+                                                          preserveTransparency:preserveTransparency];
   return [self.client requestDownload:route arg:arg];
 }
 
@@ -309,6 +315,7 @@
                                       mode:(DBFILESThumbnailMode *)mode
                                    quality:(DBFILESThumbnailQuality *)quality
                           excludeMediaInfo:(NSNumber *)excludeMediaInfo
+                      preserveTransparency:(NSNumber *)preserveTransparency
                            byteOffsetStart:(NSNumber *)byteOffsetStart
                              byteOffsetEnd:(NSNumber *)byteOffsetEnd {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnailV2;
@@ -317,7 +324,8 @@
                                                                           size:size
                                                                           mode:mode
                                                                        quality:quality
-                                                              excludeMediaInfo:excludeMediaInfo];
+                                                              excludeMediaInfo:excludeMediaInfo
+                                                          preserveTransparency:preserveTransparency];
   return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
 }
 

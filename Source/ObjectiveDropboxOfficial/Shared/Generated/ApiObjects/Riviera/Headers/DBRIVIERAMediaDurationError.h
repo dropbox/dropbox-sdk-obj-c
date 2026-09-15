@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// (no description).
+/// The maximum supported duration, in seconds, of the audio to transcribe.
 @property (nonatomic, readonly) NSNumber *limit;
 
 #pragma mark - Constructors
@@ -33,7 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param limit (no description).
+/// @param limit The maximum supported duration, in seconds, of the audio to
+/// transcribe.
 ///
 /// @return An initialized instance.
 ///

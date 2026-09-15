@@ -28,7 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// The kind of metadata that was extracted for the requested file. Callers
-/// should read the matching field of the `metadata` oneof.
+/// should read the matching variant of `metadata` in
+/// `DBRIVIERAGetMetadataResult`.
 @property (nonatomic, readonly) DBRIVIERAMetadataType *metadataType;
 
 /// (no description).
@@ -40,8 +41,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param metadataType The kind of metadata that was extracted for the
-/// requested file. Callers should read the matching field of the `metadata`
-/// oneof.
+/// requested file. Callers should read the matching variant of `metadata` in
+/// `DBRIVIERAGetMetadataResult`.
 /// @param metadata (no description).
 ///
 /// @return An initialized instance.

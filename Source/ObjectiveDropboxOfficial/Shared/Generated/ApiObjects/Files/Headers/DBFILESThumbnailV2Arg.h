@@ -56,6 +56,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// needed.
 @property (nonatomic, readonly, nullable) NSNumber *excludeMediaInfo;
 
+/// Whether to preserve the original image's transparency in the thumbnail. This
+/// is supported only when the output format is PNG or WebP. Requests that set
+/// this flag with JPEG output return an error.
+@property (nonatomic, readonly) NSNumber *preserveTransparency;
+
 #pragma mark - Constructors
 
 ///
@@ -75,6 +80,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// set for photo and video. When this flag is true, `mediaInfo` in
 /// `DBFILESFileMetadata` is not populated. This improves latency for use cases
 /// where `media_info` is not needed.
+/// @param preserveTransparency Whether to preserve the original image's
+/// transparency in the thumbnail. This is supported only when the output format
+/// is PNG or WebP. Requests that set this flag with JPEG output return an
+/// error.
 ///
 /// @return An initialized instance.
 ///
@@ -83,7 +92,8 @@ NS_ASSUME_NONNULL_BEGIN
                             size:(nullable DBFILESThumbnailSize *)size
                             mode:(nullable DBFILESThumbnailMode *)mode
                          quality:(nullable DBFILESThumbnailQuality *)quality
-                excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo;
+                excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
+            preserveTransparency:(nullable NSNumber *)preserveTransparency;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

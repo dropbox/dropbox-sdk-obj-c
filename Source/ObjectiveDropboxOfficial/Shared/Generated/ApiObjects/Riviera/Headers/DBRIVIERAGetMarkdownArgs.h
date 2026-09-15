@@ -18,9 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `GetMarkdownArgs` struct.
 ///
-/// Arguments for the asynchronous `get_markdown_async` route. Exactly one of
-/// `file_id`, `path`, or `url` must be supplied via `file_id_or_url` to
-/// identify the document to convert to markdown.
+/// Arguments for the asynchronous `getMarkdownAsync` route. Exactly one of
+/// `fileId` in `DBRIVIERAFileIdOrUrl`, `path` in `DBRIVIERAFileIdOrUrl`, or
+/// `url` in `DBRIVIERAFileIdOrUrl` must be supplied via `fileIdOrUrl` in
+/// `DBRIVIERAGetMarkdownArgs` to identify the document to convert to markdown.
 ///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
@@ -31,9 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Instance fields
 
 /// Identifier of the document to convert. Callers must set exactly one of the
-/// `FileIdOrUrl` variants. The referenced file must be a document in a
-/// supported format (see the route description for the list); requests against
-/// unsupported formats return `unsupported_format_error`.
+/// FileIdOrUrl variants. The referenced file must be a document in a supported
+/// format (see the route description for the list); requests against
+/// unsupported formats fail with `userError` in
+/// `DBRIVIERAMarkdownConversionApiV2Error`.
 @property (nonatomic, readonly, nullable) DBRIVIERAFileIdOrUrl *fileIdOrUrl;
 
 /// Enable OCR for PDF documents. Processing is slower when enabled.
@@ -49,9 +51,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// Full constructor for the struct (exposes all instance variables).
 ///
 /// @param fileIdOrUrl Identifier of the document to convert. Callers must set
-/// exactly one of the `FileIdOrUrl` variants. The referenced file must be a
+/// exactly one of the FileIdOrUrl variants. The referenced file must be a
 /// document in a supported format (see the route description for the list);
-/// requests against unsupported formats return `unsupported_format_error`.
+/// requests against unsupported formats fail with `userError` in
+/// `DBRIVIERAMarkdownConversionApiV2Error`.
 /// @param enableOcr Enable OCR for PDF documents. Processing is slower when
 /// enabled.
 /// @param embedImages When true, embed images as base64 data URIs in the

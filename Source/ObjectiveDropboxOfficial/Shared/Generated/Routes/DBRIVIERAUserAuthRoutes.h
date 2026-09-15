@@ -110,8 +110,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///
 /// Asynchronous document-to-markdown conversion for supported file formats. Supported formats: .binder, .docx, .html,
-/// .paper, .papert, .pptx, .xlsx, .gsheet, .ods, .pdf. Unsupported formats return an `unsupported_format_error`. Size
-/// limit: the source file must be at most 50 MB. Larger files are rejected.
+/// .paper, .papert, .pptx, .xlsx, .gsheet, .ods, .pdf. Files in other formats fail with `userError` in
+/// `DBRIVIERAMarkdownConversionApiV2Error`. Size limit: the source file must be at most 50 MB. Larger files fail with
+/// `userError` in `DBRIVIERAMarkdownConversionApiV2Error`. The markdown is not returned by this route. Poll
+/// `getMarkdownAsyncCheck` with the returned async job ID until it reports `complete` in
+/// `DBRIVIERAGetMarkdownAsyncCheckResult` or `failed` in `DBRIVIERAGetMarkdownAsyncCheckResult`.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
@@ -121,12 +124,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///
 /// Asynchronous document-to-markdown conversion for supported file formats. Supported formats: .binder, .docx, .html,
-/// .paper, .papert, .pptx, .xlsx, .gsheet, .ods, .pdf. Unsupported formats return an `unsupported_format_error`. Size
-/// limit: the source file must be at most 50 MB. Larger files are rejected.
+/// .paper, .papert, .pptx, .xlsx, .gsheet, .ods, .pdf. Files in other formats fail with `userError` in
+/// `DBRIVIERAMarkdownConversionApiV2Error`. Size limit: the source file must be at most 50 MB. Larger files fail with
+/// `userError` in `DBRIVIERAMarkdownConversionApiV2Error`. The markdown is not returned by this route. Poll
+/// `getMarkdownAsyncCheck` with the returned async job ID until it reports `complete` in
+/// `DBRIVIERAGetMarkdownAsyncCheckResult` or `failed` in `DBRIVIERAGetMarkdownAsyncCheckResult`.
 ///
-/// @param fileIdOrUrl Identifier of the document to convert. Callers must set exactly one of the `FileIdOrUrl`
-/// variants. The referenced file must be a document in a supported format (see the route description for the list);
-/// requests against unsupported formats return `unsupported_format_error`.
+/// @param fileIdOrUrl Identifier of the document to convert. Callers must set exactly one of the FileIdOrUrl variants.
+/// The referenced file must be a document in a supported format (see the route description for the list); requests
+/// against unsupported formats fail with `userError` in `DBRIVIERAMarkdownConversionApiV2Error`.
 /// @param enableOcr Enable OCR for PDF documents. Processing is slower when enabled.
 /// @param embedImages When true, embed images as base64 data URIs in the markdown output. This can significantly
 /// increase output size.
@@ -156,7 +162,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// .r3d, .raf, .rw2, .rwl, .sr2, .tga, .tif, .tiff, .wbmp, .web, .webp, .x3f. - Audio/video (media) formats: .aac,
 /// .aif, .aiff, .flac, .m4a, .m4r, .mp3, .oga, .ogg, .wav, .wma, .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .flv, .m2t,
 /// .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. - PDF format:
-/// .pdf. - MS Office formats: .docx, .pptx, .xlsx. Unsupported formats return an `unsupported_format_error`.
+/// .pdf. - MS Office formats: .docx, .pptx, .xlsx. Files in other formats fail with `userError` in
+/// `DBRIVIERAMetadataExtractionApiV2Error`. Size limits depend on the kind of metadata being extracted: at most 200 MB
+/// for image (EXIF) files, 100 GB for audio/video files, 500 MB for PDFs, and 288 MB for MS Office files. Files over
+/// the limit for their kind fail with `userError` in `DBRIVIERAMetadataExtractionApiV2Error`. The metadata is not
+/// returned by this route. Poll `getMetadataAsyncCheck` with the returned async job ID until it reports `complete` in
+/// `DBRIVIERAGetMetadataAsyncCheckResult` or `failed` in `DBRIVIERAGetMetadataAsyncCheckResult`.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
@@ -171,13 +182,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// .r3d, .raf, .rw2, .rwl, .sr2, .tga, .tif, .tiff, .wbmp, .web, .webp, .x3f. - Audio/video (media) formats: .aac,
 /// .aif, .aiff, .flac, .m4a, .m4r, .mp3, .oga, .ogg, .wav, .wma, .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .flv, .m2t,
 /// .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. - PDF format:
-/// .pdf. - MS Office formats: .docx, .pptx, .xlsx. Unsupported formats return an `unsupported_format_error`.
+/// .pdf. - MS Office formats: .docx, .pptx, .xlsx. Files in other formats fail with `userError` in
+/// `DBRIVIERAMetadataExtractionApiV2Error`. Size limits depend on the kind of metadata being extracted: at most 200 MB
+/// for image (EXIF) files, 100 GB for audio/video files, 500 MB for PDFs, and 288 MB for MS Office files. Files over
+/// the limit for their kind fail with `userError` in `DBRIVIERAMetadataExtractionApiV2Error`. The metadata is not
+/// returned by this route. Poll `getMetadataAsyncCheck` with the returned async job ID until it reports `complete` in
+/// `DBRIVIERAGetMetadataAsyncCheckResult` or `failed` in `DBRIVIERAGetMetadataAsyncCheckResult`.
 ///
-/// @param fileIdOrUrl Identifier of the file to extract metadata from. Callers must set exactly one of the
-/// `FileIdOrUrl` variants. The kind of metadata returned is determined by the file type: image files return EXIF
-/// metadata, audio/video files return media metadata, PDFs return PDF metadata, and MS Office documents (docx, pptx,
-/// xlsx) return Office metadata. See the route description for the supported formats. Requests against unsupported
-/// formats return `unsupported_format_error`.
+/// @param fileIdOrUrl Identifier of the file to extract metadata from. Callers must set exactly one of the FileIdOrUrl
+/// variants. The kind of metadata returned is determined by the file type: image files return EXIF metadata,
+/// audio/video files return media metadata, PDFs return PDF metadata, and MS Office documents (docx, pptx, xlsx) return
+/// Office metadata. See the route description for the supported formats. Requests against unsupported formats fail with
+/// `userError` in `DBRIVIERAMetadataExtractionApiV2Error`.
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
@@ -285,9 +301,12 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Asynchronous transcript generation for audio and video files. Supported audio formats: .aac, .aif, .aiff, .flac,
 /// .m4a, .m4r, .mp3, .oga, .ogg, .wav, .wma. Supported video formats: .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .flv, .m2t,
-/// .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. Unsupported
-/// formats return an `unsupported_format_error`. Size limits: the source file must be at most 10 GB and its audio track
-/// at most 1 hour in duration. Files exceeding these limits are rejected.
+/// .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. Files in
+/// other formats fail with `userError` in `DBRIVIERAContentApiV2Error`. Size limits: the source file must be at most 10
+/// GB and its audio track at most 1 hour in duration. Files exceeding either limit fail with `userError` in
+/// `DBRIVIERAContentApiV2Error`. The transcript is not returned by this route. Poll `getTranscriptAsyncCheck` with the
+/// returned async job ID until it reports `complete` in `DBRIVIERAGetTranscriptAsyncCheckResult` or `failed` in
+/// `DBRIVIERAGetTranscriptAsyncCheckResult`.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
@@ -298,22 +317,24 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Asynchronous transcript generation for audio and video files. Supported audio formats: .aac, .aif, .aiff, .flac,
 /// .m4a, .m4r, .mp3, .oga, .ogg, .wav, .wma. Supported video formats: .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .flv, .m2t,
-/// .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. Unsupported
-/// formats return an `unsupported_format_error`. Size limits: the source file must be at most 10 GB and its audio track
-/// at most 1 hour in duration. Files exceeding these limits are rejected.
+/// .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. Files in
+/// other formats fail with `userError` in `DBRIVIERAContentApiV2Error`. Size limits: the source file must be at most 10
+/// GB and its audio track at most 1 hour in duration. Files exceeding either limit fail with `userError` in
+/// `DBRIVIERAContentApiV2Error`. The transcript is not returned by this route. Poll `getTranscriptAsyncCheck` with the
+/// returned async job ID until it reports `complete` in `DBRIVIERAGetTranscriptAsyncCheckResult` or `failed` in
+/// `DBRIVIERAGetTranscriptAsyncCheckResult`.
 ///
-/// @param fileIdOrUrl Identifier of the media asset to transcribe. Callers must set exactly one of the `FileIdOrUrl`
+/// @param fileIdOrUrl Identifier of the media asset to transcribe. Callers must set exactly one of the FileIdOrUrl
 /// variants. The referenced asset must be an audio or video file in a supported format (see the route description for
-/// the list); requests against files with no audio track return a `no_audio_error`.
-/// @param timestampLevel Granularity of the time offsets returned for each transcript segment. Defaults to `SENTENCE`
-/// when the field is omitted. - SENTENCE: one segment per spoken sentence (recommended). - WORD: one segment per word,
-/// useful for fine-grained alignment such as captioning or highlight-as-you-listen experiences.
+/// the list); requests against files with no audio track fail with `noAudioError` in `DBRIVIERAContentApiV2Error`.
+/// @param timestampLevel Granularity of the time offsets returned for each transcript segment. Defaults to `sentence`
+/// in `DBRIVIERATimestampLevel` when the field is omitted.
 /// @param includedSpecialWords Comma-delimited list of non-lexical filler words to preserve in the transcript output,
 /// e.g. `"uh, ah, uhm"`. By default these fillers are stripped. Unrecognized tokens are ignored. Leave empty to use the
 /// default filtering behavior.
-/// @param audioLanguage Optional ISO 639-1 two-letter language code hinting the spoken language of the source audio
-/// (e.g. "en", "ja"). When empty, the service auto-detects the language; supplying a hint improves accuracy and latency
-/// for short or ambiguous clips. Unsupported languages fall back to auto-detection.
+/// @param audioLanguage Hint for the spoken language of the source audio, as an ISO 639-1 code (e.g. "en", "ja"). When
+/// empty, the service auto-detects the language; supplying a hint improves accuracy and latency for short or ambiguous
+/// clips. Languages the service does not support fall back to auto-detection.
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
