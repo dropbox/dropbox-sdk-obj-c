@@ -68,6 +68,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESWriteErrorTag) {
   /// The user's member folder has reached its storage limit.
   DBFILESWriteErrorMemberFolderInsufficientSpace,
 
+  /// The user has reached their monthly upload traffic limit.
+  DBFILESWriteErrorUploadTrafficLimitReached,
+
   /// (no description).
   DBFILESWriteErrorOther,
 
@@ -214,6 +217,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESWriteErrorTag) {
 - (instancetype)initWithMemberFolderInsufficientSpace;
 
 ///
+/// Initializes union class with tag state of "upload_traffic_limit_reached".
+///
+/// Description of the "upload_traffic_limit_reached" tag state: The user has
+/// reached their monthly upload traffic limit.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithUploadTrafficLimitReached;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -319,6 +332,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESWriteErrorTag) {
 /// "member_folder_insufficient_space".
 ///
 - (BOOL)isMemberFolderInsufficientSpace;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "upload_traffic_limit_reached".
+///
+/// @return Whether the union's current tag state has value
+/// "upload_traffic_limit_reached".
+///
+- (BOOL)isUploadTrafficLimitReached;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

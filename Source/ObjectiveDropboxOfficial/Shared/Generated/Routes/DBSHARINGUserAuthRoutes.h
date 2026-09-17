@@ -156,7 +156,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param accessLevel AccessLevel union object, describing what access level we want to give new members.
 /// @param addMessageAsComment If the custom message should be added as a comment on the file. Only meant for Paper
 /// files.
-/// @param fpSealedResult Field is only returned for "internal" callers. The FingerprintJS Sealed Client Result value
 ///
 /// @return Through the response callback, the caller will receive a `NSArray<DBSHARINGFileMemberActionResult *>` object
 /// on success or a `DBSHARINGAddFileMemberError` object on failure.
@@ -167,8 +166,7 @@ NS_ASSUME_NONNULL_BEGIN
           customMessage:(nullable NSString *)customMessage
                   quiet:(nullable NSNumber *)quiet
             accessLevel:(nullable DBSHARINGAccessLevel *)accessLevel
-    addMessageAsComment:(nullable NSNumber *)addMessageAsComment
-         fpSealedResult:(nullable NSString *)fpSealedResult;
+    addMessageAsComment:(nullable NSNumber *)addMessageAsComment;
 
 ///
 /// Allows an owner or editor (if the ACL update policy allows) of a shared folder to add another member. For the new
@@ -191,7 +189,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param members The intended list of members to add.  Added members will receive invites to join the shared folder.
 /// @param quiet Whether added members should be notified via email and device notifications of their invite.
 /// @param customMessage Optional message to display to added members in their invitation.
-/// @param fpSealedResult Field is only returned for "internal" callers. The FingerprintJS Sealed Client Result value
 ///
 /// @return Through the response callback, the caller will receive a `void` object on success or a
 /// `DBSHARINGAddFolderMemberError` object on failure.
@@ -199,8 +196,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBNilObject *, DBSHARINGAddFolderMemberError *> *)addFolderMember:(NSString *)sharedFolderId
                                                                        members:(NSArray<DBSHARINGAddMember *> *)members
                                                                          quiet:(nullable NSNumber *)quiet
-                                                                 customMessage:(nullable NSString *)customMessage
-                                                                fpSealedResult:(nullable NSString *)fpSealedResult;
+                                                                 customMessage:(nullable NSString *)customMessage;
 
 ///
 /// Returns the status of an asynchronous job.
