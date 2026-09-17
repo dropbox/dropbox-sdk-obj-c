@@ -52,10 +52,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// for Paper files.
 @property (nonatomic, readonly) NSNumber *addMessageAsComment;
 
-/// Field is only returned for "internal" callers. The FingerprintJS Sealed
-/// Client Result value
-@property (nonatomic, readonly, copy, nullable) NSString *fpSealedResult;
-
 #pragma mark - Constructors
 
 ///
@@ -72,8 +68,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// want to give new members.
 /// @param addMessageAsComment If the custom message should be added as a
 /// comment on the file. Only meant for Paper files.
-/// @param fpSealedResult Field is only returned for "internal" callers. The
-/// FingerprintJS Sealed Client Result value
 ///
 /// @return An initialized instance.
 ///
@@ -82,8 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
                customMessage:(nullable NSString *)customMessage
                        quiet:(nullable NSNumber *)quiet
                  accessLevel:(nullable DBSHARINGAccessLevel *)accessLevel
-         addMessageAsComment:(nullable NSNumber *)addMessageAsComment
-              fpSealedResult:(nullable NSString *)fpSealedResult;
+         addMessageAsComment:(nullable NSNumber *)addMessageAsComment;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
