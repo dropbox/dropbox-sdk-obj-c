@@ -123,7 +123,6 @@
 @class DBFILESThumbnailError;
 @class DBFILESThumbnailFormat;
 @class DBFILESThumbnailMode;
-@class DBFILESThumbnailQuality;
 @class DBFILESThumbnailSize;
 @class DBFILESThumbnailV2Error;
 @class DBFILESUnlockFileArg;
@@ -1308,7 +1307,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// should be preferred, while png is better for screenshots and digital arts, and web for compression.
 /// @param size The size for the thumbnail image.
 /// @param mode How to resize and crop the image to achieve the desired size.
-/// @param quality Field is only returned for "internal" callers. Quality of the thumbnail image.
 /// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
 /// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
 /// is not needed.
@@ -1325,7 +1323,6 @@ NS_ASSUME_NONNULL_BEGIN
               format:(nullable DBFILESThumbnailFormat *)format
                 size:(nullable DBFILESThumbnailSize *)size
                 mode:(nullable DBFILESThumbnailMode *)mode
-             quality:(nullable DBFILESThumbnailQuality *)quality
     excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
            overwrite:(BOOL)overwrite
          destination:(NSURL *)destination;
@@ -1362,7 +1359,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// should be preferred, while png is better for screenshots and digital arts, and web for compression.
 /// @param size The size for the thumbnail image.
 /// @param mode How to resize and crop the image to achieve the desired size.
-/// @param quality Field is only returned for "internal" callers. Quality of the thumbnail image.
 /// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
 /// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
 /// is not needed.
@@ -1383,7 +1379,6 @@ NS_ASSUME_NONNULL_BEGIN
               format:(nullable DBFILESThumbnailFormat *)format
                 size:(nullable DBFILESThumbnailSize *)size
                 mode:(nullable DBFILESThumbnailMode *)mode
-             quality:(nullable DBFILESThumbnailQuality *)quality
     excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
            overwrite:(BOOL)overwrite
          destination:(NSURL *)destination
@@ -1410,7 +1405,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// should be preferred, while png is better for screenshots and digital arts, and web for compression.
 /// @param size The size for the thumbnail image.
 /// @param mode How to resize and crop the image to achieve the desired size.
-/// @param quality Field is only returned for "internal" callers. Quality of the thumbnail image.
 /// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
 /// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
 /// is not needed.
@@ -1423,7 +1417,6 @@ NS_ASSUME_NONNULL_BEGIN
               format:(nullable DBFILESThumbnailFormat *)format
                 size:(nullable DBFILESThumbnailSize *)size
                 mode:(nullable DBFILESThumbnailMode *)mode
-             quality:(nullable DBFILESThumbnailQuality *)quality
     excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo;
 
 ///
@@ -1452,7 +1445,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// should be preferred, while png is better for screenshots and digital arts, and web for compression.
 /// @param size The size for the thumbnail image.
 /// @param mode How to resize and crop the image to achieve the desired size.
-/// @param quality Field is only returned for "internal" callers. Quality of the thumbnail image.
 /// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
 /// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
 /// is not needed.
@@ -1469,7 +1461,6 @@ NS_ASSUME_NONNULL_BEGIN
               format:(nullable DBFILESThumbnailFormat *)format
                 size:(nullable DBFILESThumbnailSize *)size
                 mode:(nullable DBFILESThumbnailMode *)mode
-             quality:(nullable DBFILESThumbnailQuality *)quality
     excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
      byteOffsetStart:(NSNumber *)byteOffsetStart
        byteOffsetEnd:(NSNumber *)byteOffsetEnd;
@@ -1503,7 +1494,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// should be preferred, while png is better for screenshots and digital arts, and web for compression.
 /// @param size The size for the thumbnail image.
 /// @param mode How to resize and crop the image to achieve the desired size.
-/// @param quality Field is only returned for "internal" callers. Quality of the thumbnail image.
 /// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
 /// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
 /// is not needed.
@@ -1522,7 +1512,6 @@ NS_ASSUME_NONNULL_BEGIN
                   format:(nullable DBFILESThumbnailFormat *)format
                     size:(nullable DBFILESThumbnailSize *)size
                     mode:(nullable DBFILESThumbnailMode *)mode
-                 quality:(nullable DBFILESThumbnailQuality *)quality
         excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
     preserveTransparency:(nullable NSNumber *)preserveTransparency
                overwrite:(BOOL)overwrite
@@ -1563,7 +1552,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// should be preferred, while png is better for screenshots and digital arts, and web for compression.
 /// @param size The size for the thumbnail image.
 /// @param mode How to resize and crop the image to achieve the desired size.
-/// @param quality Field is only returned for "internal" callers. Quality of the thumbnail image.
 /// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
 /// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
 /// is not needed.
@@ -1586,7 +1574,6 @@ NS_ASSUME_NONNULL_BEGIN
                   format:(nullable DBFILESThumbnailFormat *)format
                     size:(nullable DBFILESThumbnailSize *)size
                     mode:(nullable DBFILESThumbnailMode *)mode
-                 quality:(nullable DBFILESThumbnailQuality *)quality
         excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
     preserveTransparency:(nullable NSNumber *)preserveTransparency
                overwrite:(BOOL)overwrite
@@ -1617,7 +1604,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// should be preferred, while png is better for screenshots and digital arts, and web for compression.
 /// @param size The size for the thumbnail image.
 /// @param mode How to resize and crop the image to achieve the desired size.
-/// @param quality Field is only returned for "internal" callers. Quality of the thumbnail image.
 /// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
 /// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
 /// is not needed.
@@ -1632,7 +1618,6 @@ NS_ASSUME_NONNULL_BEGIN
                   format:(nullable DBFILESThumbnailFormat *)format
                     size:(nullable DBFILESThumbnailSize *)size
                     mode:(nullable DBFILESThumbnailMode *)mode
-                 quality:(nullable DBFILESThumbnailQuality *)quality
         excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
     preserveTransparency:(nullable NSNumber *)preserveTransparency;
 
@@ -1665,7 +1650,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// should be preferred, while png is better for screenshots and digital arts, and web for compression.
 /// @param size The size for the thumbnail image.
 /// @param mode How to resize and crop the image to achieve the desired size.
-/// @param quality Field is only returned for "internal" callers. Quality of the thumbnail image.
 /// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video. When this flag is
 /// true, `mediaInfo` in `DBFILESFileMetadata` is not populated. This improves latency for use cases where `media_info`
 /// is not needed.
@@ -1684,7 +1668,6 @@ NS_ASSUME_NONNULL_BEGIN
                   format:(nullable DBFILESThumbnailFormat *)format
                     size:(nullable DBFILESThumbnailSize *)size
                     mode:(nullable DBFILESThumbnailMode *)mode
-                 quality:(nullable DBFILESThumbnailQuality *)quality
         excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo
     preserveTransparency:(nullable NSNumber *)preserveTransparency
          byteOffsetStart:(NSNumber *)byteOffsetStart

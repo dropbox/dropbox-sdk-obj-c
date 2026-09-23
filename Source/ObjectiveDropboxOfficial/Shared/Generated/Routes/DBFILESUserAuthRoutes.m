@@ -159,7 +159,6 @@
 #import "DBFILESThumbnailError.h"
 #import "DBFILESThumbnailFormat.h"
 #import "DBFILESThumbnailMode.h"
-#import "DBFILESThumbnailQuality.h"
 #import "DBFILESThumbnailSize.h"
 #import "DBFILESThumbnailV2Arg.h"
 #import "DBFILESThumbnailV2Error.h"
@@ -803,7 +802,6 @@
                                 format:(DBFILESThumbnailFormat *)format
                                   size:(DBFILESThumbnailSize *)size
                                   mode:(DBFILESThumbnailMode *)mode
-                               quality:(DBFILESThumbnailQuality *)quality
                       excludeMediaInfo:(NSNumber *)excludeMediaInfo
                              overwrite:(BOOL)overwrite
                            destination:(NSURL *)destination {
@@ -812,7 +810,6 @@
                                                                 format:format
                                                                   size:size
                                                                   mode:mode
-                                                               quality:quality
                                                       excludeMediaInfo:excludeMediaInfo];
   return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
 }
@@ -836,7 +833,6 @@
                                 format:(DBFILESThumbnailFormat *)format
                                   size:(DBFILESThumbnailSize *)size
                                   mode:(DBFILESThumbnailMode *)mode
-                               quality:(DBFILESThumbnailQuality *)quality
                       excludeMediaInfo:(NSNumber *)excludeMediaInfo
                              overwrite:(BOOL)overwrite
                            destination:(NSURL *)destination
@@ -847,7 +843,6 @@
                                                                 format:format
                                                                   size:size
                                                                   mode:mode
-                                                               quality:quality
                                                       excludeMediaInfo:excludeMediaInfo];
   return [self.client requestDownload:route
                                   arg:arg
@@ -867,14 +862,12 @@
                                   format:(DBFILESThumbnailFormat *)format
                                     size:(DBFILESThumbnailSize *)size
                                     mode:(DBFILESThumbnailMode *)mode
-                                 quality:(DBFILESThumbnailQuality *)quality
                         excludeMediaInfo:(NSNumber *)excludeMediaInfo {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnail;
   DBFILESThumbnailArg *arg = [[DBFILESThumbnailArg alloc] initWithPath:path
                                                                 format:format
                                                                   size:size
                                                                   mode:mode
-                                                               quality:quality
                                                       excludeMediaInfo:excludeMediaInfo];
   return [self.client requestDownload:route arg:arg];
 }
@@ -891,7 +884,6 @@
                                   format:(DBFILESThumbnailFormat *)format
                                     size:(DBFILESThumbnailSize *)size
                                     mode:(DBFILESThumbnailMode *)mode
-                                 quality:(DBFILESThumbnailQuality *)quality
                         excludeMediaInfo:(NSNumber *)excludeMediaInfo
                          byteOffsetStart:(NSNumber *)byteOffsetStart
                            byteOffsetEnd:(NSNumber *)byteOffsetEnd {
@@ -900,7 +892,6 @@
                                                                 format:format
                                                                   size:size
                                                                   mode:mode
-                                                               quality:quality
                                                       excludeMediaInfo:excludeMediaInfo];
   return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
 }
@@ -917,7 +908,6 @@
                                   format:(DBFILESThumbnailFormat *)format
                                     size:(DBFILESThumbnailSize *)size
                                     mode:(DBFILESThumbnailMode *)mode
-                                 quality:(DBFILESThumbnailQuality *)quality
                         excludeMediaInfo:(NSNumber *)excludeMediaInfo
                     preserveTransparency:(NSNumber *)preserveTransparency
                                overwrite:(BOOL)overwrite
@@ -927,7 +917,6 @@
                                                                         format:format
                                                                           size:size
                                                                           mode:mode
-                                                                       quality:quality
                                                               excludeMediaInfo:excludeMediaInfo
                                                           preserveTransparency:preserveTransparency];
   return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
@@ -952,7 +941,6 @@
                                   format:(DBFILESThumbnailFormat *)format
                                     size:(DBFILESThumbnailSize *)size
                                     mode:(DBFILESThumbnailMode *)mode
-                                 quality:(DBFILESThumbnailQuality *)quality
                         excludeMediaInfo:(NSNumber *)excludeMediaInfo
                     preserveTransparency:(NSNumber *)preserveTransparency
                                overwrite:(BOOL)overwrite
@@ -964,7 +952,6 @@
                                                                         format:format
                                                                           size:size
                                                                           mode:mode
-                                                                       quality:quality
                                                               excludeMediaInfo:excludeMediaInfo
                                                           preserveTransparency:preserveTransparency];
   return [self.client requestDownload:route
@@ -985,7 +972,6 @@
                                     format:(DBFILESThumbnailFormat *)format
                                       size:(DBFILESThumbnailSize *)size
                                       mode:(DBFILESThumbnailMode *)mode
-                                   quality:(DBFILESThumbnailQuality *)quality
                           excludeMediaInfo:(NSNumber *)excludeMediaInfo
                       preserveTransparency:(NSNumber *)preserveTransparency {
   DBRoute *route = DBFILESRouteObjects.DBFILESGetThumbnailV2;
@@ -993,7 +979,6 @@
                                                                         format:format
                                                                           size:size
                                                                           mode:mode
-                                                                       quality:quality
                                                               excludeMediaInfo:excludeMediaInfo
                                                           preserveTransparency:preserveTransparency];
   return [self.client requestDownload:route arg:arg];
@@ -1011,7 +996,6 @@
                                     format:(DBFILESThumbnailFormat *)format
                                       size:(DBFILESThumbnailSize *)size
                                       mode:(DBFILESThumbnailMode *)mode
-                                   quality:(DBFILESThumbnailQuality *)quality
                           excludeMediaInfo:(NSNumber *)excludeMediaInfo
                       preserveTransparency:(NSNumber *)preserveTransparency
                            byteOffsetStart:(NSNumber *)byteOffsetStart
@@ -1021,7 +1005,6 @@
                                                                         format:format
                                                                           size:size
                                                                           mode:mode
-                                                                       quality:quality
                                                               excludeMediaInfo:excludeMediaInfo
                                                           preserveTransparency:preserveTransparency];
   return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
