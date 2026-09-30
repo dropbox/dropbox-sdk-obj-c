@@ -1330,8 +1330,7 @@ void MyLog(NSString *format, ...) {
     [[[_tester.sharing addFolderMember:_sharedFolderId
                                members:@[ addFolderMemberArg ]
                                  quiet:[NSNumber numberWithBool:YES]
-                         customMessage:nil
-                        fpSealedResult:nil]
+                         customMessage:nil]
       setResponseBlock:^(DBNilObject *result, DBSHARINGAddFolderMemberError *routeError, DBRequestError *error) {
         if (!error) {
             [TestFormat printOffset:@"Folder member added"];
