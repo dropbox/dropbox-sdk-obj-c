@@ -41956,6 +41956,7 @@
 #import "DBTEAMLOGPaperFolderDeletedDetails.h"
 #import "DBTEAMLOGPaperFolderFollowedDetails.h"
 #import "DBTEAMLOGPaperFolderTeamInviteDetails.h"
+#import "DBTEAMLOGPaperOfflineModePolicyChangedDetails.h"
 #import "DBTEAMLOGPaperPublishedLinkChangePermissionDetails.h"
 #import "DBTEAMLOGPaperPublishedLinkCreateDetails.h"
 #import "DBTEAMLOGPaperPublishedLinkDisabledDetails.h"
@@ -42785,6 +42786,7 @@
 @synthesize paperDesktopPolicyChangedDetails = _paperDesktopPolicyChangedDetails;
 @synthesize paperEnabledUsersGroupAdditionDetails = _paperEnabledUsersGroupAdditionDetails;
 @synthesize paperEnabledUsersGroupRemovalDetails = _paperEnabledUsersGroupRemovalDetails;
+@synthesize paperOfflineModePolicyChangedDetails = _paperOfflineModePolicyChangedDetails;
 @synthesize passkeyLoginPolicyChangedDetails = _passkeyLoginPolicyChangedDetails;
 @synthesize passwordStrengthRequirementsChangePolicyDetails = _passwordStrengthRequirementsChangePolicyDetails;
 @synthesize permanentDeleteChangePolicyDetails = _permanentDeleteChangePolicyDetails;
@@ -48138,6 +48140,16 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsPaperEnabledUsersGroupRemovalDetails;
     _paperEnabledUsersGroupRemovalDetails = paperEnabledUsersGroupRemovalDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithPaperOfflineModePolicyChangedDetails:
+    (DBTEAMLOGPaperOfflineModePolicyChangedDetails *)paperOfflineModePolicyChangedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsPaperOfflineModePolicyChangedDetails;
+    _paperOfflineModePolicyChangedDetails = paperOfflineModePolicyChangedDetails;
   }
   return self;
 }
@@ -54003,6 +54015,15 @@
   return _paperEnabledUsersGroupRemovalDetails;
 }
 
+- (DBTEAMLOGPaperOfflineModePolicyChangedDetails *)paperOfflineModePolicyChangedDetails {
+  if (![self isPaperOfflineModePolicyChangedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsPaperOfflineModePolicyChangedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _paperOfflineModePolicyChangedDetails;
+}
+
 - (DBTEAMLOGPasskeyLoginPolicyChangedDetails *)passkeyLoginPolicyChangedDetails {
   if (![self isPasskeyLoginPolicyChangedDetails]) {
     [NSException raise:@"IllegalStateException"
@@ -57041,6 +57062,10 @@
   return _tag == DBTEAMLOGEventDetailsPaperEnabledUsersGroupRemovalDetails;
 }
 
+- (BOOL)isPaperOfflineModePolicyChangedDetails {
+  return _tag == DBTEAMLOGEventDetailsPaperOfflineModePolicyChangedDetails;
+}
+
 - (BOOL)isPasskeyLoginPolicyChangedDetails {
   return _tag == DBTEAMLOGEventDetailsPasskeyLoginPolicyChangedDetails;
 }
@@ -58503,6 +58528,8 @@
     return @"DBTEAMLOGEventDetailsPaperEnabledUsersGroupAdditionDetails";
   case DBTEAMLOGEventDetailsPaperEnabledUsersGroupRemovalDetails:
     return @"DBTEAMLOGEventDetailsPaperEnabledUsersGroupRemovalDetails";
+  case DBTEAMLOGEventDetailsPaperOfflineModePolicyChangedDetails:
+    return @"DBTEAMLOGEventDetailsPaperOfflineModePolicyChangedDetails";
   case DBTEAMLOGEventDetailsPasskeyLoginPolicyChangedDetails:
     return @"DBTEAMLOGEventDetailsPasskeyLoginPolicyChangedDetails";
   case DBTEAMLOGEventDetailsPasswordStrengthRequirementsChangePolicyDetails:
@@ -60353,6 +60380,9 @@
   case DBTEAMLOGEventDetailsPaperEnabledUsersGroupRemovalDetails:
     result = prime * result + [self.paperEnabledUsersGroupRemovalDetails hash];
     break;
+  case DBTEAMLOGEventDetailsPaperOfflineModePolicyChangedDetails:
+    result = prime * result + [self.paperOfflineModePolicyChangedDetails hash];
+    break;
   case DBTEAMLOGEventDetailsPasskeyLoginPolicyChangedDetails:
     result = prime * result + [self.passkeyLoginPolicyChangedDetails hash];
     break;
@@ -61821,6 +61851,8 @@
     return [self.paperEnabledUsersGroupAdditionDetails isEqual:anEventDetails.paperEnabledUsersGroupAdditionDetails];
   case DBTEAMLOGEventDetailsPaperEnabledUsersGroupRemovalDetails:
     return [self.paperEnabledUsersGroupRemovalDetails isEqual:anEventDetails.paperEnabledUsersGroupRemovalDetails];
+  case DBTEAMLOGEventDetailsPaperOfflineModePolicyChangedDetails:
+    return [self.paperOfflineModePolicyChangedDetails isEqual:anEventDetails.paperOfflineModePolicyChangedDetails];
   case DBTEAMLOGEventDetailsPasskeyLoginPolicyChangedDetails:
     return [self.passkeyLoginPolicyChangedDetails isEqual:anEventDetails.passkeyLoginPolicyChangedDetails];
   case DBTEAMLOGEventDetailsPasswordStrengthRequirementsChangePolicyDetails:
@@ -64188,6 +64220,10 @@
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGPaperEnabledUsersGroupRemovalDetailsSerializer
                                            serialize:valueObj.paperEnabledUsersGroupRemovalDetails]];
     jsonDict[@".tag"] = @"paper_enabled_users_group_removal_details";
+  } else if ([valueObj isPaperOfflineModePolicyChangedDetails]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGPaperOfflineModePolicyChangedDetailsSerializer
+                                           serialize:valueObj.paperOfflineModePolicyChangedDetails]];
+    jsonDict[@".tag"] = @"paper_offline_mode_policy_changed_details";
   } else if ([valueObj isPasskeyLoginPolicyChangedDetails]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGPasskeyLoginPolicyChangedDetailsSerializer
                                            serialize:valueObj.passkeyLoginPolicyChangedDetails]];
@@ -66895,6 +66931,11 @@
         [DBTEAMLOGPaperEnabledUsersGroupRemovalDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc]
         initWithPaperEnabledUsersGroupRemovalDetails:paperEnabledUsersGroupRemovalDetails];
+  } else if ([tag isEqualToString:@"paper_offline_mode_policy_changed_details"]) {
+    DBTEAMLOGPaperOfflineModePolicyChangedDetails *paperOfflineModePolicyChangedDetails =
+        [DBTEAMLOGPaperOfflineModePolicyChangedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithPaperOfflineModePolicyChangedDetails:paperOfflineModePolicyChangedDetails];
   } else if ([tag isEqualToString:@"passkey_login_policy_changed_details"]) {
     DBTEAMLOGPasskeyLoginPolicyChangedDetails *passkeyLoginPolicyChangedDetails =
         [DBTEAMLOGPasskeyLoginPolicyChangedDetailsSerializer deserialize:valueDict];
@@ -67680,6 +67721,7 @@
 #import "DBTEAMLOGPaperFolderDeletedType.h"
 #import "DBTEAMLOGPaperFolderFollowedType.h"
 #import "DBTEAMLOGPaperFolderTeamInviteType.h"
+#import "DBTEAMLOGPaperOfflineModePolicyChangedType.h"
 #import "DBTEAMLOGPaperPublishedLinkChangePermissionType.h"
 #import "DBTEAMLOGPaperPublishedLinkCreateType.h"
 #import "DBTEAMLOGPaperPublishedLinkDisabledType.h"
@@ -68508,6 +68550,7 @@
 @synthesize paperDesktopPolicyChanged = _paperDesktopPolicyChanged;
 @synthesize paperEnabledUsersGroupAddition = _paperEnabledUsersGroupAddition;
 @synthesize paperEnabledUsersGroupRemoval = _paperEnabledUsersGroupRemoval;
+@synthesize paperOfflineModePolicyChanged = _paperOfflineModePolicyChanged;
 @synthesize passkeyLoginPolicyChanged = _passkeyLoginPolicyChanged;
 @synthesize passwordStrengthRequirementsChangePolicy = _passwordStrengthRequirementsChangePolicy;
 @synthesize permanentDeleteChangePolicy = _permanentDeleteChangePolicy;
@@ -73701,6 +73744,16 @@
   if (self) {
     _tag = DBTEAMLOGEventTypePaperEnabledUsersGroupRemoval;
     _paperEnabledUsersGroupRemoval = paperEnabledUsersGroupRemoval;
+  }
+  return self;
+}
+
+- (instancetype)initWithPaperOfflineModePolicyChanged:
+    (DBTEAMLOGPaperOfflineModePolicyChangedType *)paperOfflineModePolicyChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypePaperOfflineModePolicyChanged;
+    _paperOfflineModePolicyChanged = paperOfflineModePolicyChanged;
   }
   return self;
 }
@@ -79209,6 +79262,15 @@
   return _paperEnabledUsersGroupRemoval;
 }
 
+- (DBTEAMLOGPaperOfflineModePolicyChangedType *)paperOfflineModePolicyChanged {
+  if (![self isPaperOfflineModePolicyChanged]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypePaperOfflineModePolicyChanged, but was %@.", [self tagName]];
+  }
+  return _paperOfflineModePolicyChanged;
+}
+
 - (DBTEAMLOGPasskeyLoginPolicyChangedType *)passkeyLoginPolicyChanged {
   if (![self isPasskeyLoginPolicyChanged]) {
     [NSException
@@ -82192,6 +82254,10 @@
   return _tag == DBTEAMLOGEventTypePaperEnabledUsersGroupRemoval;
 }
 
+- (BOOL)isPaperOfflineModePolicyChanged {
+  return _tag == DBTEAMLOGEventTypePaperOfflineModePolicyChanged;
+}
+
 - (BOOL)isPasskeyLoginPolicyChanged {
   return _tag == DBTEAMLOGEventTypePasskeyLoginPolicyChanged;
 }
@@ -83650,6 +83716,8 @@
     return @"DBTEAMLOGEventTypePaperEnabledUsersGroupAddition";
   case DBTEAMLOGEventTypePaperEnabledUsersGroupRemoval:
     return @"DBTEAMLOGEventTypePaperEnabledUsersGroupRemoval";
+  case DBTEAMLOGEventTypePaperOfflineModePolicyChanged:
+    return @"DBTEAMLOGEventTypePaperOfflineModePolicyChanged";
   case DBTEAMLOGEventTypePasskeyLoginPolicyChanged:
     return @"DBTEAMLOGEventTypePasskeyLoginPolicyChanged";
   case DBTEAMLOGEventTypePasswordStrengthRequirementsChangePolicy:
@@ -85498,6 +85566,9 @@
   case DBTEAMLOGEventTypePaperEnabledUsersGroupRemoval:
     result = prime * result + [self.paperEnabledUsersGroupRemoval hash];
     break;
+  case DBTEAMLOGEventTypePaperOfflineModePolicyChanged:
+    result = prime * result + [self.paperOfflineModePolicyChanged hash];
+    break;
   case DBTEAMLOGEventTypePasskeyLoginPolicyChanged:
     result = prime * result + [self.passkeyLoginPolicyChanged hash];
     break;
@@ -86893,6 +86964,8 @@
     return [self.paperEnabledUsersGroupAddition isEqual:anEventType.paperEnabledUsersGroupAddition];
   case DBTEAMLOGEventTypePaperEnabledUsersGroupRemoval:
     return [self.paperEnabledUsersGroupRemoval isEqual:anEventType.paperEnabledUsersGroupRemoval];
+  case DBTEAMLOGEventTypePaperOfflineModePolicyChanged:
+    return [self.paperOfflineModePolicyChanged isEqual:anEventType.paperOfflineModePolicyChanged];
   case DBTEAMLOGEventTypePasskeyLoginPolicyChanged:
     return [self.passkeyLoginPolicyChanged isEqual:anEventType.passkeyLoginPolicyChanged];
   case DBTEAMLOGEventTypePasswordStrengthRequirementsChangePolicy:
@@ -89151,6 +89224,10 @@
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGPaperEnabledUsersGroupRemovalTypeSerializer
                                            serialize:valueObj.paperEnabledUsersGroupRemoval]];
     jsonDict[@".tag"] = @"paper_enabled_users_group_removal";
+  } else if ([valueObj isPaperOfflineModePolicyChanged]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGPaperOfflineModePolicyChangedTypeSerializer
+                                           serialize:valueObj.paperOfflineModePolicyChanged]];
+    jsonDict[@".tag"] = @"paper_offline_mode_policy_changed";
   } else if ([valueObj isPasskeyLoginPolicyChanged]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGPasskeyLoginPolicyChangedTypeSerializer
                                            serialize:valueObj.passkeyLoginPolicyChanged]];
@@ -91616,6 +91693,10 @@
     DBTEAMLOGPaperEnabledUsersGroupRemovalType *paperEnabledUsersGroupRemoval =
         [DBTEAMLOGPaperEnabledUsersGroupRemovalTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithPaperEnabledUsersGroupRemoval:paperEnabledUsersGroupRemoval];
+  } else if ([tag isEqualToString:@"paper_offline_mode_policy_changed"]) {
+    DBTEAMLOGPaperOfflineModePolicyChangedType *paperOfflineModePolicyChanged =
+        [DBTEAMLOGPaperOfflineModePolicyChangedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithPaperOfflineModePolicyChanged:paperOfflineModePolicyChanged];
   } else if ([tag isEqualToString:@"passkey_login_policy_changed"]) {
     DBTEAMLOGPasskeyLoginPolicyChangedType *passkeyLoginPolicyChanged =
         [DBTEAMLOGPasskeyLoginPolicyChangedTypeSerializer deserialize:valueDict];
@@ -96354,6 +96435,14 @@
   return self;
 }
 
+- (instancetype)initWithPaperOfflineModePolicyChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeArgPaperOfflineModePolicyChanged;
+  }
+  return self;
+}
+
 - (instancetype)initWithPasskeyLoginPolicyChanged {
   self = [super init];
   if (self) {
@@ -99270,6 +99359,10 @@
   return _tag == DBTEAMLOGEventTypeArgPaperEnabledUsersGroupRemoval;
 }
 
+- (BOOL)isPaperOfflineModePolicyChanged {
+  return _tag == DBTEAMLOGEventTypeArgPaperOfflineModePolicyChanged;
+}
+
 - (BOOL)isPasskeyLoginPolicyChanged {
   return _tag == DBTEAMLOGEventTypeArgPasskeyLoginPolicyChanged;
 }
@@ -100728,6 +100821,8 @@
     return @"DBTEAMLOGEventTypeArgPaperEnabledUsersGroupAddition";
   case DBTEAMLOGEventTypeArgPaperEnabledUsersGroupRemoval:
     return @"DBTEAMLOGEventTypeArgPaperEnabledUsersGroupRemoval";
+  case DBTEAMLOGEventTypeArgPaperOfflineModePolicyChanged:
+    return @"DBTEAMLOGEventTypeArgPaperOfflineModePolicyChanged";
   case DBTEAMLOGEventTypeArgPasskeyLoginPolicyChanged:
     return @"DBTEAMLOGEventTypeArgPasskeyLoginPolicyChanged";
   case DBTEAMLOGEventTypeArgPasswordStrengthRequirementsChangePolicy:
@@ -102576,6 +102671,9 @@
   case DBTEAMLOGEventTypeArgPaperEnabledUsersGroupRemoval:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBTEAMLOGEventTypeArgPaperOfflineModePolicyChanged:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLOGEventTypeArgPasskeyLoginPolicyChanged:
     result = prime * result + [[self tagName] hash];
     break;
@@ -103964,6 +104062,8 @@
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgPaperEnabledUsersGroupRemoval:
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
+  case DBTEAMLOGEventTypeArgPaperOfflineModePolicyChanged:
+    return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgPasskeyLoginPolicyChanged:
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgPasswordStrengthRequirementsChangePolicy:
@@ -105247,6 +105347,8 @@
     jsonDict[@".tag"] = @"paper_enabled_users_group_addition";
   } else if ([valueObj isPaperEnabledUsersGroupRemoval]) {
     jsonDict[@".tag"] = @"paper_enabled_users_group_removal";
+  } else if ([valueObj isPaperOfflineModePolicyChanged]) {
+    jsonDict[@".tag"] = @"paper_offline_mode_policy_changed";
   } else if ([valueObj isPasskeyLoginPolicyChanged]) {
     jsonDict[@".tag"] = @"passkey_login_policy_changed";
   } else if ([valueObj isPasswordStrengthRequirementsChangePolicy]) {
@@ -106527,6 +106629,8 @@
     return [[DBTEAMLOGEventTypeArg alloc] initWithPaperEnabledUsersGroupAddition];
   } else if ([tag isEqualToString:@"paper_enabled_users_group_removal"]) {
     return [[DBTEAMLOGEventTypeArg alloc] initWithPaperEnabledUsersGroupRemoval];
+  } else if ([tag isEqualToString:@"paper_offline_mode_policy_changed"]) {
+    return [[DBTEAMLOGEventTypeArg alloc] initWithPaperOfflineModePolicyChanged];
   } else if ([tag isEqualToString:@"passkey_login_policy_changed"]) {
     return [[DBTEAMLOGEventTypeArg alloc] initWithPasskeyLoginPolicyChanged];
   } else if ([tag isEqualToString:@"password_strength_requirements_change_policy"]) {
@@ -166031,6 +166135,418 @@
   } else {
     return [[DBTEAMLOGPaperMemberPolicy alloc] initWithOther];
   }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperOfflineModePolicy.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperOfflineModePolicy
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDefault_ {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPaperOfflineModePolicyDefault_;
+  }
+  return self;
+}
+
+- (instancetype)initWithDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPaperOfflineModePolicyDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPaperOfflineModePolicyEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGPaperOfflineModePolicyOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isDefault_ {
+  return _tag == DBTEAMLOGPaperOfflineModePolicyDefault_;
+}
+
+- (BOOL)isDisabled {
+  return _tag == DBTEAMLOGPaperOfflineModePolicyDisabled;
+}
+
+- (BOOL)isEnabled {
+  return _tag == DBTEAMLOGPaperOfflineModePolicyEnabled;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGPaperOfflineModePolicyOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGPaperOfflineModePolicyDefault_:
+    return @"DBTEAMLOGPaperOfflineModePolicyDefault_";
+  case DBTEAMLOGPaperOfflineModePolicyDisabled:
+    return @"DBTEAMLOGPaperOfflineModePolicyDisabled";
+  case DBTEAMLOGPaperOfflineModePolicyEnabled:
+    return @"DBTEAMLOGPaperOfflineModePolicyEnabled";
+  case DBTEAMLOGPaperOfflineModePolicyOther:
+    return @"DBTEAMLOGPaperOfflineModePolicyOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperOfflineModePolicySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperOfflineModePolicySerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGPaperOfflineModePolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGPaperOfflineModePolicyDefault_:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGPaperOfflineModePolicyDisabled:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGPaperOfflineModePolicyEnabled:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGPaperOfflineModePolicyOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperOfflineModePolicy:other];
+}
+
+- (BOOL)isEqualToPaperOfflineModePolicy:(DBTEAMLOGPaperOfflineModePolicy *)aPaperOfflineModePolicy {
+  if (self == aPaperOfflineModePolicy) {
+    return YES;
+  }
+  if (self.tag != aPaperOfflineModePolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGPaperOfflineModePolicyDefault_:
+    return [[self tagName] isEqual:[aPaperOfflineModePolicy tagName]];
+  case DBTEAMLOGPaperOfflineModePolicyDisabled:
+    return [[self tagName] isEqual:[aPaperOfflineModePolicy tagName]];
+  case DBTEAMLOGPaperOfflineModePolicyEnabled:
+    return [[self tagName] isEqual:[aPaperOfflineModePolicy tagName]];
+  case DBTEAMLOGPaperOfflineModePolicyOther:
+    return [[self tagName] isEqual:[aPaperOfflineModePolicy tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperOfflineModePolicySerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperOfflineModePolicy *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isDefault_]) {
+    jsonDict[@".tag"] = @"default";
+  } else if ([valueObj isDisabled]) {
+    jsonDict[@".tag"] = @"disabled";
+  } else if ([valueObj isEnabled]) {
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGPaperOfflineModePolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"default"]) {
+    return [[DBTEAMLOGPaperOfflineModePolicy alloc] initWithDefault_];
+  } else if ([tag isEqualToString:@"disabled"]) {
+    return [[DBTEAMLOGPaperOfflineModePolicy alloc] initWithDisabled];
+  } else if ([tag isEqualToString:@"enabled"]) {
+    return [[DBTEAMLOGPaperOfflineModePolicy alloc] initWithEnabled];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGPaperOfflineModePolicy alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGPaperOfflineModePolicy alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperOfflineModePolicy.h"
+#import "DBTEAMLOGPaperOfflineModePolicyChangedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperOfflineModePolicyChangedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDNewValue:(DBTEAMLOGPaperOfflineModePolicy *)dNewValue
+                    previousValue:(DBTEAMLOGPaperOfflineModePolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+
+  self = [super init];
+  if (self) {
+    _dNewValue = dNewValue;
+    _previousValue = previousValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperOfflineModePolicyChangedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperOfflineModePolicyChangedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGPaperOfflineModePolicyChangedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewValue hash];
+  result = prime * result + [self.previousValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperOfflineModePolicyChangedDetails:other];
+}
+
+- (BOOL)isEqualToPaperOfflineModePolicyChangedDetails:
+    (DBTEAMLOGPaperOfflineModePolicyChangedDetails *)aPaperOfflineModePolicyChangedDetails {
+  if (self == aPaperOfflineModePolicyChangedDetails) {
+    return YES;
+  }
+  if (![self.dNewValue isEqual:aPaperOfflineModePolicyChangedDetails.dNewValue]) {
+    return NO;
+  }
+  if (![self.previousValue isEqual:aPaperOfflineModePolicyChangedDetails.previousValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperOfflineModePolicyChangedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperOfflineModePolicyChangedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"new_value"] = [DBTEAMLOGPaperOfflineModePolicySerializer serialize:valueObj.dNewValue];
+  jsonDict[@"previous_value"] = [DBTEAMLOGPaperOfflineModePolicySerializer serialize:valueObj.previousValue];
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGPaperOfflineModePolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGPaperOfflineModePolicy *dNewValue =
+      [DBTEAMLOGPaperOfflineModePolicySerializer deserialize:valueDict[@"new_value"]];
+  DBTEAMLOGPaperOfflineModePolicy *previousValue =
+      [DBTEAMLOGPaperOfflineModePolicySerializer deserialize:valueDict[@"previous_value"]];
+
+  return [[DBTEAMLOGPaperOfflineModePolicyChangedDetails alloc] initWithDNewValue:dNewValue
+                                                                    previousValue:previousValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGPaperOfflineModePolicyChangedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGPaperOfflineModePolicyChangedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGPaperOfflineModePolicyChangedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGPaperOfflineModePolicyChangedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGPaperOfflineModePolicyChangedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToPaperOfflineModePolicyChangedType:other];
+}
+
+- (BOOL)isEqualToPaperOfflineModePolicyChangedType:
+    (DBTEAMLOGPaperOfflineModePolicyChangedType *)aPaperOfflineModePolicyChangedType {
+  if (self == aPaperOfflineModePolicyChangedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aPaperOfflineModePolicyChangedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGPaperOfflineModePolicyChangedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGPaperOfflineModePolicyChangedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGPaperOfflineModePolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGPaperOfflineModePolicyChangedType alloc] initWithDescription_:description_];
 }
 
 @end

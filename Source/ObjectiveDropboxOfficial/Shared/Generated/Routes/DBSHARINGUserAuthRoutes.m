@@ -175,16 +175,14 @@
                customMessage:(NSString *)customMessage
                        quiet:(NSNumber *)quiet
                  accessLevel:(DBSHARINGAccessLevel *)accessLevel
-         addMessageAsComment:(NSNumber *)addMessageAsComment
-              fpSealedResult:(NSString *)fpSealedResult {
+         addMessageAsComment:(NSNumber *)addMessageAsComment {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGAddFileMember;
   DBSHARINGAddFileMemberArgs *arg = [[DBSHARINGAddFileMemberArgs alloc] initWithFile:file
                                                                              members:members
                                                                        customMessage:customMessage
                                                                                quiet:quiet
                                                                          accessLevel:accessLevel
-                                                                 addMessageAsComment:addMessageAsComment
-                                                                      fpSealedResult:fpSealedResult];
+                                                                 addMessageAsComment:addMessageAsComment];
   return [self.client requestRpc:route arg:arg];
 }
 
@@ -198,14 +196,12 @@
 - (DBRpcTask *)addFolderMember:(NSString *)sharedFolderId
                        members:(NSArray<DBSHARINGAddMember *> *)members
                          quiet:(NSNumber *)quiet
-                 customMessage:(NSString *)customMessage
-                fpSealedResult:(NSString *)fpSealedResult {
+                 customMessage:(NSString *)customMessage {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGAddFolderMember;
   DBSHARINGAddFolderMemberArg *arg = [[DBSHARINGAddFolderMemberArg alloc] initWithSharedFolderId:sharedFolderId
                                                                                          members:members
                                                                                            quiet:quiet
-                                                                                   customMessage:customMessage
-                                                                                  fpSealedResult:fpSealedResult];
+                                                                                   customMessage:customMessage];
   return [self.client requestRpc:route arg:arg];
 }
 

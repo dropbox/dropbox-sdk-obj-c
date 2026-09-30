@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Instance fields
 
-/// The user's unique Dropbox ID.
+/// The user's unique and stable Dropbox ID.
 @property (nonatomic, readonly, copy) NSString *accountId;
 
 /// Details of a user's name.
@@ -37,7 +37,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The user's email address. Do not rely on this without checking the
 /// emailVerified field. Even then, it's possible that the user has since lost
-/// access to their email.
+/// access to their email. Note: email is not a unique or stable identifier for
+/// a Dropbox account. Users can change their email, and emails can be reused by
+/// different accounts. Apps should not use email as a key for account
+/// identification; use accountId instead.
 @property (nonatomic, readonly, copy) NSString *email;
 
 /// Whether the user has verified their email address.
@@ -54,11 +57,14 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Full constructor for the struct (exposes all instance variables).
 ///
-/// @param accountId The user's unique Dropbox ID.
+/// @param accountId The user's unique and stable Dropbox ID.
 /// @param name Details of a user's name.
 /// @param email The user's email address. Do not rely on this without checking
 /// the emailVerified field. Even then, it's possible that the user has since
-/// lost access to their email.
+/// lost access to their email. Note: email is not a unique or stable identifier
+/// for a Dropbox account. Users can change their email, and emails can be
+/// reused by different accounts. Apps should not use email as a key for account
+/// identification; use accountId instead.
 /// @param emailVerified Whether the user has verified their email address.
 /// @param disabled Whether the user has been disabled.
 /// @param profilePhotoUrl URL for the photo representing the user, if one is
@@ -77,11 +83,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// Convenience constructor (exposes only non-nullable instance variables with
 /// no default value).
 ///
-/// @param accountId The user's unique Dropbox ID.
+/// @param accountId The user's unique and stable Dropbox ID.
 /// @param name Details of a user's name.
 /// @param email The user's email address. Do not rely on this without checking
 /// the emailVerified field. Even then, it's possible that the user has since
-/// lost access to their email.
+/// lost access to their email. Note: email is not a unique or stable identifier
+/// for a Dropbox account. Users can change their email, and emails can be
+/// reused by different accounts. Apps should not use email as a key for account
+/// identification; use accountId instead.
 /// @param emailVerified Whether the user has verified their email address.
 /// @param disabled Whether the user has been disabled.
 ///

@@ -67,10 +67,12 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharePathErrorV2Tag) {
   /// We do not support sharing a folder inside a Mac OS X package.
   DBSHARINGSharePathErrorV2InsideOsxPackage,
 
-  /// We do not support sharing the Vault folder.
+  /// Field is deprecated. We do not support sharing the Vault folder.
+  /// Deprecated: Vault sharing errors are no longer emitted.
   DBSHARINGSharePathErrorV2IsVault,
 
-  /// We do not support sharing a folder inside a locked Vault.
+  /// Field is deprecated. We do not support sharing a folder inside a locked
+  /// Vault. Deprecated: Vault sharing errors are no longer emitted.
   DBSHARINGSharePathErrorV2IsVaultLocked,
 
   /// (no description).
@@ -218,8 +220,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharePathErrorV2Tag) {
 ///
 /// Initializes union class with tag state of "is_vault".
 ///
-/// Description of the "is_vault" tag state: We do not support sharing the Vault
-/// folder.
+/// Description of the "is_vault" tag state: Field is deprecated. We do not
+/// support sharing the Vault folder. Deprecated: Vault sharing errors are no
+/// longer emitted.
 ///
 /// @return An initialized instance.
 ///
@@ -228,8 +231,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGSharePathErrorV2Tag) {
 ///
 /// Initializes union class with tag state of "is_vault_locked".
 ///
-/// Description of the "is_vault_locked" tag state: We do not support sharing a
-/// folder inside a locked Vault.
+/// Description of the "is_vault_locked" tag state: Field is deprecated. We do
+/// not support sharing a folder inside a locked Vault. Deprecated: Vault
+/// sharing errors are no longer emitted.
 ///
 /// @return An initialized instance.
 ///
