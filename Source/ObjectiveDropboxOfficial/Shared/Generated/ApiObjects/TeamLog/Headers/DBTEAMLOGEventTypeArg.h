@@ -1715,6 +1715,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
   /// (team_policies) Removed users from Paper-enabled users list
   DBTEAMLOGEventTypeArgPaperEnabledUsersGroupRemoval,
 
+  /// (team_policies) Enabled/disabled Paper offline mode for team
+  DBTEAMLOGEventTypeArgPaperOfflineModePolicyChanged,
+
   /// (team_policies) Changed passkey login policy for team
   DBTEAMLOGEventTypeArgPasskeyLoginPolicyChanged,
 
@@ -7610,6 +7613,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 - (instancetype)initWithPaperEnabledUsersGroupRemoval;
 
 ///
+/// Initializes union class with tag state of
+/// "paper_offline_mode_policy_changed".
+///
+/// Description of the "paper_offline_mode_policy_changed" tag state:
+/// (team_policies) Enabled/disabled Paper offline mode for team
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPaperOfflineModePolicyChanged;
+
+///
 /// Initializes union class with tag state of "passkey_login_policy_changed".
 ///
 /// Description of the "passkey_login_policy_changed" tag state: (team_policies)
@@ -13360,6 +13374,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "paper_enabled_users_group_removal".
 ///
 - (BOOL)isPaperEnabledUsersGroupRemoval;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "paper_offline_mode_policy_changed".
+///
+/// @return Whether the union's current tag state has value
+/// "paper_offline_mode_policy_changed".
+///
+- (BOOL)isPaperOfflineModePolicyChanged;
 
 ///
 /// Retrieves whether the union's current tag state has value

@@ -643,8 +643,7 @@
                customMessage:(NSString *)customMessage
                        quiet:(NSNumber *)quiet
                  accessLevel:(DBSHARINGAccessLevel *)accessLevel
-         addMessageAsComment:(NSNumber *)addMessageAsComment
-              fpSealedResult:(NSString *)fpSealedResult {
+         addMessageAsComment:(NSNumber *)addMessageAsComment {
   [DBStoneValidators
    nonnullValidator:[DBStoneValidators stringValidator:@(1)
                                              maxLength:nil
@@ -662,19 +661,12 @@
     _quiet = quiet ?: @NO;
     _accessLevel = accessLevel;
     _addMessageAsComment = addMessageAsComment ?: @NO;
-    _fpSealedResult = fpSealedResult;
   }
   return self;
 }
 
 - (instancetype)initWithFile:(NSString *)file members:(NSArray<DBSHARINGMemberSelector *> *)members {
-  return [self initWithFile:file
-                    members:members
-              customMessage:nil
-                      quiet:nil
-                accessLevel:nil
-        addMessageAsComment:nil
-             fpSealedResult:nil];
+  return [self initWithFile:file members:members customMessage:nil quiet:nil accessLevel:nil addMessageAsComment:nil];
 }
 
 #pragma mark - Serialization methods
@@ -717,9 +709,6 @@
     result = prime * result + [self.accessLevel hash];
   }
   result = prime * result + [self.addMessageAsComment hash];
-  if (self.fpSealedResult != nil) {
-    result = prime * result + [self.fpSealedResult hash];
-  }
 
   return prime * result;
 }
@@ -762,11 +751,6 @@
   if (![self.addMessageAsComment isEqual:anAddFileMemberArgs.addMessageAsComment]) {
     return NO;
   }
-  if (self.fpSealedResult) {
-    if (![self.fpSealedResult isEqual:anAddFileMemberArgs.fpSealedResult]) {
-      return NO;
-    }
-  }
   return YES;
 }
 
@@ -792,9 +776,6 @@
     jsonDict[@"access_level"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.accessLevel];
   }
   jsonDict[@"add_message_as_comment"] = valueObj.addMessageAsComment;
-  if (valueObj.fpSealedResult) {
-    jsonDict[@"fp_sealed_result"] = valueObj.fpSealedResult;
-  }
 
   return jsonDict;
 }
@@ -811,15 +792,13 @@
   DBSHARINGAccessLevel *accessLevel =
       valueDict[@"access_level"] ? [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"access_level"]] : nil;
   NSNumber *addMessageAsComment = valueDict[@"add_message_as_comment"] ?: @NO;
-  NSString *fpSealedResult = valueDict[@"fp_sealed_result"] ?: nil;
 
   return [[DBSHARINGAddFileMemberArgs alloc] initWithFile:file
                                                   members:members
                                             customMessage:customMessage
                                                     quiet:quiet
                                               accessLevel:accessLevel
-                                      addMessageAsComment:addMessageAsComment
-                                           fpSealedResult:fpSealedResult];
+                                      addMessageAsComment:addMessageAsComment];
 }
 
 @end
@@ -1112,8 +1091,7 @@
 - (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId
                                members:(NSArray<DBSHARINGAddMember *> *)members
                                  quiet:(NSNumber *)quiet
-                         customMessage:(NSString *)customMessage
-                        fpSealedResult:(NSString *)fpSealedResult {
+                         customMessage:(NSString *)customMessage {
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
                                                                  pattern:@"[-_0-9a-zA-Z:]+"]](sharedFolderId);
   [DBStoneValidators
@@ -1129,13 +1107,12 @@
     _members = members;
     _quiet = quiet ?: @NO;
     _customMessage = customMessage;
-    _fpSealedResult = fpSealedResult;
   }
   return self;
 }
 
 - (instancetype)initWithSharedFolderId:(NSString *)sharedFolderId members:(NSArray<DBSHARINGAddMember *> *)members {
-  return [self initWithSharedFolderId:sharedFolderId members:members quiet:nil customMessage:nil fpSealedResult:nil];
+  return [self initWithSharedFolderId:sharedFolderId members:members quiet:nil customMessage:nil];
 }
 
 #pragma mark - Serialization methods
@@ -1174,9 +1151,6 @@
   if (self.customMessage != nil) {
     result = prime * result + [self.customMessage hash];
   }
-  if (self.fpSealedResult != nil) {
-    result = prime * result + [self.fpSealedResult hash];
-  }
 
   return prime * result;
 }
@@ -1211,11 +1185,6 @@
       return NO;
     }
   }
-  if (self.fpSealedResult) {
-    if (![self.fpSealedResult isEqual:anAddFolderMemberArg.fpSealedResult]) {
-      return NO;
-    }
-  }
   return YES;
 }
 
@@ -1237,9 +1206,6 @@
   if (valueObj.customMessage) {
     jsonDict[@"custom_message"] = valueObj.customMessage;
   }
-  if (valueObj.fpSealedResult) {
-    jsonDict[@"fp_sealed_result"] = valueObj.fpSealedResult;
-  }
 
   return jsonDict;
 }
@@ -1253,13 +1219,11 @@
                            }];
   NSNumber *quiet = valueDict[@"quiet"] ?: @NO;
   NSString *customMessage = valueDict[@"custom_message"] ?: nil;
-  NSString *fpSealedResult = valueDict[@"fp_sealed_result"] ?: nil;
 
   return [[DBSHARINGAddFolderMemberArg alloc] initWithSharedFolderId:sharedFolderId
                                                              members:members
                                                                quiet:quiet
-                                                       customMessage:customMessage
-                                                      fpSealedResult:fpSealedResult];
+                                                       customMessage:customMessage];
 }
 
 @end

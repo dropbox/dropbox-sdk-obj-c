@@ -55,9 +55,6 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailSizeTag) {
   /// 2048 by 1536 px.
   DBFILESThumbnailSizeW2048h1536,
 
-  /// Field is only returned for "internal" callers. 3200 by 2400 px.
-  DBFILESThumbnailSizeW3200h2400,
-
 };
 
 /// Represents the union's current tag state.
@@ -146,16 +143,6 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailSizeTag) {
 ///
 - (instancetype)initWithW2048h1536;
 
-///
-/// Initializes union class with tag state of "w3200h2400".
-///
-/// Description of the "w3200h2400" tag state: Field is only returned for
-/// "internal" callers. 3200 by 2400 px.
-///
-/// @return An initialized instance.
-///
-- (instancetype)initWithW3200h2400;
-
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
@@ -222,13 +209,6 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESThumbnailSizeTag) {
 /// @return Whether the union's current tag state has value "w2048h1536".
 ///
 - (BOOL)isW2048h1536;
-
-///
-/// Retrieves whether the union's current tag state has value "w3200h2400".
-///
-/// @return Whether the union's current tag state has value "w3200h2400".
-///
-- (BOOL)isW3200h2400;
 
 ///
 /// Retrieves string value of union's current tag state.

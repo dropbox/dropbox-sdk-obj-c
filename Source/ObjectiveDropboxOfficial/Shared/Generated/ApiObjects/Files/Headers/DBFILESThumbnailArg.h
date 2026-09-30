@@ -11,7 +11,6 @@
 @class DBFILESThumbnailArg;
 @class DBFILESThumbnailFormat;
 @class DBFILESThumbnailMode;
-@class DBFILESThumbnailQuality;
 @class DBFILESThumbnailSize;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -43,10 +42,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// How to resize and crop the image to achieve the desired size.
 @property (nonatomic, readonly) DBFILESThumbnailMode *mode;
 
-/// Field is only returned for "internal" callers. Quality of the thumbnail
-/// image.
-@property (nonatomic, readonly) DBFILESThumbnailQuality *quality;
-
 /// Normally, `mediaInfo` in `DBFILESFileMetadata` is set for photo and video.
 /// When this flag is true, `mediaInfo` in `DBFILESFileMetadata` is not
 /// populated. This improves latency for use cases where `media_info` is not
@@ -64,8 +59,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// better for screenshots and digital arts, and web for compression.
 /// @param size The size for the thumbnail image.
 /// @param mode How to resize and crop the image to achieve the desired size.
-/// @param quality Field is only returned for "internal" callers. Quality of the
-/// thumbnail image.
 /// @param excludeMediaInfo Normally, `mediaInfo` in `DBFILESFileMetadata` is
 /// set for photo and video. When this flag is true, `mediaInfo` in
 /// `DBFILESFileMetadata` is not populated. This improves latency for use cases
@@ -77,7 +70,6 @@ NS_ASSUME_NONNULL_BEGIN
                       format:(nullable DBFILESThumbnailFormat *)format
                         size:(nullable DBFILESThumbnailSize *)size
                         mode:(nullable DBFILESThumbnailMode *)mode
-                     quality:(nullable DBFILESThumbnailQuality *)quality
             excludeMediaInfo:(nullable NSNumber *)excludeMediaInfo;
 
 ///

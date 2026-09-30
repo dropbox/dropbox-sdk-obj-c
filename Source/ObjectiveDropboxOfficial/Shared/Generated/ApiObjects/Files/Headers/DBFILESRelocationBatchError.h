@@ -74,8 +74,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
   /// Can't move the shared folder to the given destination.
   DBFILESRelocationBatchErrorCantMoveSharedFolder,
 
-  /// Some content cannot be moved into Vault under certain circumstances, see
-  /// detailed error.
+  /// Field is deprecated. Some content cannot be moved into Vault under
+  /// certain circumstances, see detailed error. Deprecated: the server no
+  /// longer emits this error.
   DBFILESRelocationBatchErrorCantMoveIntoVault,
 
   /// Some content cannot be moved into the Family Room folder under certain
@@ -112,8 +113,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
 /// accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBFILESWriteError *to;
 
-/// Some content cannot be moved into Vault under certain circumstances, see
-/// detailed error. @note Ensure the `isCantMoveIntoVault` method returns true
+/// Field is deprecated. Some content cannot be moved into Vault under certain
+/// circumstances, see detailed error. Deprecated: the server no longer emits
+/// this error. @note Ensure the `isCantMoveIntoVault` method returns true
 /// before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBFILESMoveIntoVaultError *cantMoveIntoVault;
 
@@ -248,11 +250,13 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESRelocationBatchErrorTag) {
 ///
 /// Initializes union class with tag state of "cant_move_into_vault".
 ///
-/// Description of the "cant_move_into_vault" tag state: Some content cannot be
-/// moved into Vault under certain circumstances, see detailed error.
+/// Description of the "cant_move_into_vault" tag state: Field is deprecated.
+/// Some content cannot be moved into Vault under certain circumstances, see
+/// detailed error. Deprecated: the server no longer emits this error.
 ///
-/// @param cantMoveIntoVault Some content cannot be moved into Vault under
-/// certain circumstances, see detailed error.
+/// @param cantMoveIntoVault Field is deprecated. Some content cannot be moved
+/// into Vault under certain circumstances, see detailed error. Deprecated: the
+/// server no longer emits this error.
 ///
 /// @return An initialized instance.
 ///

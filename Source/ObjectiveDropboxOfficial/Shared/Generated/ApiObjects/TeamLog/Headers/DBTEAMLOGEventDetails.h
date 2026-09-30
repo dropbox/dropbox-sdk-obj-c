@@ -363,6 +363,7 @@
 @class DBTEAMLOGPaperFolderDeletedDetails;
 @class DBTEAMLOGPaperFolderFollowedDetails;
 @class DBTEAMLOGPaperFolderTeamInviteDetails;
+@class DBTEAMLOGPaperOfflineModePolicyChangedDetails;
 @class DBTEAMLOGPaperPublishedLinkChangePermissionDetails;
 @class DBTEAMLOGPaperPublishedLinkCreateDetails;
 @class DBTEAMLOGPaperPublishedLinkDisabledDetails;
@@ -2290,6 +2291,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
   /// (no description).
   DBTEAMLOGEventDetailsPaperEnabledUsersGroupRemovalDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsPaperOfflineModePolicyChangedDetails,
 
   /// (no description).
   DBTEAMLOGEventDetailsPasskeyLoginPolicyChangedDetails,
@@ -5093,6 +5097,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGPaperEnabledUsersGroupRemovalDetails *paperEnabledUsersGroupRemovalDetails;
+
+/// (no description). @note Ensure the `isPaperOfflineModePolicyChangedDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGPaperOfflineModePolicyChangedDetails *paperOfflineModePolicyChangedDetails;
 
 /// (no description). @note Ensure the `isPasskeyLoginPolicyChangedDetails`
 /// method returns true before accessing, otherwise a runtime exception will be
@@ -11145,6 +11154,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 ///
 - (instancetype)initWithPaperEnabledUsersGroupRemovalDetails:
     (DBTEAMLOGPaperEnabledUsersGroupRemovalDetails *)paperEnabledUsersGroupRemovalDetails;
+
+///
+/// Initializes union class with tag state of
+/// "paper_offline_mode_policy_changed_details".
+///
+/// @param paperOfflineModePolicyChangedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPaperOfflineModePolicyChangedDetails:
+    (DBTEAMLOGPaperOfflineModePolicyChangedDetails *)paperOfflineModePolicyChangedDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -19160,6 +19180,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "paper_enabled_users_group_removal_details".
 ///
 - (BOOL)isPaperEnabledUsersGroupRemovalDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "paper_offline_mode_policy_changed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `paperOfflineModePolicyChangedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "paper_offline_mode_policy_changed_details".
+///
+- (BOOL)isPaperOfflineModePolicyChangedDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value

@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// The `MoveIntoVaultError` union.
 ///
+/// Deprecated: the server no longer emits this error.
+///
 /// This class implements the `DBSerializable` protocol (serialize and
 /// deserialize instance methods), which is required for all Obj-C SDK API route
 /// objects.
