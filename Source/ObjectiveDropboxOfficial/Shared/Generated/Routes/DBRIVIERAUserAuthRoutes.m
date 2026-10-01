@@ -9,6 +9,8 @@
 #import "DBASYNCPollArg.h"
 #import "DBASYNCPollError.h"
 #import "DBRIVIERAContentApiV2Error.h"
+#import "DBRIVIERADownloadTransformOutputArgs.h"
+#import "DBRIVIERADownloadTransformOutputResult.h"
 #import "DBRIVIERAFileIdOrUrl.h"
 #import "DBRIVIERAGetKeyframesArgs.h"
 #import "DBRIVIERAGetKeyframesAsyncCheckResult.h"
@@ -28,13 +30,21 @@
 #import "DBRIVIERAGetTranscriptArgs.h"
 #import "DBRIVIERAGetTranscriptAsyncCheckResult.h"
 #import "DBRIVIERAGetTranscriptResult.h"
+#import "DBRIVIERAGetTransformAsyncCheckResult.h"
+#import "DBRIVIERAImageOptions.h"
 #import "DBRIVIERAKeyframesExtractionApiV2Error.h"
 #import "DBRIVIERAMarkdownConversionApiV2Error.h"
 #import "DBRIVIERAMetadataExtractionApiV2Error.h"
 #import "DBRIVIERAOcrExtractionApiV2Error.h"
 #import "DBRIVIERARouteObjects.h"
 #import "DBRIVIERATextExtractionApiV2Error.h"
+#import "DBRIVIERAThumbnailOptions.h"
 #import "DBRIVIERATimestampLevel.h"
+#import "DBRIVIERATransformApiV2Error.h"
+#import "DBRIVIERATransformArgs.h"
+#import "DBRIVIERATransformOutput.h"
+#import "DBRIVIERATransformType.h"
+#import "DBRIVIERAVideoFrameOptions.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 #import "DBTransportClientProtocol.h"
@@ -47,6 +57,47 @@
     _client = client;
   }
   return self;
+}
+
+- (DBDownloadUrlTask *)downloadTransformOutputUrl:(NSString *)outputHandle
+                                        overwrite:(BOOL)overwrite
+                                      destination:(NSURL *)destination {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERADownloadTransformOutput;
+  DBRIVIERADownloadTransformOutputArgs *arg =
+      [[DBRIVIERADownloadTransformOutputArgs alloc] initWithOutputHandle:outputHandle];
+  return [self.client requestDownload:route arg:arg overwrite:overwrite destination:destination];
+}
+
+- (DBDownloadUrlTask *)downloadTransformOutputUrl:(NSString *)outputHandle
+                                        overwrite:(BOOL)overwrite
+                                      destination:(NSURL *)destination
+                                  byteOffsetStart:(NSNumber *)byteOffsetStart
+                                    byteOffsetEnd:(NSNumber *)byteOffsetEnd {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERADownloadTransformOutput;
+  DBRIVIERADownloadTransformOutputArgs *arg =
+      [[DBRIVIERADownloadTransformOutputArgs alloc] initWithOutputHandle:outputHandle];
+  return [self.client requestDownload:route
+                                  arg:arg
+                            overwrite:overwrite
+                          destination:destination
+                      byteOffsetStart:byteOffsetStart
+                        byteOffsetEnd:byteOffsetEnd];
+}
+
+- (DBDownloadDataTask *)downloadTransformOutputData:(NSString *)outputHandle {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERADownloadTransformOutput;
+  DBRIVIERADownloadTransformOutputArgs *arg =
+      [[DBRIVIERADownloadTransformOutputArgs alloc] initWithOutputHandle:outputHandle];
+  return [self.client requestDownload:route arg:arg];
+}
+
+- (DBDownloadDataTask *)downloadTransformOutputData:(NSString *)outputHandle
+                                    byteOffsetStart:(NSNumber *)byteOffsetStart
+                                      byteOffsetEnd:(NSNumber *)byteOffsetEnd {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERADownloadTransformOutput;
+  DBRIVIERADownloadTransformOutputArgs *arg =
+      [[DBRIVIERADownloadTransformOutputArgs alloc] initWithOutputHandle:outputHandle];
+  return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
 }
 
 - (DBRpcTask *)getKeyframesAsync {
@@ -167,6 +218,32 @@
 
 - (DBRpcTask *)getTranscriptAsyncCheck:(NSString *)asyncJobId {
   DBRoute *route = DBRIVIERARouteObjects.DBRIVIERAGetTranscriptAsyncCheck;
+  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)getTransformAsync:(DBRIVIERATransformType *)transformType {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERAGetTransformAsync;
+  DBRIVIERATransformArgs *arg = [[DBRIVIERATransformArgs alloc] initWithTransformType:transformType];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)getTransformAsync:(DBRIVIERATransformType *)transformType
+                     fileIdOrUrl:(DBRIVIERAFileIdOrUrl *)fileIdOrUrl
+                       thumbnail:(DBRIVIERAThumbnailOptions *)thumbnail
+                           image:(DBRIVIERAImageOptions *)image
+                      videoFrame:(DBRIVIERAVideoFrameOptions *)videoFrame {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERAGetTransformAsync;
+  DBRIVIERATransformArgs *arg = [[DBRIVIERATransformArgs alloc] initWithTransformType:transformType
+                                                                          fileIdOrUrl:fileIdOrUrl
+                                                                            thumbnail:thumbnail
+                                                                                image:image
+                                                                           videoFrame:videoFrame];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)getTransformAsyncCheck:(NSString *)asyncJobId {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERAGetTransformAsyncCheck;
   DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
   return [self.client requestRpc:route arg:arg];
 }

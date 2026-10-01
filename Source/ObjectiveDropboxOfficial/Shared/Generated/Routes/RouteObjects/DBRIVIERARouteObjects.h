@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @interface DBRIVIERARouteObjects : NSObject
 
+/// Accessor method for the downloadTransformOutput route object.
++ (DBRoute *)DBRIVIERADownloadTransformOutput;
+
 /// Accessor method for the getKeyframesAsync route object.
 + (DBRoute *)DBRIVIERAGetKeyframesAsync;
 
@@ -52,6 +55,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Accessor method for the getTranscriptAsyncCheck route object.
 + (DBRoute *)DBRIVIERAGetTranscriptAsyncCheck;
+
+/// Accessor method for the getTransformAsync route object.
++ (DBRoute *)DBRIVIERAGetTransformAsync;
+
+/// Accessor method for the getTransformAsyncCheck route object.
++ (DBRoute *)DBRIVIERAGetTransformAsyncCheck;
 
 @end
 
