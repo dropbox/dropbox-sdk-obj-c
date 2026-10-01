@@ -47,6 +47,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGLinkAudienceTag) {
   /// Field is deprecated. Link is accessible only by members of the content.
   DBSHARINGLinkAudienceMembers,
 
+  /// Link is accessible only by signed-in Dropbox users. This audience is
+  /// currently read-only through API v2: API v2 write methods reject requests
+  /// that set it.
+  DBSHARINGLinkAudiencePublicLoggedInOnly,
+
   /// (no description).
   DBSHARINGLinkAudienceOther,
 
@@ -110,6 +115,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGLinkAudienceTag) {
 - (instancetype)initWithMembers;
 
 ///
+/// Initializes union class with tag state of "public_logged_in_only".
+///
+/// Description of the "public_logged_in_only" tag state: Link is accessible
+/// only by signed-in Dropbox users. This audience is currently read-only
+/// through API v2: API v2 write methods reject requests that set it.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPublicLoggedInOnly;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -154,6 +170,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGLinkAudienceTag) {
 /// @return Whether the union's current tag state has value "members".
 ///
 - (BOOL)isMembers;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "public_logged_in_only".
+///
+/// @return Whether the union's current tag state has value
+/// "public_logged_in_only".
+///
+- (BOOL)isPublicLoggedInOnly;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".
