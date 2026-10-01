@@ -9,6 +9,7 @@
 #import "DBASYNCPollError.h"
 #import "DBRIVIERAAppAuthRoutes.h"
 #import "DBRIVIERAContentApiV2Error.h"
+#import "DBRIVIERADownloadTransformOutputResult.h"
 #import "DBRIVIERAGetKeyframesAsyncCheckResult.h"
 #import "DBRIVIERAGetKeyframesResult.h"
 #import "DBRIVIERAGetMarkdownAsyncCheckResult.h"
@@ -21,16 +22,20 @@
 #import "DBRIVIERAGetTextResult.h"
 #import "DBRIVIERAGetTranscriptAsyncCheckResult.h"
 #import "DBRIVIERAGetTranscriptResult.h"
+#import "DBRIVIERAGetTransformAsyncCheckResult.h"
 #import "DBRIVIERAKeyframesExtractionApiV2Error.h"
 #import "DBRIVIERAMarkdownConversionApiV2Error.h"
 #import "DBRIVIERAMetadataExtractionApiV2Error.h"
 #import "DBRIVIERAOcrExtractionApiV2Error.h"
 #import "DBRIVIERATextExtractionApiV2Error.h"
+#import "DBRIVIERATransformApiV2Error.h"
+#import "DBRIVIERATransformOutput.h"
 #import "DBRequestErrors.h"
 #import "DBStoneBase.h"
 
 @implementation DBRIVIERARouteObjects
 
+static DBRoute *DBRIVIERADownloadTransformOutput;
 static DBRoute *DBRIVIERAGetKeyframesAsync;
 static DBRoute *DBRIVIERAGetKeyframesAsyncCheck;
 static DBRoute *DBRIVIERAGetMarkdownAsync;
@@ -43,6 +48,8 @@ static DBRoute *DBRIVIERAGetTextAsync;
 static DBRoute *DBRIVIERAGetTextAsyncCheck;
 static DBRoute *DBRIVIERAGetTranscriptAsync;
 static DBRoute *DBRIVIERAGetTranscriptAsyncCheck;
+static DBRoute *DBRIVIERAGetTransformAsync;
+static DBRoute *DBRIVIERAGetTransformAsyncCheck;
 
 static NSObject *lockObj = nil;
 + (void)initialize {
@@ -50,6 +57,23 @@ static NSObject *lockObj = nil;
   dispatch_once(&onceToken, ^{
     lockObj = [[NSObject alloc] init];
   });
+}
+
++ (DBRoute *)DBRIVIERADownloadTransformOutput {
+  @synchronized(lockObj) {
+    if (!DBRIVIERADownloadTransformOutput) {
+      DBRIVIERADownloadTransformOutput =
+          [[DBRoute alloc] init:@"download_transform_output"
+                           namespace_:@"riviera"
+                           deprecated:@NO
+                           resultType:[DBRIVIERADownloadTransformOutputResult class]
+                            errorType:[DBRIVIERATransformApiV2Error class]
+                                attrs:@{@"auth" : @"app, user", @"host" : @"content", @"style" : @"download"}
+                dataStructSerialBlock:nil
+              dataStructDeserialBlock:nil];
+    }
+    return DBRIVIERADownloadTransformOutput;
+  }
 }
 
 + (DBRoute *)DBRIVIERAGetKeyframesAsync {
@@ -245,6 +269,39 @@ static NSObject *lockObj = nil;
               dataStructDeserialBlock:nil];
     }
     return DBRIVIERAGetTranscriptAsyncCheck;
+  }
+}
+
++ (DBRoute *)DBRIVIERAGetTransformAsync {
+  @synchronized(lockObj) {
+    if (!DBRIVIERAGetTransformAsync) {
+      DBRIVIERAGetTransformAsync = [[DBRoute alloc] init:@"get_transform_async"
+                                              namespace_:@"riviera"
+                                              deprecated:@NO
+                                              resultType:[DBASYNCLaunchResultBase class]
+                                               errorType:nil
+                                                   attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
+                                   dataStructSerialBlock:nil
+                                 dataStructDeserialBlock:nil];
+    }
+    return DBRIVIERAGetTransformAsync;
+  }
+}
+
++ (DBRoute *)DBRIVIERAGetTransformAsyncCheck {
+  @synchronized(lockObj) {
+    if (!DBRIVIERAGetTransformAsyncCheck) {
+      DBRIVIERAGetTransformAsyncCheck =
+          [[DBRoute alloc] init:@"get_transform_async/check"
+                           namespace_:@"riviera"
+                           deprecated:@NO
+                           resultType:[DBRIVIERAGetTransformAsyncCheckResult class]
+                            errorType:[DBASYNCPollError class]
+                                attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
+                dataStructSerialBlock:nil
+              dataStructDeserialBlock:nil];
+    }
+    return DBRIVIERAGetTransformAsyncCheck;
   }
 }
 

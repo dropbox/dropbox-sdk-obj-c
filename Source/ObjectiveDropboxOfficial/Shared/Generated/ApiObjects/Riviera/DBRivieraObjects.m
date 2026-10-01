@@ -1855,6 +1855,222 @@
 
 @end
 
+#import "DBRIVIERADownloadTransformOutputArgs.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERADownloadTransformOutputArgs
+
+#pragma mark - Constructors
+
+- (instancetype)initWithOutputHandle:(NSString *)outputHandle {
+  [DBStoneValidators nonnullValidator:nil](outputHandle);
+
+  self = [super init];
+  if (self) {
+    _outputHandle = outputHandle;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERADownloadTransformOutputArgsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERADownloadTransformOutputArgsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERADownloadTransformOutputArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.outputHandle hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDownloadTransformOutputArgs:other];
+}
+
+- (BOOL)isEqualToDownloadTransformOutputArgs:(DBRIVIERADownloadTransformOutputArgs *)aDownloadTransformOutputArgs {
+  if (self == aDownloadTransformOutputArgs) {
+    return YES;
+  }
+  if (![self.outputHandle isEqual:aDownloadTransformOutputArgs.outputHandle]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERADownloadTransformOutputArgsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERADownloadTransformOutputArgs *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"output_handle"] = valueObj.outputHandle;
+
+  return jsonDict;
+}
+
++ (DBRIVIERADownloadTransformOutputArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *outputHandle = valueDict[@"output_handle"];
+
+  return [[DBRIVIERADownloadTransformOutputArgs alloc] initWithOutputHandle:outputHandle];
+}
+
+@end
+
+#import "DBRIVIERADownloadTransformOutputResult.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERADownloadTransformOutputResult
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSize:(NSNumber *)size format:(NSString *)format mimeType:(NSString *)mimeType {
+
+  self = [super init];
+  if (self) {
+    _size = size ?: @(0);
+    _format = format ?: @"";
+    _mimeType = mimeType ?: @"";
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithSize:nil format:nil mimeType:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERADownloadTransformOutputResultSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERADownloadTransformOutputResultSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERADownloadTransformOutputResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.size hash];
+  result = prime * result + [self.format hash];
+  result = prime * result + [self.mimeType hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDownloadTransformOutputResult:other];
+}
+
+- (BOOL)isEqualToDownloadTransformOutputResult:
+    (DBRIVIERADownloadTransformOutputResult *)aDownloadTransformOutputResult {
+  if (self == aDownloadTransformOutputResult) {
+    return YES;
+  }
+  if (![self.size isEqual:aDownloadTransformOutputResult.size]) {
+    return NO;
+  }
+  if (![self.format isEqual:aDownloadTransformOutputResult.format]) {
+    return NO;
+  }
+  if (![self.mimeType isEqual:aDownloadTransformOutputResult.mimeType]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERADownloadTransformOutputResultSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERADownloadTransformOutputResult *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"size"] = valueObj.size;
+  jsonDict[@"format"] = valueObj.format;
+  jsonDict[@"mime_type"] = valueObj.mimeType;
+
+  return jsonDict;
+}
+
++ (DBRIVIERADownloadTransformOutputResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSNumber *size = valueDict[@"size"] ?: @(0);
+  NSString *format = valueDict[@"format"] ?: @"";
+  NSString *mimeType = valueDict[@"mime_type"] ?: @"";
+
+  return [[DBRIVIERADownloadTransformOutputResult alloc] initWithSize:size format:format mimeType:mimeType];
+}
+
+@end
+
 #import "DBRIVIERAFileIdOrUrl.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
@@ -4852,6 +5068,343 @@
 
 @end
 
+#import "DBRIVIERAGetTransformAsyncCheckResult.h"
+#import "DBRIVIERATransformApiV2Error.h"
+#import "DBRIVIERATransformOutput.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAGetTransformAsyncCheckResult
+
+@synthesize complete = _complete;
+@synthesize failed = _failed;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithInProgress {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAGetTransformAsyncCheckResultInProgress;
+  }
+  return self;
+}
+
+- (instancetype)initWithComplete:(DBRIVIERATransformOutput *)complete {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAGetTransformAsyncCheckResultComplete;
+    _complete = complete;
+  }
+  return self;
+}
+
+- (instancetype)initWithFailed:(DBRIVIERATransformApiV2Error *)failed {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAGetTransformAsyncCheckResultFailed;
+    _failed = failed;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAGetTransformAsyncCheckResultOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBRIVIERATransformOutput *)complete {
+  if (![self isComplete]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBRIVIERAGetTransformAsyncCheckResultComplete, but was %@.", [self tagName]];
+  }
+  return _complete;
+}
+
+- (DBRIVIERATransformApiV2Error *)failed {
+  if (![self isFailed]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBRIVIERAGetTransformAsyncCheckResultFailed, but was %@.", [self tagName]];
+  }
+  return _failed;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isInProgress {
+  return _tag == DBRIVIERAGetTransformAsyncCheckResultInProgress;
+}
+
+- (BOOL)isComplete {
+  return _tag == DBRIVIERAGetTransformAsyncCheckResultComplete;
+}
+
+- (BOOL)isFailed {
+  return _tag == DBRIVIERAGetTransformAsyncCheckResultFailed;
+}
+
+- (BOOL)isOther {
+  return _tag == DBRIVIERAGetTransformAsyncCheckResultOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBRIVIERAGetTransformAsyncCheckResultInProgress:
+    return @"DBRIVIERAGetTransformAsyncCheckResultInProgress";
+  case DBRIVIERAGetTransformAsyncCheckResultComplete:
+    return @"DBRIVIERAGetTransformAsyncCheckResultComplete";
+  case DBRIVIERAGetTransformAsyncCheckResultFailed:
+    return @"DBRIVIERAGetTransformAsyncCheckResultFailed";
+  case DBRIVIERAGetTransformAsyncCheckResultOther:
+    return @"DBRIVIERAGetTransformAsyncCheckResultOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAGetTransformAsyncCheckResultSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAGetTransformAsyncCheckResultSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAGetTransformAsyncCheckResultSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBRIVIERAGetTransformAsyncCheckResultInProgress:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAGetTransformAsyncCheckResultComplete:
+    result = prime * result + [self.complete hash];
+    break;
+  case DBRIVIERAGetTransformAsyncCheckResultFailed:
+    result = prime * result + [self.failed hash];
+    break;
+  case DBRIVIERAGetTransformAsyncCheckResultOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToGetTransformAsyncCheckResult:other];
+}
+
+- (BOOL)isEqualToGetTransformAsyncCheckResult:(DBRIVIERAGetTransformAsyncCheckResult *)aGetTransformAsyncCheckResult {
+  if (self == aGetTransformAsyncCheckResult) {
+    return YES;
+  }
+  if (self.tag != aGetTransformAsyncCheckResult.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBRIVIERAGetTransformAsyncCheckResultInProgress:
+    return [[self tagName] isEqual:[aGetTransformAsyncCheckResult tagName]];
+  case DBRIVIERAGetTransformAsyncCheckResultComplete:
+    return [self.complete isEqual:aGetTransformAsyncCheckResult.complete];
+  case DBRIVIERAGetTransformAsyncCheckResultFailed:
+    return [self.failed isEqual:aGetTransformAsyncCheckResult.failed];
+  case DBRIVIERAGetTransformAsyncCheckResultOther:
+    return [[self tagName] isEqual:[aGetTransformAsyncCheckResult tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAGetTransformAsyncCheckResultSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAGetTransformAsyncCheckResult *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isInProgress]) {
+    jsonDict[@".tag"] = @"in_progress";
+  } else if ([valueObj isComplete]) {
+    [jsonDict addEntriesFromDictionary:[DBRIVIERATransformOutputSerializer serialize:valueObj.complete]];
+    jsonDict[@".tag"] = @"complete";
+  } else if ([valueObj isFailed]) {
+    jsonDict[@"failed"] = [[DBRIVIERATransformApiV2ErrorSerializer serialize:valueObj.failed] mutableCopy];
+    jsonDict[@".tag"] = @"failed";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBRIVIERAGetTransformAsyncCheckResult *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"in_progress"]) {
+    return [[DBRIVIERAGetTransformAsyncCheckResult alloc] initWithInProgress];
+  } else if ([tag isEqualToString:@"complete"]) {
+    DBRIVIERATransformOutput *complete = [DBRIVIERATransformOutputSerializer deserialize:valueDict];
+    return [[DBRIVIERAGetTransformAsyncCheckResult alloc] initWithComplete:complete];
+  } else if ([tag isEqualToString:@"failed"]) {
+    DBRIVIERATransformApiV2Error *failed = [DBRIVIERATransformApiV2ErrorSerializer deserialize:valueDict[@"failed"]];
+    return [[DBRIVIERAGetTransformAsyncCheckResult alloc] initWithFailed:failed];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBRIVIERAGetTransformAsyncCheckResult alloc] initWithOther];
+  } else {
+    return [[DBRIVIERAGetTransformAsyncCheckResult alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBRIVIERAImageOptions.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAImageOptions
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPageNumber:(NSNumber *)pageNumber scalePercent:(NSNumber *)scalePercent {
+
+  self = [super init];
+  if (self) {
+    _pageNumber = pageNumber ?: @(1);
+    _scalePercent = scalePercent ?: @(100);
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithPageNumber:nil scalePercent:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAImageOptionsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAImageOptionsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAImageOptionsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.pageNumber hash];
+  result = prime * result + [self.scalePercent hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToImageOptions:other];
+}
+
+- (BOOL)isEqualToImageOptions:(DBRIVIERAImageOptions *)anImageOptions {
+  if (self == anImageOptions) {
+    return YES;
+  }
+  if (![self.pageNumber isEqual:anImageOptions.pageNumber]) {
+    return NO;
+  }
+  if (![self.scalePercent isEqual:anImageOptions.scalePercent]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAImageOptionsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAImageOptions *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"page_number"] = valueObj.pageNumber;
+  jsonDict[@"scale_percent"] = valueObj.scalePercent;
+
+  return jsonDict;
+}
+
++ (DBRIVIERAImageOptions *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSNumber *pageNumber = valueDict[@"page_number"] ?: @(1);
+  NSNumber *scalePercent = valueDict[@"scale_percent"] ?: @(100);
+
+  return [[DBRIVIERAImageOptions alloc] initWithPageNumber:pageNumber scalePercent:scalePercent];
+}
+
+@end
+
 #import "DBRIVIERAKeyframesExtractionApiV2Error.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
@@ -7241,6 +7794,889 @@
 
 @end
 
+#import "DBRIVIERAThumbnailFormat.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAThumbnailFormat
+
+#pragma mark - Constructors
+
+- (instancetype)initWithJpeg {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailFormatJpeg;
+  }
+  return self;
+}
+
+- (instancetype)initWithPng {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailFormatPng;
+  }
+  return self;
+}
+
+- (instancetype)initWithWebp {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailFormatWebp;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailFormatOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isJpeg {
+  return _tag == DBRIVIERAThumbnailFormatJpeg;
+}
+
+- (BOOL)isPng {
+  return _tag == DBRIVIERAThumbnailFormatPng;
+}
+
+- (BOOL)isWebp {
+  return _tag == DBRIVIERAThumbnailFormatWebp;
+}
+
+- (BOOL)isOther {
+  return _tag == DBRIVIERAThumbnailFormatOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBRIVIERAThumbnailFormatJpeg:
+    return @"DBRIVIERAThumbnailFormatJpeg";
+  case DBRIVIERAThumbnailFormatPng:
+    return @"DBRIVIERAThumbnailFormatPng";
+  case DBRIVIERAThumbnailFormatWebp:
+    return @"DBRIVIERAThumbnailFormatWebp";
+  case DBRIVIERAThumbnailFormatOther:
+    return @"DBRIVIERAThumbnailFormatOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAThumbnailFormatSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAThumbnailFormatSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAThumbnailFormatSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBRIVIERAThumbnailFormatJpeg:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailFormatPng:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailFormatWebp:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailFormatOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToThumbnailFormat:other];
+}
+
+- (BOOL)isEqualToThumbnailFormat:(DBRIVIERAThumbnailFormat *)aThumbnailFormat {
+  if (self == aThumbnailFormat) {
+    return YES;
+  }
+  if (self.tag != aThumbnailFormat.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBRIVIERAThumbnailFormatJpeg:
+    return [[self tagName] isEqual:[aThumbnailFormat tagName]];
+  case DBRIVIERAThumbnailFormatPng:
+    return [[self tagName] isEqual:[aThumbnailFormat tagName]];
+  case DBRIVIERAThumbnailFormatWebp:
+    return [[self tagName] isEqual:[aThumbnailFormat tagName]];
+  case DBRIVIERAThumbnailFormatOther:
+    return [[self tagName] isEqual:[aThumbnailFormat tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAThumbnailFormatSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAThumbnailFormat *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isJpeg]) {
+    jsonDict[@".tag"] = @"jpeg";
+  } else if ([valueObj isPng]) {
+    jsonDict[@".tag"] = @"png";
+  } else if ([valueObj isWebp]) {
+    jsonDict[@".tag"] = @"webp";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBRIVIERAThumbnailFormat *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"jpeg"]) {
+    return [[DBRIVIERAThumbnailFormat alloc] initWithJpeg];
+  } else if ([tag isEqualToString:@"png"]) {
+    return [[DBRIVIERAThumbnailFormat alloc] initWithPng];
+  } else if ([tag isEqualToString:@"webp"]) {
+    return [[DBRIVIERAThumbnailFormat alloc] initWithWebp];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBRIVIERAThumbnailFormat alloc] initWithOther];
+  } else {
+    return [[DBRIVIERAThumbnailFormat alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBRIVIERAThumbnailMode.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAThumbnailMode
+
+#pragma mark - Constructors
+
+- (instancetype)initWithStrict {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailModeStrict;
+  }
+  return self;
+}
+
+- (instancetype)initWithBestfit {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailModeBestfit;
+  }
+  return self;
+}
+
+- (instancetype)initWithFitoneBestfit {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailModeFitoneBestfit;
+  }
+  return self;
+}
+
+- (instancetype)initWithOriginal {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailModeOriginal;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailModeOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isStrict {
+  return _tag == DBRIVIERAThumbnailModeStrict;
+}
+
+- (BOOL)isBestfit {
+  return _tag == DBRIVIERAThumbnailModeBestfit;
+}
+
+- (BOOL)isFitoneBestfit {
+  return _tag == DBRIVIERAThumbnailModeFitoneBestfit;
+}
+
+- (BOOL)isOriginal {
+  return _tag == DBRIVIERAThumbnailModeOriginal;
+}
+
+- (BOOL)isOther {
+  return _tag == DBRIVIERAThumbnailModeOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBRIVIERAThumbnailModeStrict:
+    return @"DBRIVIERAThumbnailModeStrict";
+  case DBRIVIERAThumbnailModeBestfit:
+    return @"DBRIVIERAThumbnailModeBestfit";
+  case DBRIVIERAThumbnailModeFitoneBestfit:
+    return @"DBRIVIERAThumbnailModeFitoneBestfit";
+  case DBRIVIERAThumbnailModeOriginal:
+    return @"DBRIVIERAThumbnailModeOriginal";
+  case DBRIVIERAThumbnailModeOther:
+    return @"DBRIVIERAThumbnailModeOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAThumbnailModeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAThumbnailModeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAThumbnailModeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBRIVIERAThumbnailModeStrict:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailModeBestfit:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailModeFitoneBestfit:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailModeOriginal:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailModeOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToThumbnailMode:other];
+}
+
+- (BOOL)isEqualToThumbnailMode:(DBRIVIERAThumbnailMode *)aThumbnailMode {
+  if (self == aThumbnailMode) {
+    return YES;
+  }
+  if (self.tag != aThumbnailMode.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBRIVIERAThumbnailModeStrict:
+    return [[self tagName] isEqual:[aThumbnailMode tagName]];
+  case DBRIVIERAThumbnailModeBestfit:
+    return [[self tagName] isEqual:[aThumbnailMode tagName]];
+  case DBRIVIERAThumbnailModeFitoneBestfit:
+    return [[self tagName] isEqual:[aThumbnailMode tagName]];
+  case DBRIVIERAThumbnailModeOriginal:
+    return [[self tagName] isEqual:[aThumbnailMode tagName]];
+  case DBRIVIERAThumbnailModeOther:
+    return [[self tagName] isEqual:[aThumbnailMode tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAThumbnailModeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAThumbnailMode *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isStrict]) {
+    jsonDict[@".tag"] = @"strict";
+  } else if ([valueObj isBestfit]) {
+    jsonDict[@".tag"] = @"bestfit";
+  } else if ([valueObj isFitoneBestfit]) {
+    jsonDict[@".tag"] = @"fitone_bestfit";
+  } else if ([valueObj isOriginal]) {
+    jsonDict[@".tag"] = @"original";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBRIVIERAThumbnailMode *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"strict"]) {
+    return [[DBRIVIERAThumbnailMode alloc] initWithStrict];
+  } else if ([tag isEqualToString:@"bestfit"]) {
+    return [[DBRIVIERAThumbnailMode alloc] initWithBestfit];
+  } else if ([tag isEqualToString:@"fitone_bestfit"]) {
+    return [[DBRIVIERAThumbnailMode alloc] initWithFitoneBestfit];
+  } else if ([tag isEqualToString:@"original"]) {
+    return [[DBRIVIERAThumbnailMode alloc] initWithOriginal];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBRIVIERAThumbnailMode alloc] initWithOther];
+  } else {
+    return [[DBRIVIERAThumbnailMode alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBRIVIERAThumbnailFormat.h"
+#import "DBRIVIERAThumbnailMode.h"
+#import "DBRIVIERAThumbnailOptions.h"
+#import "DBRIVIERAThumbnailSize.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAThumbnailOptions
+
+#pragma mark - Constructors
+
+- (instancetype)initWithSize:(DBRIVIERAThumbnailSize *)size
+                        mode:(DBRIVIERAThumbnailMode *)mode
+                      format:(DBRIVIERAThumbnailFormat *)format {
+
+  self = [super init];
+  if (self) {
+    _size = size ?: [[DBRIVIERAThumbnailSize alloc] initWithW64h64];
+    _mode = mode ?: [[DBRIVIERAThumbnailMode alloc] initWithStrict];
+    _format = format ?: [[DBRIVIERAThumbnailFormat alloc] initWithJpeg];
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithSize:nil mode:nil format:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAThumbnailOptionsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAThumbnailOptionsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAThumbnailOptionsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.size hash];
+  result = prime * result + [self.mode hash];
+  result = prime * result + [self.format hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToThumbnailOptions:other];
+}
+
+- (BOOL)isEqualToThumbnailOptions:(DBRIVIERAThumbnailOptions *)aThumbnailOptions {
+  if (self == aThumbnailOptions) {
+    return YES;
+  }
+  if (![self.size isEqual:aThumbnailOptions.size]) {
+    return NO;
+  }
+  if (![self.mode isEqual:aThumbnailOptions.mode]) {
+    return NO;
+  }
+  if (![self.format isEqual:aThumbnailOptions.format]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAThumbnailOptionsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAThumbnailOptions *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"size"] = [DBRIVIERAThumbnailSizeSerializer serialize:valueObj.size];
+  jsonDict[@"mode"] = [DBRIVIERAThumbnailModeSerializer serialize:valueObj.mode];
+  jsonDict[@"format"] = [DBRIVIERAThumbnailFormatSerializer serialize:valueObj.format];
+
+  return jsonDict;
+}
+
++ (DBRIVIERAThumbnailOptions *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBRIVIERAThumbnailSize *size = valueDict[@"size"] ? [DBRIVIERAThumbnailSizeSerializer deserialize:valueDict[@"size"]]
+                                                    : [[DBRIVIERAThumbnailSize alloc] initWithW64h64];
+  DBRIVIERAThumbnailMode *mode = valueDict[@"mode"] ? [DBRIVIERAThumbnailModeSerializer deserialize:valueDict[@"mode"]]
+                                                    : [[DBRIVIERAThumbnailMode alloc] initWithStrict];
+  DBRIVIERAThumbnailFormat *format = valueDict[@"format"]
+                                         ? [DBRIVIERAThumbnailFormatSerializer deserialize:valueDict[@"format"]]
+                                         : [[DBRIVIERAThumbnailFormat alloc] initWithJpeg];
+
+  return [[DBRIVIERAThumbnailOptions alloc] initWithSize:size mode:mode format:format];
+}
+
+@end
+
+#import "DBRIVIERAThumbnailSize.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAThumbnailSize
+
+#pragma mark - Constructors
+
+- (instancetype)initWithW32h32 {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailSizeW32h32;
+  }
+  return self;
+}
+
+- (instancetype)initWithW64h64 {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailSizeW64h64;
+  }
+  return self;
+}
+
+- (instancetype)initWithW128h128 {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailSizeW128h128;
+  }
+  return self;
+}
+
+- (instancetype)initWithW256h256 {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailSizeW256h256;
+  }
+  return self;
+}
+
+- (instancetype)initWithW480h320 {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailSizeW480h320;
+  }
+  return self;
+}
+
+- (instancetype)initWithW640h480 {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailSizeW640h480;
+  }
+  return self;
+}
+
+- (instancetype)initWithW960h640 {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailSizeW960h640;
+  }
+  return self;
+}
+
+- (instancetype)initWithW1024h768 {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailSizeW1024h768;
+  }
+  return self;
+}
+
+- (instancetype)initWithW2048h1536 {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailSizeW2048h1536;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERAThumbnailSizeOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isW32h32 {
+  return _tag == DBRIVIERAThumbnailSizeW32h32;
+}
+
+- (BOOL)isW64h64 {
+  return _tag == DBRIVIERAThumbnailSizeW64h64;
+}
+
+- (BOOL)isW128h128 {
+  return _tag == DBRIVIERAThumbnailSizeW128h128;
+}
+
+- (BOOL)isW256h256 {
+  return _tag == DBRIVIERAThumbnailSizeW256h256;
+}
+
+- (BOOL)isW480h320 {
+  return _tag == DBRIVIERAThumbnailSizeW480h320;
+}
+
+- (BOOL)isW640h480 {
+  return _tag == DBRIVIERAThumbnailSizeW640h480;
+}
+
+- (BOOL)isW960h640 {
+  return _tag == DBRIVIERAThumbnailSizeW960h640;
+}
+
+- (BOOL)isW1024h768 {
+  return _tag == DBRIVIERAThumbnailSizeW1024h768;
+}
+
+- (BOOL)isW2048h1536 {
+  return _tag == DBRIVIERAThumbnailSizeW2048h1536;
+}
+
+- (BOOL)isOther {
+  return _tag == DBRIVIERAThumbnailSizeOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBRIVIERAThumbnailSizeW32h32:
+    return @"DBRIVIERAThumbnailSizeW32h32";
+  case DBRIVIERAThumbnailSizeW64h64:
+    return @"DBRIVIERAThumbnailSizeW64h64";
+  case DBRIVIERAThumbnailSizeW128h128:
+    return @"DBRIVIERAThumbnailSizeW128h128";
+  case DBRIVIERAThumbnailSizeW256h256:
+    return @"DBRIVIERAThumbnailSizeW256h256";
+  case DBRIVIERAThumbnailSizeW480h320:
+    return @"DBRIVIERAThumbnailSizeW480h320";
+  case DBRIVIERAThumbnailSizeW640h480:
+    return @"DBRIVIERAThumbnailSizeW640h480";
+  case DBRIVIERAThumbnailSizeW960h640:
+    return @"DBRIVIERAThumbnailSizeW960h640";
+  case DBRIVIERAThumbnailSizeW1024h768:
+    return @"DBRIVIERAThumbnailSizeW1024h768";
+  case DBRIVIERAThumbnailSizeW2048h1536:
+    return @"DBRIVIERAThumbnailSizeW2048h1536";
+  case DBRIVIERAThumbnailSizeOther:
+    return @"DBRIVIERAThumbnailSizeOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAThumbnailSizeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAThumbnailSizeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAThumbnailSizeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBRIVIERAThumbnailSizeW32h32:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailSizeW64h64:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailSizeW128h128:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailSizeW256h256:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailSizeW480h320:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailSizeW640h480:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailSizeW960h640:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailSizeW1024h768:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailSizeW2048h1536:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERAThumbnailSizeOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToThumbnailSize:other];
+}
+
+- (BOOL)isEqualToThumbnailSize:(DBRIVIERAThumbnailSize *)aThumbnailSize {
+  if (self == aThumbnailSize) {
+    return YES;
+  }
+  if (self.tag != aThumbnailSize.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBRIVIERAThumbnailSizeW32h32:
+    return [[self tagName] isEqual:[aThumbnailSize tagName]];
+  case DBRIVIERAThumbnailSizeW64h64:
+    return [[self tagName] isEqual:[aThumbnailSize tagName]];
+  case DBRIVIERAThumbnailSizeW128h128:
+    return [[self tagName] isEqual:[aThumbnailSize tagName]];
+  case DBRIVIERAThumbnailSizeW256h256:
+    return [[self tagName] isEqual:[aThumbnailSize tagName]];
+  case DBRIVIERAThumbnailSizeW480h320:
+    return [[self tagName] isEqual:[aThumbnailSize tagName]];
+  case DBRIVIERAThumbnailSizeW640h480:
+    return [[self tagName] isEqual:[aThumbnailSize tagName]];
+  case DBRIVIERAThumbnailSizeW960h640:
+    return [[self tagName] isEqual:[aThumbnailSize tagName]];
+  case DBRIVIERAThumbnailSizeW1024h768:
+    return [[self tagName] isEqual:[aThumbnailSize tagName]];
+  case DBRIVIERAThumbnailSizeW2048h1536:
+    return [[self tagName] isEqual:[aThumbnailSize tagName]];
+  case DBRIVIERAThumbnailSizeOther:
+    return [[self tagName] isEqual:[aThumbnailSize tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAThumbnailSizeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAThumbnailSize *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isW32h32]) {
+    jsonDict[@".tag"] = @"w32h32";
+  } else if ([valueObj isW64h64]) {
+    jsonDict[@".tag"] = @"w64h64";
+  } else if ([valueObj isW128h128]) {
+    jsonDict[@".tag"] = @"w128h128";
+  } else if ([valueObj isW256h256]) {
+    jsonDict[@".tag"] = @"w256h256";
+  } else if ([valueObj isW480h320]) {
+    jsonDict[@".tag"] = @"w480h320";
+  } else if ([valueObj isW640h480]) {
+    jsonDict[@".tag"] = @"w640h480";
+  } else if ([valueObj isW960h640]) {
+    jsonDict[@".tag"] = @"w960h640";
+  } else if ([valueObj isW1024h768]) {
+    jsonDict[@".tag"] = @"w1024h768";
+  } else if ([valueObj isW2048h1536]) {
+    jsonDict[@".tag"] = @"w2048h1536";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBRIVIERAThumbnailSize *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"w32h32"]) {
+    return [[DBRIVIERAThumbnailSize alloc] initWithW32h32];
+  } else if ([tag isEqualToString:@"w64h64"]) {
+    return [[DBRIVIERAThumbnailSize alloc] initWithW64h64];
+  } else if ([tag isEqualToString:@"w128h128"]) {
+    return [[DBRIVIERAThumbnailSize alloc] initWithW128h128];
+  } else if ([tag isEqualToString:@"w256h256"]) {
+    return [[DBRIVIERAThumbnailSize alloc] initWithW256h256];
+  } else if ([tag isEqualToString:@"w480h320"]) {
+    return [[DBRIVIERAThumbnailSize alloc] initWithW480h320];
+  } else if ([tag isEqualToString:@"w640h480"]) {
+    return [[DBRIVIERAThumbnailSize alloc] initWithW640h480];
+  } else if ([tag isEqualToString:@"w960h640"]) {
+    return [[DBRIVIERAThumbnailSize alloc] initWithW960h640];
+  } else if ([tag isEqualToString:@"w1024h768"]) {
+    return [[DBRIVIERAThumbnailSize alloc] initWithW1024h768];
+  } else if ([tag isEqualToString:@"w2048h1536"]) {
+    return [[DBRIVIERAThumbnailSize alloc] initWithW2048h1536];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBRIVIERAThumbnailSize alloc] initWithOther];
+  } else {
+    return [[DBRIVIERAThumbnailSize alloc] initWithOther];
+  }
+}
+
+@end
+
 #import "DBRIVIERATimestampLevel.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
@@ -7413,6 +8849,1101 @@
   } else {
     return [[DBRIVIERATimestampLevel alloc] initWithOther];
   }
+}
+
+@end
+
+#import "DBRIVIERATransformApiV2Error.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERATransformApiV2Error
+
+@synthesize serverError = _serverError;
+@synthesize userError = _userError;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithServerError:(NSString *)serverError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformApiV2ErrorServerError;
+    _serverError = serverError;
+  }
+  return self;
+}
+
+- (instancetype)initWithUserError:(NSString *)userError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformApiV2ErrorUserError;
+    _userError = userError;
+  }
+  return self;
+}
+
+- (instancetype)initWithUnsupportedFormatError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformApiV2ErrorUnsupportedFormatError;
+  }
+  return self;
+}
+
+- (instancetype)initWithLinkDownloadDisabledError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformApiV2ErrorLinkDownloadDisabledError;
+  }
+  return self;
+}
+
+- (instancetype)initWithSharedLinkPasswordProtected {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformApiV2ErrorSharedLinkPasswordProtected;
+  }
+  return self;
+}
+
+- (instancetype)initWithLimitExceededError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformApiV2ErrorLimitExceededError;
+  }
+  return self;
+}
+
+- (instancetype)initWithConversionFailureError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformApiV2ErrorConversionFailureError;
+  }
+  return self;
+}
+
+- (instancetype)initWithNotFoundError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformApiV2ErrorNotFoundError;
+  }
+  return self;
+}
+
+- (instancetype)initWithIsAFolderError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformApiV2ErrorIsAFolderError;
+  }
+  return self;
+}
+
+- (instancetype)initWithInvalidOptionsError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformApiV2ErrorInvalidOptionsError;
+  }
+  return self;
+}
+
+- (instancetype)initWithExpiredHandleError {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformApiV2ErrorExpiredHandleError;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformApiV2ErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (NSString *)serverError {
+  if (![self isServerError]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBRIVIERATransformApiV2ErrorServerError, but was %@.", [self tagName]];
+  }
+  return _serverError;
+}
+
+- (NSString *)userError {
+  if (![self isUserError]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBRIVIERATransformApiV2ErrorUserError, but was %@.", [self tagName]];
+  }
+  return _userError;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isServerError {
+  return _tag == DBRIVIERATransformApiV2ErrorServerError;
+}
+
+- (BOOL)isUserError {
+  return _tag == DBRIVIERATransformApiV2ErrorUserError;
+}
+
+- (BOOL)isUnsupportedFormatError {
+  return _tag == DBRIVIERATransformApiV2ErrorUnsupportedFormatError;
+}
+
+- (BOOL)isLinkDownloadDisabledError {
+  return _tag == DBRIVIERATransformApiV2ErrorLinkDownloadDisabledError;
+}
+
+- (BOOL)isSharedLinkPasswordProtected {
+  return _tag == DBRIVIERATransformApiV2ErrorSharedLinkPasswordProtected;
+}
+
+- (BOOL)isLimitExceededError {
+  return _tag == DBRIVIERATransformApiV2ErrorLimitExceededError;
+}
+
+- (BOOL)isConversionFailureError {
+  return _tag == DBRIVIERATransformApiV2ErrorConversionFailureError;
+}
+
+- (BOOL)isNotFoundError {
+  return _tag == DBRIVIERATransformApiV2ErrorNotFoundError;
+}
+
+- (BOOL)isIsAFolderError {
+  return _tag == DBRIVIERATransformApiV2ErrorIsAFolderError;
+}
+
+- (BOOL)isInvalidOptionsError {
+  return _tag == DBRIVIERATransformApiV2ErrorInvalidOptionsError;
+}
+
+- (BOOL)isExpiredHandleError {
+  return _tag == DBRIVIERATransformApiV2ErrorExpiredHandleError;
+}
+
+- (BOOL)isOther {
+  return _tag == DBRIVIERATransformApiV2ErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBRIVIERATransformApiV2ErrorServerError:
+    return @"DBRIVIERATransformApiV2ErrorServerError";
+  case DBRIVIERATransformApiV2ErrorUserError:
+    return @"DBRIVIERATransformApiV2ErrorUserError";
+  case DBRIVIERATransformApiV2ErrorUnsupportedFormatError:
+    return @"DBRIVIERATransformApiV2ErrorUnsupportedFormatError";
+  case DBRIVIERATransformApiV2ErrorLinkDownloadDisabledError:
+    return @"DBRIVIERATransformApiV2ErrorLinkDownloadDisabledError";
+  case DBRIVIERATransformApiV2ErrorSharedLinkPasswordProtected:
+    return @"DBRIVIERATransformApiV2ErrorSharedLinkPasswordProtected";
+  case DBRIVIERATransformApiV2ErrorLimitExceededError:
+    return @"DBRIVIERATransformApiV2ErrorLimitExceededError";
+  case DBRIVIERATransformApiV2ErrorConversionFailureError:
+    return @"DBRIVIERATransformApiV2ErrorConversionFailureError";
+  case DBRIVIERATransformApiV2ErrorNotFoundError:
+    return @"DBRIVIERATransformApiV2ErrorNotFoundError";
+  case DBRIVIERATransformApiV2ErrorIsAFolderError:
+    return @"DBRIVIERATransformApiV2ErrorIsAFolderError";
+  case DBRIVIERATransformApiV2ErrorInvalidOptionsError:
+    return @"DBRIVIERATransformApiV2ErrorInvalidOptionsError";
+  case DBRIVIERATransformApiV2ErrorExpiredHandleError:
+    return @"DBRIVIERATransformApiV2ErrorExpiredHandleError";
+  case DBRIVIERATransformApiV2ErrorOther:
+    return @"DBRIVIERATransformApiV2ErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERATransformApiV2ErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERATransformApiV2ErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERATransformApiV2ErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBRIVIERATransformApiV2ErrorServerError:
+    result = prime * result + [self.serverError hash];
+    break;
+  case DBRIVIERATransformApiV2ErrorUserError:
+    result = prime * result + [self.userError hash];
+    break;
+  case DBRIVIERATransformApiV2ErrorUnsupportedFormatError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformApiV2ErrorLinkDownloadDisabledError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformApiV2ErrorSharedLinkPasswordProtected:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformApiV2ErrorLimitExceededError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformApiV2ErrorConversionFailureError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformApiV2ErrorNotFoundError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformApiV2ErrorIsAFolderError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformApiV2ErrorInvalidOptionsError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformApiV2ErrorExpiredHandleError:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformApiV2ErrorOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTransformApiV2Error:other];
+}
+
+- (BOOL)isEqualToTransformApiV2Error:(DBRIVIERATransformApiV2Error *)aTransformApiV2Error {
+  if (self == aTransformApiV2Error) {
+    return YES;
+  }
+  if (self.tag != aTransformApiV2Error.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBRIVIERATransformApiV2ErrorServerError:
+    return [self.serverError isEqual:aTransformApiV2Error.serverError];
+  case DBRIVIERATransformApiV2ErrorUserError:
+    return [self.userError isEqual:aTransformApiV2Error.userError];
+  case DBRIVIERATransformApiV2ErrorUnsupportedFormatError:
+    return [[self tagName] isEqual:[aTransformApiV2Error tagName]];
+  case DBRIVIERATransformApiV2ErrorLinkDownloadDisabledError:
+    return [[self tagName] isEqual:[aTransformApiV2Error tagName]];
+  case DBRIVIERATransformApiV2ErrorSharedLinkPasswordProtected:
+    return [[self tagName] isEqual:[aTransformApiV2Error tagName]];
+  case DBRIVIERATransformApiV2ErrorLimitExceededError:
+    return [[self tagName] isEqual:[aTransformApiV2Error tagName]];
+  case DBRIVIERATransformApiV2ErrorConversionFailureError:
+    return [[self tagName] isEqual:[aTransformApiV2Error tagName]];
+  case DBRIVIERATransformApiV2ErrorNotFoundError:
+    return [[self tagName] isEqual:[aTransformApiV2Error tagName]];
+  case DBRIVIERATransformApiV2ErrorIsAFolderError:
+    return [[self tagName] isEqual:[aTransformApiV2Error tagName]];
+  case DBRIVIERATransformApiV2ErrorInvalidOptionsError:
+    return [[self tagName] isEqual:[aTransformApiV2Error tagName]];
+  case DBRIVIERATransformApiV2ErrorExpiredHandleError:
+    return [[self tagName] isEqual:[aTransformApiV2Error tagName]];
+  case DBRIVIERATransformApiV2ErrorOther:
+    return [[self tagName] isEqual:[aTransformApiV2Error tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERATransformApiV2ErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERATransformApiV2Error *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isServerError]) {
+    jsonDict[@"server_error"] = valueObj.serverError;
+    jsonDict[@".tag"] = @"server_error";
+  } else if ([valueObj isUserError]) {
+    jsonDict[@"user_error"] = valueObj.userError;
+    jsonDict[@".tag"] = @"user_error";
+  } else if ([valueObj isUnsupportedFormatError]) {
+    jsonDict[@".tag"] = @"unsupported_format_error";
+  } else if ([valueObj isLinkDownloadDisabledError]) {
+    jsonDict[@".tag"] = @"link_download_disabled_error";
+  } else if ([valueObj isSharedLinkPasswordProtected]) {
+    jsonDict[@".tag"] = @"shared_link_password_protected";
+  } else if ([valueObj isLimitExceededError]) {
+    jsonDict[@".tag"] = @"limit_exceeded_error";
+  } else if ([valueObj isConversionFailureError]) {
+    jsonDict[@".tag"] = @"conversion_failure_error";
+  } else if ([valueObj isNotFoundError]) {
+    jsonDict[@".tag"] = @"not_found_error";
+  } else if ([valueObj isIsAFolderError]) {
+    jsonDict[@".tag"] = @"is_a_folder_error";
+  } else if ([valueObj isInvalidOptionsError]) {
+    jsonDict[@".tag"] = @"invalid_options_error";
+  } else if ([valueObj isExpiredHandleError]) {
+    jsonDict[@".tag"] = @"expired_handle_error";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBRIVIERATransformApiV2Error *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"server_error"]) {
+    NSString *serverError = valueDict[@"server_error"];
+    return [[DBRIVIERATransformApiV2Error alloc] initWithServerError:serverError];
+  } else if ([tag isEqualToString:@"user_error"]) {
+    NSString *userError = valueDict[@"user_error"];
+    return [[DBRIVIERATransformApiV2Error alloc] initWithUserError:userError];
+  } else if ([tag isEqualToString:@"unsupported_format_error"]) {
+    return [[DBRIVIERATransformApiV2Error alloc] initWithUnsupportedFormatError];
+  } else if ([tag isEqualToString:@"link_download_disabled_error"]) {
+    return [[DBRIVIERATransformApiV2Error alloc] initWithLinkDownloadDisabledError];
+  } else if ([tag isEqualToString:@"shared_link_password_protected"]) {
+    return [[DBRIVIERATransformApiV2Error alloc] initWithSharedLinkPasswordProtected];
+  } else if ([tag isEqualToString:@"limit_exceeded_error"]) {
+    return [[DBRIVIERATransformApiV2Error alloc] initWithLimitExceededError];
+  } else if ([tag isEqualToString:@"conversion_failure_error"]) {
+    return [[DBRIVIERATransformApiV2Error alloc] initWithConversionFailureError];
+  } else if ([tag isEqualToString:@"not_found_error"]) {
+    return [[DBRIVIERATransformApiV2Error alloc] initWithNotFoundError];
+  } else if ([tag isEqualToString:@"is_a_folder_error"]) {
+    return [[DBRIVIERATransformApiV2Error alloc] initWithIsAFolderError];
+  } else if ([tag isEqualToString:@"invalid_options_error"]) {
+    return [[DBRIVIERATransformApiV2Error alloc] initWithInvalidOptionsError];
+  } else if ([tag isEqualToString:@"expired_handle_error"]) {
+    return [[DBRIVIERATransformApiV2Error alloc] initWithExpiredHandleError];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBRIVIERATransformApiV2Error alloc] initWithOther];
+  } else {
+    return [[DBRIVIERATransformApiV2Error alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBRIVIERAFileIdOrUrl.h"
+#import "DBRIVIERAImageOptions.h"
+#import "DBRIVIERAThumbnailOptions.h"
+#import "DBRIVIERATransformArgs.h"
+#import "DBRIVIERATransformType.h"
+#import "DBRIVIERAVideoFrameOptions.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERATransformArgs
+
+#pragma mark - Constructors
+
+- (instancetype)initWithTransformType:(DBRIVIERATransformType *)transformType
+                          fileIdOrUrl:(DBRIVIERAFileIdOrUrl *)fileIdOrUrl
+                            thumbnail:(DBRIVIERAThumbnailOptions *)thumbnail
+                                image:(DBRIVIERAImageOptions *)image
+                           videoFrame:(DBRIVIERAVideoFrameOptions *)videoFrame {
+  [DBStoneValidators nonnullValidator:nil](transformType);
+
+  self = [super init];
+  if (self) {
+    _fileIdOrUrl = fileIdOrUrl;
+    _transformType = transformType;
+    _thumbnail = thumbnail;
+    _image = image;
+    _videoFrame = videoFrame;
+  }
+  return self;
+}
+
+- (instancetype)initWithTransformType:(DBRIVIERATransformType *)transformType {
+  return [self initWithTransformType:transformType fileIdOrUrl:nil thumbnail:nil image:nil videoFrame:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERATransformArgsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERATransformArgsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERATransformArgsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.transformType hash];
+  if (self.fileIdOrUrl != nil) {
+    result = prime * result + [self.fileIdOrUrl hash];
+  }
+  if (self.thumbnail != nil) {
+    result = prime * result + [self.thumbnail hash];
+  }
+  if (self.image != nil) {
+    result = prime * result + [self.image hash];
+  }
+  if (self.videoFrame != nil) {
+    result = prime * result + [self.videoFrame hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTransformArgs:other];
+}
+
+- (BOOL)isEqualToTransformArgs:(DBRIVIERATransformArgs *)aTransformArgs {
+  if (self == aTransformArgs) {
+    return YES;
+  }
+  if (![self.transformType isEqual:aTransformArgs.transformType]) {
+    return NO;
+  }
+  if (self.fileIdOrUrl) {
+    if (![self.fileIdOrUrl isEqual:aTransformArgs.fileIdOrUrl]) {
+      return NO;
+    }
+  }
+  if (self.thumbnail) {
+    if (![self.thumbnail isEqual:aTransformArgs.thumbnail]) {
+      return NO;
+    }
+  }
+  if (self.image) {
+    if (![self.image isEqual:aTransformArgs.image]) {
+      return NO;
+    }
+  }
+  if (self.videoFrame) {
+    if (![self.videoFrame isEqual:aTransformArgs.videoFrame]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERATransformArgsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERATransformArgs *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"transform_type"] = [DBRIVIERATransformTypeSerializer serialize:valueObj.transformType];
+  if (valueObj.fileIdOrUrl) {
+    jsonDict[@"file_id_or_url"] = [DBRIVIERAFileIdOrUrlSerializer serialize:valueObj.fileIdOrUrl];
+  }
+  if (valueObj.thumbnail) {
+    jsonDict[@"thumbnail"] = [DBRIVIERAThumbnailOptionsSerializer serialize:valueObj.thumbnail];
+  }
+  if (valueObj.image) {
+    jsonDict[@"image"] = [DBRIVIERAImageOptionsSerializer serialize:valueObj.image];
+  }
+  if (valueObj.videoFrame) {
+    jsonDict[@"video_frame"] = [DBRIVIERAVideoFrameOptionsSerializer serialize:valueObj.videoFrame];
+  }
+
+  return jsonDict;
+}
+
++ (DBRIVIERATransformArgs *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBRIVIERATransformType *transformType = [DBRIVIERATransformTypeSerializer deserialize:valueDict[@"transform_type"]];
+  DBRIVIERAFileIdOrUrl *fileIdOrUrl =
+      valueDict[@"file_id_or_url"] ? [DBRIVIERAFileIdOrUrlSerializer deserialize:valueDict[@"file_id_or_url"]] : nil;
+  DBRIVIERAThumbnailOptions *thumbnail =
+      valueDict[@"thumbnail"] ? [DBRIVIERAThumbnailOptionsSerializer deserialize:valueDict[@"thumbnail"]] : nil;
+  DBRIVIERAImageOptions *image =
+      valueDict[@"image"] ? [DBRIVIERAImageOptionsSerializer deserialize:valueDict[@"image"]] : nil;
+  DBRIVIERAVideoFrameOptions *videoFrame =
+      valueDict[@"video_frame"] ? [DBRIVIERAVideoFrameOptionsSerializer deserialize:valueDict[@"video_frame"]] : nil;
+
+  return [[DBRIVIERATransformArgs alloc] initWithTransformType:transformType
+                                                   fileIdOrUrl:fileIdOrUrl
+                                                     thumbnail:thumbnail
+                                                         image:image
+                                                    videoFrame:videoFrame];
+}
+
+@end
+
+#import "DBRIVIERATransformOutput.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERATransformOutput
+
+#pragma mark - Constructors
+
+- (instancetype)initWithOutputHandle:(NSString *)outputHandle
+                                size:(NSNumber *)size
+                              format:(NSString *)format
+                            mimeType:(NSString *)mimeType
+                           expiresTs:(NSNumber *)expiresTs {
+
+  self = [super init];
+  if (self) {
+    _outputHandle = outputHandle ?: @"";
+    _size = size ?: @(0);
+    _format = format ?: @"";
+    _mimeType = mimeType ?: @"";
+    _expiresTs = expiresTs ?: @(0);
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithOutputHandle:nil size:nil format:nil mimeType:nil expiresTs:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERATransformOutputSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERATransformOutputSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERATransformOutputSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.outputHandle hash];
+  result = prime * result + [self.size hash];
+  result = prime * result + [self.format hash];
+  result = prime * result + [self.mimeType hash];
+  result = prime * result + [self.expiresTs hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTransformOutput:other];
+}
+
+- (BOOL)isEqualToTransformOutput:(DBRIVIERATransformOutput *)aTransformOutput {
+  if (self == aTransformOutput) {
+    return YES;
+  }
+  if (![self.outputHandle isEqual:aTransformOutput.outputHandle]) {
+    return NO;
+  }
+  if (![self.size isEqual:aTransformOutput.size]) {
+    return NO;
+  }
+  if (![self.format isEqual:aTransformOutput.format]) {
+    return NO;
+  }
+  if (![self.mimeType isEqual:aTransformOutput.mimeType]) {
+    return NO;
+  }
+  if (![self.expiresTs isEqual:aTransformOutput.expiresTs]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERATransformOutputSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERATransformOutput *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"output_handle"] = valueObj.outputHandle;
+  jsonDict[@"size"] = valueObj.size;
+  jsonDict[@"format"] = valueObj.format;
+  jsonDict[@"mime_type"] = valueObj.mimeType;
+  jsonDict[@"expires_ts"] = valueObj.expiresTs;
+
+  return jsonDict;
+}
+
++ (DBRIVIERATransformOutput *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *outputHandle = valueDict[@"output_handle"] ?: @"";
+  NSNumber *size = valueDict[@"size"] ?: @(0);
+  NSString *format = valueDict[@"format"] ?: @"";
+  NSString *mimeType = valueDict[@"mime_type"] ?: @"";
+  NSNumber *expiresTs = valueDict[@"expires_ts"] ?: @(0);
+
+  return [[DBRIVIERATransformOutput alloc] initWithOutputHandle:outputHandle
+                                                           size:size
+                                                         format:format
+                                                       mimeType:mimeType
+                                                      expiresTs:expiresTs];
+}
+
+@end
+
+#import "DBRIVIERATransformType.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERATransformType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPdf {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformTypePdf;
+  }
+  return self;
+}
+
+- (instancetype)initWithHtml {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformTypeHtml;
+  }
+  return self;
+}
+
+- (instancetype)initWithImage {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformTypeImage;
+  }
+  return self;
+}
+
+- (instancetype)initWithThumbnail {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformTypeThumbnail;
+  }
+  return self;
+}
+
+- (instancetype)initWithImagePdf {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformTypeImagePdf;
+  }
+  return self;
+}
+
+- (instancetype)initWithVideoFrame {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformTypeVideoFrame;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBRIVIERATransformTypeOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isPdf {
+  return _tag == DBRIVIERATransformTypePdf;
+}
+
+- (BOOL)isHtml {
+  return _tag == DBRIVIERATransformTypeHtml;
+}
+
+- (BOOL)isImage {
+  return _tag == DBRIVIERATransformTypeImage;
+}
+
+- (BOOL)isThumbnail {
+  return _tag == DBRIVIERATransformTypeThumbnail;
+}
+
+- (BOOL)isImagePdf {
+  return _tag == DBRIVIERATransformTypeImagePdf;
+}
+
+- (BOOL)isVideoFrame {
+  return _tag == DBRIVIERATransformTypeVideoFrame;
+}
+
+- (BOOL)isOther {
+  return _tag == DBRIVIERATransformTypeOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBRIVIERATransformTypePdf:
+    return @"DBRIVIERATransformTypePdf";
+  case DBRIVIERATransformTypeHtml:
+    return @"DBRIVIERATransformTypeHtml";
+  case DBRIVIERATransformTypeImage:
+    return @"DBRIVIERATransformTypeImage";
+  case DBRIVIERATransformTypeThumbnail:
+    return @"DBRIVIERATransformTypeThumbnail";
+  case DBRIVIERATransformTypeImagePdf:
+    return @"DBRIVIERATransformTypeImagePdf";
+  case DBRIVIERATransformTypeVideoFrame:
+    return @"DBRIVIERATransformTypeVideoFrame";
+  case DBRIVIERATransformTypeOther:
+    return @"DBRIVIERATransformTypeOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERATransformTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERATransformTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERATransformTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBRIVIERATransformTypePdf:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformTypeHtml:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformTypeImage:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformTypeThumbnail:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformTypeImagePdf:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformTypeVideoFrame:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBRIVIERATransformTypeOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTransformType:other];
+}
+
+- (BOOL)isEqualToTransformType:(DBRIVIERATransformType *)aTransformType {
+  if (self == aTransformType) {
+    return YES;
+  }
+  if (self.tag != aTransformType.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBRIVIERATransformTypePdf:
+    return [[self tagName] isEqual:[aTransformType tagName]];
+  case DBRIVIERATransformTypeHtml:
+    return [[self tagName] isEqual:[aTransformType tagName]];
+  case DBRIVIERATransformTypeImage:
+    return [[self tagName] isEqual:[aTransformType tagName]];
+  case DBRIVIERATransformTypeThumbnail:
+    return [[self tagName] isEqual:[aTransformType tagName]];
+  case DBRIVIERATransformTypeImagePdf:
+    return [[self tagName] isEqual:[aTransformType tagName]];
+  case DBRIVIERATransformTypeVideoFrame:
+    return [[self tagName] isEqual:[aTransformType tagName]];
+  case DBRIVIERATransformTypeOther:
+    return [[self tagName] isEqual:[aTransformType tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERATransformTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERATransformType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isPdf]) {
+    jsonDict[@".tag"] = @"pdf";
+  } else if ([valueObj isHtml]) {
+    jsonDict[@".tag"] = @"html";
+  } else if ([valueObj isImage]) {
+    jsonDict[@".tag"] = @"image";
+  } else if ([valueObj isThumbnail]) {
+    jsonDict[@".tag"] = @"thumbnail";
+  } else if ([valueObj isImagePdf]) {
+    jsonDict[@".tag"] = @"image_pdf";
+  } else if ([valueObj isVideoFrame]) {
+    jsonDict[@".tag"] = @"video_frame";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBRIVIERATransformType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"pdf"]) {
+    return [[DBRIVIERATransformType alloc] initWithPdf];
+  } else if ([tag isEqualToString:@"html"]) {
+    return [[DBRIVIERATransformType alloc] initWithHtml];
+  } else if ([tag isEqualToString:@"image"]) {
+    return [[DBRIVIERATransformType alloc] initWithImage];
+  } else if ([tag isEqualToString:@"thumbnail"]) {
+    return [[DBRIVIERATransformType alloc] initWithThumbnail];
+  } else if ([tag isEqualToString:@"image_pdf"]) {
+    return [[DBRIVIERATransformType alloc] initWithImagePdf];
+  } else if ([tag isEqualToString:@"video_frame"]) {
+    return [[DBRIVIERATransformType alloc] initWithVideoFrame];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBRIVIERATransformType alloc] initWithOther];
+  } else {
+    return [[DBRIVIERATransformType alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBRIVIERAVideoFrameOptions.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBRIVIERAVideoFrameOptions
+
+#pragma mark - Constructors
+
+- (instancetype)initWithOffsetInSeconds:(NSNumber *)offsetInSeconds scalePercent:(NSNumber *)scalePercent {
+
+  self = [super init];
+  if (self) {
+    _offsetInSeconds = offsetInSeconds ?: @(0.0);
+    _scalePercent = scalePercent ?: @(100);
+  }
+  return self;
+}
+
+- (instancetype)initDefault {
+  return [self initWithOffsetInSeconds:nil scalePercent:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBRIVIERAVideoFrameOptionsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBRIVIERAVideoFrameOptionsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBRIVIERAVideoFrameOptionsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.offsetInSeconds hash];
+  result = prime * result + [self.scalePercent hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToVideoFrameOptions:other];
+}
+
+- (BOOL)isEqualToVideoFrameOptions:(DBRIVIERAVideoFrameOptions *)aVideoFrameOptions {
+  if (self == aVideoFrameOptions) {
+    return YES;
+  }
+  if (![self.offsetInSeconds isEqual:aVideoFrameOptions.offsetInSeconds]) {
+    return NO;
+  }
+  if (![self.scalePercent isEqual:aVideoFrameOptions.scalePercent]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBRIVIERAVideoFrameOptionsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBRIVIERAVideoFrameOptions *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"offset_in_seconds"] = valueObj.offsetInSeconds;
+  jsonDict[@"scale_percent"] = valueObj.scalePercent;
+
+  return jsonDict;
+}
+
++ (DBRIVIERAVideoFrameOptions *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSNumber *offsetInSeconds = valueDict[@"offset_in_seconds"] ?: @(0.0);
+  NSNumber *scalePercent = valueDict[@"scale_percent"] ?: @(100);
+
+  return [[DBRIVIERAVideoFrameOptions alloc] initWithOffsetInSeconds:offsetInSeconds scalePercent:scalePercent];
 }
 
 @end
