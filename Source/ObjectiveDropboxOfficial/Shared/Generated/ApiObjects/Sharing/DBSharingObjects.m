@@ -12003,6 +12003,14 @@
   return self;
 }
 
+- (instancetype)initWithPublicLoggedInOnly {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGLinkAudiencePublicLoggedInOnly;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -12035,6 +12043,10 @@
   return _tag == DBSHARINGLinkAudienceMembers;
 }
 
+- (BOOL)isPublicLoggedInOnly {
+  return _tag == DBSHARINGLinkAudiencePublicLoggedInOnly;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGLinkAudienceOther;
 }
@@ -12051,6 +12063,8 @@
     return @"DBSHARINGLinkAudiencePassword";
   case DBSHARINGLinkAudienceMembers:
     return @"DBSHARINGLinkAudienceMembers";
+  case DBSHARINGLinkAudiencePublicLoggedInOnly:
+    return @"DBSHARINGLinkAudiencePublicLoggedInOnly";
   case DBSHARINGLinkAudienceOther:
     return @"DBSHARINGLinkAudienceOther";
   }
@@ -12104,6 +12118,9 @@
   case DBSHARINGLinkAudienceMembers:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBSHARINGLinkAudiencePublicLoggedInOnly:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGLinkAudienceOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -12142,6 +12159,8 @@
     return [[self tagName] isEqual:[aLinkAudience tagName]];
   case DBSHARINGLinkAudienceMembers:
     return [[self tagName] isEqual:[aLinkAudience tagName]];
+  case DBSHARINGLinkAudiencePublicLoggedInOnly:
+    return [[self tagName] isEqual:[aLinkAudience tagName]];
   case DBSHARINGLinkAudienceOther:
     return [[self tagName] isEqual:[aLinkAudience tagName]];
   }
@@ -12167,6 +12186,8 @@
     jsonDict[@".tag"] = @"password";
   } else if ([valueObj isMembers]) {
     jsonDict[@".tag"] = @"members";
+  } else if ([valueObj isPublicLoggedInOnly]) {
+    jsonDict[@".tag"] = @"public_logged_in_only";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -12189,6 +12210,8 @@
     return [[DBSHARINGLinkAudience alloc] initWithPassword];
   } else if ([tag isEqualToString:@"members"]) {
     return [[DBSHARINGLinkAudience alloc] initWithMembers];
+  } else if ([tag isEqualToString:@"public_logged_in_only"]) {
+    return [[DBSHARINGLinkAudience alloc] initWithPublicLoggedInOnly];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGLinkAudience alloc] initWithOther];
   } else {
