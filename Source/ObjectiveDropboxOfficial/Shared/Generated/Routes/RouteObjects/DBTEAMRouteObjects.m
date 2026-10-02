@@ -132,6 +132,10 @@
 #import "DBTEAMMembersSetPermissionsResult.h"
 #import "DBTEAMMembersSetProfileError.h"
 #import "DBTEAMMembersSetProfilePhotoError.h"
+#import "DBTEAMMembersSuspendBatchComplete.h"
+#import "DBTEAMMembersSuspendBatchError.h"
+#import "DBTEAMMembersSuspendBatchJobStatus.h"
+#import "DBTEAMMembersSuspendBatchTaskFailure.h"
 #import "DBTEAMMembersSuspendError.h"
 #import "DBTEAMMembersTransferFilesError.h"
 #import "DBTEAMMembersTransferFormerMembersFilesError.h"
@@ -267,6 +271,8 @@ static DBRoute *DBTEAMMembersSetProfileV2;
 static DBRoute *DBTEAMMembersSetProfilePhoto;
 static DBRoute *DBTEAMMembersSetProfilePhotoV2;
 static DBRoute *DBTEAMMembersSuspend;
+static DBRoute *DBTEAMMembersSuspendBatch;
+static DBRoute *DBTEAMMembersSuspendBatchJobStatusCheck;
 static DBRoute *DBTEAMMembersUnsuspend;
 static DBRoute *DBTEAMNamespacesList;
 static DBRoute *DBTEAMNamespacesListContinue;
@@ -1473,6 +1479,39 @@ static NSObject *lockObj = nil;
                            dataStructDeserialBlock:nil];
     }
     return DBTEAMMembersSuspend;
+  }
+}
+
++ (DBRoute *)DBTEAMMembersSuspendBatch {
+  @synchronized(lockObj) {
+    if (!DBTEAMMembersSuspendBatch) {
+      DBTEAMMembersSuspendBatch = [[DBRoute alloc] init:@"members/suspend_batch"
+                                             namespace_:@"team"
+                                             deprecated:@NO
+                                             resultType:[DBASYNCLaunchResultBase class]
+                                              errorType:[DBTEAMMembersSuspendBatchError class]
+                                                  attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                                  dataStructSerialBlock:nil
+                                dataStructDeserialBlock:nil];
+    }
+    return DBTEAMMembersSuspendBatch;
+  }
+}
+
++ (DBRoute *)DBTEAMMembersSuspendBatchJobStatusCheck {
+  @synchronized(lockObj) {
+    if (!DBTEAMMembersSuspendBatchJobStatusCheck) {
+      DBTEAMMembersSuspendBatchJobStatusCheck =
+          [[DBRoute alloc] init:@"members/suspend_batch/job_status/check"
+                           namespace_:@"team"
+                           deprecated:@NO
+                           resultType:[DBTEAMMembersSuspendBatchJobStatus class]
+                            errorType:[DBASYNCPollError class]
+                                attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                dataStructSerialBlock:nil
+              dataStructDeserialBlock:nil];
+    }
+    return DBTEAMMembersSuspendBatchJobStatusCheck;
   }
 }
 
