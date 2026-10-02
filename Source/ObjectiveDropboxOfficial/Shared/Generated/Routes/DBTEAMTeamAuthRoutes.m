@@ -198,6 +198,12 @@
 #import "DBTEAMMembersSetProfileError.h"
 #import "DBTEAMMembersSetProfilePhotoArg.h"
 #import "DBTEAMMembersSetProfilePhotoError.h"
+#import "DBTEAMMembersSuspendBatchArg.h"
+#import "DBTEAMMembersSuspendBatchComplete.h"
+#import "DBTEAMMembersSuspendBatchError.h"
+#import "DBTEAMMembersSuspendBatchJobStatus.h"
+#import "DBTEAMMembersSuspendBatchTarget.h"
+#import "DBTEAMMembersSuspendBatchTaskFailure.h"
 #import "DBTEAMMembersSuspendError.h"
 #import "DBTEAMMembersTransferFilesError.h"
 #import "DBTEAMMembersTransferFormerMembersFilesError.h"
@@ -1003,6 +1009,18 @@
 - (DBRpcTask *)membersSuspend:(DBTEAMUserSelectorArg *)user wipeData:(NSNumber *)wipeData {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSuspend;
   DBTEAMMembersDeactivateArg *arg = [[DBTEAMMembersDeactivateArg alloc] initWithUser:user wipeData:wipeData];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)membersSuspendBatch:(NSArray<DBTEAMMembersSuspendBatchTarget *> *)members {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSuspendBatch;
+  DBTEAMMembersSuspendBatchArg *arg = [[DBTEAMMembersSuspendBatchArg alloc] initWithMembers:members];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)membersSuspendBatchJobStatusCheck:(NSString *)asyncJobId {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersSuspendBatchJobStatusCheck;
+  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
   return [self.client requestRpc:route arg:arg];
 }
 

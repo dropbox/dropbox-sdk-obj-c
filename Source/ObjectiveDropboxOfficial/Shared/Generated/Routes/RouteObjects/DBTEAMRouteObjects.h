@@ -229,6 +229,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the membersSuspend route object.
 + (DBRoute *)DBTEAMMembersSuspend;
 
+/// Accessor method for the membersSuspendBatch route object.
++ (DBRoute *)DBTEAMMembersSuspendBatch;
+
+/// Accessor method for the membersSuspendBatchJobStatusCheck route object.
++ (DBRoute *)DBTEAMMembersSuspendBatchJobStatusCheck;
+
 /// Accessor method for the membersUnsuspend route object.
 + (DBRoute *)DBTEAMMembersUnsuspend;
 

@@ -136,6 +136,11 @@
 @class DBTEAMMembersSetPermissionsResult;
 @class DBTEAMMembersSetProfileError;
 @class DBTEAMMembersSetProfilePhotoError;
+@class DBTEAMMembersSuspendBatchComplete;
+@class DBTEAMMembersSuspendBatchError;
+@class DBTEAMMembersSuspendBatchJobStatus;
+@class DBTEAMMembersSuspendBatchTarget;
+@class DBTEAMMembersSuspendBatchTaskFailure;
 @class DBTEAMMembersSuspendError;
 @class DBTEAMMembersTransferFormerMembersFilesError;
 @class DBTEAMMembersUnsuspendError;
@@ -1506,6 +1511,30 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 - (DBRpcTask<DBNilObject *, DBTEAMMembersSuspendError *> *)membersSuspend:(DBTEAMUserSelectorArg *)user
                                                                  wipeData:(nullable NSNumber *)wipeData;
+
+///
+/// Launch a member suspension batch. The server enforces a maximum of 500 members.
+///
+/// @param members Must contain between 1 and 500 targets. The launch handler also rejects duplicate client item IDs and
+/// duplicate member selectors.
+///
+/// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
+/// `DBTEAMMembersSuspendBatchError` object on failure.
+///
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBTEAMMembersSuspendBatchError *> *)membersSuspendBatch:
+    (NSArray<DBTEAMMembersSuspendBatchTarget *> *)members;
+
+///
+/// Poll a previously launched member suspension batch job.
+///
+/// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
+/// the job.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMMembersSuspendBatchJobStatus` object on
+/// success or a `DBASYNCPollError` object on failure.
+///
+- (DBRpcTask<DBTEAMMembersSuspendBatchJobStatus *, DBASYNCPollError *> *)membersSuspendBatchJobStatusCheck:
+    (NSString *)asyncJobId;
 
 ///
 /// Unsuspend a member from a team. Permission : Team member management Exactly one of team_member_id, email, or
