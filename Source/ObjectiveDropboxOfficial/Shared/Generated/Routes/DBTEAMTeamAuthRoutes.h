@@ -31,11 +31,6 @@
 @class DBTEAMAddSecondaryEmailsResult;
 @class DBTEAMAdminTier;
 @class DBTEAMApiApp;
-@class DBTEAMBulkSuspendComplete;
-@class DBTEAMBulkSuspendError;
-@class DBTEAMBulkSuspendJobStatus;
-@class DBTEAMBulkSuspendMemberTarget;
-@class DBTEAMBulkSuspendTaskFailure;
 @class DBTEAMCOMMONGroupManagementType;
 @class DBTEAMCOMMONGroupSummary;
 @class DBTEAMCustomQuotaError;
@@ -1049,28 +1044,28 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBTEAMMembersAddJobStatusV2Result *, DBASYNCPollError *> *)membersAddJobStatusGetV2:(NSString *)asyncJobId;
 
 ///
-/// Launch a bulk suspend job. The server enforces a maximum of 500 members.
+/// DEPRECATED: Deprecated compatibility alias for MembersSuspendBatch.
 ///
 /// @param members Must contain between 1 and 500 targets. The launch handler also rejects duplicate client item IDs and
 /// duplicate member selectors.
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
-/// `DBTEAMBulkSuspendError` object on failure.
+/// `DBTEAMMembersSuspendBatchError` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchResultBase *, DBTEAMBulkSuspendError *> *)membersBulkSuspend:
-    (NSArray<DBTEAMBulkSuspendMemberTarget *> *)members;
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBTEAMMembersSuspendBatchError *> *)membersBulkSuspend:
+    (NSArray<DBTEAMMembersSuspendBatchTarget *> *)members __deprecated_msg("membersBulkSuspend is deprecated.");
 
 ///
-/// Poll a previously launched bulk suspend job.
+/// DEPRECATED: Deprecated compatibility alias for MembersSuspendBatchJobStatusCheck.
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
 ///
-/// @return Through the response callback, the caller will receive a `DBTEAMBulkSuspendJobStatus` object on success or a
-/// `DBASYNCPollError` object on failure.
+/// @return Through the response callback, the caller will receive a `DBTEAMMembersSuspendBatchJobStatus` object on
+/// success or a `DBASYNCPollError` object on failure.
 ///
-- (DBRpcTask<DBTEAMBulkSuspendJobStatus *, DBASYNCPollError *> *)membersBulkSuspendJobStatusCheck:
-    (NSString *)asyncJobId;
+- (DBRpcTask<DBTEAMMembersSuspendBatchJobStatus *, DBASYNCPollError *> *)membersBulkSuspendJobStatusCheck:
+    (NSString *)asyncJobId __deprecated_msg("membersBulkSuspendJobStatusCheck is deprecated.");
 
 ///
 /// Permanently delete the files of a user who has been removed from the team. After permanent deletion, those files
