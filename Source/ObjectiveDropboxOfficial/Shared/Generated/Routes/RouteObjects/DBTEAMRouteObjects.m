@@ -29,10 +29,6 @@
 #import "DBTEAMApiApp.h"
 #import "DBTEAMBaseDfbReport.h"
 #import "DBTEAMBaseTeamFolderError.h"
-#import "DBTEAMBulkSuspendComplete.h"
-#import "DBTEAMBulkSuspendError.h"
-#import "DBTEAMBulkSuspendJobStatus.h"
-#import "DBTEAMBulkSuspendTaskFailure.h"
 #import "DBTEAMCOMMONGroupManagementType.h"
 #import "DBTEAMCOMMONGroupSummary.h"
 #import "DBTEAMCustomQuotaError.h"
@@ -1024,9 +1020,9 @@ static NSObject *lockObj = nil;
     if (!DBTEAMMembersBulkSuspend) {
       DBTEAMMembersBulkSuspend = [[DBRoute alloc] init:@"members/bulk_suspend"
                                             namespace_:@"team"
-                                            deprecated:@NO
+                                            deprecated:@YES
                                             resultType:[DBASYNCLaunchResultBase class]
-                                             errorType:[DBTEAMBulkSuspendError class]
+                                             errorType:[DBTEAMMembersSuspendBatchError class]
                                                  attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
                                  dataStructSerialBlock:nil
                                dataStructDeserialBlock:nil];
@@ -1041,8 +1037,8 @@ static NSObject *lockObj = nil;
       DBTEAMMembersBulkSuspendJobStatusCheck =
           [[DBRoute alloc] init:@"members/bulk_suspend/job_status/check"
                            namespace_:@"team"
-                           deprecated:@NO
-                           resultType:[DBTEAMBulkSuspendJobStatus class]
+                           deprecated:@YES
+                           resultType:[DBTEAMMembersSuspendBatchJobStatus class]
                             errorType:[DBASYNCPollError class]
                                 attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
                 dataStructSerialBlock:nil
