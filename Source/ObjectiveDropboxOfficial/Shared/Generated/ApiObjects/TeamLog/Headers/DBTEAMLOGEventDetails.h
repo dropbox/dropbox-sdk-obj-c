@@ -388,6 +388,11 @@
 @class DBTEAMLOGProtectActionRemoveDomainsDetails;
 @class DBTEAMLOGProtectActionRemoveLinkDetails;
 @class DBTEAMLOGProtectActionStopSharingDetails;
+@class DBTEAMLOGProtectCustomDataTypeCreatedDetails;
+@class DBTEAMLOGProtectCustomDataTypeDeletedDetails;
+@class DBTEAMLOGProtectCustomDataTypeDisabledDetails;
+@class DBTEAMLOGProtectCustomDataTypeEnabledDetails;
+@class DBTEAMLOGProtectCustomDataTypeModifiedDetails;
 @class DBTEAMLOGProtectInternalDomainsChangedDetails;
 @class DBTEAMLOGProtectPolicyActivatedDetails;
 @class DBTEAMLOGProtectPolicyDeactivatedDetails;
@@ -1520,6 +1525,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
   /// (no description).
   DBTEAMLOGEventDetailsProtectActionStopSharingDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectCustomDataTypeCreatedDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectCustomDataTypeDeletedDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectCustomDataTypeDisabledDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectCustomDataTypeEnabledDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsProtectCustomDataTypeModifiedDetails,
 
   /// (no description).
   DBTEAMLOGEventDetailsProtectInternalDomainsChangedDetails,
@@ -3875,6 +3895,31 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBTEAMLOGProtectActionStopSharingDetails *protectActionStopSharingDetails;
+
+/// (no description). @note Ensure the `isProtectCustomDataTypeCreatedDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectCustomDataTypeCreatedDetails *protectCustomDataTypeCreatedDetails;
+
+/// (no description). @note Ensure the `isProtectCustomDataTypeDeletedDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectCustomDataTypeDeletedDetails *protectCustomDataTypeDeletedDetails;
+
+/// (no description). @note Ensure the `isProtectCustomDataTypeDisabledDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectCustomDataTypeDisabledDetails *protectCustomDataTypeDisabledDetails;
+
+/// (no description). @note Ensure the `isProtectCustomDataTypeEnabledDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectCustomDataTypeEnabledDetails *protectCustomDataTypeEnabledDetails;
+
+/// (no description). @note Ensure the `isProtectCustomDataTypeModifiedDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGProtectCustomDataTypeModifiedDetails *protectCustomDataTypeModifiedDetails;
 
 /// (no description). @note Ensure the `isProtectInternalDomainsChangedDetails`
 /// method returns true before accessing, otherwise a runtime exception will be
@@ -8480,6 +8525,61 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 ///
 - (instancetype)initWithProtectActionStopSharingDetails:
     (DBTEAMLOGProtectActionStopSharingDetails *)protectActionStopSharingDetails;
+
+///
+/// Initializes union class with tag state of
+/// "protect_custom_data_type_created_details".
+///
+/// @param protectCustomDataTypeCreatedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectCustomDataTypeCreatedDetails:
+    (DBTEAMLOGProtectCustomDataTypeCreatedDetails *)protectCustomDataTypeCreatedDetails;
+
+///
+/// Initializes union class with tag state of
+/// "protect_custom_data_type_deleted_details".
+///
+/// @param protectCustomDataTypeDeletedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectCustomDataTypeDeletedDetails:
+    (DBTEAMLOGProtectCustomDataTypeDeletedDetails *)protectCustomDataTypeDeletedDetails;
+
+///
+/// Initializes union class with tag state of
+/// "protect_custom_data_type_disabled_details".
+///
+/// @param protectCustomDataTypeDisabledDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectCustomDataTypeDisabledDetails:
+    (DBTEAMLOGProtectCustomDataTypeDisabledDetails *)protectCustomDataTypeDisabledDetails;
+
+///
+/// Initializes union class with tag state of
+/// "protect_custom_data_type_enabled_details".
+///
+/// @param protectCustomDataTypeEnabledDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectCustomDataTypeEnabledDetails:
+    (DBTEAMLOGProtectCustomDataTypeEnabledDetails *)protectCustomDataTypeEnabledDetails;
+
+///
+/// Initializes union class with tag state of
+/// "protect_custom_data_type_modified_details".
+///
+/// @param protectCustomDataTypeModifiedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectCustomDataTypeModifiedDetails:
+    (DBTEAMLOGProtectCustomDataTypeModifiedDetails *)protectCustomDataTypeModifiedDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -15845,6 +15945,71 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "protect_action_stop_sharing_details".
 ///
 - (BOOL)isProtectActionStopSharingDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_custom_data_type_created_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectCustomDataTypeCreatedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_custom_data_type_created_details".
+///
+- (BOOL)isProtectCustomDataTypeCreatedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_custom_data_type_deleted_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectCustomDataTypeDeletedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_custom_data_type_deleted_details".
+///
+- (BOOL)isProtectCustomDataTypeDeletedDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_custom_data_type_disabled_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectCustomDataTypeDisabledDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_custom_data_type_disabled_details".
+///
+- (BOOL)isProtectCustomDataTypeDisabledDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_custom_data_type_enabled_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectCustomDataTypeEnabledDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_custom_data_type_enabled_details".
+///
+- (BOOL)isProtectCustomDataTypeEnabledDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_custom_data_type_modified_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `protectCustomDataTypeModifiedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "protect_custom_data_type_modified_details".
+///
+- (BOOL)isProtectCustomDataTypeModifiedDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value
