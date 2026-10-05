@@ -14121,7 +14121,7 @@
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Platform/ObjectiveDropboxOfficial_iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dropbox.ObjectiveDropboxOfficial;
 				PRODUCT_NAME = ObjectiveDropboxOfficial;
@@ -14148,7 +14148,7 @@
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Platform/ObjectiveDropboxOfficial_iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dropbox.ObjectiveDropboxOfficial;
 				PRODUCT_NAME = ObjectiveDropboxOfficial;
@@ -14178,7 +14178,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Platform/ObjectiveDropboxOfficial_macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dropbox.ObjectiveDropboxOfficial;
 				PRODUCT_NAME = ObjectiveDropboxOfficial;
 				SDKROOT = macosx;
@@ -14208,7 +14208,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Platform/ObjectiveDropboxOfficial_macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dropbox.ObjectiveDropboxOfficial;
 				PRODUCT_NAME = ObjectiveDropboxOfficial;
 				SDKROOT = macosx;
