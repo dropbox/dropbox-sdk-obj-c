@@ -902,6 +902,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
   /// (protect) Stopped sharing content via Dropbox Protect
   DBTEAMLOGEventTypeArgProtectActionStopSharing,
 
+  /// (protect) Created a Dropbox Protect custom data type
+  DBTEAMLOGEventTypeArgProtectCustomDataTypeCreated,
+
+  /// (protect) Deleted a Dropbox Protect custom data type
+  DBTEAMLOGEventTypeArgProtectCustomDataTypeDeleted,
+
+  /// (protect) Disabled a Dropbox Protect custom data type
+  DBTEAMLOGEventTypeArgProtectCustomDataTypeDisabled,
+
+  /// (protect) Enabled a Dropbox Protect custom data type
+  DBTEAMLOGEventTypeArgProtectCustomDataTypeEnabled,
+
+  /// (protect) Modified a Dropbox Protect custom data type
+  DBTEAMLOGEventTypeArgProtectCustomDataTypeModified,
+
   /// (protect) Modified Protect internal domains list
   DBTEAMLOGEventTypeArgProtectInternalDomainsChanged,
 
@@ -4928,6 +4943,61 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithProtectActionStopSharing;
+
+///
+/// Initializes union class with tag state of
+/// "protect_custom_data_type_created".
+///
+/// Description of the "protect_custom_data_type_created" tag state: (protect)
+/// Created a Dropbox Protect custom data type
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectCustomDataTypeCreated;
+
+///
+/// Initializes union class with tag state of
+/// "protect_custom_data_type_deleted".
+///
+/// Description of the "protect_custom_data_type_deleted" tag state: (protect)
+/// Deleted a Dropbox Protect custom data type
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectCustomDataTypeDeleted;
+
+///
+/// Initializes union class with tag state of
+/// "protect_custom_data_type_disabled".
+///
+/// Description of the "protect_custom_data_type_disabled" tag state: (protect)
+/// Disabled a Dropbox Protect custom data type
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectCustomDataTypeDisabled;
+
+///
+/// Initializes union class with tag state of
+/// "protect_custom_data_type_enabled".
+///
+/// Description of the "protect_custom_data_type_enabled" tag state: (protect)
+/// Enabled a Dropbox Protect custom data type
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectCustomDataTypeEnabled;
+
+///
+/// Initializes union class with tag state of
+/// "protect_custom_data_type_modified".
+///
+/// Description of the "protect_custom_data_type_modified" tag state: (protect)
+/// Modified a Dropbox Protect custom data type
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithProtectCustomDataTypeModified;
 
 ///
 /// Initializes union class with tag state of
@@ -11101,6 +11171,51 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "protect_action_stop_sharing".
 ///
 - (BOOL)isProtectActionStopSharing;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_custom_data_type_created".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_custom_data_type_created".
+///
+- (BOOL)isProtectCustomDataTypeCreated;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_custom_data_type_deleted".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_custom_data_type_deleted".
+///
+- (BOOL)isProtectCustomDataTypeDeleted;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_custom_data_type_disabled".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_custom_data_type_disabled".
+///
+- (BOOL)isProtectCustomDataTypeDisabled;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_custom_data_type_enabled".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_custom_data_type_enabled".
+///
+- (BOOL)isProtectCustomDataTypeEnabled;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "protect_custom_data_type_modified".
+///
+/// @return Whether the union's current tag state has value
+/// "protect_custom_data_type_modified".
+///
+- (BOOL)isProtectCustomDataTypeModified;
 
 ///
 /// Retrieves whether the union's current tag state has value

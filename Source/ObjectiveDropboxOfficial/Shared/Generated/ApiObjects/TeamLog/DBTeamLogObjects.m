@@ -41981,6 +41981,11 @@
 #import "DBTEAMLOGProtectActionRemoveDomainsDetails.h"
 #import "DBTEAMLOGProtectActionRemoveLinkDetails.h"
 #import "DBTEAMLOGProtectActionStopSharingDetails.h"
+#import "DBTEAMLOGProtectCustomDataTypeCreatedDetails.h"
+#import "DBTEAMLOGProtectCustomDataTypeDeletedDetails.h"
+#import "DBTEAMLOGProtectCustomDataTypeDisabledDetails.h"
+#import "DBTEAMLOGProtectCustomDataTypeEnabledDetails.h"
+#import "DBTEAMLOGProtectCustomDataTypeModifiedDetails.h"
 #import "DBTEAMLOGProtectInternalDomainsChangedDetails.h"
 #import "DBTEAMLOGProtectPolicyActivatedDetails.h"
 #import "DBTEAMLOGProtectPolicyDeactivatedDetails.h"
@@ -42528,6 +42533,11 @@
 @synthesize protectActionRemoveDomainsDetails = _protectActionRemoveDomainsDetails;
 @synthesize protectActionRemoveLinkDetails = _protectActionRemoveLinkDetails;
 @synthesize protectActionStopSharingDetails = _protectActionStopSharingDetails;
+@synthesize protectCustomDataTypeCreatedDetails = _protectCustomDataTypeCreatedDetails;
+@synthesize protectCustomDataTypeDeletedDetails = _protectCustomDataTypeDeletedDetails;
+@synthesize protectCustomDataTypeDisabledDetails = _protectCustomDataTypeDisabledDetails;
+@synthesize protectCustomDataTypeEnabledDetails = _protectCustomDataTypeEnabledDetails;
+@synthesize protectCustomDataTypeModifiedDetails = _protectCustomDataTypeModifiedDetails;
 @synthesize protectInternalDomainsChangedDetails = _protectInternalDomainsChangedDetails;
 @synthesize protectPolicyActivatedDetails = _protectPolicyActivatedDetails;
 @synthesize protectPolicyDeactivatedDetails = _protectPolicyDeactivatedDetails;
@@ -45634,6 +45644,56 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsProtectActionStopSharingDetails;
     _protectActionStopSharingDetails = protectActionStopSharingDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeCreatedDetails:
+    (DBTEAMLOGProtectCustomDataTypeCreatedDetails *)protectCustomDataTypeCreatedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsProtectCustomDataTypeCreatedDetails;
+    _protectCustomDataTypeCreatedDetails = protectCustomDataTypeCreatedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeDeletedDetails:
+    (DBTEAMLOGProtectCustomDataTypeDeletedDetails *)protectCustomDataTypeDeletedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsProtectCustomDataTypeDeletedDetails;
+    _protectCustomDataTypeDeletedDetails = protectCustomDataTypeDeletedDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeDisabledDetails:
+    (DBTEAMLOGProtectCustomDataTypeDisabledDetails *)protectCustomDataTypeDisabledDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsProtectCustomDataTypeDisabledDetails;
+    _protectCustomDataTypeDisabledDetails = protectCustomDataTypeDisabledDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeEnabledDetails:
+    (DBTEAMLOGProtectCustomDataTypeEnabledDetails *)protectCustomDataTypeEnabledDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsProtectCustomDataTypeEnabledDetails;
+    _protectCustomDataTypeEnabledDetails = protectCustomDataTypeEnabledDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeModifiedDetails:
+    (DBTEAMLOGProtectCustomDataTypeModifiedDetails *)protectCustomDataTypeModifiedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsProtectCustomDataTypeModifiedDetails;
+    _protectCustomDataTypeModifiedDetails = protectCustomDataTypeModifiedDetails;
   }
   return self;
 }
@@ -51655,6 +51715,51 @@
   return _protectActionStopSharingDetails;
 }
 
+- (DBTEAMLOGProtectCustomDataTypeCreatedDetails *)protectCustomDataTypeCreatedDetails {
+  if (![self isProtectCustomDataTypeCreatedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsProtectCustomDataTypeCreatedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _protectCustomDataTypeCreatedDetails;
+}
+
+- (DBTEAMLOGProtectCustomDataTypeDeletedDetails *)protectCustomDataTypeDeletedDetails {
+  if (![self isProtectCustomDataTypeDeletedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsProtectCustomDataTypeDeletedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _protectCustomDataTypeDeletedDetails;
+}
+
+- (DBTEAMLOGProtectCustomDataTypeDisabledDetails *)protectCustomDataTypeDisabledDetails {
+  if (![self isProtectCustomDataTypeDisabledDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsProtectCustomDataTypeDisabledDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _protectCustomDataTypeDisabledDetails;
+}
+
+- (DBTEAMLOGProtectCustomDataTypeEnabledDetails *)protectCustomDataTypeEnabledDetails {
+  if (![self isProtectCustomDataTypeEnabledDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsProtectCustomDataTypeEnabledDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _protectCustomDataTypeEnabledDetails;
+}
+
+- (DBTEAMLOGProtectCustomDataTypeModifiedDetails *)protectCustomDataTypeModifiedDetails {
+  if (![self isProtectCustomDataTypeModifiedDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsProtectCustomDataTypeModifiedDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _protectCustomDataTypeModifiedDetails;
+}
+
 - (DBTEAMLOGProtectInternalDomainsChangedDetails *)protectInternalDomainsChangedDetails {
   if (![self isProtectInternalDomainsChangedDetails]) {
     [NSException raise:@"IllegalStateException"
@@ -56034,6 +56139,26 @@
   return _tag == DBTEAMLOGEventDetailsProtectActionStopSharingDetails;
 }
 
+- (BOOL)isProtectCustomDataTypeCreatedDetails {
+  return _tag == DBTEAMLOGEventDetailsProtectCustomDataTypeCreatedDetails;
+}
+
+- (BOOL)isProtectCustomDataTypeDeletedDetails {
+  return _tag == DBTEAMLOGEventDetailsProtectCustomDataTypeDeletedDetails;
+}
+
+- (BOOL)isProtectCustomDataTypeDisabledDetails {
+  return _tag == DBTEAMLOGEventDetailsProtectCustomDataTypeDisabledDetails;
+}
+
+- (BOOL)isProtectCustomDataTypeEnabledDetails {
+  return _tag == DBTEAMLOGEventDetailsProtectCustomDataTypeEnabledDetails;
+}
+
+- (BOOL)isProtectCustomDataTypeModifiedDetails {
+  return _tag == DBTEAMLOGEventDetailsProtectCustomDataTypeModifiedDetails;
+}
+
 - (BOOL)isProtectInternalDomainsChangedDetails {
   return _tag == DBTEAMLOGEventDetailsProtectInternalDomainsChangedDetails;
 }
@@ -58014,6 +58139,16 @@
     return @"DBTEAMLOGEventDetailsProtectActionRemoveLinkDetails";
   case DBTEAMLOGEventDetailsProtectActionStopSharingDetails:
     return @"DBTEAMLOGEventDetailsProtectActionStopSharingDetails";
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeCreatedDetails:
+    return @"DBTEAMLOGEventDetailsProtectCustomDataTypeCreatedDetails";
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeDeletedDetails:
+    return @"DBTEAMLOGEventDetailsProtectCustomDataTypeDeletedDetails";
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeDisabledDetails:
+    return @"DBTEAMLOGEventDetailsProtectCustomDataTypeDisabledDetails";
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeEnabledDetails:
+    return @"DBTEAMLOGEventDetailsProtectCustomDataTypeEnabledDetails";
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeModifiedDetails:
+    return @"DBTEAMLOGEventDetailsProtectCustomDataTypeModifiedDetails";
   case DBTEAMLOGEventDetailsProtectInternalDomainsChangedDetails:
     return @"DBTEAMLOGEventDetailsProtectInternalDomainsChangedDetails";
   case DBTEAMLOGEventDetailsProtectPolicyActivatedDetails:
@@ -59608,6 +59743,21 @@
     break;
   case DBTEAMLOGEventDetailsProtectActionStopSharingDetails:
     result = prime * result + [self.protectActionStopSharingDetails hash];
+    break;
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeCreatedDetails:
+    result = prime * result + [self.protectCustomDataTypeCreatedDetails hash];
+    break;
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeDeletedDetails:
+    result = prime * result + [self.protectCustomDataTypeDeletedDetails hash];
+    break;
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeDisabledDetails:
+    result = prime * result + [self.protectCustomDataTypeDisabledDetails hash];
+    break;
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeEnabledDetails:
+    result = prime * result + [self.protectCustomDataTypeEnabledDetails hash];
+    break;
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeModifiedDetails:
+    result = prime * result + [self.protectCustomDataTypeModifiedDetails hash];
     break;
   case DBTEAMLOGEventDetailsProtectInternalDomainsChangedDetails:
     result = prime * result + [self.protectInternalDomainsChangedDetails hash];
@@ -61291,6 +61441,16 @@
     return [self.protectActionRemoveLinkDetails isEqual:anEventDetails.protectActionRemoveLinkDetails];
   case DBTEAMLOGEventDetailsProtectActionStopSharingDetails:
     return [self.protectActionStopSharingDetails isEqual:anEventDetails.protectActionStopSharingDetails];
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeCreatedDetails:
+    return [self.protectCustomDataTypeCreatedDetails isEqual:anEventDetails.protectCustomDataTypeCreatedDetails];
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeDeletedDetails:
+    return [self.protectCustomDataTypeDeletedDetails isEqual:anEventDetails.protectCustomDataTypeDeletedDetails];
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeDisabledDetails:
+    return [self.protectCustomDataTypeDisabledDetails isEqual:anEventDetails.protectCustomDataTypeDisabledDetails];
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeEnabledDetails:
+    return [self.protectCustomDataTypeEnabledDetails isEqual:anEventDetails.protectCustomDataTypeEnabledDetails];
+  case DBTEAMLOGEventDetailsProtectCustomDataTypeModifiedDetails:
+    return [self.protectCustomDataTypeModifiedDetails isEqual:anEventDetails.protectCustomDataTypeModifiedDetails];
   case DBTEAMLOGEventDetailsProtectInternalDomainsChangedDetails:
     return [self.protectInternalDomainsChangedDetails isEqual:anEventDetails.protectInternalDomainsChangedDetails];
   case DBTEAMLOGEventDetailsProtectPolicyActivatedDetails:
@@ -63201,6 +63361,26 @@
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectActionStopSharingDetailsSerializer
                                            serialize:valueObj.protectActionStopSharingDetails]];
     jsonDict[@".tag"] = @"protect_action_stop_sharing_details";
+  } else if ([valueObj isProtectCustomDataTypeCreatedDetails]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectCustomDataTypeCreatedDetailsSerializer
+                                           serialize:valueObj.protectCustomDataTypeCreatedDetails]];
+    jsonDict[@".tag"] = @"protect_custom_data_type_created_details";
+  } else if ([valueObj isProtectCustomDataTypeDeletedDetails]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectCustomDataTypeDeletedDetailsSerializer
+                                           serialize:valueObj.protectCustomDataTypeDeletedDetails]];
+    jsonDict[@".tag"] = @"protect_custom_data_type_deleted_details";
+  } else if ([valueObj isProtectCustomDataTypeDisabledDetails]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectCustomDataTypeDisabledDetailsSerializer
+                                           serialize:valueObj.protectCustomDataTypeDisabledDetails]];
+    jsonDict[@".tag"] = @"protect_custom_data_type_disabled_details";
+  } else if ([valueObj isProtectCustomDataTypeEnabledDetails]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectCustomDataTypeEnabledDetailsSerializer
+                                           serialize:valueObj.protectCustomDataTypeEnabledDetails]];
+    jsonDict[@".tag"] = @"protect_custom_data_type_enabled_details";
+  } else if ([valueObj isProtectCustomDataTypeModifiedDetails]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectCustomDataTypeModifiedDetailsSerializer
+                                           serialize:valueObj.protectCustomDataTypeModifiedDetails]];
+    jsonDict[@".tag"] = @"protect_custom_data_type_modified_details";
   } else if ([valueObj isProtectInternalDomainsChangedDetails]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectInternalDomainsChangedDetailsSerializer
                                            serialize:valueObj.protectInternalDomainsChangedDetails]];
@@ -65800,6 +65980,31 @@
     DBTEAMLOGProtectActionStopSharingDetails *protectActionStopSharingDetails =
         [DBTEAMLOGProtectActionStopSharingDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithProtectActionStopSharingDetails:protectActionStopSharingDetails];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_created_details"]) {
+    DBTEAMLOGProtectCustomDataTypeCreatedDetails *protectCustomDataTypeCreatedDetails =
+        [DBTEAMLOGProtectCustomDataTypeCreatedDetailsSerializer deserialize:valueDict];
+    return
+        [[DBTEAMLOGEventDetails alloc] initWithProtectCustomDataTypeCreatedDetails:protectCustomDataTypeCreatedDetails];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_deleted_details"]) {
+    DBTEAMLOGProtectCustomDataTypeDeletedDetails *protectCustomDataTypeDeletedDetails =
+        [DBTEAMLOGProtectCustomDataTypeDeletedDetailsSerializer deserialize:valueDict];
+    return
+        [[DBTEAMLOGEventDetails alloc] initWithProtectCustomDataTypeDeletedDetails:protectCustomDataTypeDeletedDetails];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_disabled_details"]) {
+    DBTEAMLOGProtectCustomDataTypeDisabledDetails *protectCustomDataTypeDisabledDetails =
+        [DBTEAMLOGProtectCustomDataTypeDisabledDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithProtectCustomDataTypeDisabledDetails:protectCustomDataTypeDisabledDetails];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_enabled_details"]) {
+    DBTEAMLOGProtectCustomDataTypeEnabledDetails *protectCustomDataTypeEnabledDetails =
+        [DBTEAMLOGProtectCustomDataTypeEnabledDetailsSerializer deserialize:valueDict];
+    return
+        [[DBTEAMLOGEventDetails alloc] initWithProtectCustomDataTypeEnabledDetails:protectCustomDataTypeEnabledDetails];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_modified_details"]) {
+    DBTEAMLOGProtectCustomDataTypeModifiedDetails *protectCustomDataTypeModifiedDetails =
+        [DBTEAMLOGProtectCustomDataTypeModifiedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithProtectCustomDataTypeModifiedDetails:protectCustomDataTypeModifiedDetails];
   } else if ([tag isEqualToString:@"protect_internal_domains_changed_details"]) {
     DBTEAMLOGProtectInternalDomainsChangedDetails *protectInternalDomainsChangedDetails =
         [DBTEAMLOGProtectInternalDomainsChangedDetailsSerializer deserialize:valueDict];
@@ -67746,6 +67951,11 @@
 #import "DBTEAMLOGProtectActionRemoveDomainsType.h"
 #import "DBTEAMLOGProtectActionRemoveLinkType.h"
 #import "DBTEAMLOGProtectActionStopSharingType.h"
+#import "DBTEAMLOGProtectCustomDataTypeCreatedType.h"
+#import "DBTEAMLOGProtectCustomDataTypeDeletedType.h"
+#import "DBTEAMLOGProtectCustomDataTypeDisabledType.h"
+#import "DBTEAMLOGProtectCustomDataTypeEnabledType.h"
+#import "DBTEAMLOGProtectCustomDataTypeModifiedType.h"
 #import "DBTEAMLOGProtectInternalDomainsChangedType.h"
 #import "DBTEAMLOGProtectPolicyActivatedType.h"
 #import "DBTEAMLOGProtectPolicyDeactivatedType.h"
@@ -68293,6 +68503,11 @@
 @synthesize protectActionRemoveDomains = _protectActionRemoveDomains;
 @synthesize protectActionRemoveLink = _protectActionRemoveLink;
 @synthesize protectActionStopSharing = _protectActionStopSharing;
+@synthesize protectCustomDataTypeCreated = _protectCustomDataTypeCreated;
+@synthesize protectCustomDataTypeDeleted = _protectCustomDataTypeDeleted;
+@synthesize protectCustomDataTypeDisabled = _protectCustomDataTypeDisabled;
+@synthesize protectCustomDataTypeEnabled = _protectCustomDataTypeEnabled;
+@synthesize protectCustomDataTypeModified = _protectCustomDataTypeModified;
 @synthesize protectInternalDomainsChanged = _protectInternalDomainsChanged;
 @synthesize protectPolicyActivated = _protectPolicyActivated;
 @synthesize protectPolicyDeactivated = _protectPolicyDeactivated;
@@ -71305,6 +71520,56 @@
   if (self) {
     _tag = DBTEAMLOGEventTypeProtectActionStopSharing;
     _protectActionStopSharing = protectActionStopSharing;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeCreated:
+    (DBTEAMLOGProtectCustomDataTypeCreatedType *)protectCustomDataTypeCreated {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeProtectCustomDataTypeCreated;
+    _protectCustomDataTypeCreated = protectCustomDataTypeCreated;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeDeleted:
+    (DBTEAMLOGProtectCustomDataTypeDeletedType *)protectCustomDataTypeDeleted {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeProtectCustomDataTypeDeleted;
+    _protectCustomDataTypeDeleted = protectCustomDataTypeDeleted;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeDisabled:
+    (DBTEAMLOGProtectCustomDataTypeDisabledType *)protectCustomDataTypeDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeProtectCustomDataTypeDisabled;
+    _protectCustomDataTypeDisabled = protectCustomDataTypeDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeEnabled:
+    (DBTEAMLOGProtectCustomDataTypeEnabledType *)protectCustomDataTypeEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeProtectCustomDataTypeEnabled;
+    _protectCustomDataTypeEnabled = protectCustomDataTypeEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeModified:
+    (DBTEAMLOGProtectCustomDataTypeModifiedType *)protectCustomDataTypeModified {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeProtectCustomDataTypeModified;
+    _protectCustomDataTypeModified = protectCustomDataTypeModified;
   }
   return self;
 }
@@ -77053,6 +77318,51 @@
   return _protectActionStopSharing;
 }
 
+- (DBTEAMLOGProtectCustomDataTypeCreatedType *)protectCustomDataTypeCreated {
+  if (![self isProtectCustomDataTypeCreated]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeProtectCustomDataTypeCreated, but was %@.", [self tagName]];
+  }
+  return _protectCustomDataTypeCreated;
+}
+
+- (DBTEAMLOGProtectCustomDataTypeDeletedType *)protectCustomDataTypeDeleted {
+  if (![self isProtectCustomDataTypeDeleted]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeProtectCustomDataTypeDeleted, but was %@.", [self tagName]];
+  }
+  return _protectCustomDataTypeDeleted;
+}
+
+- (DBTEAMLOGProtectCustomDataTypeDisabledType *)protectCustomDataTypeDisabled {
+  if (![self isProtectCustomDataTypeDisabled]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeProtectCustomDataTypeDisabled, but was %@.", [self tagName]];
+  }
+  return _protectCustomDataTypeDisabled;
+}
+
+- (DBTEAMLOGProtectCustomDataTypeEnabledType *)protectCustomDataTypeEnabled {
+  if (![self isProtectCustomDataTypeEnabled]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeProtectCustomDataTypeEnabled, but was %@.", [self tagName]];
+  }
+  return _protectCustomDataTypeEnabled;
+}
+
+- (DBTEAMLOGProtectCustomDataTypeModifiedType *)protectCustomDataTypeModified {
+  if (![self isProtectCustomDataTypeModified]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeProtectCustomDataTypeModified, but was %@.", [self tagName]];
+  }
+  return _protectCustomDataTypeModified;
+}
+
 - (DBTEAMLOGProtectInternalDomainsChangedType *)protectInternalDomainsChanged {
   if (![self isProtectInternalDomainsChanged]) {
     [NSException
@@ -81226,6 +81536,26 @@
   return _tag == DBTEAMLOGEventTypeProtectActionStopSharing;
 }
 
+- (BOOL)isProtectCustomDataTypeCreated {
+  return _tag == DBTEAMLOGEventTypeProtectCustomDataTypeCreated;
+}
+
+- (BOOL)isProtectCustomDataTypeDeleted {
+  return _tag == DBTEAMLOGEventTypeProtectCustomDataTypeDeleted;
+}
+
+- (BOOL)isProtectCustomDataTypeDisabled {
+  return _tag == DBTEAMLOGEventTypeProtectCustomDataTypeDisabled;
+}
+
+- (BOOL)isProtectCustomDataTypeEnabled {
+  return _tag == DBTEAMLOGEventTypeProtectCustomDataTypeEnabled;
+}
+
+- (BOOL)isProtectCustomDataTypeModified {
+  return _tag == DBTEAMLOGEventTypeProtectCustomDataTypeModified;
+}
+
 - (BOOL)isProtectInternalDomainsChanged {
   return _tag == DBTEAMLOGEventTypeProtectInternalDomainsChanged;
 }
@@ -83202,6 +83532,16 @@
     return @"DBTEAMLOGEventTypeProtectActionRemoveLink";
   case DBTEAMLOGEventTypeProtectActionStopSharing:
     return @"DBTEAMLOGEventTypeProtectActionStopSharing";
+  case DBTEAMLOGEventTypeProtectCustomDataTypeCreated:
+    return @"DBTEAMLOGEventTypeProtectCustomDataTypeCreated";
+  case DBTEAMLOGEventTypeProtectCustomDataTypeDeleted:
+    return @"DBTEAMLOGEventTypeProtectCustomDataTypeDeleted";
+  case DBTEAMLOGEventTypeProtectCustomDataTypeDisabled:
+    return @"DBTEAMLOGEventTypeProtectCustomDataTypeDisabled";
+  case DBTEAMLOGEventTypeProtectCustomDataTypeEnabled:
+    return @"DBTEAMLOGEventTypeProtectCustomDataTypeEnabled";
+  case DBTEAMLOGEventTypeProtectCustomDataTypeModified:
+    return @"DBTEAMLOGEventTypeProtectCustomDataTypeModified";
   case DBTEAMLOGEventTypeProtectInternalDomainsChanged:
     return @"DBTEAMLOGEventTypeProtectInternalDomainsChanged";
   case DBTEAMLOGEventTypeProtectPolicyActivated:
@@ -84794,6 +85134,21 @@
     break;
   case DBTEAMLOGEventTypeProtectActionStopSharing:
     result = prime * result + [self.protectActionStopSharing hash];
+    break;
+  case DBTEAMLOGEventTypeProtectCustomDataTypeCreated:
+    result = prime * result + [self.protectCustomDataTypeCreated hash];
+    break;
+  case DBTEAMLOGEventTypeProtectCustomDataTypeDeleted:
+    result = prime * result + [self.protectCustomDataTypeDeleted hash];
+    break;
+  case DBTEAMLOGEventTypeProtectCustomDataTypeDisabled:
+    result = prime * result + [self.protectCustomDataTypeDisabled hash];
+    break;
+  case DBTEAMLOGEventTypeProtectCustomDataTypeEnabled:
+    result = prime * result + [self.protectCustomDataTypeEnabled hash];
+    break;
+  case DBTEAMLOGEventTypeProtectCustomDataTypeModified:
+    result = prime * result + [self.protectCustomDataTypeModified hash];
     break;
   case DBTEAMLOGEventTypeProtectInternalDomainsChanged:
     result = prime * result + [self.protectInternalDomainsChanged hash];
@@ -86445,6 +86800,16 @@
     return [self.protectActionRemoveLink isEqual:anEventType.protectActionRemoveLink];
   case DBTEAMLOGEventTypeProtectActionStopSharing:
     return [self.protectActionStopSharing isEqual:anEventType.protectActionStopSharing];
+  case DBTEAMLOGEventTypeProtectCustomDataTypeCreated:
+    return [self.protectCustomDataTypeCreated isEqual:anEventType.protectCustomDataTypeCreated];
+  case DBTEAMLOGEventTypeProtectCustomDataTypeDeleted:
+    return [self.protectCustomDataTypeDeleted isEqual:anEventType.protectCustomDataTypeDeleted];
+  case DBTEAMLOGEventTypeProtectCustomDataTypeDisabled:
+    return [self.protectCustomDataTypeDisabled isEqual:anEventType.protectCustomDataTypeDisabled];
+  case DBTEAMLOGEventTypeProtectCustomDataTypeEnabled:
+    return [self.protectCustomDataTypeEnabled isEqual:anEventType.protectCustomDataTypeEnabled];
+  case DBTEAMLOGEventTypeProtectCustomDataTypeModified:
+    return [self.protectCustomDataTypeModified isEqual:anEventType.protectCustomDataTypeModified];
   case DBTEAMLOGEventTypeProtectInternalDomainsChanged:
     return [self.protectInternalDomainsChanged isEqual:anEventType.protectInternalDomainsChanged];
   case DBTEAMLOGEventTypeProtectPolicyActivated:
@@ -88247,6 +88612,26 @@
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectActionStopSharingTypeSerializer
                                            serialize:valueObj.protectActionStopSharing]];
     jsonDict[@".tag"] = @"protect_action_stop_sharing";
+  } else if ([valueObj isProtectCustomDataTypeCreated]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectCustomDataTypeCreatedTypeSerializer
+                                           serialize:valueObj.protectCustomDataTypeCreated]];
+    jsonDict[@".tag"] = @"protect_custom_data_type_created";
+  } else if ([valueObj isProtectCustomDataTypeDeleted]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectCustomDataTypeDeletedTypeSerializer
+                                           serialize:valueObj.protectCustomDataTypeDeleted]];
+    jsonDict[@".tag"] = @"protect_custom_data_type_deleted";
+  } else if ([valueObj isProtectCustomDataTypeDisabled]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectCustomDataTypeDisabledTypeSerializer
+                                           serialize:valueObj.protectCustomDataTypeDisabled]];
+    jsonDict[@".tag"] = @"protect_custom_data_type_disabled";
+  } else if ([valueObj isProtectCustomDataTypeEnabled]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectCustomDataTypeEnabledTypeSerializer
+                                           serialize:valueObj.protectCustomDataTypeEnabled]];
+    jsonDict[@".tag"] = @"protect_custom_data_type_enabled";
+  } else if ([valueObj isProtectCustomDataTypeModified]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectCustomDataTypeModifiedTypeSerializer
+                                           serialize:valueObj.protectCustomDataTypeModified]];
+    jsonDict[@".tag"] = @"protect_custom_data_type_modified";
   } else if ([valueObj isProtectInternalDomainsChanged]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGProtectInternalDomainsChangedTypeSerializer
                                            serialize:valueObj.protectInternalDomainsChanged]];
@@ -90687,6 +91072,26 @@
     DBTEAMLOGProtectActionStopSharingType *protectActionStopSharing =
         [DBTEAMLOGProtectActionStopSharingTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithProtectActionStopSharing:protectActionStopSharing];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_created"]) {
+    DBTEAMLOGProtectCustomDataTypeCreatedType *protectCustomDataTypeCreated =
+        [DBTEAMLOGProtectCustomDataTypeCreatedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithProtectCustomDataTypeCreated:protectCustomDataTypeCreated];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_deleted"]) {
+    DBTEAMLOGProtectCustomDataTypeDeletedType *protectCustomDataTypeDeleted =
+        [DBTEAMLOGProtectCustomDataTypeDeletedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithProtectCustomDataTypeDeleted:protectCustomDataTypeDeleted];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_disabled"]) {
+    DBTEAMLOGProtectCustomDataTypeDisabledType *protectCustomDataTypeDisabled =
+        [DBTEAMLOGProtectCustomDataTypeDisabledTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithProtectCustomDataTypeDisabled:protectCustomDataTypeDisabled];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_enabled"]) {
+    DBTEAMLOGProtectCustomDataTypeEnabledType *protectCustomDataTypeEnabled =
+        [DBTEAMLOGProtectCustomDataTypeEnabledTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithProtectCustomDataTypeEnabled:protectCustomDataTypeEnabled];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_modified"]) {
+    DBTEAMLOGProtectCustomDataTypeModifiedType *protectCustomDataTypeModified =
+        [DBTEAMLOGProtectCustomDataTypeModifiedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithProtectCustomDataTypeModified:protectCustomDataTypeModified];
   } else if ([tag isEqualToString:@"protect_internal_domains_changed"]) {
     DBTEAMLOGProtectInternalDomainsChangedType *protectInternalDomainsChanged =
         [DBTEAMLOGProtectInternalDomainsChangedTypeSerializer deserialize:valueDict];
@@ -94375,6 +94780,46 @@
   self = [super init];
   if (self) {
     _tag = DBTEAMLOGEventTypeArgProtectActionStopSharing;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeCreated {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeArgProtectCustomDataTypeCreated;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeDeleted {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeArgProtectCustomDataTypeDeleted;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeArgProtectCustomDataTypeDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeArgProtectCustomDataTypeEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithProtectCustomDataTypeModified {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeArgProtectCustomDataTypeModified;
   }
   return self;
 }
@@ -98331,6 +98776,26 @@
   return _tag == DBTEAMLOGEventTypeArgProtectActionStopSharing;
 }
 
+- (BOOL)isProtectCustomDataTypeCreated {
+  return _tag == DBTEAMLOGEventTypeArgProtectCustomDataTypeCreated;
+}
+
+- (BOOL)isProtectCustomDataTypeDeleted {
+  return _tag == DBTEAMLOGEventTypeArgProtectCustomDataTypeDeleted;
+}
+
+- (BOOL)isProtectCustomDataTypeDisabled {
+  return _tag == DBTEAMLOGEventTypeArgProtectCustomDataTypeDisabled;
+}
+
+- (BOOL)isProtectCustomDataTypeEnabled {
+  return _tag == DBTEAMLOGEventTypeArgProtectCustomDataTypeEnabled;
+}
+
+- (BOOL)isProtectCustomDataTypeModified {
+  return _tag == DBTEAMLOGEventTypeArgProtectCustomDataTypeModified;
+}
+
 - (BOOL)isProtectInternalDomainsChanged {
   return _tag == DBTEAMLOGEventTypeArgProtectInternalDomainsChanged;
 }
@@ -100307,6 +100772,16 @@
     return @"DBTEAMLOGEventTypeArgProtectActionRemoveLink";
   case DBTEAMLOGEventTypeArgProtectActionStopSharing:
     return @"DBTEAMLOGEventTypeArgProtectActionStopSharing";
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeCreated:
+    return @"DBTEAMLOGEventTypeArgProtectCustomDataTypeCreated";
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeDeleted:
+    return @"DBTEAMLOGEventTypeArgProtectCustomDataTypeDeleted";
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeDisabled:
+    return @"DBTEAMLOGEventTypeArgProtectCustomDataTypeDisabled";
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeEnabled:
+    return @"DBTEAMLOGEventTypeArgProtectCustomDataTypeEnabled";
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeModified:
+    return @"DBTEAMLOGEventTypeArgProtectCustomDataTypeModified";
   case DBTEAMLOGEventTypeArgProtectInternalDomainsChanged:
     return @"DBTEAMLOGEventTypeArgProtectInternalDomainsChanged";
   case DBTEAMLOGEventTypeArgProtectPolicyActivated:
@@ -101898,6 +102373,21 @@
     result = prime * result + [[self tagName] hash];
     break;
   case DBTEAMLOGEventTypeArgProtectActionStopSharing:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeCreated:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeDeleted:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeDisabled:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeEnabled:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeModified:
     result = prime * result + [[self tagName] hash];
     break;
   case DBTEAMLOGEventTypeArgProtectInternalDomainsChanged:
@@ -103548,6 +104038,16 @@
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgProtectActionStopSharing:
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeCreated:
+    return [[self tagName] isEqual:[anEventTypeArg tagName]];
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeDeleted:
+    return [[self tagName] isEqual:[anEventTypeArg tagName]];
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeDisabled:
+    return [[self tagName] isEqual:[anEventTypeArg tagName]];
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeEnabled:
+    return [[self tagName] isEqual:[anEventTypeArg tagName]];
+  case DBTEAMLOGEventTypeArgProtectCustomDataTypeModified:
+    return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgProtectInternalDomainsChanged:
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgProtectPolicyActivated:
@@ -104833,6 +105333,16 @@
     jsonDict[@".tag"] = @"protect_action_remove_link";
   } else if ([valueObj isProtectActionStopSharing]) {
     jsonDict[@".tag"] = @"protect_action_stop_sharing";
+  } else if ([valueObj isProtectCustomDataTypeCreated]) {
+    jsonDict[@".tag"] = @"protect_custom_data_type_created";
+  } else if ([valueObj isProtectCustomDataTypeDeleted]) {
+    jsonDict[@".tag"] = @"protect_custom_data_type_deleted";
+  } else if ([valueObj isProtectCustomDataTypeDisabled]) {
+    jsonDict[@".tag"] = @"protect_custom_data_type_disabled";
+  } else if ([valueObj isProtectCustomDataTypeEnabled]) {
+    jsonDict[@".tag"] = @"protect_custom_data_type_enabled";
+  } else if ([valueObj isProtectCustomDataTypeModified]) {
+    jsonDict[@".tag"] = @"protect_custom_data_type_modified";
   } else if ([valueObj isProtectInternalDomainsChanged]) {
     jsonDict[@".tag"] = @"protect_internal_domains_changed";
   } else if ([valueObj isProtectPolicyActivated]) {
@@ -106115,6 +106625,16 @@
     return [[DBTEAMLOGEventTypeArg alloc] initWithProtectActionRemoveLink];
   } else if ([tag isEqualToString:@"protect_action_stop_sharing"]) {
     return [[DBTEAMLOGEventTypeArg alloc] initWithProtectActionStopSharing];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_created"]) {
+    return [[DBTEAMLOGEventTypeArg alloc] initWithProtectCustomDataTypeCreated];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_deleted"]) {
+    return [[DBTEAMLOGEventTypeArg alloc] initWithProtectCustomDataTypeDeleted];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_disabled"]) {
+    return [[DBTEAMLOGEventTypeArg alloc] initWithProtectCustomDataTypeDisabled];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_enabled"]) {
+    return [[DBTEAMLOGEventTypeArg alloc] initWithProtectCustomDataTypeEnabled];
+  } else if ([tag isEqualToString:@"protect_custom_data_type_modified"]) {
+    return [[DBTEAMLOGEventTypeArg alloc] initWithProtectCustomDataTypeModified];
   } else if ([tag isEqualToString:@"protect_internal_domains_changed"]) {
     return [[DBTEAMLOGEventTypeArg alloc] initWithProtectInternalDomainsChanged];
   } else if ([tag isEqualToString:@"protect_policy_activated"]) {
@@ -173313,6 +173833,1046 @@
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGProtectActionStopSharingType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGProtectCustomDataTypeCreatedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeCreatedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithCustomDataTypeId:(NSString *)customDataTypeId name:(NSString *)name {
+  [DBStoneValidators nonnullValidator:nil](customDataTypeId);
+  [DBStoneValidators nonnullValidator:nil](name);
+
+  self = [super init];
+  if (self) {
+    _customDataTypeId = customDataTypeId;
+    _name = name;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGProtectCustomDataTypeCreatedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGProtectCustomDataTypeCreatedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGProtectCustomDataTypeCreatedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.customDataTypeId hash];
+  result = prime * result + [self.name hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToProtectCustomDataTypeCreatedDetails:other];
+}
+
+- (BOOL)isEqualToProtectCustomDataTypeCreatedDetails:
+    (DBTEAMLOGProtectCustomDataTypeCreatedDetails *)aProtectCustomDataTypeCreatedDetails {
+  if (self == aProtectCustomDataTypeCreatedDetails) {
+    return YES;
+  }
+  if (![self.customDataTypeId isEqual:aProtectCustomDataTypeCreatedDetails.customDataTypeId]) {
+    return NO;
+  }
+  if (![self.name isEqual:aProtectCustomDataTypeCreatedDetails.name]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeCreatedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProtectCustomDataTypeCreatedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"custom_data_type_id"] = valueObj.customDataTypeId;
+  jsonDict[@"name"] = valueObj.name;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGProtectCustomDataTypeCreatedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *customDataTypeId = valueDict[@"custom_data_type_id"];
+  NSString *name = valueDict[@"name"];
+
+  return [[DBTEAMLOGProtectCustomDataTypeCreatedDetails alloc] initWithCustomDataTypeId:customDataTypeId name:name];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGProtectCustomDataTypeCreatedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeCreatedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGProtectCustomDataTypeCreatedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGProtectCustomDataTypeCreatedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGProtectCustomDataTypeCreatedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToProtectCustomDataTypeCreatedType:other];
+}
+
+- (BOOL)isEqualToProtectCustomDataTypeCreatedType:
+    (DBTEAMLOGProtectCustomDataTypeCreatedType *)aProtectCustomDataTypeCreatedType {
+  if (self == aProtectCustomDataTypeCreatedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aProtectCustomDataTypeCreatedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeCreatedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProtectCustomDataTypeCreatedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGProtectCustomDataTypeCreatedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGProtectCustomDataTypeCreatedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGProtectCustomDataTypeDeletedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeDeletedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithCustomDataTypeId:(NSString *)customDataTypeId name:(NSString *)name {
+  [DBStoneValidators nonnullValidator:nil](customDataTypeId);
+  [DBStoneValidators nonnullValidator:nil](name);
+
+  self = [super init];
+  if (self) {
+    _customDataTypeId = customDataTypeId;
+    _name = name;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGProtectCustomDataTypeDeletedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGProtectCustomDataTypeDeletedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGProtectCustomDataTypeDeletedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.customDataTypeId hash];
+  result = prime * result + [self.name hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToProtectCustomDataTypeDeletedDetails:other];
+}
+
+- (BOOL)isEqualToProtectCustomDataTypeDeletedDetails:
+    (DBTEAMLOGProtectCustomDataTypeDeletedDetails *)aProtectCustomDataTypeDeletedDetails {
+  if (self == aProtectCustomDataTypeDeletedDetails) {
+    return YES;
+  }
+  if (![self.customDataTypeId isEqual:aProtectCustomDataTypeDeletedDetails.customDataTypeId]) {
+    return NO;
+  }
+  if (![self.name isEqual:aProtectCustomDataTypeDeletedDetails.name]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeDeletedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProtectCustomDataTypeDeletedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"custom_data_type_id"] = valueObj.customDataTypeId;
+  jsonDict[@"name"] = valueObj.name;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGProtectCustomDataTypeDeletedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *customDataTypeId = valueDict[@"custom_data_type_id"];
+  NSString *name = valueDict[@"name"];
+
+  return [[DBTEAMLOGProtectCustomDataTypeDeletedDetails alloc] initWithCustomDataTypeId:customDataTypeId name:name];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGProtectCustomDataTypeDeletedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeDeletedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGProtectCustomDataTypeDeletedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGProtectCustomDataTypeDeletedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGProtectCustomDataTypeDeletedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToProtectCustomDataTypeDeletedType:other];
+}
+
+- (BOOL)isEqualToProtectCustomDataTypeDeletedType:
+    (DBTEAMLOGProtectCustomDataTypeDeletedType *)aProtectCustomDataTypeDeletedType {
+  if (self == aProtectCustomDataTypeDeletedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aProtectCustomDataTypeDeletedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeDeletedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProtectCustomDataTypeDeletedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGProtectCustomDataTypeDeletedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGProtectCustomDataTypeDeletedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGProtectCustomDataTypeDisabledDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeDisabledDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithCustomDataTypeId:(NSString *)customDataTypeId name:(NSString *)name {
+  [DBStoneValidators nonnullValidator:nil](customDataTypeId);
+  [DBStoneValidators nonnullValidator:nil](name);
+
+  self = [super init];
+  if (self) {
+    _customDataTypeId = customDataTypeId;
+    _name = name;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGProtectCustomDataTypeDisabledDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGProtectCustomDataTypeDisabledDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGProtectCustomDataTypeDisabledDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.customDataTypeId hash];
+  result = prime * result + [self.name hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToProtectCustomDataTypeDisabledDetails:other];
+}
+
+- (BOOL)isEqualToProtectCustomDataTypeDisabledDetails:
+    (DBTEAMLOGProtectCustomDataTypeDisabledDetails *)aProtectCustomDataTypeDisabledDetails {
+  if (self == aProtectCustomDataTypeDisabledDetails) {
+    return YES;
+  }
+  if (![self.customDataTypeId isEqual:aProtectCustomDataTypeDisabledDetails.customDataTypeId]) {
+    return NO;
+  }
+  if (![self.name isEqual:aProtectCustomDataTypeDisabledDetails.name]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeDisabledDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProtectCustomDataTypeDisabledDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"custom_data_type_id"] = valueObj.customDataTypeId;
+  jsonDict[@"name"] = valueObj.name;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGProtectCustomDataTypeDisabledDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *customDataTypeId = valueDict[@"custom_data_type_id"];
+  NSString *name = valueDict[@"name"];
+
+  return [[DBTEAMLOGProtectCustomDataTypeDisabledDetails alloc] initWithCustomDataTypeId:customDataTypeId name:name];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGProtectCustomDataTypeDisabledType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeDisabledType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGProtectCustomDataTypeDisabledTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGProtectCustomDataTypeDisabledTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGProtectCustomDataTypeDisabledTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToProtectCustomDataTypeDisabledType:other];
+}
+
+- (BOOL)isEqualToProtectCustomDataTypeDisabledType:
+    (DBTEAMLOGProtectCustomDataTypeDisabledType *)aProtectCustomDataTypeDisabledType {
+  if (self == aProtectCustomDataTypeDisabledType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aProtectCustomDataTypeDisabledType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeDisabledTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProtectCustomDataTypeDisabledType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGProtectCustomDataTypeDisabledType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGProtectCustomDataTypeDisabledType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGProtectCustomDataTypeEnabledDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeEnabledDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithCustomDataTypeId:(NSString *)customDataTypeId name:(NSString *)name {
+  [DBStoneValidators nonnullValidator:nil](customDataTypeId);
+  [DBStoneValidators nonnullValidator:nil](name);
+
+  self = [super init];
+  if (self) {
+    _customDataTypeId = customDataTypeId;
+    _name = name;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGProtectCustomDataTypeEnabledDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGProtectCustomDataTypeEnabledDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGProtectCustomDataTypeEnabledDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.customDataTypeId hash];
+  result = prime * result + [self.name hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToProtectCustomDataTypeEnabledDetails:other];
+}
+
+- (BOOL)isEqualToProtectCustomDataTypeEnabledDetails:
+    (DBTEAMLOGProtectCustomDataTypeEnabledDetails *)aProtectCustomDataTypeEnabledDetails {
+  if (self == aProtectCustomDataTypeEnabledDetails) {
+    return YES;
+  }
+  if (![self.customDataTypeId isEqual:aProtectCustomDataTypeEnabledDetails.customDataTypeId]) {
+    return NO;
+  }
+  if (![self.name isEqual:aProtectCustomDataTypeEnabledDetails.name]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeEnabledDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProtectCustomDataTypeEnabledDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"custom_data_type_id"] = valueObj.customDataTypeId;
+  jsonDict[@"name"] = valueObj.name;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGProtectCustomDataTypeEnabledDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *customDataTypeId = valueDict[@"custom_data_type_id"];
+  NSString *name = valueDict[@"name"];
+
+  return [[DBTEAMLOGProtectCustomDataTypeEnabledDetails alloc] initWithCustomDataTypeId:customDataTypeId name:name];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGProtectCustomDataTypeEnabledType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeEnabledType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGProtectCustomDataTypeEnabledTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGProtectCustomDataTypeEnabledTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGProtectCustomDataTypeEnabledTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToProtectCustomDataTypeEnabledType:other];
+}
+
+- (BOOL)isEqualToProtectCustomDataTypeEnabledType:
+    (DBTEAMLOGProtectCustomDataTypeEnabledType *)aProtectCustomDataTypeEnabledType {
+  if (self == aProtectCustomDataTypeEnabledType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aProtectCustomDataTypeEnabledType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeEnabledTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProtectCustomDataTypeEnabledType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGProtectCustomDataTypeEnabledType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGProtectCustomDataTypeEnabledType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGProtectCustomDataTypeModifiedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeModifiedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithCustomDataTypeId:(NSString *)customDataTypeId name:(NSString *)name {
+  [DBStoneValidators nonnullValidator:nil](customDataTypeId);
+  [DBStoneValidators nonnullValidator:nil](name);
+
+  self = [super init];
+  if (self) {
+    _customDataTypeId = customDataTypeId;
+    _name = name;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGProtectCustomDataTypeModifiedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGProtectCustomDataTypeModifiedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGProtectCustomDataTypeModifiedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.customDataTypeId hash];
+  result = prime * result + [self.name hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToProtectCustomDataTypeModifiedDetails:other];
+}
+
+- (BOOL)isEqualToProtectCustomDataTypeModifiedDetails:
+    (DBTEAMLOGProtectCustomDataTypeModifiedDetails *)aProtectCustomDataTypeModifiedDetails {
+  if (self == aProtectCustomDataTypeModifiedDetails) {
+    return YES;
+  }
+  if (![self.customDataTypeId isEqual:aProtectCustomDataTypeModifiedDetails.customDataTypeId]) {
+    return NO;
+  }
+  if (![self.name isEqual:aProtectCustomDataTypeModifiedDetails.name]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeModifiedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProtectCustomDataTypeModifiedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"custom_data_type_id"] = valueObj.customDataTypeId;
+  jsonDict[@"name"] = valueObj.name;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGProtectCustomDataTypeModifiedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *customDataTypeId = valueDict[@"custom_data_type_id"];
+  NSString *name = valueDict[@"name"];
+
+  return [[DBTEAMLOGProtectCustomDataTypeModifiedDetails alloc] initWithCustomDataTypeId:customDataTypeId name:name];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGProtectCustomDataTypeModifiedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeModifiedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGProtectCustomDataTypeModifiedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGProtectCustomDataTypeModifiedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGProtectCustomDataTypeModifiedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToProtectCustomDataTypeModifiedType:other];
+}
+
+- (BOOL)isEqualToProtectCustomDataTypeModifiedType:
+    (DBTEAMLOGProtectCustomDataTypeModifiedType *)aProtectCustomDataTypeModifiedType {
+  if (self == aProtectCustomDataTypeModifiedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aProtectCustomDataTypeModifiedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGProtectCustomDataTypeModifiedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGProtectCustomDataTypeModifiedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGProtectCustomDataTypeModifiedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGProtectCustomDataTypeModifiedType alloc] initWithDescription_:description_];
 }
 
 @end
