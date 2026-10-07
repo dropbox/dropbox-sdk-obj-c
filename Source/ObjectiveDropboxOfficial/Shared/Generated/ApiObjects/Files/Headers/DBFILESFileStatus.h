@@ -31,7 +31,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESFileStatusTag) {
   /// (no description).
   DBFILESFileStatusActive,
 
-  /// (no description).
+  /// Field is deprecated. Deprecated. Deleted-file search does not work and
+  /// should not be used. Use `listFolder` with `includeDeleted` in
+  /// `DBFILESListFolderArg` set to true to enumerate deleted entries; this
+  /// does not provide equivalent full-text search.
   DBFILESFileStatusDeleted,
 
   /// (no description).
@@ -53,6 +56,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBFILESFileStatusTag) {
 
 ///
 /// Initializes union class with tag state of "deleted".
+///
+/// Description of the "deleted" tag state: Field is deprecated. Deprecated.
+/// Deleted-file search does not work and should not be used. Use `listFolder`
+/// with `includeDeleted` in `DBFILESListFolderArg` set to true to enumerate
+/// deleted entries; this does not provide equivalent full-text search.
 ///
 /// @return An initialized instance.
 ///

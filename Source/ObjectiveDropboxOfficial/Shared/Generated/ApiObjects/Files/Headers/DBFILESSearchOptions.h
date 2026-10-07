@@ -39,7 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// sorted by relevance.
 @property (nonatomic, readonly, nullable) DBFILESSearchOrderBy *orderBy;
 
-/// Restricts search to the given file status.
+/// Restricts search to the given file status. The `deleted` in
+/// `DBFILESFileStatus` value is deprecated and should not be used. This also
+/// applies to searches continued with `searchContinue`.
 @property (nonatomic, readonly) DBFILESFileStatus *fileStatus;
 
 /// Restricts search to only match on filenames.
@@ -66,7 +68,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param maxResults The maximum number of search results to return.
 /// @param orderBy Specified property of the order of search results. By
 /// default, results are sorted by relevance.
-/// @param fileStatus Restricts search to the given file status.
+/// @param fileStatus Restricts search to the given file status. The `deleted`
+/// in `DBFILESFileStatus` value is deprecated and should not be used. This also
+/// applies to searches continued with `searchContinue`.
 /// @param filenameOnly Restricts search to only match on filenames.
 /// @param fileExtensions Restricts search to only the extensions specified.
 /// Only supported for active file search.
