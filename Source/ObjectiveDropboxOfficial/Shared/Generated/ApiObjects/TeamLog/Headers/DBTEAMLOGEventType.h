@@ -147,6 +147,7 @@
 @class DBTEAMLOGEncryptedFolderUnenrollClientType;
 @class DBTEAMLOGEndedEnterpriseAdminSessionDeprecatedType;
 @class DBTEAMLOGEndedEnterpriseAdminSessionType;
+@class DBTEAMLOGEnterpriseManagedAuthPolicyChangedType;
 @class DBTEAMLOGEnterpriseSettingsLockingType;
 @class DBTEAMLOGEventType;
 @class DBTEAMLOGExportMembersReportFailType;
@@ -2251,6 +2252,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
   /// (team_policies) Removed members from EMM exception list
   DBTEAMLOGEventTypeEmmRemoveException,
+
+  /// (team_policies) Changed enterprise managed authorization policy for team
+  DBTEAMLOGEventTypeEnterpriseManagedAuthPolicyChanged,
 
   /// (team_policies) Accepted/opted out of extended version history
   DBTEAMLOGEventTypeExtendedVersionHistoryChangePolicy,
@@ -5210,6 +5214,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// `isEmmRemoveException` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEmmRemoveExceptionType *emmRemoveException;
+
+/// (team_policies) Changed enterprise managed authorization policy for team
+/// @note Ensure the `isEnterpriseManagedAuthPolicyChanged` method returns true
+/// before accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGEnterpriseManagedAuthPolicyChangedType *enterpriseManagedAuthPolicyChanged;
 
 /// (team_policies) Accepted/opted out of extended version history @note Ensure
 /// the `isExtendedVersionHistoryChangePolicy` method returns true before
@@ -12619,6 +12628,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithEmmRemoveException:(DBTEAMLOGEmmRemoveExceptionType *)emmRemoveException;
+
+///
+/// Initializes union class with tag state of
+/// "enterprise_managed_auth_policy_changed".
+///
+/// Description of the "enterprise_managed_auth_policy_changed" tag state:
+/// (team_policies) Changed enterprise managed authorization policy for team
+///
+/// @param enterpriseManagedAuthPolicyChanged (team_policies) Changed enterprise
+/// managed authorization policy for team
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithEnterpriseManagedAuthPolicyChanged:
+    (DBTEAMLOGEnterpriseManagedAuthPolicyChangedType *)enterpriseManagedAuthPolicyChanged;
 
 ///
 /// Initializes union class with tag state of
@@ -20858,6 +20882,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "emm_remove_exception".
 ///
 - (BOOL)isEmmRemoveException;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "enterprise_managed_auth_policy_changed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `enterpriseManagedAuthPolicyChanged` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "enterprise_managed_auth_policy_changed".
+///
+- (BOOL)isEnterpriseManagedAuthPolicyChanged;
 
 ///
 /// Retrieves whether the union's current tag state has value

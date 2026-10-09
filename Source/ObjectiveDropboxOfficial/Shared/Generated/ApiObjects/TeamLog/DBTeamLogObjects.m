@@ -40642,6 +40642,429 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGEnterpriseManagedAuthPolicy.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGEnterpriseManagedAuthPolicy
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDefault_ {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEnterpriseManagedAuthPolicyDefault_;
+  }
+  return self;
+}
+
+- (instancetype)initWithDisabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEnterpriseManagedAuthPolicyDisabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithEnabled {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEnterpriseManagedAuthPolicyEnabled;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEnterpriseManagedAuthPolicyOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isDefault_ {
+  return _tag == DBTEAMLOGEnterpriseManagedAuthPolicyDefault_;
+}
+
+- (BOOL)isDisabled {
+  return _tag == DBTEAMLOGEnterpriseManagedAuthPolicyDisabled;
+}
+
+- (BOOL)isEnabled {
+  return _tag == DBTEAMLOGEnterpriseManagedAuthPolicyEnabled;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGEnterpriseManagedAuthPolicyOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGEnterpriseManagedAuthPolicyDefault_:
+    return @"DBTEAMLOGEnterpriseManagedAuthPolicyDefault_";
+  case DBTEAMLOGEnterpriseManagedAuthPolicyDisabled:
+    return @"DBTEAMLOGEnterpriseManagedAuthPolicyDisabled";
+  case DBTEAMLOGEnterpriseManagedAuthPolicyEnabled:
+    return @"DBTEAMLOGEnterpriseManagedAuthPolicyEnabled";
+  case DBTEAMLOGEnterpriseManagedAuthPolicyOther:
+    return @"DBTEAMLOGEnterpriseManagedAuthPolicyOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGEnterpriseManagedAuthPolicySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGEnterpriseManagedAuthPolicySerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGEnterpriseManagedAuthPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGEnterpriseManagedAuthPolicyDefault_:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGEnterpriseManagedAuthPolicyDisabled:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGEnterpriseManagedAuthPolicyEnabled:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGEnterpriseManagedAuthPolicyOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToEnterpriseManagedAuthPolicy:other];
+}
+
+- (BOOL)isEqualToEnterpriseManagedAuthPolicy:(DBTEAMLOGEnterpriseManagedAuthPolicy *)anEnterpriseManagedAuthPolicy {
+  if (self == anEnterpriseManagedAuthPolicy) {
+    return YES;
+  }
+  if (self.tag != anEnterpriseManagedAuthPolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGEnterpriseManagedAuthPolicyDefault_:
+    return [[self tagName] isEqual:[anEnterpriseManagedAuthPolicy tagName]];
+  case DBTEAMLOGEnterpriseManagedAuthPolicyDisabled:
+    return [[self tagName] isEqual:[anEnterpriseManagedAuthPolicy tagName]];
+  case DBTEAMLOGEnterpriseManagedAuthPolicyEnabled:
+    return [[self tagName] isEqual:[anEnterpriseManagedAuthPolicy tagName]];
+  case DBTEAMLOGEnterpriseManagedAuthPolicyOther:
+    return [[self tagName] isEqual:[anEnterpriseManagedAuthPolicy tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGEnterpriseManagedAuthPolicySerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEnterpriseManagedAuthPolicy *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isDefault_]) {
+    jsonDict[@".tag"] = @"default";
+  } else if ([valueObj isDisabled]) {
+    jsonDict[@".tag"] = @"disabled";
+  } else if ([valueObj isEnabled]) {
+    jsonDict[@".tag"] = @"enabled";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGEnterpriseManagedAuthPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"default"]) {
+    return [[DBTEAMLOGEnterpriseManagedAuthPolicy alloc] initWithDefault_];
+  } else if ([tag isEqualToString:@"disabled"]) {
+    return [[DBTEAMLOGEnterpriseManagedAuthPolicy alloc] initWithDisabled];
+  } else if ([tag isEqualToString:@"enabled"]) {
+    return [[DBTEAMLOGEnterpriseManagedAuthPolicy alloc] initWithEnabled];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGEnterpriseManagedAuthPolicy alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGEnterpriseManagedAuthPolicy alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGEnterpriseManagedAuthPolicy.h"
+#import "DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDNewValue:(DBTEAMLOGEnterpriseManagedAuthPolicy *)dNewValue
+                    previousValue:(DBTEAMLOGEnterpriseManagedAuthPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+
+  self = [super init];
+  if (self) {
+    _dNewValue = dNewValue;
+    _previousValue = previousValue;
+  }
+  return self;
+}
+
+- (instancetype)initWithDNewValue:(DBTEAMLOGEnterpriseManagedAuthPolicy *)dNewValue {
+  return [self initWithDNewValue:dNewValue previousValue:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewValue hash];
+  if (self.previousValue != nil) {
+    result = prime * result + [self.previousValue hash];
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToEnterpriseManagedAuthPolicyChangedDetails:other];
+}
+
+- (BOOL)isEqualToEnterpriseManagedAuthPolicyChangedDetails:
+    (DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetails *)anEnterpriseManagedAuthPolicyChangedDetails {
+  if (self == anEnterpriseManagedAuthPolicyChangedDetails) {
+    return YES;
+  }
+  if (![self.dNewValue isEqual:anEnterpriseManagedAuthPolicyChangedDetails.dNewValue]) {
+    return NO;
+  }
+  if (self.previousValue) {
+    if (![self.previousValue isEqual:anEnterpriseManagedAuthPolicyChangedDetails.previousValue]) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"new_value"] = [DBTEAMLOGEnterpriseManagedAuthPolicySerializer serialize:valueObj.dNewValue];
+  if (valueObj.previousValue) {
+    jsonDict[@"previous_value"] = [DBTEAMLOGEnterpriseManagedAuthPolicySerializer serialize:valueObj.previousValue];
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGEnterpriseManagedAuthPolicy *dNewValue =
+      [DBTEAMLOGEnterpriseManagedAuthPolicySerializer deserialize:valueDict[@"new_value"]];
+  DBTEAMLOGEnterpriseManagedAuthPolicy *previousValue =
+      valueDict[@"previous_value"]
+          ? [DBTEAMLOGEnterpriseManagedAuthPolicySerializer deserialize:valueDict[@"previous_value"]]
+          : nil;
+
+  return [[DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetails alloc] initWithDNewValue:dNewValue
+                                                                         previousValue:previousValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGEnterpriseManagedAuthPolicyChangedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGEnterpriseManagedAuthPolicyChangedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGEnterpriseManagedAuthPolicyChangedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGEnterpriseManagedAuthPolicyChangedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGEnterpriseManagedAuthPolicyChangedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToEnterpriseManagedAuthPolicyChangedType:other];
+}
+
+- (BOOL)isEqualToEnterpriseManagedAuthPolicyChangedType:
+    (DBTEAMLOGEnterpriseManagedAuthPolicyChangedType *)anEnterpriseManagedAuthPolicyChangedType {
+  if (self == anEnterpriseManagedAuthPolicyChangedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:anEnterpriseManagedAuthPolicyChangedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGEnterpriseManagedAuthPolicyChangedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGEnterpriseManagedAuthPolicyChangedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGEnterpriseManagedAuthPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGEnterpriseManagedAuthPolicyChangedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMLOGEnterpriseSettingsLockingDetails.h"
 
 #pragma mark - API Object
@@ -41740,6 +42163,7 @@
 #import "DBTEAMLOGEncryptedFolderUnenrollClientDetails.h"
 #import "DBTEAMLOGEndedEnterpriseAdminSessionDeprecatedDetails.h"
 #import "DBTEAMLOGEndedEnterpriseAdminSessionDetails.h"
+#import "DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetails.h"
 #import "DBTEAMLOGEnterpriseSettingsLockingDetails.h"
 #import "DBTEAMLOGEventDetails.h"
 #import "DBTEAMLOGExportMembersReportDetails.h"
@@ -42759,6 +43183,7 @@
 @synthesize emmAddExceptionDetails = _emmAddExceptionDetails;
 @synthesize emmChangePolicyDetails = _emmChangePolicyDetails;
 @synthesize emmRemoveExceptionDetails = _emmRemoveExceptionDetails;
+@synthesize enterpriseManagedAuthPolicyChangedDetails = _enterpriseManagedAuthPolicyChangedDetails;
 @synthesize extendedVersionHistoryChangePolicyDetails = _extendedVersionHistoryChangePolicyDetails;
 @synthesize externalDriveBackupPolicyChangedDetails = _externalDriveBackupPolicyChangedDetails;
 @synthesize fileCommentsChangePolicyDetails = _fileCommentsChangePolicyDetails;
@@ -47831,6 +48256,16 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsEmmRemoveExceptionDetails;
     _emmRemoveExceptionDetails = emmRemoveExceptionDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithEnterpriseManagedAuthPolicyChangedDetails:
+    (DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetails *)enterpriseManagedAuthPolicyChangedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsEnterpriseManagedAuthPolicyChangedDetails;
+    _enterpriseManagedAuthPolicyChangedDetails = enterpriseManagedAuthPolicyChangedDetails;
   }
   return self;
 }
@@ -53774,6 +54209,16 @@
   return _emmRemoveExceptionDetails;
 }
 
+- (DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetails *)enterpriseManagedAuthPolicyChangedDetails {
+  if (![self isEnterpriseManagedAuthPolicyChangedDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsEnterpriseManagedAuthPolicyChangedDetails, but was %@.",
+               [self tagName]];
+  }
+  return _enterpriseManagedAuthPolicyChangedDetails;
+}
+
 - (DBTEAMLOGExtendedVersionHistoryChangePolicyDetails *)extendedVersionHistoryChangePolicyDetails {
   if (![self isExtendedVersionHistoryChangePolicyDetails]) {
     [NSException
@@ -57039,6 +57484,10 @@
   return _tag == DBTEAMLOGEventDetailsEmmRemoveExceptionDetails;
 }
 
+- (BOOL)isEnterpriseManagedAuthPolicyChangedDetails {
+  return _tag == DBTEAMLOGEventDetailsEnterpriseManagedAuthPolicyChangedDetails;
+}
+
 - (BOOL)isExtendedVersionHistoryChangePolicyDetails {
   return _tag == DBTEAMLOGEventDetailsExtendedVersionHistoryChangePolicyDetails;
 }
@@ -58589,6 +59038,8 @@
     return @"DBTEAMLOGEventDetailsEmmChangePolicyDetails";
   case DBTEAMLOGEventDetailsEmmRemoveExceptionDetails:
     return @"DBTEAMLOGEventDetailsEmmRemoveExceptionDetails";
+  case DBTEAMLOGEventDetailsEnterpriseManagedAuthPolicyChangedDetails:
+    return @"DBTEAMLOGEventDetailsEnterpriseManagedAuthPolicyChangedDetails";
   case DBTEAMLOGEventDetailsExtendedVersionHistoryChangePolicyDetails:
     return @"DBTEAMLOGEventDetailsExtendedVersionHistoryChangePolicyDetails";
   case DBTEAMLOGEventDetailsExternalDriveBackupPolicyChangedDetails:
@@ -60419,6 +60870,9 @@
   case DBTEAMLOGEventDetailsEmmRemoveExceptionDetails:
     result = prime * result + [self.emmRemoveExceptionDetails hash];
     break;
+  case DBTEAMLOGEventDetailsEnterpriseManagedAuthPolicyChangedDetails:
+    result = prime * result + [self.enterpriseManagedAuthPolicyChangedDetails hash];
+    break;
   case DBTEAMLOGEventDetailsExtendedVersionHistoryChangePolicyDetails:
     result = prime * result + [self.extendedVersionHistoryChangePolicyDetails hash];
     break;
@@ -61926,6 +62380,9 @@
     return [self.emmChangePolicyDetails isEqual:anEventDetails.emmChangePolicyDetails];
   case DBTEAMLOGEventDetailsEmmRemoveExceptionDetails:
     return [self.emmRemoveExceptionDetails isEqual:anEventDetails.emmRemoveExceptionDetails];
+  case DBTEAMLOGEventDetailsEnterpriseManagedAuthPolicyChangedDetails:
+    return [self.enterpriseManagedAuthPolicyChangedDetails
+        isEqual:anEventDetails.enterpriseManagedAuthPolicyChangedDetails];
   case DBTEAMLOGEventDetailsExtendedVersionHistoryChangePolicyDetails:
     return [self.extendedVersionHistoryChangePolicyDetails
         isEqual:anEventDetails.extendedVersionHistoryChangePolicyDetails];
@@ -64252,6 +64709,10 @@
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGEmmRemoveExceptionDetailsSerializer
                                            serialize:valueObj.emmRemoveExceptionDetails]];
     jsonDict[@".tag"] = @"emm_remove_exception_details";
+  } else if ([valueObj isEnterpriseManagedAuthPolicyChangedDetails]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetailsSerializer
+                                           serialize:valueObj.enterpriseManagedAuthPolicyChangedDetails]];
+    jsonDict[@".tag"] = @"enterprise_managed_auth_policy_changed_details";
   } else if ([valueObj isExtendedVersionHistoryChangePolicyDetails]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGExtendedVersionHistoryChangePolicyDetailsSerializer
                                            serialize:valueObj.extendedVersionHistoryChangePolicyDetails]];
@@ -66964,6 +67425,11 @@
     DBTEAMLOGEmmRemoveExceptionDetails *emmRemoveExceptionDetails =
         [DBTEAMLOGEmmRemoveExceptionDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithEmmRemoveExceptionDetails:emmRemoveExceptionDetails];
+  } else if ([tag isEqualToString:@"enterprise_managed_auth_policy_changed_details"]) {
+    DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetails *enterpriseManagedAuthPolicyChangedDetails =
+        [DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithEnterpriseManagedAuthPolicyChangedDetails:enterpriseManagedAuthPolicyChangedDetails];
   } else if ([tag isEqualToString:@"extended_version_history_change_policy_details"]) {
     DBTEAMLOGExtendedVersionHistoryChangePolicyDetails *extendedVersionHistoryChangePolicyDetails =
         [DBTEAMLOGExtendedVersionHistoryChangePolicyDetailsSerializer deserialize:valueDict];
@@ -67711,6 +68177,7 @@
 #import "DBTEAMLOGEncryptedFolderUnenrollClientType.h"
 #import "DBTEAMLOGEndedEnterpriseAdminSessionDeprecatedType.h"
 #import "DBTEAMLOGEndedEnterpriseAdminSessionType.h"
+#import "DBTEAMLOGEnterpriseManagedAuthPolicyChangedType.h"
 #import "DBTEAMLOGEnterpriseSettingsLockingType.h"
 #import "DBTEAMLOGEventType.h"
 #import "DBTEAMLOGExportMembersReportFailType.h"
@@ -68728,6 +69195,7 @@
 @synthesize emmAddException = _emmAddException;
 @synthesize emmChangePolicy = _emmChangePolicy;
 @synthesize emmRemoveException = _emmRemoveException;
+@synthesize enterpriseManagedAuthPolicyChanged = _enterpriseManagedAuthPolicyChanged;
 @synthesize extendedVersionHistoryChangePolicy = _extendedVersionHistoryChangePolicy;
 @synthesize externalDriveBackupPolicyChanged = _externalDriveBackupPolicyChanged;
 @synthesize fileCommentsChangePolicy = _fileCommentsChangePolicy;
@@ -73648,6 +74116,16 @@
   if (self) {
     _tag = DBTEAMLOGEventTypeEmmRemoveException;
     _emmRemoveException = emmRemoveException;
+  }
+  return self;
+}
+
+- (instancetype)initWithEnterpriseManagedAuthPolicyChanged:
+    (DBTEAMLOGEnterpriseManagedAuthPolicyChangedType *)enterpriseManagedAuthPolicyChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeEnterpriseManagedAuthPolicyChanged;
+    _enterpriseManagedAuthPolicyChanged = enterpriseManagedAuthPolicyChanged;
   }
   return self;
 }
@@ -79242,6 +79720,15 @@
   return _emmRemoveException;
 }
 
+- (DBTEAMLOGEnterpriseManagedAuthPolicyChangedType *)enterpriseManagedAuthPolicyChanged {
+  if (![self isEnterpriseManagedAuthPolicyChanged]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeEnterpriseManagedAuthPolicyChanged, but was %@.",
+                       [self tagName]];
+  }
+  return _enterpriseManagedAuthPolicyChanged;
+}
+
 - (DBTEAMLOGExtendedVersionHistoryChangePolicyType *)extendedVersionHistoryChangePolicy {
   if (![self isExtendedVersionHistoryChangePolicy]) {
     [NSException raise:@"IllegalStateException"
@@ -82436,6 +82923,10 @@
   return _tag == DBTEAMLOGEventTypeEmmRemoveException;
 }
 
+- (BOOL)isEnterpriseManagedAuthPolicyChanged {
+  return _tag == DBTEAMLOGEventTypeEnterpriseManagedAuthPolicyChanged;
+}
+
 - (BOOL)isExtendedVersionHistoryChangePolicy {
   return _tag == DBTEAMLOGEventTypeExtendedVersionHistoryChangePolicy;
 }
@@ -83982,6 +84473,8 @@
     return @"DBTEAMLOGEventTypeEmmChangePolicy";
   case DBTEAMLOGEventTypeEmmRemoveException:
     return @"DBTEAMLOGEventTypeEmmRemoveException";
+  case DBTEAMLOGEventTypeEnterpriseManagedAuthPolicyChanged:
+    return @"DBTEAMLOGEventTypeEnterpriseManagedAuthPolicyChanged";
   case DBTEAMLOGEventTypeExtendedVersionHistoryChangePolicy:
     return @"DBTEAMLOGEventTypeExtendedVersionHistoryChangePolicy";
   case DBTEAMLOGEventTypeExternalDriveBackupPolicyChanged:
@@ -85810,6 +86303,9 @@
   case DBTEAMLOGEventTypeEmmRemoveException:
     result = prime * result + [self.emmRemoveException hash];
     break;
+  case DBTEAMLOGEventTypeEnterpriseManagedAuthPolicyChanged:
+    result = prime * result + [self.enterpriseManagedAuthPolicyChanged hash];
+    break;
   case DBTEAMLOGEventTypeExtendedVersionHistoryChangePolicy:
     result = prime * result + [self.extendedVersionHistoryChangePolicy hash];
     break;
@@ -87255,6 +87751,8 @@
     return [self.emmChangePolicy isEqual:anEventType.emmChangePolicy];
   case DBTEAMLOGEventTypeEmmRemoveException:
     return [self.emmRemoveException isEqual:anEventType.emmRemoveException];
+  case DBTEAMLOGEventTypeEnterpriseManagedAuthPolicyChanged:
+    return [self.enterpriseManagedAuthPolicyChanged isEqual:anEventType.enterpriseManagedAuthPolicyChanged];
   case DBTEAMLOGEventTypeExtendedVersionHistoryChangePolicy:
     return [self.extendedVersionHistoryChangePolicy isEqual:anEventType.extendedVersionHistoryChangePolicy];
   case DBTEAMLOGEventTypeExternalDriveBackupPolicyChanged:
@@ -89462,6 +89960,10 @@
     [jsonDict
         addEntriesFromDictionary:[DBTEAMLOGEmmRemoveExceptionTypeSerializer serialize:valueObj.emmRemoveException]];
     jsonDict[@".tag"] = @"emm_remove_exception";
+  } else if ([valueObj isEnterpriseManagedAuthPolicyChanged]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGEnterpriseManagedAuthPolicyChangedTypeSerializer
+                                           serialize:valueObj.enterpriseManagedAuthPolicyChanged]];
+    jsonDict[@".tag"] = @"enterprise_managed_auth_policy_changed";
   } else if ([valueObj isExtendedVersionHistoryChangePolicy]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGExtendedVersionHistoryChangePolicyTypeSerializer
                                            serialize:valueObj.extendedVersionHistoryChangePolicy]];
@@ -91948,6 +92450,10 @@
     DBTEAMLOGEmmRemoveExceptionType *emmRemoveException =
         [DBTEAMLOGEmmRemoveExceptionTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithEmmRemoveException:emmRemoveException];
+  } else if ([tag isEqualToString:@"enterprise_managed_auth_policy_changed"]) {
+    DBTEAMLOGEnterpriseManagedAuthPolicyChangedType *enterpriseManagedAuthPolicyChanged =
+        [DBTEAMLOGEnterpriseManagedAuthPolicyChangedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithEnterpriseManagedAuthPolicyChanged:enterpriseManagedAuthPolicyChanged];
   } else if ([tag isEqualToString:@"extended_version_history_change_policy"]) {
     DBTEAMLOGExtendedVersionHistoryChangePolicyType *extendedVersionHistoryChangePolicy =
         [DBTEAMLOGExtendedVersionHistoryChangePolicyTypeSerializer deserialize:valueDict];
@@ -96584,6 +97090,14 @@
   return self;
 }
 
+- (instancetype)initWithEnterpriseManagedAuthPolicyChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeArgEnterpriseManagedAuthPolicyChanged;
+  }
+  return self;
+}
+
 - (instancetype)initWithExtendedVersionHistoryChangePolicy {
   self = [super init];
   if (self) {
@@ -99676,6 +100190,10 @@
   return _tag == DBTEAMLOGEventTypeArgEmmRemoveException;
 }
 
+- (BOOL)isEnterpriseManagedAuthPolicyChanged {
+  return _tag == DBTEAMLOGEventTypeArgEnterpriseManagedAuthPolicyChanged;
+}
+
 - (BOOL)isExtendedVersionHistoryChangePolicy {
   return _tag == DBTEAMLOGEventTypeArgExtendedVersionHistoryChangePolicy;
 }
@@ -101222,6 +101740,8 @@
     return @"DBTEAMLOGEventTypeArgEmmChangePolicy";
   case DBTEAMLOGEventTypeArgEmmRemoveException:
     return @"DBTEAMLOGEventTypeArgEmmRemoveException";
+  case DBTEAMLOGEventTypeArgEnterpriseManagedAuthPolicyChanged:
+    return @"DBTEAMLOGEventTypeArgEnterpriseManagedAuthPolicyChanged";
   case DBTEAMLOGEventTypeArgExtendedVersionHistoryChangePolicy:
     return @"DBTEAMLOGEventTypeArgExtendedVersionHistoryChangePolicy";
   case DBTEAMLOGEventTypeArgExternalDriveBackupPolicyChanged:
@@ -103050,6 +103570,9 @@
   case DBTEAMLOGEventTypeArgEmmRemoveException:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBTEAMLOGEventTypeArgEnterpriseManagedAuthPolicyChanged:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLOGEventTypeArgExtendedVersionHistoryChangePolicy:
     result = prime * result + [[self tagName] hash];
     break;
@@ -104488,6 +105011,8 @@
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgEmmRemoveException:
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
+  case DBTEAMLOGEventTypeArgEnterpriseManagedAuthPolicyChanged:
+    return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgExtendedVersionHistoryChangePolicy:
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgExternalDriveBackupPolicyChanged:
@@ -105783,6 +106308,8 @@
     jsonDict[@".tag"] = @"emm_change_policy";
   } else if ([valueObj isEmmRemoveException]) {
     jsonDict[@".tag"] = @"emm_remove_exception";
+  } else if ([valueObj isEnterpriseManagedAuthPolicyChanged]) {
+    jsonDict[@".tag"] = @"enterprise_managed_auth_policy_changed";
   } else if ([valueObj isExtendedVersionHistoryChangePolicy]) {
     jsonDict[@".tag"] = @"extended_version_history_change_policy";
   } else if ([valueObj isExternalDriveBackupPolicyChanged]) {
@@ -107075,6 +107602,8 @@
     return [[DBTEAMLOGEventTypeArg alloc] initWithEmmChangePolicy];
   } else if ([tag isEqualToString:@"emm_remove_exception"]) {
     return [[DBTEAMLOGEventTypeArg alloc] initWithEmmRemoveException];
+  } else if ([tag isEqualToString:@"enterprise_managed_auth_policy_changed"]) {
+    return [[DBTEAMLOGEventTypeArg alloc] initWithEnterpriseManagedAuthPolicyChanged];
   } else if ([tag isEqualToString:@"extended_version_history_change_policy"]) {
     return [[DBTEAMLOGEventTypeArg alloc] initWithExtendedVersionHistoryChangePolicy];
   } else if ([tag isEqualToString:@"external_drive_backup_policy_changed"]) {
