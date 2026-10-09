@@ -147,6 +147,7 @@
 @class DBTEAMLOGEncryptedFolderUnenrollClientDetails;
 @class DBTEAMLOGEndedEnterpriseAdminSessionDeprecatedDetails;
 @class DBTEAMLOGEndedEnterpriseAdminSessionDetails;
+@class DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetails;
 @class DBTEAMLOGEnterpriseSettingsLockingDetails;
 @class DBTEAMLOGEventDetails;
 @class DBTEAMLOGExportMembersReportDetails;
@@ -2200,6 +2201,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
   /// (no description).
   DBTEAMLOGEventDetailsEmmRemoveExceptionDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsEnterpriseManagedAuthPolicyChangedDetails,
 
   /// (no description).
   DBTEAMLOGEventDetailsExtendedVersionHistoryChangePolicyDetails,
@@ -4949,6 +4953,12 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// (no description). @note Ensure the `isEmmRemoveExceptionDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGEmmRemoveExceptionDetails *emmRemoveExceptionDetails;
+
+/// (no description). @note Ensure the
+/// `isEnterpriseManagedAuthPolicyChangedDetails` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly)
+    DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetails *enterpriseManagedAuthPolicyChangedDetails;
 
 /// (no description). @note Ensure the
 /// `isExtendedVersionHistoryChangePolicyDetails` method returns true before
@@ -10849,6 +10859,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithEmmRemoveExceptionDetails:(DBTEAMLOGEmmRemoveExceptionDetails *)emmRemoveExceptionDetails;
+
+///
+/// Initializes union class with tag state of
+/// "enterprise_managed_auth_policy_changed_details".
+///
+/// @param enterpriseManagedAuthPolicyChangedDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithEnterpriseManagedAuthPolicyChangedDetails:
+    (DBTEAMLOGEnterpriseManagedAuthPolicyChangedDetails *)enterpriseManagedAuthPolicyChangedDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -18864,6 +18885,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "emm_remove_exception_details".
 ///
 - (BOOL)isEmmRemoveExceptionDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "enterprise_managed_auth_policy_changed_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `enterpriseManagedAuthPolicyChangedDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "enterprise_managed_auth_policy_changed_details".
+///
+- (BOOL)isEnterpriseManagedAuthPolicyChangedDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value

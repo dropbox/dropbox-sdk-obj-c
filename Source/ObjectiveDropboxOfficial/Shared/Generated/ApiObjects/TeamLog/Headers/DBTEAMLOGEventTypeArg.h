@@ -1612,6 +1612,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
   /// (team_policies) Removed members from EMM exception list
   DBTEAMLOGEventTypeArgEmmRemoveException,
 
+  /// (team_policies) Changed enterprise managed authorization policy for team
+  DBTEAMLOGEventTypeArgEnterpriseManagedAuthPolicyChanged,
+
   /// (team_policies) Accepted/opted out of extended version history
   DBTEAMLOGEventTypeArgExtendedVersionHistoryChangePolicy,
 
@@ -7284,6 +7287,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithEmmRemoveException;
+
+///
+/// Initializes union class with tag state of
+/// "enterprise_managed_auth_policy_changed".
+///
+/// Description of the "enterprise_managed_auth_policy_changed" tag state:
+/// (team_policies) Changed enterprise managed authorization policy for team
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithEnterpriseManagedAuthPolicyChanged;
 
 ///
 /// Initializes union class with tag state of
@@ -13156,6 +13170,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "emm_remove_exception".
 ///
 - (BOOL)isEmmRemoveException;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "enterprise_managed_auth_policy_changed".
+///
+/// @return Whether the union's current tag state has value
+/// "enterprise_managed_auth_policy_changed".
+///
+- (BOOL)isEnterpriseManagedAuthPolicyChanged;
 
 ///
 /// Retrieves whether the union's current tag state has value
