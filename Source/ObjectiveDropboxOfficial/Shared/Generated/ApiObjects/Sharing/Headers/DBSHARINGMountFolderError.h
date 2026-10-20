@@ -11,6 +11,7 @@
 @class DBSHARINGInsufficientQuotaAmounts;
 @class DBSHARINGMountFolderError;
 @class DBSHARINGSharedFolderAccessError;
+@class DBSHARINGTooManyMountsError;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -55,6 +56,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGMountFolderErrorTag) {
   /// automounter is responsible for mounting it.
   DBSHARINGMountFolderErrorMustAutomount,
 
+  /// User will have too many mounts after this operation.
+  DBSHARINGMountFolderErrorTooManyMounts,
+
   /// (no description).
   DBSHARINGMountFolderErrorOther,
 
@@ -71,6 +75,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGMountFolderErrorTag) {
 /// @note Ensure the `isInsufficientQuota` method returns true before accessing,
 /// otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBSHARINGInsufficientQuotaAmounts *insufficientQuota;
+
+/// User will have too many mounts after this operation. @note Ensure the
+/// `isTooManyMounts` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
+@property (nonatomic, readonly) DBSHARINGTooManyMountsError *tooManyMounts;
 
 #pragma mark - Constructors
 
@@ -149,6 +158,18 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGMountFolderErrorTag) {
 - (instancetype)initWithMustAutomount;
 
 ///
+/// Initializes union class with tag state of "too_many_mounts".
+///
+/// Description of the "too_many_mounts" tag state: User will have too many
+/// mounts after this operation.
+///
+/// @param tooManyMounts User will have too many mounts after this operation.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTooManyMounts:(DBSHARINGTooManyMountsError *)tooManyMounts;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -217,6 +238,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGMountFolderErrorTag) {
 /// @return Whether the union's current tag state has value "must_automount".
 ///
 - (BOOL)isMustAutomount;
+
+///
+/// Retrieves whether the union's current tag state has value "too_many_mounts".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `tooManyMounts` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "too_many_mounts".
+///
+- (BOOL)isTooManyMounts;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

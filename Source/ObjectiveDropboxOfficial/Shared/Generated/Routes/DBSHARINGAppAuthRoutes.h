@@ -100,6 +100,7 @@
 @class DBSHARINGSharingFileAccessError;
 @class DBSHARINGSharingUserError;
 @class DBSHARINGTeamMemberInfo;
+@class DBSHARINGTooManyMountsError;
 @class DBSHARINGTransferFolderError;
 @class DBSHARINGUnmountFolderError;
 @class DBSHARINGUnshareFileError;

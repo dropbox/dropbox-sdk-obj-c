@@ -131,6 +131,7 @@
 #import "DBSHARINGSharingFileAccessError.h"
 #import "DBSHARINGSharingUserError.h"
 #import "DBSHARINGTeamMemberInfo.h"
+#import "DBSHARINGTooManyMountsError.h"
 #import "DBSHARINGTransferFolderArg.h"
 #import "DBSHARINGTransferFolderError.h"
 #import "DBSHARINGUnmountFolderArg.h"

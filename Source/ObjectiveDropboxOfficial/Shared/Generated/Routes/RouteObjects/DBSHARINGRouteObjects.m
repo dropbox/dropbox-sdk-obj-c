@@ -89,6 +89,7 @@
 #import "DBSHARINGSharingFileAccessError.h"
 #import "DBSHARINGSharingUserError.h"
 #import "DBSHARINGTeamMemberInfo.h"
+#import "DBSHARINGTooManyMountsError.h"
 #import "DBSHARINGTransferFolderError.h"
 #import "DBSHARINGUnmountFolderError.h"
 #import "DBSHARINGUnshareFileError.h"
