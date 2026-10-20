@@ -18859,6 +18859,7 @@
 #import "DBSHARINGInsufficientQuotaAmounts.h"
 #import "DBSHARINGMountFolderError.h"
 #import "DBSHARINGSharedFolderAccessError.h"
+#import "DBSHARINGTooManyMountsError.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 
@@ -18868,6 +18869,7 @@
 
 @synthesize accessError = _accessError;
 @synthesize insufficientQuota = _insufficientQuota;
+@synthesize tooManyMounts = _tooManyMounts;
 
 #pragma mark - Constructors
 
@@ -18929,6 +18931,15 @@
   return self;
 }
 
+- (instancetype)initWithTooManyMounts:(DBSHARINGTooManyMountsError *)tooManyMounts {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGMountFolderErrorTooManyMounts;
+    _tooManyMounts = tooManyMounts;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -18954,6 +18965,14 @@
         format:@"Invalid tag: required DBSHARINGMountFolderErrorInsufficientQuota, but was %@.", [self tagName]];
   }
   return _insufficientQuota;
+}
+
+- (DBSHARINGTooManyMountsError *)tooManyMounts {
+  if (![self isTooManyMounts]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBSHARINGMountFolderErrorTooManyMounts, but was %@.", [self tagName]];
+  }
+  return _tooManyMounts;
 }
 
 #pragma mark - Tag state methods
@@ -18986,6 +19005,10 @@
   return _tag == DBSHARINGMountFolderErrorMustAutomount;
 }
 
+- (BOOL)isTooManyMounts {
+  return _tag == DBSHARINGMountFolderErrorTooManyMounts;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGMountFolderErrorOther;
 }
@@ -19006,6 +19029,8 @@
     return @"DBSHARINGMountFolderErrorNotMountable";
   case DBSHARINGMountFolderErrorMustAutomount:
     return @"DBSHARINGMountFolderErrorMustAutomount";
+  case DBSHARINGMountFolderErrorTooManyMounts:
+    return @"DBSHARINGMountFolderErrorTooManyMounts";
   case DBSHARINGMountFolderErrorOther:
     return @"DBSHARINGMountFolderErrorOther";
   }
@@ -19065,6 +19090,9 @@
   case DBSHARINGMountFolderErrorMustAutomount:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBSHARINGMountFolderErrorTooManyMounts:
+    result = prime * result + [self.tooManyMounts hash];
+    break;
   case DBSHARINGMountFolderErrorOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -19107,6 +19135,8 @@
     return [[self tagName] isEqual:[aMountFolderError tagName]];
   case DBSHARINGMountFolderErrorMustAutomount:
     return [[self tagName] isEqual:[aMountFolderError tagName]];
+  case DBSHARINGMountFolderErrorTooManyMounts:
+    return [self.tooManyMounts isEqual:aMountFolderError.tooManyMounts];
   case DBSHARINGMountFolderErrorOther:
     return [[self tagName] isEqual:[aMountFolderError tagName]];
   }
@@ -19140,6 +19170,10 @@
     jsonDict[@".tag"] = @"not_mountable";
   } else if ([valueObj isMustAutomount]) {
     jsonDict[@".tag"] = @"must_automount";
+  } else if ([valueObj isTooManyMounts]) {
+    jsonDict[@"too_many_mounts"] =
+        [[DBSHARINGTooManyMountsErrorSerializer serialize:valueObj.tooManyMounts] mutableCopy];
+    jsonDict[@".tag"] = @"too_many_mounts";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -19170,11 +19204,130 @@
     return [[DBSHARINGMountFolderError alloc] initWithNotMountable];
   } else if ([tag isEqualToString:@"must_automount"]) {
     return [[DBSHARINGMountFolderError alloc] initWithMustAutomount];
+  } else if ([tag isEqualToString:@"too_many_mounts"]) {
+    DBSHARINGTooManyMountsError *tooManyMounts =
+        [DBSHARINGTooManyMountsErrorSerializer deserialize:valueDict[@"too_many_mounts"]];
+    return [[DBSHARINGMountFolderError alloc] initWithTooManyMounts:tooManyMounts];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGMountFolderError alloc] initWithOther];
   } else {
     return [[DBSHARINGMountFolderError alloc] initWithOther];
   }
+}
+
+@end
+
+#import "DBSHARINGMountLimitsInfo.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBSHARINGMountLimitsInfo
+
+#pragma mark - Constructors
+
+- (instancetype)initWithLimit:(NSNumber *)limit currentCount:(NSNumber *)currentCount dNewCount:(NSNumber *)dNewCount {
+  [DBStoneValidators nonnullValidator:nil](limit);
+  [DBStoneValidators nonnullValidator:nil](currentCount);
+  [DBStoneValidators nonnullValidator:nil](dNewCount);
+
+  self = [super init];
+  if (self) {
+    _limit = limit;
+    _currentCount = currentCount;
+    _dNewCount = dNewCount;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBSHARINGMountLimitsInfoSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBSHARINGMountLimitsInfoSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBSHARINGMountLimitsInfoSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.limit hash];
+  result = prime * result + [self.currentCount hash];
+  result = prime * result + [self.dNewCount hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToMountLimitsInfo:other];
+}
+
+- (BOOL)isEqualToMountLimitsInfo:(DBSHARINGMountLimitsInfo *)aMountLimitsInfo {
+  if (self == aMountLimitsInfo) {
+    return YES;
+  }
+  if (![self.limit isEqual:aMountLimitsInfo.limit]) {
+    return NO;
+  }
+  if (![self.currentCount isEqual:aMountLimitsInfo.currentCount]) {
+    return NO;
+  }
+  if (![self.dNewCount isEqual:aMountLimitsInfo.dNewCount]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBSHARINGMountLimitsInfoSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBSHARINGMountLimitsInfo *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"limit"] = valueObj.limit;
+  jsonDict[@"current_count"] = valueObj.currentCount;
+  jsonDict[@"new_count"] = valueObj.dNewCount;
+
+  return jsonDict;
+}
+
++ (DBSHARINGMountLimitsInfo *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSNumber *limit = valueDict[@"limit"];
+  NSNumber *currentCount = valueDict[@"current_count"];
+  NSNumber *dNewCount = valueDict[@"new_count"];
+
+  return [[DBSHARINGMountLimitsInfo alloc] initWithLimit:limit currentCount:currentCount dNewCount:dNewCount];
 }
 
 @end
@@ -23652,6 +23805,7 @@
 
 #import "DBSHARINGShareFolderErrorBase.h"
 #import "DBSHARINGSharePathError.h"
+#import "DBSHARINGTooManyMountsError.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 
@@ -23660,6 +23814,7 @@
 @implementation DBSHARINGShareFolderErrorBase
 
 @synthesize badPath = _badPath;
+@synthesize tooManyMounts = _tooManyMounts;
 
 #pragma mark - Constructors
 
@@ -23696,6 +23851,15 @@
   return self;
 }
 
+- (instancetype)initWithTooManyMounts:(DBSHARINGTooManyMountsError *)tooManyMounts {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGShareFolderErrorBaseTooManyMounts;
+    _tooManyMounts = tooManyMounts;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -23712,6 +23876,15 @@
                 format:@"Invalid tag: required DBSHARINGShareFolderErrorBaseBadPath, but was %@.", [self tagName]];
   }
   return _badPath;
+}
+
+- (DBSHARINGTooManyMountsError *)tooManyMounts {
+  if (![self isTooManyMounts]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBSHARINGShareFolderErrorBaseTooManyMounts, but was %@.", [self tagName]];
+  }
+  return _tooManyMounts;
 }
 
 #pragma mark - Tag state methods
@@ -23732,6 +23905,10 @@
   return _tag == DBSHARINGShareFolderErrorBaseDisallowedSharedLinkPolicy;
 }
 
+- (BOOL)isTooManyMounts {
+  return _tag == DBSHARINGShareFolderErrorBaseTooManyMounts;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGShareFolderErrorBaseOther;
 }
@@ -23746,6 +23923,8 @@
     return @"DBSHARINGShareFolderErrorBaseTeamPolicyDisallowsMemberPolicy";
   case DBSHARINGShareFolderErrorBaseDisallowedSharedLinkPolicy:
     return @"DBSHARINGShareFolderErrorBaseDisallowedSharedLinkPolicy";
+  case DBSHARINGShareFolderErrorBaseTooManyMounts:
+    return @"DBSHARINGShareFolderErrorBaseTooManyMounts";
   case DBSHARINGShareFolderErrorBaseOther:
     return @"DBSHARINGShareFolderErrorBaseOther";
   }
@@ -23796,6 +23975,9 @@
   case DBSHARINGShareFolderErrorBaseDisallowedSharedLinkPolicy:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBSHARINGShareFolderErrorBaseTooManyMounts:
+    result = prime * result + [self.tooManyMounts hash];
+    break;
   case DBSHARINGShareFolderErrorBaseOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -23832,6 +24014,8 @@
     return [[self tagName] isEqual:[aShareFolderErrorBase tagName]];
   case DBSHARINGShareFolderErrorBaseDisallowedSharedLinkPolicy:
     return [[self tagName] isEqual:[aShareFolderErrorBase tagName]];
+  case DBSHARINGShareFolderErrorBaseTooManyMounts:
+    return [self.tooManyMounts isEqual:aShareFolderErrorBase.tooManyMounts];
   case DBSHARINGShareFolderErrorBaseOther:
     return [[self tagName] isEqual:[aShareFolderErrorBase tagName]];
   }
@@ -23856,6 +24040,10 @@
     jsonDict[@".tag"] = @"team_policy_disallows_member_policy";
   } else if ([valueObj isDisallowedSharedLinkPolicy]) {
     jsonDict[@".tag"] = @"disallowed_shared_link_policy";
+  } else if ([valueObj isTooManyMounts]) {
+    jsonDict[@"too_many_mounts"] =
+        [[DBSHARINGTooManyMountsErrorSerializer serialize:valueObj.tooManyMounts] mutableCopy];
+    jsonDict[@".tag"] = @"too_many_mounts";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -23877,6 +24065,10 @@
     return [[DBSHARINGShareFolderErrorBase alloc] initWithTeamPolicyDisallowsMemberPolicy];
   } else if ([tag isEqualToString:@"disallowed_shared_link_policy"]) {
     return [[DBSHARINGShareFolderErrorBase alloc] initWithDisallowedSharedLinkPolicy];
+  } else if ([tag isEqualToString:@"too_many_mounts"]) {
+    DBSHARINGTooManyMountsError *tooManyMounts =
+        [DBSHARINGTooManyMountsErrorSerializer deserialize:valueDict[@"too_many_mounts"]];
+    return [[DBSHARINGShareFolderErrorBase alloc] initWithTooManyMounts:tooManyMounts];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGShareFolderErrorBase alloc] initWithOther];
   } else {
@@ -23889,6 +24081,7 @@
 #import "DBSHARINGShareFolderError.h"
 #import "DBSHARINGShareFolderErrorBase.h"
 #import "DBSHARINGSharePathError.h"
+#import "DBSHARINGTooManyMountsError.h"
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
 
@@ -23897,6 +24090,7 @@
 @implementation DBSHARINGShareFolderError
 
 @synthesize badPath = _badPath;
+@synthesize tooManyMounts = _tooManyMounts;
 
 #pragma mark - Constructors
 
@@ -23933,6 +24127,15 @@
   return self;
 }
 
+- (instancetype)initWithTooManyMounts:(DBSHARINGTooManyMountsError *)tooManyMounts {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGShareFolderErrorTooManyMounts;
+    _tooManyMounts = tooManyMounts;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -23959,6 +24162,14 @@
   return _badPath;
 }
 
+- (DBSHARINGTooManyMountsError *)tooManyMounts {
+  if (![self isTooManyMounts]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBSHARINGShareFolderErrorTooManyMounts, but was %@.", [self tagName]];
+  }
+  return _tooManyMounts;
+}
+
 #pragma mark - Tag state methods
 
 - (BOOL)isEmailUnverified {
@@ -23975,6 +24186,10 @@
 
 - (BOOL)isDisallowedSharedLinkPolicy {
   return _tag == DBSHARINGShareFolderErrorDisallowedSharedLinkPolicy;
+}
+
+- (BOOL)isTooManyMounts {
+  return _tag == DBSHARINGShareFolderErrorTooManyMounts;
 }
 
 - (BOOL)isOther {
@@ -23995,6 +24210,8 @@
     return @"DBSHARINGShareFolderErrorTeamPolicyDisallowsMemberPolicy";
   case DBSHARINGShareFolderErrorDisallowedSharedLinkPolicy:
     return @"DBSHARINGShareFolderErrorDisallowedSharedLinkPolicy";
+  case DBSHARINGShareFolderErrorTooManyMounts:
+    return @"DBSHARINGShareFolderErrorTooManyMounts";
   case DBSHARINGShareFolderErrorOther:
     return @"DBSHARINGShareFolderErrorOther";
   case DBSHARINGShareFolderErrorNoPermission:
@@ -24047,6 +24264,9 @@
   case DBSHARINGShareFolderErrorDisallowedSharedLinkPolicy:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBSHARINGShareFolderErrorTooManyMounts:
+    result = prime * result + [self.tooManyMounts hash];
+    break;
   case DBSHARINGShareFolderErrorOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -24086,6 +24306,8 @@
     return [[self tagName] isEqual:[aShareFolderError tagName]];
   case DBSHARINGShareFolderErrorDisallowedSharedLinkPolicy:
     return [[self tagName] isEqual:[aShareFolderError tagName]];
+  case DBSHARINGShareFolderErrorTooManyMounts:
+    return [self.tooManyMounts isEqual:aShareFolderError.tooManyMounts];
   case DBSHARINGShareFolderErrorOther:
     return [[self tagName] isEqual:[aShareFolderError tagName]];
   case DBSHARINGShareFolderErrorNoPermission:
@@ -24112,6 +24334,10 @@
     jsonDict[@".tag"] = @"team_policy_disallows_member_policy";
   } else if ([valueObj isDisallowedSharedLinkPolicy]) {
     jsonDict[@".tag"] = @"disallowed_shared_link_policy";
+  } else if ([valueObj isTooManyMounts]) {
+    jsonDict[@"too_many_mounts"] =
+        [[DBSHARINGTooManyMountsErrorSerializer serialize:valueObj.tooManyMounts] mutableCopy];
+    jsonDict[@".tag"] = @"too_many_mounts";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else if ([valueObj isNoPermission]) {
@@ -24135,6 +24361,10 @@
     return [[DBSHARINGShareFolderError alloc] initWithTeamPolicyDisallowsMemberPolicy];
   } else if ([tag isEqualToString:@"disallowed_shared_link_policy"]) {
     return [[DBSHARINGShareFolderError alloc] initWithDisallowedSharedLinkPolicy];
+  } else if ([tag isEqualToString:@"too_many_mounts"]) {
+    DBSHARINGTooManyMountsError *tooManyMounts =
+        [DBSHARINGTooManyMountsErrorSerializer deserialize:valueDict[@"too_many_mounts"]];
+    return [[DBSHARINGShareFolderError alloc] initWithTooManyMounts:tooManyMounts];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGShareFolderError alloc] initWithOther];
   } else if ([tag isEqualToString:@"no_permission"]) {
@@ -30204,6 +30434,246 @@
   NSString *memberId = valueDict[@"member_id"] ?: nil;
 
   return [[DBSHARINGTeamMemberInfo alloc] initWithTeamInfo:teamInfo displayName:displayName memberId:memberId];
+}
+
+@end
+
+#import "DBSHARINGMountLimitsInfo.h"
+#import "DBSHARINGTooManyMountsError.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+
+#pragma mark - API Object
+
+@implementation DBSHARINGTooManyMountsError
+
+@synthesize totalMountsExceeded = _totalMountsExceeded;
+@synthesize homeMountsExceeded = _homeMountsExceeded;
+@synthesize treeSizeExceeded = _treeSizeExceeded;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithTotalMountsExceeded:(DBSHARINGMountLimitsInfo *)totalMountsExceeded {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGTooManyMountsErrorTotalMountsExceeded;
+    _totalMountsExceeded = totalMountsExceeded;
+  }
+  return self;
+}
+
+- (instancetype)initWithHomeMountsExceeded:(DBSHARINGMountLimitsInfo *)homeMountsExceeded {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGTooManyMountsErrorHomeMountsExceeded;
+    _homeMountsExceeded = homeMountsExceeded;
+  }
+  return self;
+}
+
+- (instancetype)initWithTreeSizeExceeded:(DBSHARINGMountLimitsInfo *)treeSizeExceeded {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGTooManyMountsErrorTreeSizeExceeded;
+    _treeSizeExceeded = treeSizeExceeded;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGTooManyMountsErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBSHARINGMountLimitsInfo *)totalMountsExceeded {
+  if (![self isTotalMountsExceeded]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBSHARINGTooManyMountsErrorTotalMountsExceeded, but was %@.", [self tagName]];
+  }
+  return _totalMountsExceeded;
+}
+
+- (DBSHARINGMountLimitsInfo *)homeMountsExceeded {
+  if (![self isHomeMountsExceeded]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBSHARINGTooManyMountsErrorHomeMountsExceeded, but was %@.", [self tagName]];
+  }
+  return _homeMountsExceeded;
+}
+
+- (DBSHARINGMountLimitsInfo *)treeSizeExceeded {
+  if (![self isTreeSizeExceeded]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBSHARINGTooManyMountsErrorTreeSizeExceeded, but was %@.", [self tagName]];
+  }
+  return _treeSizeExceeded;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isTotalMountsExceeded {
+  return _tag == DBSHARINGTooManyMountsErrorTotalMountsExceeded;
+}
+
+- (BOOL)isHomeMountsExceeded {
+  return _tag == DBSHARINGTooManyMountsErrorHomeMountsExceeded;
+}
+
+- (BOOL)isTreeSizeExceeded {
+  return _tag == DBSHARINGTooManyMountsErrorTreeSizeExceeded;
+}
+
+- (BOOL)isOther {
+  return _tag == DBSHARINGTooManyMountsErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBSHARINGTooManyMountsErrorTotalMountsExceeded:
+    return @"DBSHARINGTooManyMountsErrorTotalMountsExceeded";
+  case DBSHARINGTooManyMountsErrorHomeMountsExceeded:
+    return @"DBSHARINGTooManyMountsErrorHomeMountsExceeded";
+  case DBSHARINGTooManyMountsErrorTreeSizeExceeded:
+    return @"DBSHARINGTooManyMountsErrorTreeSizeExceeded";
+  case DBSHARINGTooManyMountsErrorOther:
+    return @"DBSHARINGTooManyMountsErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBSHARINGTooManyMountsErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBSHARINGTooManyMountsErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBSHARINGTooManyMountsErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBSHARINGTooManyMountsErrorTotalMountsExceeded:
+    result = prime * result + [self.totalMountsExceeded hash];
+    break;
+  case DBSHARINGTooManyMountsErrorHomeMountsExceeded:
+    result = prime * result + [self.homeMountsExceeded hash];
+    break;
+  case DBSHARINGTooManyMountsErrorTreeSizeExceeded:
+    result = prime * result + [self.treeSizeExceeded hash];
+    break;
+  case DBSHARINGTooManyMountsErrorOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTooManyMountsError:other];
+}
+
+- (BOOL)isEqualToTooManyMountsError:(DBSHARINGTooManyMountsError *)aTooManyMountsError {
+  if (self == aTooManyMountsError) {
+    return YES;
+  }
+  if (self.tag != aTooManyMountsError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBSHARINGTooManyMountsErrorTotalMountsExceeded:
+    return [self.totalMountsExceeded isEqual:aTooManyMountsError.totalMountsExceeded];
+  case DBSHARINGTooManyMountsErrorHomeMountsExceeded:
+    return [self.homeMountsExceeded isEqual:aTooManyMountsError.homeMountsExceeded];
+  case DBSHARINGTooManyMountsErrorTreeSizeExceeded:
+    return [self.treeSizeExceeded isEqual:aTooManyMountsError.treeSizeExceeded];
+  case DBSHARINGTooManyMountsErrorOther:
+    return [[self tagName] isEqual:[aTooManyMountsError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBSHARINGTooManyMountsErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBSHARINGTooManyMountsError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isTotalMountsExceeded]) {
+    [jsonDict addEntriesFromDictionary:[DBSHARINGMountLimitsInfoSerializer serialize:valueObj.totalMountsExceeded]];
+    jsonDict[@".tag"] = @"total_mounts_exceeded";
+  } else if ([valueObj isHomeMountsExceeded]) {
+    [jsonDict addEntriesFromDictionary:[DBSHARINGMountLimitsInfoSerializer serialize:valueObj.homeMountsExceeded]];
+    jsonDict[@".tag"] = @"home_mounts_exceeded";
+  } else if ([valueObj isTreeSizeExceeded]) {
+    [jsonDict addEntriesFromDictionary:[DBSHARINGMountLimitsInfoSerializer serialize:valueObj.treeSizeExceeded]];
+    jsonDict[@".tag"] = @"tree_size_exceeded";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBSHARINGTooManyMountsError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"total_mounts_exceeded"]) {
+    DBSHARINGMountLimitsInfo *totalMountsExceeded = [DBSHARINGMountLimitsInfoSerializer deserialize:valueDict];
+    return [[DBSHARINGTooManyMountsError alloc] initWithTotalMountsExceeded:totalMountsExceeded];
+  } else if ([tag isEqualToString:@"home_mounts_exceeded"]) {
+    DBSHARINGMountLimitsInfo *homeMountsExceeded = [DBSHARINGMountLimitsInfoSerializer deserialize:valueDict];
+    return [[DBSHARINGTooManyMountsError alloc] initWithHomeMountsExceeded:homeMountsExceeded];
+  } else if ([tag isEqualToString:@"tree_size_exceeded"]) {
+    DBSHARINGMountLimitsInfo *treeSizeExceeded = [DBSHARINGMountLimitsInfoSerializer deserialize:valueDict];
+    return [[DBSHARINGTooManyMountsError alloc] initWithTreeSizeExceeded:treeSizeExceeded];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBSHARINGTooManyMountsError alloc] initWithOther];
+  } else {
+    return [[DBSHARINGTooManyMountsError alloc] initWithOther];
+  }
 }
 
 @end

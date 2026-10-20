@@ -10,6 +10,7 @@
 
 @class DBSHARINGShareFolderErrorBase;
 @class DBSHARINGSharePathError;
+@class DBSHARINGTooManyMountsError;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -45,6 +46,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGShareFolderErrorBaseTag) {
   /// `sharedLinkPolicy` in `DBSHARINGShareFolderArg`.
   DBSHARINGShareFolderErrorBaseDisallowedSharedLinkPolicy,
 
+  /// User will have too many mounts after the operation.
+  DBSHARINGShareFolderErrorBaseTooManyMounts,
+
   /// (no description).
   DBSHARINGShareFolderErrorBaseOther,
 
@@ -57,6 +61,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGShareFolderErrorBaseTag) {
 /// method returns true before accessing, otherwise a runtime exception will be
 /// raised.
 @property (nonatomic, readonly) DBSHARINGSharePathError *badPath;
+
+/// User will have too many mounts after the operation. @note Ensure the
+/// `isTooManyMounts` method returns true before accessing, otherwise a runtime
+/// exception will be raised.
+@property (nonatomic, readonly) DBSHARINGTooManyMountsError *tooManyMounts;
 
 #pragma mark - Constructors
 
@@ -108,6 +117,18 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGShareFolderErrorBaseTag) {
 - (instancetype)initWithDisallowedSharedLinkPolicy;
 
 ///
+/// Initializes union class with tag state of "too_many_mounts".
+///
+/// Description of the "too_many_mounts" tag state: User will have too many
+/// mounts after the operation.
+///
+/// @param tooManyMounts User will have too many mounts after the operation.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithTooManyMounts:(DBSHARINGTooManyMountsError *)tooManyMounts;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -153,6 +174,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGShareFolderErrorBaseTag) {
 /// "disallowed_shared_link_policy".
 ///
 - (BOOL)isDisallowedSharedLinkPolicy;
+
+///
+/// Retrieves whether the union's current tag state has value "too_many_mounts".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `tooManyMounts` property, otherwise a runtime exception will be thrown.
+///
+/// @return Whether the union's current tag state has value "too_many_mounts".
+///
+- (BOOL)isTooManyMounts;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".
