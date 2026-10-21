@@ -136,7 +136,6 @@ static DBRoute *DBSHARINGMountFolder;
 static DBRoute *DBSHARINGRelinquishAccess;
 static DBRoute *DBSHARINGRelinquishFileMembership;
 static DBRoute *DBSHARINGRelinquishFolderMembership;
-static DBRoute *DBSHARINGRemoveFileMember;
 static DBRoute *DBSHARINGRemoveFileMember2;
 static DBRoute *DBSHARINGRemoveFolderMember;
 static DBRoute *DBSHARINGRevokeSharedLink;
@@ -664,22 +663,6 @@ static NSObject *lockObj = nil;
               dataStructDeserialBlock:nil];
     }
     return DBSHARINGRelinquishFolderMembership;
-  }
-}
-
-+ (DBRoute *)DBSHARINGRemoveFileMember {
-  @synchronized(lockObj) {
-    if (!DBSHARINGRemoveFileMember) {
-      DBSHARINGRemoveFileMember = [[DBRoute alloc] init:@"remove_file_member"
-                                             namespace_:@"sharing"
-                                             deprecated:@YES
-                                             resultType:[DBSHARINGFileMemberActionIndividualResult class]
-                                              errorType:[DBSHARINGRemoveFileMemberError class]
-                                                  attrs:@{@"auth" : @"user", @"host" : @"api", @"style" : @"rpc"}
-                                  dataStructSerialBlock:nil
-                                dataStructDeserialBlock:nil];
-    }
-    return DBSHARINGRemoveFileMember;
   }
 }
 

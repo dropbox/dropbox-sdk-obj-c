@@ -583,12 +583,6 @@
   return [self.client requestRpc:route arg:arg];
 }
 
-- (DBRpcTask *)removeFileMember:(NSString *)file member:(DBSHARINGMemberSelector *)member {
-  DBRoute *route = DBSHARINGRouteObjects.DBSHARINGRemoveFileMember;
-  DBSHARINGRemoveFileMemberArg *arg = [[DBSHARINGRemoveFileMemberArg alloc] initWithFile:file member:member];
-  return [self.client requestRpc:route arg:arg];
-}
-
 - (DBRpcTask *)removeFileMember2:(NSString *)file member:(DBSHARINGMemberSelector *)member {
   DBRoute *route = DBSHARINGRouteObjects.DBSHARINGRemoveFileMember2;
   DBSHARINGRemoveFileMemberArg *arg = [[DBSHARINGRemoveFileMemberArg alloc] initWithFile:file member:member];

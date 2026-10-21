@@ -107,9 +107,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the relinquishFolderMembership route object.
 + (DBRoute *)DBSHARINGRelinquishFolderMembership;
 
-/// Accessor method for the removeFileMember route object.
-+ (DBRoute *)DBSHARINGRemoveFileMember;
-
 /// Accessor method for the removeFileMember2 route object.
 + (DBRoute *)DBSHARINGRemoveFileMember2;
 
