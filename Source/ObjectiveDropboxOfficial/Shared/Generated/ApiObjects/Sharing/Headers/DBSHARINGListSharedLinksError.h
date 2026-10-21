@@ -36,6 +36,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGListSharedLinksErrorTag) {
   /// to obtain a new cursor.
   DBSHARINGListSharedLinksErrorReset,
 
+  /// The user does not have permissions to list links to the content.
+  DBSHARINGListSharedLinksErrorPermissionDenied,
+
   /// (no description).
   DBSHARINGListSharedLinksErrorOther,
 
@@ -70,6 +73,16 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGListSharedLinksErrorTag) {
 - (instancetype)initWithReset;
 
 ///
+/// Initializes union class with tag state of "permission_denied".
+///
+/// Description of the "permission_denied" tag state: The user does not have
+/// permissions to list links to the content.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithPermissionDenied;
+
+///
 /// Initializes union class with tag state of "other".
 ///
 /// @return An initialized instance.
@@ -96,6 +109,14 @@ typedef NS_CLOSED_ENUM(NSInteger, DBSHARINGListSharedLinksErrorTag) {
 /// @return Whether the union's current tag state has value "reset".
 ///
 - (BOOL)isReset;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "permission_denied".
+///
+/// @return Whether the union's current tag state has value "permission_denied".
+///
+- (BOOL)isPermissionDenied;
 
 ///
 /// Retrieves whether the union's current tag state has value "other".

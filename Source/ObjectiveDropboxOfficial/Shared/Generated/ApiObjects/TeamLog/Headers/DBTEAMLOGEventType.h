@@ -92,6 +92,7 @@
 @class DBTEAMLOGDataPlacementRestrictionSatisfyPolicyType;
 @class DBTEAMLOGDataResidencyMigrationRequestSuccessfulType;
 @class DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulType;
+@class DBTEAMLOGDefaultTeamFolderSyncPolicyChangedType;
 @class DBTEAMLOGDeleteTeamInviteLinkType;
 @class DBTEAMLOGDeviceApprovalsAddExceptionType;
 @class DBTEAMLOGDeviceApprovalsChangeDesktopPolicyType;
@@ -2208,6 +2209,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
   /// (team_policies) Completed restrictions on data center locations where
   /// team data resides
   DBTEAMLOGEventTypeDataPlacementRestrictionSatisfyPolicy,
+
+  /// (team_policies) Changed the default sync setting for new team folders
+  DBTEAMLOGEventTypeDefaultTeamFolderSyncPolicyChanged,
 
   /// (team_policies) Added members to device approvals exception list
   DBTEAMLOGEventTypeDeviceApprovalsAddException,
@@ -5146,6 +5150,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// raised.
 @property (nonatomic, readonly)
     DBTEAMLOGDataPlacementRestrictionSatisfyPolicyType *dataPlacementRestrictionSatisfyPolicy;
+
+/// (team_policies) Changed the default sync setting for new team folders @note
+/// Ensure the `isDefaultTeamFolderSyncPolicyChanged` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGDefaultTeamFolderSyncPolicyChangedType *defaultTeamFolderSyncPolicyChanged;
 
 /// (team_policies) Added members to device approvals exception list @note
 /// Ensure the `isDeviceApprovalsAddException` method returns true before
@@ -12440,6 +12449,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 ///
 - (instancetype)initWithDataPlacementRestrictionSatisfyPolicy:
     (DBTEAMLOGDataPlacementRestrictionSatisfyPolicyType *)dataPlacementRestrictionSatisfyPolicy;
+
+///
+/// Initializes union class with tag state of
+/// "default_team_folder_sync_policy_changed".
+///
+/// Description of the "default_team_folder_sync_policy_changed" tag state:
+/// (team_policies) Changed the default sync setting for new team folders
+///
+/// @param defaultTeamFolderSyncPolicyChanged (team_policies) Changed the
+/// default sync setting for new team folders
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithDefaultTeamFolderSyncPolicyChanged:
+    (DBTEAMLOGDefaultTeamFolderSyncPolicyChangedType *)defaultTeamFolderSyncPolicyChanged;
 
 ///
 /// Initializes union class with tag state of "device_approvals_add_exception".
@@ -20718,6 +20742,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "data_placement_restriction_satisfy_policy".
 ///
 - (BOOL)isDataPlacementRestrictionSatisfyPolicy;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "default_team_folder_sync_policy_changed".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `defaultTeamFolderSyncPolicyChanged` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "default_team_folder_sync_policy_changed".
+///
+- (BOOL)isDefaultTeamFolderSyncPolicyChanged;
 
 ///
 /// Retrieves whether the union's current tag state has value

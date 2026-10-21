@@ -27182,6 +27182,395 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMLOGDefaultTeamFolderSyncPolicy.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGDefaultTeamFolderSyncPolicy
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDoNotSync {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGDefaultTeamFolderSyncPolicyDoNotSync;
+  }
+  return self;
+}
+
+- (instancetype)initWithSync {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGDefaultTeamFolderSyncPolicySync;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGDefaultTeamFolderSyncPolicyOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isDoNotSync {
+  return _tag == DBTEAMLOGDefaultTeamFolderSyncPolicyDoNotSync;
+}
+
+- (BOOL)isSync {
+  return _tag == DBTEAMLOGDefaultTeamFolderSyncPolicySync;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMLOGDefaultTeamFolderSyncPolicyOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMLOGDefaultTeamFolderSyncPolicyDoNotSync:
+    return @"DBTEAMLOGDefaultTeamFolderSyncPolicyDoNotSync";
+  case DBTEAMLOGDefaultTeamFolderSyncPolicySync:
+    return @"DBTEAMLOGDefaultTeamFolderSyncPolicySync";
+  case DBTEAMLOGDefaultTeamFolderSyncPolicyOther:
+    return @"DBTEAMLOGDefaultTeamFolderSyncPolicyOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGDefaultTeamFolderSyncPolicySerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGDefaultTeamFolderSyncPolicySerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGDefaultTeamFolderSyncPolicySerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMLOGDefaultTeamFolderSyncPolicyDoNotSync:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGDefaultTeamFolderSyncPolicySync:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMLOGDefaultTeamFolderSyncPolicyOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDefaultTeamFolderSyncPolicy:other];
+}
+
+- (BOOL)isEqualToDefaultTeamFolderSyncPolicy:(DBTEAMLOGDefaultTeamFolderSyncPolicy *)aDefaultTeamFolderSyncPolicy {
+  if (self == aDefaultTeamFolderSyncPolicy) {
+    return YES;
+  }
+  if (self.tag != aDefaultTeamFolderSyncPolicy.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMLOGDefaultTeamFolderSyncPolicyDoNotSync:
+    return [[self tagName] isEqual:[aDefaultTeamFolderSyncPolicy tagName]];
+  case DBTEAMLOGDefaultTeamFolderSyncPolicySync:
+    return [[self tagName] isEqual:[aDefaultTeamFolderSyncPolicy tagName]];
+  case DBTEAMLOGDefaultTeamFolderSyncPolicyOther:
+    return [[self tagName] isEqual:[aDefaultTeamFolderSyncPolicy tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGDefaultTeamFolderSyncPolicySerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDefaultTeamFolderSyncPolicy *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isDoNotSync]) {
+    jsonDict[@".tag"] = @"do_not_sync";
+  } else if ([valueObj isSync]) {
+    jsonDict[@".tag"] = @"sync";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGDefaultTeamFolderSyncPolicy *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"do_not_sync"]) {
+    return [[DBTEAMLOGDefaultTeamFolderSyncPolicy alloc] initWithDoNotSync];
+  } else if ([tag isEqualToString:@"sync"]) {
+    return [[DBTEAMLOGDefaultTeamFolderSyncPolicy alloc] initWithSync];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMLOGDefaultTeamFolderSyncPolicy alloc] initWithOther];
+  } else {
+    return [[DBTEAMLOGDefaultTeamFolderSyncPolicy alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGDefaultTeamFolderSyncPolicy.h"
+#import "DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDNewValue:(DBTEAMLOGDefaultTeamFolderSyncPolicy *)dNewValue
+                    previousValue:(DBTEAMLOGDefaultTeamFolderSyncPolicy *)previousValue {
+  [DBStoneValidators nonnullValidator:nil](dNewValue);
+  [DBStoneValidators nonnullValidator:nil](previousValue);
+
+  self = [super init];
+  if (self) {
+    _dNewValue = dNewValue;
+    _previousValue = previousValue;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.dNewValue hash];
+  result = prime * result + [self.previousValue hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDefaultTeamFolderSyncPolicyChangedDetails:other];
+}
+
+- (BOOL)isEqualToDefaultTeamFolderSyncPolicyChangedDetails:
+    (DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetails *)aDefaultTeamFolderSyncPolicyChangedDetails {
+  if (self == aDefaultTeamFolderSyncPolicyChangedDetails) {
+    return YES;
+  }
+  if (![self.dNewValue isEqual:aDefaultTeamFolderSyncPolicyChangedDetails.dNewValue]) {
+    return NO;
+  }
+  if (![self.previousValue isEqual:aDefaultTeamFolderSyncPolicyChangedDetails.previousValue]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"new_value"] = [DBTEAMLOGDefaultTeamFolderSyncPolicySerializer serialize:valueObj.dNewValue];
+  jsonDict[@"previous_value"] = [DBTEAMLOGDefaultTeamFolderSyncPolicySerializer serialize:valueObj.previousValue];
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMLOGDefaultTeamFolderSyncPolicy *dNewValue =
+      [DBTEAMLOGDefaultTeamFolderSyncPolicySerializer deserialize:valueDict[@"new_value"]];
+  DBTEAMLOGDefaultTeamFolderSyncPolicy *previousValue =
+      [DBTEAMLOGDefaultTeamFolderSyncPolicySerializer deserialize:valueDict[@"previous_value"]];
+
+  return [[DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetails alloc] initWithDNewValue:dNewValue
+                                                                         previousValue:previousValue];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGDefaultTeamFolderSyncPolicyChangedType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGDefaultTeamFolderSyncPolicyChangedType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGDefaultTeamFolderSyncPolicyChangedTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGDefaultTeamFolderSyncPolicyChangedTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGDefaultTeamFolderSyncPolicyChangedTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToDefaultTeamFolderSyncPolicyChangedType:other];
+}
+
+- (BOOL)isEqualToDefaultTeamFolderSyncPolicyChangedType:
+    (DBTEAMLOGDefaultTeamFolderSyncPolicyChangedType *)aDefaultTeamFolderSyncPolicyChangedType {
+  if (self == aDefaultTeamFolderSyncPolicyChangedType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aDefaultTeamFolderSyncPolicyChangedType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGDefaultTeamFolderSyncPolicyChangedTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGDefaultTeamFolderSyncPolicyChangedType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGDefaultTeamFolderSyncPolicyChangedType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGDefaultTeamFolderSyncPolicyChangedType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMLOGDeleteTeamInviteLinkDetails.h"
 
 #pragma mark - API Object
@@ -42108,6 +42497,7 @@
 #import "DBTEAMLOGDataPlacementRestrictionSatisfyPolicyDetails.h"
 #import "DBTEAMLOGDataResidencyMigrationRequestSuccessfulDetails.h"
 #import "DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulDetails.h"
+#import "DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetails.h"
 #import "DBTEAMLOGDeleteTeamInviteLinkDetails.h"
 #import "DBTEAMLOGDeviceApprovalsAddExceptionDetails.h"
 #import "DBTEAMLOGDeviceApprovalsChangeDesktopPolicyDetails.h"
@@ -43170,6 +43560,7 @@
 @synthesize dashExternalSharingPolicyChangedDetails = _dashExternalSharingPolicyChangedDetails;
 @synthesize dataPlacementRestrictionChangePolicyDetails = _dataPlacementRestrictionChangePolicyDetails;
 @synthesize dataPlacementRestrictionSatisfyPolicyDetails = _dataPlacementRestrictionSatisfyPolicyDetails;
+@synthesize defaultTeamFolderSyncPolicyChangedDetails = _defaultTeamFolderSyncPolicyChangedDetails;
 @synthesize deviceApprovalsAddExceptionDetails = _deviceApprovalsAddExceptionDetails;
 @synthesize deviceApprovalsChangeDesktopPolicyDetails = _deviceApprovalsChangeDesktopPolicyDetails;
 @synthesize deviceApprovalsChangeMobilePolicyDetails = _deviceApprovalsChangeMobilePolicyDetails;
@@ -48129,6 +48520,16 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsDataPlacementRestrictionSatisfyPolicyDetails;
     _dataPlacementRestrictionSatisfyPolicyDetails = dataPlacementRestrictionSatisfyPolicyDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithDefaultTeamFolderSyncPolicyChangedDetails:
+    (DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetails *)defaultTeamFolderSyncPolicyChangedDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsDefaultTeamFolderSyncPolicyChangedDetails;
+    _defaultTeamFolderSyncPolicyChangedDetails = defaultTeamFolderSyncPolicyChangedDetails;
   }
   return self;
 }
@@ -54086,6 +54487,16 @@
   return _dataPlacementRestrictionSatisfyPolicyDetails;
 }
 
+- (DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetails *)defaultTeamFolderSyncPolicyChangedDetails {
+  if (![self isDefaultTeamFolderSyncPolicyChangedDetails]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventDetailsDefaultTeamFolderSyncPolicyChangedDetails, but was %@.",
+               [self tagName]];
+  }
+  return _defaultTeamFolderSyncPolicyChangedDetails;
+}
+
 - (DBTEAMLOGDeviceApprovalsAddExceptionDetails *)deviceApprovalsAddExceptionDetails {
   if (![self isDeviceApprovalsAddExceptionDetails]) {
     [NSException raise:@"IllegalStateException"
@@ -57432,6 +57843,10 @@
   return _tag == DBTEAMLOGEventDetailsDataPlacementRestrictionSatisfyPolicyDetails;
 }
 
+- (BOOL)isDefaultTeamFolderSyncPolicyChangedDetails {
+  return _tag == DBTEAMLOGEventDetailsDefaultTeamFolderSyncPolicyChangedDetails;
+}
+
 - (BOOL)isDeviceApprovalsAddExceptionDetails {
   return _tag == DBTEAMLOGEventDetailsDeviceApprovalsAddExceptionDetails;
 }
@@ -59012,6 +59427,8 @@
     return @"DBTEAMLOGEventDetailsDataPlacementRestrictionChangePolicyDetails";
   case DBTEAMLOGEventDetailsDataPlacementRestrictionSatisfyPolicyDetails:
     return @"DBTEAMLOGEventDetailsDataPlacementRestrictionSatisfyPolicyDetails";
+  case DBTEAMLOGEventDetailsDefaultTeamFolderSyncPolicyChangedDetails:
+    return @"DBTEAMLOGEventDetailsDefaultTeamFolderSyncPolicyChangedDetails";
   case DBTEAMLOGEventDetailsDeviceApprovalsAddExceptionDetails:
     return @"DBTEAMLOGEventDetailsDeviceApprovalsAddExceptionDetails";
   case DBTEAMLOGEventDetailsDeviceApprovalsChangeDesktopPolicyDetails:
@@ -60831,6 +61248,9 @@
   case DBTEAMLOGEventDetailsDataPlacementRestrictionSatisfyPolicyDetails:
     result = prime * result + [self.dataPlacementRestrictionSatisfyPolicyDetails hash];
     break;
+  case DBTEAMLOGEventDetailsDefaultTeamFolderSyncPolicyChangedDetails:
+    result = prime * result + [self.defaultTeamFolderSyncPolicyChangedDetails hash];
+    break;
   case DBTEAMLOGEventDetailsDeviceApprovalsAddExceptionDetails:
     result = prime * result + [self.deviceApprovalsAddExceptionDetails hash];
     break;
@@ -62349,6 +62769,9 @@
   case DBTEAMLOGEventDetailsDataPlacementRestrictionSatisfyPolicyDetails:
     return [self.dataPlacementRestrictionSatisfyPolicyDetails
         isEqual:anEventDetails.dataPlacementRestrictionSatisfyPolicyDetails];
+  case DBTEAMLOGEventDetailsDefaultTeamFolderSyncPolicyChangedDetails:
+    return [self.defaultTeamFolderSyncPolicyChangedDetails
+        isEqual:anEventDetails.defaultTeamFolderSyncPolicyChangedDetails];
   case DBTEAMLOGEventDetailsDeviceApprovalsAddExceptionDetails:
     return [self.deviceApprovalsAddExceptionDetails isEqual:anEventDetails.deviceApprovalsAddExceptionDetails];
   case DBTEAMLOGEventDetailsDeviceApprovalsChangeDesktopPolicyDetails:
@@ -64657,6 +65080,10 @@
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGDataPlacementRestrictionSatisfyPolicyDetailsSerializer
                                            serialize:valueObj.dataPlacementRestrictionSatisfyPolicyDetails]];
     jsonDict[@".tag"] = @"data_placement_restriction_satisfy_policy_details";
+  } else if ([valueObj isDefaultTeamFolderSyncPolicyChangedDetails]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetailsSerializer
+                                           serialize:valueObj.defaultTeamFolderSyncPolicyChangedDetails]];
+    jsonDict[@".tag"] = @"default_team_folder_sync_policy_changed_details";
   } else if ([valueObj isDeviceApprovalsAddExceptionDetails]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGDeviceApprovalsAddExceptionDetailsSerializer
                                            serialize:valueObj.deviceApprovalsAddExceptionDetails]];
@@ -67364,6 +67791,11 @@
         [DBTEAMLOGDataPlacementRestrictionSatisfyPolicyDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc]
         initWithDataPlacementRestrictionSatisfyPolicyDetails:dataPlacementRestrictionSatisfyPolicyDetails];
+  } else if ([tag isEqualToString:@"default_team_folder_sync_policy_changed_details"]) {
+    DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetails *defaultTeamFolderSyncPolicyChangedDetails =
+        [DBTEAMLOGDefaultTeamFolderSyncPolicyChangedDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithDefaultTeamFolderSyncPolicyChangedDetails:defaultTeamFolderSyncPolicyChangedDetails];
   } else if ([tag isEqualToString:@"device_approvals_add_exception_details"]) {
     DBTEAMLOGDeviceApprovalsAddExceptionDetails *deviceApprovalsAddExceptionDetails =
         [DBTEAMLOGDeviceApprovalsAddExceptionDetailsSerializer deserialize:valueDict];
@@ -68122,6 +68554,7 @@
 #import "DBTEAMLOGDataPlacementRestrictionSatisfyPolicyType.h"
 #import "DBTEAMLOGDataResidencyMigrationRequestSuccessfulType.h"
 #import "DBTEAMLOGDataResidencyMigrationRequestUnsuccessfulType.h"
+#import "DBTEAMLOGDefaultTeamFolderSyncPolicyChangedType.h"
 #import "DBTEAMLOGDeleteTeamInviteLinkType.h"
 #import "DBTEAMLOGDeviceApprovalsAddExceptionType.h"
 #import "DBTEAMLOGDeviceApprovalsChangeDesktopPolicyType.h"
@@ -69182,6 +69615,7 @@
 @synthesize dashExternalSharingPolicyChanged = _dashExternalSharingPolicyChanged;
 @synthesize dataPlacementRestrictionChangePolicy = _dataPlacementRestrictionChangePolicy;
 @synthesize dataPlacementRestrictionSatisfyPolicy = _dataPlacementRestrictionSatisfyPolicy;
+@synthesize defaultTeamFolderSyncPolicyChanged = _defaultTeamFolderSyncPolicyChanged;
 @synthesize deviceApprovalsAddException = _deviceApprovalsAddException;
 @synthesize deviceApprovalsChangeDesktopPolicy = _deviceApprovalsChangeDesktopPolicy;
 @synthesize deviceApprovalsChangeMobilePolicy = _deviceApprovalsChangeMobilePolicy;
@@ -73990,6 +74424,16 @@
   if (self) {
     _tag = DBTEAMLOGEventTypeDataPlacementRestrictionSatisfyPolicy;
     _dataPlacementRestrictionSatisfyPolicy = dataPlacementRestrictionSatisfyPolicy;
+  }
+  return self;
+}
+
+- (instancetype)initWithDefaultTeamFolderSyncPolicyChanged:
+    (DBTEAMLOGDefaultTeamFolderSyncPolicyChangedType *)defaultTeamFolderSyncPolicyChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeDefaultTeamFolderSyncPolicyChanged;
+    _defaultTeamFolderSyncPolicyChanged = defaultTeamFolderSyncPolicyChanged;
   }
   return self;
 }
@@ -79606,6 +80050,15 @@
   return _dataPlacementRestrictionSatisfyPolicy;
 }
 
+- (DBTEAMLOGDefaultTeamFolderSyncPolicyChangedType *)defaultTeamFolderSyncPolicyChanged {
+  if (![self isDefaultTeamFolderSyncPolicyChanged]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventTypeDefaultTeamFolderSyncPolicyChanged, but was %@.",
+                       [self tagName]];
+  }
+  return _defaultTeamFolderSyncPolicyChanged;
+}
+
 - (DBTEAMLOGDeviceApprovalsAddExceptionType *)deviceApprovalsAddException {
   if (![self isDeviceApprovalsAddException]) {
     [NSException
@@ -82871,6 +83324,10 @@
   return _tag == DBTEAMLOGEventTypeDataPlacementRestrictionSatisfyPolicy;
 }
 
+- (BOOL)isDefaultTeamFolderSyncPolicyChanged {
+  return _tag == DBTEAMLOGEventTypeDefaultTeamFolderSyncPolicyChanged;
+}
+
 - (BOOL)isDeviceApprovalsAddException {
   return _tag == DBTEAMLOGEventTypeDeviceApprovalsAddException;
 }
@@ -84447,6 +84904,8 @@
     return @"DBTEAMLOGEventTypeDataPlacementRestrictionChangePolicy";
   case DBTEAMLOGEventTypeDataPlacementRestrictionSatisfyPolicy:
     return @"DBTEAMLOGEventTypeDataPlacementRestrictionSatisfyPolicy";
+  case DBTEAMLOGEventTypeDefaultTeamFolderSyncPolicyChanged:
+    return @"DBTEAMLOGEventTypeDefaultTeamFolderSyncPolicyChanged";
   case DBTEAMLOGEventTypeDeviceApprovalsAddException:
     return @"DBTEAMLOGEventTypeDeviceApprovalsAddException";
   case DBTEAMLOGEventTypeDeviceApprovalsChangeDesktopPolicy:
@@ -86264,6 +86723,9 @@
   case DBTEAMLOGEventTypeDataPlacementRestrictionSatisfyPolicy:
     result = prime * result + [self.dataPlacementRestrictionSatisfyPolicy hash];
     break;
+  case DBTEAMLOGEventTypeDefaultTeamFolderSyncPolicyChanged:
+    result = prime * result + [self.defaultTeamFolderSyncPolicyChanged hash];
+    break;
   case DBTEAMLOGEventTypeDeviceApprovalsAddException:
     result = prime * result + [self.deviceApprovalsAddException hash];
     break;
@@ -87725,6 +88187,8 @@
     return [self.dataPlacementRestrictionChangePolicy isEqual:anEventType.dataPlacementRestrictionChangePolicy];
   case DBTEAMLOGEventTypeDataPlacementRestrictionSatisfyPolicy:
     return [self.dataPlacementRestrictionSatisfyPolicy isEqual:anEventType.dataPlacementRestrictionSatisfyPolicy];
+  case DBTEAMLOGEventTypeDefaultTeamFolderSyncPolicyChanged:
+    return [self.defaultTeamFolderSyncPolicyChanged isEqual:anEventType.defaultTeamFolderSyncPolicyChanged];
   case DBTEAMLOGEventTypeDeviceApprovalsAddException:
     return [self.deviceApprovalsAddException isEqual:anEventType.deviceApprovalsAddException];
   case DBTEAMLOGEventTypeDeviceApprovalsChangeDesktopPolicy:
@@ -89910,6 +90374,10 @@
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGDataPlacementRestrictionSatisfyPolicyTypeSerializer
                                            serialize:valueObj.dataPlacementRestrictionSatisfyPolicy]];
     jsonDict[@".tag"] = @"data_placement_restriction_satisfy_policy";
+  } else if ([valueObj isDefaultTeamFolderSyncPolicyChanged]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGDefaultTeamFolderSyncPolicyChangedTypeSerializer
+                                           serialize:valueObj.defaultTeamFolderSyncPolicyChanged]];
+    jsonDict[@".tag"] = @"default_team_folder_sync_policy_changed";
   } else if ([valueObj isDeviceApprovalsAddException]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGDeviceApprovalsAddExceptionTypeSerializer
                                            serialize:valueObj.deviceApprovalsAddException]];
@@ -92400,6 +92868,10 @@
         [DBTEAMLOGDataPlacementRestrictionSatisfyPolicyTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc]
         initWithDataPlacementRestrictionSatisfyPolicy:dataPlacementRestrictionSatisfyPolicy];
+  } else if ([tag isEqualToString:@"default_team_folder_sync_policy_changed"]) {
+    DBTEAMLOGDefaultTeamFolderSyncPolicyChangedType *defaultTeamFolderSyncPolicyChanged =
+        [DBTEAMLOGDefaultTeamFolderSyncPolicyChangedTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithDefaultTeamFolderSyncPolicyChanged:defaultTeamFolderSyncPolicyChanged];
   } else if ([tag isEqualToString:@"device_approvals_add_exception"]) {
     DBTEAMLOGDeviceApprovalsAddExceptionType *deviceApprovalsAddException =
         [DBTEAMLOGDeviceApprovalsAddExceptionTypeSerializer deserialize:valueDict];
@@ -96986,6 +97458,14 @@
   return self;
 }
 
+- (instancetype)initWithDefaultTeamFolderSyncPolicyChanged {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeArgDefaultTeamFolderSyncPolicyChanged;
+  }
+  return self;
+}
+
 - (instancetype)initWithDeviceApprovalsAddException {
   self = [super init];
   if (self) {
@@ -100138,6 +100618,10 @@
   return _tag == DBTEAMLOGEventTypeArgDataPlacementRestrictionSatisfyPolicy;
 }
 
+- (BOOL)isDefaultTeamFolderSyncPolicyChanged {
+  return _tag == DBTEAMLOGEventTypeArgDefaultTeamFolderSyncPolicyChanged;
+}
+
 - (BOOL)isDeviceApprovalsAddException {
   return _tag == DBTEAMLOGEventTypeArgDeviceApprovalsAddException;
 }
@@ -101714,6 +102198,8 @@
     return @"DBTEAMLOGEventTypeArgDataPlacementRestrictionChangePolicy";
   case DBTEAMLOGEventTypeArgDataPlacementRestrictionSatisfyPolicy:
     return @"DBTEAMLOGEventTypeArgDataPlacementRestrictionSatisfyPolicy";
+  case DBTEAMLOGEventTypeArgDefaultTeamFolderSyncPolicyChanged:
+    return @"DBTEAMLOGEventTypeArgDefaultTeamFolderSyncPolicyChanged";
   case DBTEAMLOGEventTypeArgDeviceApprovalsAddException:
     return @"DBTEAMLOGEventTypeArgDeviceApprovalsAddException";
   case DBTEAMLOGEventTypeArgDeviceApprovalsChangeDesktopPolicy:
@@ -103531,6 +104017,9 @@
   case DBTEAMLOGEventTypeArgDataPlacementRestrictionSatisfyPolicy:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBTEAMLOGEventTypeArgDefaultTeamFolderSyncPolicyChanged:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLOGEventTypeArgDeviceApprovalsAddException:
     result = prime * result + [[self tagName] hash];
     break;
@@ -104985,6 +105474,8 @@
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgDataPlacementRestrictionSatisfyPolicy:
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
+  case DBTEAMLOGEventTypeArgDefaultTeamFolderSyncPolicyChanged:
+    return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgDeviceApprovalsAddException:
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgDeviceApprovalsChangeDesktopPolicy:
@@ -106282,6 +106773,8 @@
     jsonDict[@".tag"] = @"data_placement_restriction_change_policy";
   } else if ([valueObj isDataPlacementRestrictionSatisfyPolicy]) {
     jsonDict[@".tag"] = @"data_placement_restriction_satisfy_policy";
+  } else if ([valueObj isDefaultTeamFolderSyncPolicyChanged]) {
+    jsonDict[@".tag"] = @"default_team_folder_sync_policy_changed";
   } else if ([valueObj isDeviceApprovalsAddException]) {
     jsonDict[@".tag"] = @"device_approvals_add_exception";
   } else if ([valueObj isDeviceApprovalsChangeDesktopPolicy]) {
@@ -107576,6 +108069,8 @@
     return [[DBTEAMLOGEventTypeArg alloc] initWithDataPlacementRestrictionChangePolicy];
   } else if ([tag isEqualToString:@"data_placement_restriction_satisfy_policy"]) {
     return [[DBTEAMLOGEventTypeArg alloc] initWithDataPlacementRestrictionSatisfyPolicy];
+  } else if ([tag isEqualToString:@"default_team_folder_sync_policy_changed"]) {
+    return [[DBTEAMLOGEventTypeArg alloc] initWithDefaultTeamFolderSyncPolicyChanged];
   } else if ([tag isEqualToString:@"device_approvals_add_exception"]) {
     return [[DBTEAMLOGEventTypeArg alloc] initWithDeviceApprovalsAddException];
   } else if ([tag isEqualToString:@"device_approvals_change_desktop_policy"]) {
