@@ -936,20 +936,6 @@ NS_ASSUME_NONNULL_BEGIN
                     leaveACopy:(nullable NSNumber *)leaveACopy;
 
 ///
-/// DEPRECATED: Identical to remove_file_member_2 but with less information returned.
-///
-/// @param file File from which to remove members.
-/// @param member Member to remove from this file. Note that even if an email is specified, it may result in the removal
-/// of a user (not an invitee) if the user's main account corresponds to that email address.
-///
-/// @return Through the response callback, the caller will receive a `DBSHARINGFileMemberActionIndividualResult` object
-/// on success or a `DBSHARINGRemoveFileMemberError` object on failure.
-///
-- (DBRpcTask<DBSHARINGFileMemberActionIndividualResult *, DBSHARINGRemoveFileMemberError *> *)
-    removeFileMember:(NSString *)file
-              member:(DBSHARINGMemberSelector *)member __deprecated_msg("removeFileMember is deprecated.");
-
-///
 /// Removes a specified member from the file.
 ///
 /// @param file File from which to remove members.
