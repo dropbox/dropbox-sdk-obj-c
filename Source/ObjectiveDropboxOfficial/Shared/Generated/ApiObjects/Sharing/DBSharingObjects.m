@@ -5577,7 +5577,9 @@
                     expires:(NSDate *)expires
                   pathLower:(NSString *)pathLower
              teamMemberInfo:(DBSHARINGTeamMemberInfo *)teamMemberInfo
-       contentOwnerTeamInfo:(DBUSERSTeam *)contentOwnerTeamInfo {
+       contentOwnerTeamInfo:(DBUSERSTeam *)contentOwnerTeamInfo
+                previewType:(NSString *)previewType
+           createdTimestamp:(NSDate *)createdTimestamp {
   [DBStoneValidators nonnullValidator:nil](url);
   [DBStoneValidators nonnullValidator:nil](name);
   [DBStoneValidators nonnullValidator:nil](linkPermissions);
@@ -5593,6 +5595,8 @@
     _linkPermissions = linkPermissions;
     _teamMemberInfo = teamMemberInfo;
     _contentOwnerTeamInfo = contentOwnerTeamInfo;
+    _previewType = previewType;
+    _createdTimestamp = createdTimestamp;
   }
   return self;
 }
@@ -5607,7 +5611,9 @@
                    expires:nil
                  pathLower:nil
             teamMemberInfo:nil
-      contentOwnerTeamInfo:nil];
+      contentOwnerTeamInfo:nil
+               previewType:nil
+          createdTimestamp:nil];
 }
 
 #pragma mark - Serialization methods
@@ -5657,6 +5663,12 @@
   }
   if (self.contentOwnerTeamInfo != nil) {
     result = prime * result + [self.contentOwnerTeamInfo hash];
+  }
+  if (self.previewType != nil) {
+    result = prime * result + [self.previewType hash];
+  }
+  if (self.createdTimestamp != nil) {
+    result = prime * result + [self.createdTimestamp hash];
   }
 
   return prime * result;
@@ -5712,6 +5724,16 @@
       return NO;
     }
   }
+  if (self.previewType) {
+    if (![self.previewType isEqual:aSharedLinkMetadata.previewType]) {
+      return NO;
+    }
+  }
+  if (self.createdTimestamp) {
+    if (![self.createdTimestamp isEqual:aSharedLinkMetadata.createdTimestamp]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -5741,6 +5763,13 @@
   }
   if (valueObj.contentOwnerTeamInfo) {
     jsonDict[@"content_owner_team_info"] = [DBUSERSTeamSerializer serialize:valueObj.contentOwnerTeamInfo];
+  }
+  if (valueObj.previewType) {
+    jsonDict[@"preview_type"] = valueObj.previewType;
+  }
+  if (valueObj.createdTimestamp) {
+    jsonDict[@"created_timestamp"] = [DBNSDateSerializer serialize:valueObj.createdTimestamp
+                                                        dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
 
   if ([valueObj isKindOfClass:[DBSHARINGFileLinkMetadata class]]) {
@@ -5784,6 +5813,11 @@
   DBUSERSTeam *contentOwnerTeamInfo = valueDict[@"content_owner_team_info"]
                                           ? [DBUSERSTeamSerializer deserialize:valueDict[@"content_owner_team_info"]]
                                           : nil;
+  NSString *previewType = valueDict[@"preview_type"] ?: nil;
+  NSDate *createdTimestamp = valueDict[@"created_timestamp"]
+                                 ? [DBNSDateSerializer deserialize:valueDict[@"created_timestamp"]
+                                                        dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
+                                 : nil;
 
   return [[DBSHARINGSharedLinkMetadata alloc] initWithUrl:url
                                                      name:name
@@ -5792,7 +5826,9 @@
                                                   expires:expires
                                                 pathLower:pathLower
                                            teamMemberInfo:teamMemberInfo
-                                     contentOwnerTeamInfo:contentOwnerTeamInfo];
+                                     contentOwnerTeamInfo:contentOwnerTeamInfo
+                                              previewType:previewType
+                                         createdTimestamp:createdTimestamp];
 }
 
 @end
@@ -5822,7 +5858,9 @@
                     expires:(NSDate *)expires
                   pathLower:(NSString *)pathLower
              teamMemberInfo:(DBSHARINGTeamMemberInfo *)teamMemberInfo
-       contentOwnerTeamInfo:(DBUSERSTeam *)contentOwnerTeamInfo {
+       contentOwnerTeamInfo:(DBUSERSTeam *)contentOwnerTeamInfo
+                previewType:(NSString *)previewType
+           createdTimestamp:(NSDate *)createdTimestamp {
   [DBStoneValidators nonnullValidator:nil](url);
   [DBStoneValidators nonnullValidator:nil](name);
   [DBStoneValidators nonnullValidator:nil](linkPermissions);
@@ -5839,7 +5877,9 @@
                     expires:expires
                   pathLower:pathLower
              teamMemberInfo:teamMemberInfo
-       contentOwnerTeamInfo:contentOwnerTeamInfo];
+       contentOwnerTeamInfo:contentOwnerTeamInfo
+                previewType:previewType
+           createdTimestamp:createdTimestamp];
   if (self) {
     _clientModified = clientModified;
     _serverModified = serverModified;
@@ -5867,7 +5907,9 @@
                    expires:nil
                  pathLower:nil
             teamMemberInfo:nil
-      contentOwnerTeamInfo:nil];
+      contentOwnerTeamInfo:nil
+               previewType:nil
+          createdTimestamp:nil];
 }
 
 #pragma mark - Serialization methods
@@ -5921,6 +5963,12 @@
   }
   if (self.contentOwnerTeamInfo != nil) {
     result = prime * result + [self.contentOwnerTeamInfo hash];
+  }
+  if (self.previewType != nil) {
+    result = prime * result + [self.previewType hash];
+  }
+  if (self.createdTimestamp != nil) {
+    result = prime * result + [self.createdTimestamp hash];
   }
 
   return prime * result;
@@ -5988,6 +6036,16 @@
       return NO;
     }
   }
+  if (self.previewType) {
+    if (![self.previewType isEqual:aFileLinkMetadata.previewType]) {
+      return NO;
+    }
+  }
+  if (self.createdTimestamp) {
+    if (![self.createdTimestamp isEqual:aFileLinkMetadata.createdTimestamp]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -6024,6 +6082,13 @@
   if (valueObj.contentOwnerTeamInfo) {
     jsonDict[@"content_owner_team_info"] = [DBUSERSTeamSerializer serialize:valueObj.contentOwnerTeamInfo];
   }
+  if (valueObj.previewType) {
+    jsonDict[@"preview_type"] = valueObj.previewType;
+  }
+  if (valueObj.createdTimestamp) {
+    jsonDict[@"created_timestamp"] = [DBNSDateSerializer serialize:valueObj.createdTimestamp
+                                                        dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  }
 
   return jsonDict;
 }
@@ -6050,6 +6115,11 @@
   DBUSERSTeam *contentOwnerTeamInfo = valueDict[@"content_owner_team_info"]
                                           ? [DBUSERSTeamSerializer deserialize:valueDict[@"content_owner_team_info"]]
                                           : nil;
+  NSString *previewType = valueDict[@"preview_type"] ?: nil;
+  NSDate *createdTimestamp = valueDict[@"created_timestamp"]
+                                 ? [DBNSDateSerializer deserialize:valueDict[@"created_timestamp"]
+                                                        dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
+                                 : nil;
 
   return [[DBSHARINGFileLinkMetadata alloc] initWithUrl:url
                                                    name:name
@@ -6062,7 +6132,9 @@
                                                 expires:expires
                                               pathLower:pathLower
                                          teamMemberInfo:teamMemberInfo
-                                   contentOwnerTeamInfo:contentOwnerTeamInfo];
+                                   contentOwnerTeamInfo:contentOwnerTeamInfo
+                                            previewType:previewType
+                                       createdTimestamp:createdTimestamp];
 }
 
 @end
@@ -7530,7 +7602,9 @@
                     expires:(NSDate *)expires
                   pathLower:(NSString *)pathLower
              teamMemberInfo:(DBSHARINGTeamMemberInfo *)teamMemberInfo
-       contentOwnerTeamInfo:(DBUSERSTeam *)contentOwnerTeamInfo {
+       contentOwnerTeamInfo:(DBUSERSTeam *)contentOwnerTeamInfo
+                previewType:(NSString *)previewType
+           createdTimestamp:(NSDate *)createdTimestamp {
   [DBStoneValidators nonnullValidator:nil](url);
   [DBStoneValidators nonnullValidator:nil](name);
   [DBStoneValidators nonnullValidator:nil](linkPermissions);
@@ -7543,7 +7617,9 @@
                     expires:expires
                   pathLower:pathLower
              teamMemberInfo:teamMemberInfo
-       contentOwnerTeamInfo:contentOwnerTeamInfo];
+       contentOwnerTeamInfo:contentOwnerTeamInfo
+                previewType:previewType
+           createdTimestamp:createdTimestamp];
   if (self) {
   }
   return self;
@@ -7559,7 +7635,9 @@
                    expires:nil
                  pathLower:nil
             teamMemberInfo:nil
-      contentOwnerTeamInfo:nil];
+      contentOwnerTeamInfo:nil
+               previewType:nil
+          createdTimestamp:nil];
 }
 
 #pragma mark - Serialization methods
@@ -7609,6 +7687,12 @@
   }
   if (self.contentOwnerTeamInfo != nil) {
     result = prime * result + [self.contentOwnerTeamInfo hash];
+  }
+  if (self.previewType != nil) {
+    result = prime * result + [self.previewType hash];
+  }
+  if (self.createdTimestamp != nil) {
+    result = prime * result + [self.createdTimestamp hash];
   }
 
   return prime * result;
@@ -7664,6 +7748,16 @@
       return NO;
     }
   }
+  if (self.previewType) {
+    if (![self.previewType isEqual:aFolderLinkMetadata.previewType]) {
+      return NO;
+    }
+  }
+  if (self.createdTimestamp) {
+    if (![self.createdTimestamp isEqual:aFolderLinkMetadata.createdTimestamp]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -7694,6 +7788,13 @@
   if (valueObj.contentOwnerTeamInfo) {
     jsonDict[@"content_owner_team_info"] = [DBUSERSTeamSerializer serialize:valueObj.contentOwnerTeamInfo];
   }
+  if (valueObj.previewType) {
+    jsonDict[@"preview_type"] = valueObj.previewType;
+  }
+  if (valueObj.createdTimestamp) {
+    jsonDict[@"created_timestamp"] = [DBNSDateSerializer serialize:valueObj.createdTimestamp
+                                                        dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
+  }
 
   return jsonDict;
 }
@@ -7714,6 +7815,11 @@
   DBUSERSTeam *contentOwnerTeamInfo = valueDict[@"content_owner_team_info"]
                                           ? [DBUSERSTeamSerializer deserialize:valueDict[@"content_owner_team_info"]]
                                           : nil;
+  NSString *previewType = valueDict[@"preview_type"] ?: nil;
+  NSDate *createdTimestamp = valueDict[@"created_timestamp"]
+                                 ? [DBNSDateSerializer deserialize:valueDict[@"created_timestamp"]
+                                                        dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
+                                 : nil;
 
   return [[DBSHARINGFolderLinkMetadata alloc] initWithUrl:url
                                                      name:name
@@ -7722,7 +7828,9 @@
                                                   expires:expires
                                                 pathLower:pathLower
                                            teamMemberInfo:teamMemberInfo
-                                     contentOwnerTeamInfo:contentOwnerTeamInfo];
+                                     contentOwnerTeamInfo:contentOwnerTeamInfo
+                                              previewType:previewType
+                                         createdTimestamp:createdTimestamp];
 }
 
 @end
@@ -10179,7 +10287,8 @@
 - (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType
                        permissions:(NSArray<DBSHARINGMemberPermission *> *)permissions
                           initials:(NSString *)initials
-                       isInherited:(NSNumber *)isInherited {
+                       isInherited:(NSNumber *)isInherited
+               inheritedAccessType:(DBSHARINGAccessLevel *)inheritedAccessType {
   [DBStoneValidators nonnullValidator:nil](accessType);
   [DBStoneValidators
    nullableValidator:[DBStoneValidators arrayValidator:nil
@@ -10192,12 +10301,13 @@
     _permissions = permissions;
     _initials = initials;
     _isInherited = isInherited ?: @NO;
+    _inheritedAccessType = inheritedAccessType;
   }
   return self;
 }
 
 - (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType {
-  return [self initWithAccessType:accessType permissions:nil initials:nil isInherited:nil];
+  return [self initWithAccessType:accessType permissions:nil initials:nil isInherited:nil inheritedAccessType:nil];
 }
 
 #pragma mark - Serialization methods
@@ -10238,6 +10348,9 @@
     result = prime * result + [self.initials hash];
   }
   result = prime * result + [self.isInherited hash];
+  if (self.inheritedAccessType != nil) {
+    result = prime * result + [self.inheritedAccessType hash];
+  }
 
   return prime * result;
 }
@@ -10274,6 +10387,11 @@
   if (![self.isInherited isEqual:aMembershipInfo.isInherited]) {
     return NO;
   }
+  if (self.inheritedAccessType) {
+    if (![self.inheritedAccessType isEqual:aMembershipInfo.inheritedAccessType]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -10297,6 +10415,9 @@
     jsonDict[@"initials"] = valueObj.initials;
   }
   jsonDict[@"is_inherited"] = valueObj.isInherited;
+  if (valueObj.inheritedAccessType) {
+    jsonDict[@"inherited_access_type"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.inheritedAccessType];
+  }
 
   return jsonDict;
 }
@@ -10311,11 +10432,16 @@
                                 : nil;
   NSString *initials = valueDict[@"initials"] ?: nil;
   NSNumber *isInherited = valueDict[@"is_inherited"] ?: @NO;
+  DBSHARINGAccessLevel *inheritedAccessType =
+      valueDict[@"inherited_access_type"]
+          ? [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"inherited_access_type"]]
+          : nil;
 
   return [[DBSHARINGMembershipInfo alloc] initWithAccessType:accessType
                                                  permissions:permissions
                                                     initials:initials
-                                                 isInherited:isInherited];
+                                                 isInherited:isInherited
+                                         inheritedAccessType:inheritedAccessType];
 }
 
 @end
@@ -10338,7 +10464,8 @@
                              group:(DBSHARINGGroupInfo *)group
                        permissions:(NSArray<DBSHARINGMemberPermission *> *)permissions
                           initials:(NSString *)initials
-                       isInherited:(NSNumber *)isInherited {
+                       isInherited:(NSNumber *)isInherited
+               inheritedAccessType:(DBSHARINGAccessLevel *)inheritedAccessType {
   [DBStoneValidators nonnullValidator:nil](accessType);
   [DBStoneValidators nonnullValidator:nil](group);
   [DBStoneValidators
@@ -10346,7 +10473,11 @@
                                               maxItems:nil
                                          itemValidator:[DBStoneValidators nonnullValidator:nil]]](permissions);
 
-  self = [super initWithAccessType:accessType permissions:permissions initials:initials isInherited:isInherited];
+  self = [super initWithAccessType:accessType
+                       permissions:permissions
+                          initials:initials
+                       isInherited:isInherited
+               inheritedAccessType:inheritedAccessType];
   if (self) {
     _group = group;
   }
@@ -10354,7 +10485,12 @@
 }
 
 - (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType group:(DBSHARINGGroupInfo *)group {
-  return [self initWithAccessType:accessType group:group permissions:nil initials:nil isInherited:nil];
+  return [self initWithAccessType:accessType
+                            group:group
+                      permissions:nil
+                         initials:nil
+                      isInherited:nil
+              inheritedAccessType:nil];
 }
 
 #pragma mark - Serialization methods
@@ -10396,6 +10532,9 @@
     result = prime * result + [self.initials hash];
   }
   result = prime * result + [self.isInherited hash];
+  if (self.inheritedAccessType != nil) {
+    result = prime * result + [self.inheritedAccessType hash];
+  }
 
   return prime * result;
 }
@@ -10435,6 +10574,11 @@
   if (![self.isInherited isEqual:aGroupMembershipInfo.isInherited]) {
     return NO;
   }
+  if (self.inheritedAccessType) {
+    if (![self.inheritedAccessType isEqual:aGroupMembershipInfo.inheritedAccessType]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -10459,6 +10603,9 @@
     jsonDict[@"initials"] = valueObj.initials;
   }
   jsonDict[@"is_inherited"] = valueObj.isInherited;
+  if (valueObj.inheritedAccessType) {
+    jsonDict[@"inherited_access_type"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.inheritedAccessType];
+  }
 
   return jsonDict;
 }
@@ -10474,12 +10621,17 @@
                                 : nil;
   NSString *initials = valueDict[@"initials"] ?: nil;
   NSNumber *isInherited = valueDict[@"is_inherited"] ?: @NO;
+  DBSHARINGAccessLevel *inheritedAccessType =
+      valueDict[@"inherited_access_type"]
+          ? [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"inherited_access_type"]]
+          : nil;
 
   return [[DBSHARINGGroupMembershipInfo alloc] initWithAccessType:accessType
                                                             group:group
                                                       permissions:permissions
                                                          initials:initials
-                                                      isInherited:isInherited];
+                                                      isInherited:isInherited
+                                              inheritedAccessType:inheritedAccessType];
 }
 
 @end
@@ -10905,6 +11057,7 @@
                        permissions:(NSArray<DBSHARINGMemberPermission *> *)permissions
                           initials:(NSString *)initials
                        isInherited:(NSNumber *)isInherited
+               inheritedAccessType:(DBSHARINGAccessLevel *)inheritedAccessType
                               user:(DBSHARINGUserInfo *)user {
   [DBStoneValidators nonnullValidator:nil](accessType);
   [DBStoneValidators nonnullValidator:nil](invitee);
@@ -10913,7 +11066,11 @@
                                               maxItems:nil
                                          itemValidator:[DBStoneValidators nonnullValidator:nil]]](permissions);
 
-  self = [super initWithAccessType:accessType permissions:permissions initials:initials isInherited:isInherited];
+  self = [super initWithAccessType:accessType
+                       permissions:permissions
+                          initials:initials
+                       isInherited:isInherited
+               inheritedAccessType:inheritedAccessType];
   if (self) {
     _invitee = invitee;
     _user = user;
@@ -10922,7 +11079,13 @@
 }
 
 - (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType invitee:(DBSHARINGInviteeInfo *)invitee {
-  return [self initWithAccessType:accessType invitee:invitee permissions:nil initials:nil isInherited:nil user:nil];
+  return [self initWithAccessType:accessType
+                          invitee:invitee
+                      permissions:nil
+                         initials:nil
+                      isInherited:nil
+              inheritedAccessType:nil
+                             user:nil];
 }
 
 #pragma mark - Serialization methods
@@ -10964,6 +11127,9 @@
     result = prime * result + [self.initials hash];
   }
   result = prime * result + [self.isInherited hash];
+  if (self.inheritedAccessType != nil) {
+    result = prime * result + [self.inheritedAccessType hash];
+  }
   if (self.user != nil) {
     result = prime * result + [self.user hash];
   }
@@ -11006,6 +11172,11 @@
   if (![self.isInherited isEqual:anInviteeMembershipInfo.isInherited]) {
     return NO;
   }
+  if (self.inheritedAccessType) {
+    if (![self.inheritedAccessType isEqual:anInviteeMembershipInfo.inheritedAccessType]) {
+      return NO;
+    }
+  }
   if (self.user) {
     if (![self.user isEqual:anInviteeMembershipInfo.user]) {
       return NO;
@@ -11035,6 +11206,9 @@
     jsonDict[@"initials"] = valueObj.initials;
   }
   jsonDict[@"is_inherited"] = valueObj.isInherited;
+  if (valueObj.inheritedAccessType) {
+    jsonDict[@"inherited_access_type"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.inheritedAccessType];
+  }
   if (valueObj.user) {
     jsonDict[@"user"] = [DBSHARINGUserInfoSerializer serialize:valueObj.user];
   }
@@ -11053,6 +11227,10 @@
                                 : nil;
   NSString *initials = valueDict[@"initials"] ?: nil;
   NSNumber *isInherited = valueDict[@"is_inherited"] ?: @NO;
+  DBSHARINGAccessLevel *inheritedAccessType =
+      valueDict[@"inherited_access_type"]
+          ? [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"inherited_access_type"]]
+          : nil;
   DBSHARINGUserInfo *user = valueDict[@"user"] ? [DBSHARINGUserInfoSerializer deserialize:valueDict[@"user"]] : nil;
 
   return [[DBSHARINGInviteeMembershipInfo alloc] initWithAccessType:accessType
@@ -11060,6 +11238,7 @@
                                                         permissions:permissions
                                                            initials:initials
                                                         isInherited:isInherited
+                                                inheritedAccessType:inheritedAccessType
                                                                user:user];
 }
 
@@ -17097,6 +17276,14 @@
   return self;
 }
 
+- (instancetype)initWithPermissionDenied {
+  self = [super init];
+  if (self) {
+    _tag = DBSHARINGListSharedLinksErrorPermissionDenied;
+  }
+  return self;
+}
+
 - (instancetype)initWithOther {
   self = [super init];
   if (self) {
@@ -17125,6 +17312,10 @@
   return _tag == DBSHARINGListSharedLinksErrorReset;
 }
 
+- (BOOL)isPermissionDenied {
+  return _tag == DBSHARINGListSharedLinksErrorPermissionDenied;
+}
+
 - (BOOL)isOther {
   return _tag == DBSHARINGListSharedLinksErrorOther;
 }
@@ -17135,6 +17326,8 @@
     return @"DBSHARINGListSharedLinksErrorPath";
   case DBSHARINGListSharedLinksErrorReset:
     return @"DBSHARINGListSharedLinksErrorReset";
+  case DBSHARINGListSharedLinksErrorPermissionDenied:
+    return @"DBSHARINGListSharedLinksErrorPermissionDenied";
   case DBSHARINGListSharedLinksErrorOther:
     return @"DBSHARINGListSharedLinksErrorOther";
   }
@@ -17179,6 +17372,9 @@
   case DBSHARINGListSharedLinksErrorReset:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBSHARINGListSharedLinksErrorPermissionDenied:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBSHARINGListSharedLinksErrorOther:
     result = prime * result + [[self tagName] hash];
     break;
@@ -17211,6 +17407,8 @@
     return [self.path isEqual:aListSharedLinksError.path];
   case DBSHARINGListSharedLinksErrorReset:
     return [[self tagName] isEqual:[aListSharedLinksError tagName]];
+  case DBSHARINGListSharedLinksErrorPermissionDenied:
+    return [[self tagName] isEqual:[aListSharedLinksError tagName]];
   case DBSHARINGListSharedLinksErrorOther:
     return [[self tagName] isEqual:[aListSharedLinksError tagName]];
   }
@@ -17231,6 +17429,8 @@
     jsonDict[@".tag"] = @"path";
   } else if ([valueObj isReset]) {
     jsonDict[@".tag"] = @"reset";
+  } else if ([valueObj isPermissionDenied]) {
+    jsonDict[@".tag"] = @"permission_denied";
   } else if ([valueObj isOther]) {
     jsonDict[@".tag"] = @"other";
   } else {
@@ -17248,6 +17448,8 @@
     return [[DBSHARINGListSharedLinksError alloc] initWithPath:path];
   } else if ([tag isEqualToString:@"reset"]) {
     return [[DBSHARINGListSharedLinksError alloc] initWithReset];
+  } else if ([tag isEqualToString:@"permission_denied"]) {
+    return [[DBSHARINGListSharedLinksError alloc] initWithPermissionDenied];
   } else if ([tag isEqualToString:@"other"]) {
     return [[DBSHARINGListSharedLinksError alloc] initWithOther];
   } else {
@@ -33518,7 +33720,8 @@
                               user:(DBSHARINGUserInfo *)user
                        permissions:(NSArray<DBSHARINGMemberPermission *> *)permissions
                           initials:(NSString *)initials
-                       isInherited:(NSNumber *)isInherited {
+                       isInherited:(NSNumber *)isInherited
+               inheritedAccessType:(DBSHARINGAccessLevel *)inheritedAccessType {
   [DBStoneValidators nonnullValidator:nil](accessType);
   [DBStoneValidators nonnullValidator:nil](user);
   [DBStoneValidators
@@ -33526,7 +33729,11 @@
                                               maxItems:nil
                                          itemValidator:[DBStoneValidators nonnullValidator:nil]]](permissions);
 
-  self = [super initWithAccessType:accessType permissions:permissions initials:initials isInherited:isInherited];
+  self = [super initWithAccessType:accessType
+                       permissions:permissions
+                          initials:initials
+                       isInherited:isInherited
+               inheritedAccessType:inheritedAccessType];
   if (self) {
     _user = user;
   }
@@ -33534,7 +33741,12 @@
 }
 
 - (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType user:(DBSHARINGUserInfo *)user {
-  return [self initWithAccessType:accessType user:user permissions:nil initials:nil isInherited:nil];
+  return [self initWithAccessType:accessType
+                             user:user
+                      permissions:nil
+                         initials:nil
+                      isInherited:nil
+              inheritedAccessType:nil];
 }
 
 #pragma mark - Serialization methods
@@ -33576,6 +33788,9 @@
     result = prime * result + [self.initials hash];
   }
   result = prime * result + [self.isInherited hash];
+  if (self.inheritedAccessType != nil) {
+    result = prime * result + [self.inheritedAccessType hash];
+  }
 
   return prime * result;
 }
@@ -33615,6 +33830,11 @@
   if (![self.isInherited isEqual:anUserMembershipInfo.isInherited]) {
     return NO;
   }
+  if (self.inheritedAccessType) {
+    if (![self.inheritedAccessType isEqual:anUserMembershipInfo.inheritedAccessType]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -33639,6 +33859,9 @@
     jsonDict[@"initials"] = valueObj.initials;
   }
   jsonDict[@"is_inherited"] = valueObj.isInherited;
+  if (valueObj.inheritedAccessType) {
+    jsonDict[@"inherited_access_type"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.inheritedAccessType];
+  }
 
   return jsonDict;
 }
@@ -33654,12 +33877,17 @@
                                 : nil;
   NSString *initials = valueDict[@"initials"] ?: nil;
   NSNumber *isInherited = valueDict[@"is_inherited"] ?: @NO;
+  DBSHARINGAccessLevel *inheritedAccessType =
+      valueDict[@"inherited_access_type"]
+          ? [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"inherited_access_type"]]
+          : nil;
 
   return [[DBSHARINGUserMembershipInfo alloc] initWithAccessType:accessType
                                                             user:user
                                                      permissions:permissions
                                                         initials:initials
-                                                     isInherited:isInherited];
+                                                     isInherited:isInherited
+                                             inheritedAccessType:inheritedAccessType];
 }
 
 @end
@@ -33684,6 +33912,7 @@
                        permissions:(NSArray<DBSHARINGMemberPermission *> *)permissions
                           initials:(NSString *)initials
                        isInherited:(NSNumber *)isInherited
+               inheritedAccessType:(DBSHARINGAccessLevel *)inheritedAccessType
                       timeLastSeen:(NSDate *)timeLastSeen
                       platformType:(DBSEENSTATEPlatformType *)platformType {
   [DBStoneValidators nonnullValidator:nil](accessType);
@@ -33697,7 +33926,8 @@
                               user:user
                        permissions:permissions
                           initials:initials
-                       isInherited:isInherited];
+                       isInherited:isInherited
+               inheritedAccessType:inheritedAccessType];
   if (self) {
     _timeLastSeen = timeLastSeen;
     _platformType = platformType;
@@ -33711,6 +33941,7 @@
                       permissions:nil
                          initials:nil
                       isInherited:nil
+              inheritedAccessType:nil
                      timeLastSeen:nil
                      platformType:nil];
 }
@@ -33754,6 +33985,9 @@
     result = prime * result + [self.initials hash];
   }
   result = prime * result + [self.isInherited hash];
+  if (self.inheritedAccessType != nil) {
+    result = prime * result + [self.inheritedAccessType hash];
+  }
   if (self.timeLastSeen != nil) {
     result = prime * result + [self.timeLastSeen hash];
   }
@@ -33799,6 +34033,11 @@
   if (![self.isInherited isEqual:anUserFileMembershipInfo.isInherited]) {
     return NO;
   }
+  if (self.inheritedAccessType) {
+    if (![self.inheritedAccessType isEqual:anUserFileMembershipInfo.inheritedAccessType]) {
+      return NO;
+    }
+  }
   if (self.timeLastSeen) {
     if (![self.timeLastSeen isEqual:anUserFileMembershipInfo.timeLastSeen]) {
       return NO;
@@ -33833,6 +34072,9 @@
     jsonDict[@"initials"] = valueObj.initials;
   }
   jsonDict[@"is_inherited"] = valueObj.isInherited;
+  if (valueObj.inheritedAccessType) {
+    jsonDict[@"inherited_access_type"] = [DBSHARINGAccessLevelSerializer serialize:valueObj.inheritedAccessType];
+  }
   if (valueObj.timeLastSeen) {
     jsonDict[@"time_last_seen"] = [DBNSDateSerializer serialize:valueObj.timeLastSeen dateFormat:@"%Y-%m-%dT%H:%M:%SZ"];
   }
@@ -33854,6 +34096,10 @@
                                 : nil;
   NSString *initials = valueDict[@"initials"] ?: nil;
   NSNumber *isInherited = valueDict[@"is_inherited"] ?: @NO;
+  DBSHARINGAccessLevel *inheritedAccessType =
+      valueDict[@"inherited_access_type"]
+          ? [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"inherited_access_type"]]
+          : nil;
   NSDate *timeLastSeen = valueDict[@"time_last_seen"] ? [DBNSDateSerializer deserialize:valueDict[@"time_last_seen"]
                                                                              dateFormat:@"%Y-%m-%dT%H:%M:%SZ"]
                                                       : nil;
@@ -33865,6 +34111,7 @@
                                                          permissions:permissions
                                                             initials:initials
                                                          isInherited:isInherited
+                                                 inheritedAccessType:inheritedAccessType
                                                         timeLastSeen:timeLastSeen
                                                         platformType:platformType];
 }

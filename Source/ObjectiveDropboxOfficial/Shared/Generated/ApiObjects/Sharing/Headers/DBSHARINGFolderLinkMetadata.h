@@ -51,6 +51,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param contentOwnerTeamInfo The team information of the content's owner.
 /// This field will only be present if the content's owner is a team member and
 /// the content's owner team is different from the link's owner team.
+/// @param previewType The preview type is determined by the file extension of
+/// the shared link. It will be null if the file cannot be previewed by the file
+/// viewer.
+/// @param createdTimestamp The time the shared link was created.
 ///
 /// @return An initialized instance.
 ///
@@ -61,7 +65,9 @@ NS_ASSUME_NONNULL_BEGIN
                     expires:(nullable NSDate *)expires
                   pathLower:(nullable NSString *)pathLower
              teamMemberInfo:(nullable DBSHARINGTeamMemberInfo *)teamMemberInfo
-       contentOwnerTeamInfo:(nullable DBUSERSTeam *)contentOwnerTeamInfo;
+       contentOwnerTeamInfo:(nullable DBUSERSTeam *)contentOwnerTeamInfo
+                previewType:(nullable NSString *)previewType
+           createdTimestamp:(nullable NSDate *)createdTimestamp;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

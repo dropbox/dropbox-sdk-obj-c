@@ -50,6 +50,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// The set of permissions corresponds to the MemberActions in the request.
 /// @param initials Field is deprecated. Never set.
 /// @param isInherited True if the member has access on a parent folder.
+/// @param inheritedAccessType The access type from parent folder for this
+/// member.
 /// @param user The user this invitation is tied to, if available.
 ///
 /// @return An initialized instance.
@@ -59,6 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
                        permissions:(nullable NSArray<DBSHARINGMemberPermission *> *)permissions
                           initials:(nullable NSString *)initials
                        isInherited:(nullable NSNumber *)isInherited
+               inheritedAccessType:(nullable DBSHARINGAccessLevel *)inheritedAccessType
                               user:(nullable DBSHARINGUserInfo *)user;
 
 ///

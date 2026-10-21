@@ -43,6 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// True if the member has access on a parent folder.
 @property (nonatomic, readonly) NSNumber *isInherited;
 
+/// The access type from parent folder for this member.
+@property (nonatomic, readonly, nullable) DBSHARINGAccessLevel *inheritedAccessType;
+
 #pragma mark - Constructors
 
 ///
@@ -54,13 +57,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// The set of permissions corresponds to the MemberActions in the request.
 /// @param initials Field is deprecated. Never set.
 /// @param isInherited True if the member has access on a parent folder.
+/// @param inheritedAccessType The access type from parent folder for this
+/// member.
 ///
 /// @return An initialized instance.
 ///
 - (instancetype)initWithAccessType:(DBSHARINGAccessLevel *)accessType
                        permissions:(nullable NSArray<DBSHARINGMemberPermission *> *)permissions
                           initials:(nullable NSString *)initials
-                       isInherited:(nullable NSNumber *)isInherited;
+                       isInherited:(nullable NSNumber *)isInherited
+               inheritedAccessType:(nullable DBSHARINGAccessLevel *)inheritedAccessType;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with

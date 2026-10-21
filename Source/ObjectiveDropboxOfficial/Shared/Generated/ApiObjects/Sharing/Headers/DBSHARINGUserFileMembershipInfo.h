@@ -53,6 +53,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// The set of permissions corresponds to the MemberActions in the request.
 /// @param initials Field is deprecated. Never set.
 /// @param isInherited True if the member has access on a parent folder.
+/// @param inheritedAccessType The access type from parent folder for this
+/// member.
 /// @param timeLastSeen The UTC timestamp of when the user has last seen the
 /// content. Only populated if the user has seen the content and the caller has
 /// a plan that includes viewer history.
@@ -66,6 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
                        permissions:(nullable NSArray<DBSHARINGMemberPermission *> *)permissions
                           initials:(nullable NSString *)initials
                        isInherited:(nullable NSNumber *)isInherited
+               inheritedAccessType:(nullable DBSHARINGAccessLevel *)inheritedAccessType
                       timeLastSeen:(nullable NSDate *)timeLastSeen
                       platformType:(nullable DBSEENSTATEPlatformType *)platformType;
 
