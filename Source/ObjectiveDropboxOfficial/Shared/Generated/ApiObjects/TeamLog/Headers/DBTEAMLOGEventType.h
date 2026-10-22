@@ -478,6 +478,7 @@
 @class DBTEAMLOGSharedFolderDeclineInvitationType;
 @class DBTEAMLOGSharedFolderMountType;
 @class DBTEAMLOGSharedFolderNestType;
+@class DBTEAMLOGSharedFolderTransferMembershipType;
 @class DBTEAMLOGSharedFolderTransferOwnershipType;
 @class DBTEAMLOGSharedFolderUnmountType;
 @class DBTEAMLOGSharedFoldersCreateReportFailedType;
@@ -1919,6 +1920,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 
   /// (sharing) Changed parent of shared folder
   DBTEAMLOGEventTypeSharedFolderNest,
+
+  /// (sharing) Transferred shared folder membership to another member
+  DBTEAMLOGEventTypeSharedFolderTransferMembership,
 
   /// (sharing) Transferred ownership of shared folder to another member
   DBTEAMLOGEventTypeSharedFolderTransferOwnership,
@@ -4683,6 +4687,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// `isSharedFolderNest` method returns true before accessing, otherwise a
 /// runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedFolderNestType *sharedFolderNest;
+
+/// (sharing) Transferred shared folder membership to another member @note
+/// Ensure the `isSharedFolderTransferMembership` method returns true before
+/// accessing, otherwise a runtime exception will be raised.
+@property (nonatomic, readonly) DBTEAMLOGSharedFolderTransferMembershipType *sharedFolderTransferMembership;
 
 /// (sharing) Transferred ownership of shared folder to another member @note
 /// Ensure the `isSharedFolderTransferOwnership` method returns true before
@@ -11209,6 +11218,21 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSharedFolderNest:(DBTEAMLOGSharedFolderNestType *)sharedFolderNest;
+
+///
+/// Initializes union class with tag state of
+/// "shared_folder_transfer_membership".
+///
+/// Description of the "shared_folder_transfer_membership" tag state: (sharing)
+/// Transferred shared folder membership to another member
+///
+/// @param sharedFolderTransferMembership (sharing) Transferred shared folder
+/// membership to another member
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithSharedFolderTransferMembership:
+    (DBTEAMLOGSharedFolderTransferMembershipType *)sharedFolderTransferMembership;
 
 ///
 /// Initializes union class with tag state of
@@ -19558,6 +19582,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeTag) {
 /// "shared_folder_nest".
 ///
 - (BOOL)isSharedFolderNest;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "shared_folder_transfer_membership".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `sharedFolderTransferMembership` property, otherwise a runtime exception
+/// will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "shared_folder_transfer_membership".
+///
+- (BOOL)isSharedFolderTransferMembership;
 
 ///
 /// Retrieves whether the union's current tag state has value

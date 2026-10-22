@@ -2107,6 +2107,8 @@
 #import "DBTEAMLOGSharedFolderMountType.h"
 #import "DBTEAMLOGSharedFolderNestDetails.h"
 #import "DBTEAMLOGSharedFolderNestType.h"
+#import "DBTEAMLOGSharedFolderTransferMembershipDetails.h"
+#import "DBTEAMLOGSharedFolderTransferMembershipType.h"
 #import "DBTEAMLOGSharedFolderTransferOwnershipDetails.h"
 #import "DBTEAMLOGSharedFolderTransferOwnershipType.h"
 #import "DBTEAMLOGSharedFolderUnmountDetails.h"

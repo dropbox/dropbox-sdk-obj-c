@@ -479,6 +479,7 @@
 @class DBTEAMLOGSharedFolderDeclineInvitationDetails;
 @class DBTEAMLOGSharedFolderMountDetails;
 @class DBTEAMLOGSharedFolderNestDetails;
+@class DBTEAMLOGSharedFolderTransferMembershipDetails;
 @class DBTEAMLOGSharedFolderTransferOwnershipDetails;
 @class DBTEAMLOGSharedFolderUnmountDetails;
 @class DBTEAMLOGSharedFoldersCreateReportDetails;
@@ -1878,6 +1879,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 
   /// (no description).
   DBTEAMLOGEventDetailsSharedFolderNestDetails,
+
+  /// (no description).
+  DBTEAMLOGEventDetailsSharedFolderTransferMembershipDetails,
 
   /// (no description).
   DBTEAMLOGEventDetailsSharedFolderTransferOwnershipDetails,
@@ -4452,6 +4456,11 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// (no description). @note Ensure the `isSharedFolderNestDetails` method
 /// returns true before accessing, otherwise a runtime exception will be raised.
 @property (nonatomic, readonly) DBTEAMLOGSharedFolderNestDetails *sharedFolderNestDetails;
+
+/// (no description). @note Ensure the `isSharedFolderTransferMembershipDetails`
+/// method returns true before accessing, otherwise a runtime exception will be
+/// raised.
+@property (nonatomic, readonly) DBTEAMLOGSharedFolderTransferMembershipDetails *sharedFolderTransferMembershipDetails;
 
 /// (no description). @note Ensure the `isSharedFolderTransferOwnershipDetails`
 /// method returns true before accessing, otherwise a runtime exception will be
@@ -9774,6 +9783,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSharedFolderNestDetails:(DBTEAMLOGSharedFolderNestDetails *)sharedFolderNestDetails;
+
+///
+/// Initializes union class with tag state of
+/// "shared_folder_transfer_membership_details".
+///
+/// @param sharedFolderTransferMembershipDetails (no description).
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithSharedFolderTransferMembershipDetails:
+    (DBTEAMLOGSharedFolderTransferMembershipDetails *)sharedFolderTransferMembershipDetails;
 
 ///
 /// Initializes union class with tag state of
@@ -17503,6 +17523,19 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventDetailsTag) {
 /// "shared_folder_nest_details".
 ///
 - (BOOL)isSharedFolderNestDetails;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "shared_folder_transfer_membership_details".
+///
+/// @note Call this method and ensure it returns true before accessing the
+/// `sharedFolderTransferMembershipDetails` property, otherwise a runtime
+/// exception will be thrown.
+///
+/// @return Whether the union's current tag state has value
+/// "shared_folder_transfer_membership_details".
+///
+- (BOOL)isSharedFolderTransferMembershipDetails;
 
 ///
 /// Retrieves whether the union's current tag state has value

@@ -42884,6 +42884,7 @@
 #import "DBTEAMLOGSharedFolderDeclineInvitationDetails.h"
 #import "DBTEAMLOGSharedFolderMountDetails.h"
 #import "DBTEAMLOGSharedFolderNestDetails.h"
+#import "DBTEAMLOGSharedFolderTransferMembershipDetails.h"
 #import "DBTEAMLOGSharedFolderTransferOwnershipDetails.h"
 #import "DBTEAMLOGSharedFolderUnmountDetails.h"
 #import "DBTEAMLOGSharedFoldersCreateReportDetails.h"
@@ -43464,6 +43465,7 @@
 @synthesize sharedFolderDeclineInvitationDetails = _sharedFolderDeclineInvitationDetails;
 @synthesize sharedFolderMountDetails = _sharedFolderMountDetails;
 @synthesize sharedFolderNestDetails = _sharedFolderNestDetails;
+@synthesize sharedFolderTransferMembershipDetails = _sharedFolderTransferMembershipDetails;
 @synthesize sharedFolderTransferOwnershipDetails = _sharedFolderTransferOwnershipDetails;
 @synthesize sharedFolderUnmountDetails = _sharedFolderUnmountDetails;
 @synthesize sharedLinkAddExpiryDetails = _sharedLinkAddExpiryDetails;
@@ -47608,6 +47610,16 @@
   if (self) {
     _tag = DBTEAMLOGEventDetailsSharedFolderNestDetails;
     _sharedFolderNestDetails = sharedFolderNestDetails;
+  }
+  return self;
+}
+
+- (instancetype)initWithSharedFolderTransferMembershipDetails:
+    (DBTEAMLOGSharedFolderTransferMembershipDetails *)sharedFolderTransferMembershipDetails {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventDetailsSharedFolderTransferMembershipDetails;
+    _sharedFolderTransferMembershipDetails = sharedFolderTransferMembershipDetails;
   }
   return self;
 }
@@ -53616,6 +53628,15 @@
   return _sharedFolderNestDetails;
 }
 
+- (DBTEAMLOGSharedFolderTransferMembershipDetails *)sharedFolderTransferMembershipDetails {
+  if (![self isSharedFolderTransferMembershipDetails]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMLOGEventDetailsSharedFolderTransferMembershipDetails, but was %@.",
+                       [self tagName]];
+  }
+  return _sharedFolderTransferMembershipDetails;
+}
+
 - (DBTEAMLOGSharedFolderTransferOwnershipDetails *)sharedFolderTransferOwnershipDetails {
   if (![self isSharedFolderTransferOwnershipDetails]) {
     [NSException raise:@"IllegalStateException"
@@ -57463,6 +57484,10 @@
   return _tag == DBTEAMLOGEventDetailsSharedFolderNestDetails;
 }
 
+- (BOOL)isSharedFolderTransferMembershipDetails {
+  return _tag == DBTEAMLOGEventDetailsSharedFolderTransferMembershipDetails;
+}
+
 - (BOOL)isSharedFolderTransferOwnershipDetails {
   return _tag == DBTEAMLOGEventDetailsSharedFolderTransferOwnershipDetails;
 }
@@ -59237,6 +59262,8 @@
     return @"DBTEAMLOGEventDetailsSharedFolderMountDetails";
   case DBTEAMLOGEventDetailsSharedFolderNestDetails:
     return @"DBTEAMLOGEventDetailsSharedFolderNestDetails";
+  case DBTEAMLOGEventDetailsSharedFolderTransferMembershipDetails:
+    return @"DBTEAMLOGEventDetailsSharedFolderTransferMembershipDetails";
   case DBTEAMLOGEventDetailsSharedFolderTransferOwnershipDetails:
     return @"DBTEAMLOGEventDetailsSharedFolderTransferOwnershipDetails";
   case DBTEAMLOGEventDetailsSharedFolderUnmountDetails:
@@ -60963,6 +60990,9 @@
   case DBTEAMLOGEventDetailsSharedFolderNestDetails:
     result = prime * result + [self.sharedFolderNestDetails hash];
     break;
+  case DBTEAMLOGEventDetailsSharedFolderTransferMembershipDetails:
+    result = prime * result + [self.sharedFolderTransferMembershipDetails hash];
+    break;
   case DBTEAMLOGEventDetailsSharedFolderTransferOwnershipDetails:
     result = prime * result + [self.sharedFolderTransferOwnershipDetails hash];
     break;
@@ -62561,6 +62591,8 @@
     return [self.sharedFolderMountDetails isEqual:anEventDetails.sharedFolderMountDetails];
   case DBTEAMLOGEventDetailsSharedFolderNestDetails:
     return [self.sharedFolderNestDetails isEqual:anEventDetails.sharedFolderNestDetails];
+  case DBTEAMLOGEventDetailsSharedFolderTransferMembershipDetails:
+    return [self.sharedFolderTransferMembershipDetails isEqual:anEventDetails.sharedFolderTransferMembershipDetails];
   case DBTEAMLOGEventDetailsSharedFolderTransferOwnershipDetails:
     return [self.sharedFolderTransferOwnershipDetails isEqual:anEventDetails.sharedFolderTransferOwnershipDetails];
   case DBTEAMLOGEventDetailsSharedFolderUnmountDetails:
@@ -64702,6 +64734,10 @@
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGSharedFolderNestDetailsSerializer
                                            serialize:valueObj.sharedFolderNestDetails]];
     jsonDict[@".tag"] = @"shared_folder_nest_details";
+  } else if ([valueObj isSharedFolderTransferMembershipDetails]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGSharedFolderTransferMembershipDetailsSerializer
+                                           serialize:valueObj.sharedFolderTransferMembershipDetails]];
+    jsonDict[@".tag"] = @"shared_folder_transfer_membership_details";
   } else if ([valueObj isSharedFolderTransferOwnershipDetails]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGSharedFolderTransferOwnershipDetailsSerializer
                                            serialize:valueObj.sharedFolderTransferOwnershipDetails]];
@@ -67383,6 +67419,11 @@
     DBTEAMLOGSharedFolderNestDetails *sharedFolderNestDetails =
         [DBTEAMLOGSharedFolderNestDetailsSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventDetails alloc] initWithSharedFolderNestDetails:sharedFolderNestDetails];
+  } else if ([tag isEqualToString:@"shared_folder_transfer_membership_details"]) {
+    DBTEAMLOGSharedFolderTransferMembershipDetails *sharedFolderTransferMembershipDetails =
+        [DBTEAMLOGSharedFolderTransferMembershipDetailsSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventDetails alloc]
+        initWithSharedFolderTransferMembershipDetails:sharedFolderTransferMembershipDetails];
   } else if ([tag isEqualToString:@"shared_folder_transfer_ownership_details"]) {
     DBTEAMLOGSharedFolderTransferOwnershipDetails *sharedFolderTransferOwnershipDetails =
         [DBTEAMLOGSharedFolderTransferOwnershipDetailsSerializer deserialize:valueDict];
@@ -68940,6 +68981,7 @@
 #import "DBTEAMLOGSharedFolderDeclineInvitationType.h"
 #import "DBTEAMLOGSharedFolderMountType.h"
 #import "DBTEAMLOGSharedFolderNestType.h"
+#import "DBTEAMLOGSharedFolderTransferMembershipType.h"
 #import "DBTEAMLOGSharedFolderTransferOwnershipType.h"
 #import "DBTEAMLOGSharedFolderUnmountType.h"
 #import "DBTEAMLOGSharedFoldersCreateReportFailedType.h"
@@ -69520,6 +69562,7 @@
 @synthesize sharedFolderDeclineInvitation = _sharedFolderDeclineInvitation;
 @synthesize sharedFolderMount = _sharedFolderMount;
 @synthesize sharedFolderNest = _sharedFolderNest;
+@synthesize sharedFolderTransferMembership = _sharedFolderTransferMembership;
 @synthesize sharedFolderTransferOwnership = _sharedFolderTransferOwnership;
 @synthesize sharedFolderUnmount = _sharedFolderUnmount;
 @synthesize sharedLinkAddExpiry = _sharedLinkAddExpiry;
@@ -73533,6 +73576,16 @@
   if (self) {
     _tag = DBTEAMLOGEventTypeSharedFolderNest;
     _sharedFolderNest = sharedFolderNest;
+  }
+  return self;
+}
+
+- (instancetype)initWithSharedFolderTransferMembership:
+    (DBTEAMLOGSharedFolderTransferMembershipType *)sharedFolderTransferMembership {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeSharedFolderTransferMembership;
+    _sharedFolderTransferMembership = sharedFolderTransferMembership;
   }
   return self;
 }
@@ -79248,6 +79301,15 @@
   return _sharedFolderNest;
 }
 
+- (DBTEAMLOGSharedFolderTransferMembershipType *)sharedFolderTransferMembership {
+  if (![self isSharedFolderTransferMembership]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMLOGEventTypeSharedFolderTransferMembership, but was %@.", [self tagName]];
+  }
+  return _sharedFolderTransferMembership;
+}
+
 - (DBTEAMLOGSharedFolderTransferOwnershipType *)sharedFolderTransferOwnership {
   if (![self isSharedFolderTransferOwnership]) {
     [NSException
@@ -82944,6 +83006,10 @@
   return _tag == DBTEAMLOGEventTypeSharedFolderNest;
 }
 
+- (BOOL)isSharedFolderTransferMembership {
+  return _tag == DBTEAMLOGEventTypeSharedFolderTransferMembership;
+}
+
 - (BOOL)isSharedFolderTransferOwnership {
   return _tag == DBTEAMLOGEventTypeSharedFolderTransferOwnership;
 }
@@ -84714,6 +84780,8 @@
     return @"DBTEAMLOGEventTypeSharedFolderMount";
   case DBTEAMLOGEventTypeSharedFolderNest:
     return @"DBTEAMLOGEventTypeSharedFolderNest";
+  case DBTEAMLOGEventTypeSharedFolderTransferMembership:
+    return @"DBTEAMLOGEventTypeSharedFolderTransferMembership";
   case DBTEAMLOGEventTypeSharedFolderTransferOwnership:
     return @"DBTEAMLOGEventTypeSharedFolderTransferOwnership";
   case DBTEAMLOGEventTypeSharedFolderUnmount:
@@ -86438,6 +86506,9 @@
   case DBTEAMLOGEventTypeSharedFolderNest:
     result = prime * result + [self.sharedFolderNest hash];
     break;
+  case DBTEAMLOGEventTypeSharedFolderTransferMembership:
+    result = prime * result + [self.sharedFolderTransferMembership hash];
+    break;
   case DBTEAMLOGEventTypeSharedFolderTransferOwnership:
     result = prime * result + [self.sharedFolderTransferOwnership hash];
     break;
@@ -87995,6 +88066,8 @@
     return [self.sharedFolderMount isEqual:anEventType.sharedFolderMount];
   case DBTEAMLOGEventTypeSharedFolderNest:
     return [self.sharedFolderNest isEqual:anEventType.sharedFolderNest];
+  case DBTEAMLOGEventTypeSharedFolderTransferMembership:
+    return [self.sharedFolderTransferMembership isEqual:anEventType.sharedFolderTransferMembership];
   case DBTEAMLOGEventTypeSharedFolderTransferOwnership:
     return [self.sharedFolderTransferOwnership isEqual:anEventType.sharedFolderTransferOwnership];
   case DBTEAMLOGEventTypeSharedFolderUnmount:
@@ -90022,6 +90095,10 @@
   } else if ([valueObj isSharedFolderNest]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGSharedFolderNestTypeSerializer serialize:valueObj.sharedFolderNest]];
     jsonDict[@".tag"] = @"shared_folder_nest";
+  } else if ([valueObj isSharedFolderTransferMembership]) {
+    [jsonDict addEntriesFromDictionary:[DBTEAMLOGSharedFolderTransferMembershipTypeSerializer
+                                           serialize:valueObj.sharedFolderTransferMembership]];
+    jsonDict[@".tag"] = @"shared_folder_transfer_membership";
   } else if ([valueObj isSharedFolderTransferOwnership]) {
     [jsonDict addEntriesFromDictionary:[DBTEAMLOGSharedFolderTransferOwnershipTypeSerializer
                                            serialize:valueObj.sharedFolderTransferOwnership]];
@@ -92501,6 +92578,10 @@
   } else if ([tag isEqualToString:@"shared_folder_nest"]) {
     DBTEAMLOGSharedFolderNestType *sharedFolderNest = [DBTEAMLOGSharedFolderNestTypeSerializer deserialize:valueDict];
     return [[DBTEAMLOGEventType alloc] initWithSharedFolderNest:sharedFolderNest];
+  } else if ([tag isEqualToString:@"shared_folder_transfer_membership"]) {
+    DBTEAMLOGSharedFolderTransferMembershipType *sharedFolderTransferMembership =
+        [DBTEAMLOGSharedFolderTransferMembershipTypeSerializer deserialize:valueDict];
+    return [[DBTEAMLOGEventType alloc] initWithSharedFolderTransferMembership:sharedFolderTransferMembership];
   } else if ([tag isEqualToString:@"shared_folder_transfer_ownership"]) {
     DBTEAMLOGSharedFolderTransferOwnershipType *sharedFolderTransferOwnership =
         [DBTEAMLOGSharedFolderTransferOwnershipTypeSerializer deserialize:valueDict];
@@ -96698,6 +96779,14 @@
   return self;
 }
 
+- (instancetype)initWithSharedFolderTransferMembership {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMLOGEventTypeArgSharedFolderTransferMembership;
+  }
+  return self;
+}
+
 - (instancetype)initWithSharedFolderTransferOwnership {
   self = [super init];
   if (self) {
@@ -100238,6 +100327,10 @@
   return _tag == DBTEAMLOGEventTypeArgSharedFolderNest;
 }
 
+- (BOOL)isSharedFolderTransferMembership {
+  return _tag == DBTEAMLOGEventTypeArgSharedFolderTransferMembership;
+}
+
 - (BOOL)isSharedFolderTransferOwnership {
   return _tag == DBTEAMLOGEventTypeArgSharedFolderTransferOwnership;
 }
@@ -102008,6 +102101,8 @@
     return @"DBTEAMLOGEventTypeArgSharedFolderMount";
   case DBTEAMLOGEventTypeArgSharedFolderNest:
     return @"DBTEAMLOGEventTypeArgSharedFolderNest";
+  case DBTEAMLOGEventTypeArgSharedFolderTransferMembership:
+    return @"DBTEAMLOGEventTypeArgSharedFolderTransferMembership";
   case DBTEAMLOGEventTypeArgSharedFolderTransferOwnership:
     return @"DBTEAMLOGEventTypeArgSharedFolderTransferOwnership";
   case DBTEAMLOGEventTypeArgSharedFolderUnmount:
@@ -103732,6 +103827,9 @@
   case DBTEAMLOGEventTypeArgSharedFolderNest:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBTEAMLOGEventTypeArgSharedFolderTransferMembership:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBTEAMLOGEventTypeArgSharedFolderTransferOwnership:
     result = prime * result + [[self tagName] hash];
     break;
@@ -105284,6 +105382,8 @@
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgSharedFolderNest:
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
+  case DBTEAMLOGEventTypeArgSharedFolderTransferMembership:
+    return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgSharedFolderTransferOwnership:
     return [[self tagName] isEqual:[anEventTypeArg tagName]];
   case DBTEAMLOGEventTypeArgSharedFolderUnmount:
@@ -106583,6 +106683,8 @@
     jsonDict[@".tag"] = @"shared_folder_mount";
   } else if ([valueObj isSharedFolderNest]) {
     jsonDict[@".tag"] = @"shared_folder_nest";
+  } else if ([valueObj isSharedFolderTransferMembership]) {
+    jsonDict[@".tag"] = @"shared_folder_transfer_membership";
   } else if ([valueObj isSharedFolderTransferOwnership]) {
     jsonDict[@".tag"] = @"shared_folder_transfer_ownership";
   } else if ([valueObj isSharedFolderUnmount]) {
@@ -107879,6 +107981,8 @@
     return [[DBTEAMLOGEventTypeArg alloc] initWithSharedFolderMount];
   } else if ([tag isEqualToString:@"shared_folder_nest"]) {
     return [[DBTEAMLOGEventTypeArg alloc] initWithSharedFolderNest];
+  } else if ([tag isEqualToString:@"shared_folder_transfer_membership"]) {
+    return [[DBTEAMLOGEventTypeArg alloc] initWithSharedFolderTransferMembership];
   } else if ([tag isEqualToString:@"shared_folder_transfer_ownership"]) {
     return [[DBTEAMLOGEventTypeArg alloc] initWithSharedFolderTransferOwnership];
   } else if ([tag isEqualToString:@"shared_folder_unmount"]) {
@@ -198763,6 +198867,232 @@
   NSString *description_ = valueDict[@"description"];
 
   return [[DBTEAMLOGSharedFolderNestType alloc] initWithDescription_:description_];
+}
+
+@end
+
+#import "DBSHARINGAccessLevel.h"
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGSharedFolderTransferMembershipDetails.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGSharedFolderTransferMembershipDetails
+
+#pragma mark - Constructors
+
+- (instancetype)initWithPreviousMemberAccountId:(NSString *)previousMemberAccountId
+                            dNewMemberAccountId:(NSString *)dNewMemberAccountId
+                       sharedContentAccessLevel:(DBSHARINGAccessLevel *)sharedContentAccessLevel {
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40)
+                                                                 pattern:nil]](previousMemberAccountId);
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(40) maxLength:@(40)
+                                                                 pattern:nil]](dNewMemberAccountId);
+  [DBStoneValidators nonnullValidator:nil](sharedContentAccessLevel);
+
+  self = [super init];
+  if (self) {
+    _previousMemberAccountId = previousMemberAccountId;
+    _dNewMemberAccountId = dNewMemberAccountId;
+    _sharedContentAccessLevel = sharedContentAccessLevel;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGSharedFolderTransferMembershipDetailsSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGSharedFolderTransferMembershipDetailsSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGSharedFolderTransferMembershipDetailsSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.previousMemberAccountId hash];
+  result = prime * result + [self.dNewMemberAccountId hash];
+  result = prime * result + [self.sharedContentAccessLevel hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharedFolderTransferMembershipDetails:other];
+}
+
+- (BOOL)isEqualToSharedFolderTransferMembershipDetails:
+    (DBTEAMLOGSharedFolderTransferMembershipDetails *)aSharedFolderTransferMembershipDetails {
+  if (self == aSharedFolderTransferMembershipDetails) {
+    return YES;
+  }
+  if (![self.previousMemberAccountId isEqual:aSharedFolderTransferMembershipDetails.previousMemberAccountId]) {
+    return NO;
+  }
+  if (![self.dNewMemberAccountId isEqual:aSharedFolderTransferMembershipDetails.dNewMemberAccountId]) {
+    return NO;
+  }
+  if (![self.sharedContentAccessLevel isEqual:aSharedFolderTransferMembershipDetails.sharedContentAccessLevel]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGSharedFolderTransferMembershipDetailsSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderTransferMembershipDetails *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"previous_member_account_id"] = valueObj.previousMemberAccountId;
+  jsonDict[@"new_member_account_id"] = valueObj.dNewMemberAccountId;
+  jsonDict[@"shared_content_access_level"] =
+      [DBSHARINGAccessLevelSerializer serialize:valueObj.sharedContentAccessLevel];
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGSharedFolderTransferMembershipDetails *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *previousMemberAccountId = valueDict[@"previous_member_account_id"];
+  NSString *dNewMemberAccountId = valueDict[@"new_member_account_id"];
+  DBSHARINGAccessLevel *sharedContentAccessLevel =
+      [DBSHARINGAccessLevelSerializer deserialize:valueDict[@"shared_content_access_level"]];
+
+  return
+      [[DBTEAMLOGSharedFolderTransferMembershipDetails alloc] initWithPreviousMemberAccountId:previousMemberAccountId
+                                                                          dNewMemberAccountId:dNewMemberAccountId
+                                                                     sharedContentAccessLevel:sharedContentAccessLevel];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMLOGSharedFolderTransferMembershipType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMLOGSharedFolderTransferMembershipType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithDescription_:(NSString *)description_ {
+  [DBStoneValidators nonnullValidator:nil](description_);
+
+  self = [super init];
+  if (self) {
+    _description_ = description_;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMLOGSharedFolderTransferMembershipTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMLOGSharedFolderTransferMembershipTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMLOGSharedFolderTransferMembershipTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.description_ hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToSharedFolderTransferMembershipType:other];
+}
+
+- (BOOL)isEqualToSharedFolderTransferMembershipType:
+    (DBTEAMLOGSharedFolderTransferMembershipType *)aSharedFolderTransferMembershipType {
+  if (self == aSharedFolderTransferMembershipType) {
+    return YES;
+  }
+  if (![self.description_ isEqual:aSharedFolderTransferMembershipType.description_]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMLOGSharedFolderTransferMembershipTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMLOGSharedFolderTransferMembershipType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"description"] = valueObj.description_;
+
+  return jsonDict;
+}
+
++ (DBTEAMLOGSharedFolderTransferMembershipType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *description_ = valueDict[@"description"];
+
+  return [[DBTEAMLOGSharedFolderTransferMembershipType alloc] initWithDescription_:description_];
 }
 
 @end
