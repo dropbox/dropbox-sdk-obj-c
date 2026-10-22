@@ -1278,6 +1278,9 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
   /// (sharing) Changed parent of shared folder
   DBTEAMLOGEventTypeArgSharedFolderNest,
 
+  /// (sharing) Transferred shared folder membership to another member
+  DBTEAMLOGEventTypeArgSharedFolderTransferMembership,
+
   /// (sharing) Transferred ownership of shared folder to another member
   DBTEAMLOGEventTypeArgSharedFolderTransferOwnership,
 
@@ -6176,6 +6179,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithSharedFolderNest;
+
+///
+/// Initializes union class with tag state of
+/// "shared_folder_transfer_membership".
+///
+/// Description of the "shared_folder_transfer_membership" tag state: (sharing)
+/// Transferred shared folder membership to another member
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithSharedFolderTransferMembership;
 
 ///
 /// Initializes union class with tag state of
@@ -12233,6 +12247,15 @@ typedef NS_CLOSED_ENUM(NSInteger, DBTEAMLOGEventTypeArgTag) {
 /// "shared_folder_nest".
 ///
 - (BOOL)isSharedFolderNest;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "shared_folder_transfer_membership".
+///
+/// @return Whether the union's current tag state has value
+/// "shared_folder_transfer_membership".
+///
+- (BOOL)isSharedFolderTransferMembership;
 
 ///
 /// Retrieves whether the union's current tag state has value
