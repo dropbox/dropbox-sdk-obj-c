@@ -225,17 +225,6 @@
 #import "DBTEAMRouteObjects.h"
 #import "DBTEAMSetCustomQuotaArg.h"
 #import "DBTEAMSetCustomQuotaError.h"
-#import "DBTEAMSharingAllowlistAddArgs.h"
-#import "DBTEAMSharingAllowlistAddError.h"
-#import "DBTEAMSharingAllowlistAddResponse.h"
-#import "DBTEAMSharingAllowlistListArg.h"
-#import "DBTEAMSharingAllowlistListContinueArg.h"
-#import "DBTEAMSharingAllowlistListContinueError.h"
-#import "DBTEAMSharingAllowlistListError.h"
-#import "DBTEAMSharingAllowlistListResponse.h"
-#import "DBTEAMSharingAllowlistRemoveArgs.h"
-#import "DBTEAMSharingAllowlistRemoveError.h"
-#import "DBTEAMSharingAllowlistRemoveResponse.h"
 #import "DBTEAMStorageBucket.h"
 #import "DBTEAMTeamFolderAccessError.h"
 #import "DBTEAMTeamFolderActivateError.h"
@@ -753,18 +742,6 @@
   return [self.client requestRpc:route arg:arg];
 }
 
-- (DBRpcTask *)membersBulkSuspend:(NSArray<DBTEAMMembersSuspendBatchTarget *> *)members {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersBulkSuspend;
-  DBTEAMMembersSuspendBatchArg *arg = [[DBTEAMMembersSuspendBatchArg alloc] initWithMembers:members];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)membersBulkSuspendJobStatusCheck:(NSString *)asyncJobId {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersBulkSuspendJobStatusCheck;
-  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
-  return [self.client requestRpc:route arg:arg];
-}
-
 - (DBRpcTask *)membersDeleteFormerMemberFiles:(DBTEAMUserSelectorArg *)user {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMMembersDeleteFormerMemberFiles;
   DBTEAMMembersFormerMemberArg *arg = [[DBTEAMMembersFormerMemberArg alloc] initWithUser:user];
@@ -1103,49 +1080,6 @@
 - (DBRpcTask *)reportsGetStorage:(NSDate *)startDate endDate:(NSDate *)endDate {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMReportsGetStorage;
   DBTEAMDateRange *arg = [[DBTEAMDateRange alloc] initWithStartDate:startDate endDate:endDate];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)sharingAllowlistAdd {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMSharingAllowlistAdd;
-  DBTEAMSharingAllowlistAddArgs *arg = [[DBTEAMSharingAllowlistAddArgs alloc] initDefault];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)sharingAllowlistAdd:(NSArray<NSString *> *)domains emails:(NSArray<NSString *> *)emails {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMSharingAllowlistAdd;
-  DBTEAMSharingAllowlistAddArgs *arg = [[DBTEAMSharingAllowlistAddArgs alloc] initWithDomains:domains emails:emails];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)sharingAllowlistList {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMSharingAllowlistList;
-  DBTEAMSharingAllowlistListArg *arg = [[DBTEAMSharingAllowlistListArg alloc] initDefault];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)sharingAllowlistList:(NSNumber *)limit {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMSharingAllowlistList;
-  DBTEAMSharingAllowlistListArg *arg = [[DBTEAMSharingAllowlistListArg alloc] initWithLimit:limit];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)sharingAllowlistListContinue:(NSString *)cursor {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMSharingAllowlistListContinue;
-  DBTEAMSharingAllowlistListContinueArg *arg = [[DBTEAMSharingAllowlistListContinueArg alloc] initWithCursor:cursor];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)sharingAllowlistRemove {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMSharingAllowlistRemove;
-  DBTEAMSharingAllowlistRemoveArgs *arg = [[DBTEAMSharingAllowlistRemoveArgs alloc] initDefault];
-  return [self.client requestRpc:route arg:arg];
-}
-
-- (DBRpcTask *)sharingAllowlistRemove:(NSArray<NSString *> *)domains emails:(NSArray<NSString *> *)emails {
-  DBRoute *route = DBTEAMRouteObjects.DBTEAMSharingAllowlistRemove;
-  DBTEAMSharingAllowlistRemoveArgs *arg = [[DBTEAMSharingAllowlistRemoveArgs alloc] initWithDomains:domains
-                                                                                             emails:emails];
   return [self.client requestRpc:route arg:arg];
 }
 

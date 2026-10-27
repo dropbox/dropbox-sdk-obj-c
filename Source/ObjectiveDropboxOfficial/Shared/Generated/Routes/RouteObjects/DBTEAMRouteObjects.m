@@ -150,13 +150,6 @@
 #import "DBTEAMRevokeLinkedAppError.h"
 #import "DBTEAMRevokeLinkedAppStatus.h"
 #import "DBTEAMSetCustomQuotaError.h"
-#import "DBTEAMSharingAllowlistAddError.h"
-#import "DBTEAMSharingAllowlistAddResponse.h"
-#import "DBTEAMSharingAllowlistListContinueError.h"
-#import "DBTEAMSharingAllowlistListError.h"
-#import "DBTEAMSharingAllowlistListResponse.h"
-#import "DBTEAMSharingAllowlistRemoveError.h"
-#import "DBTEAMSharingAllowlistRemoveResponse.h"
 #import "DBTEAMStorageBucket.h"
 #import "DBTEAMTeamAuthRoutes.h"
 #import "DBTEAMTeamFolderAccessError.h"
@@ -239,8 +232,6 @@ static DBRoute *DBTEAMMembersAdd;
 static DBRoute *DBTEAMMembersAddV2;
 static DBRoute *DBTEAMMembersAddJobStatusGet;
 static DBRoute *DBTEAMMembersAddJobStatusGetV2;
-static DBRoute *DBTEAMMembersBulkSuspend;
-static DBRoute *DBTEAMMembersBulkSuspendJobStatusCheck;
 static DBRoute *DBTEAMMembersDeleteFormerMemberFiles;
 static DBRoute *DBTEAMMembersDeleteProfilePhoto;
 static DBRoute *DBTEAMMembersDeleteProfilePhotoV2;
@@ -278,10 +269,6 @@ static DBRoute *DBTEAMReportsGetActivity;
 static DBRoute *DBTEAMReportsGetDevices;
 static DBRoute *DBTEAMReportsGetMembership;
 static DBRoute *DBTEAMReportsGetStorage;
-static DBRoute *DBTEAMSharingAllowlistAdd;
-static DBRoute *DBTEAMSharingAllowlistList;
-static DBRoute *DBTEAMSharingAllowlistListContinue;
-static DBRoute *DBTEAMSharingAllowlistRemove;
 static DBRoute *DBTEAMTeamFolderActivate;
 static DBRoute *DBTEAMTeamFolderArchive;
 static DBRoute *DBTEAMTeamFolderArchiveCheck;
@@ -1015,39 +1002,6 @@ static NSObject *lockObj = nil;
   }
 }
 
-+ (DBRoute *)DBTEAMMembersBulkSuspend {
-  @synchronized(lockObj) {
-    if (!DBTEAMMembersBulkSuspend) {
-      DBTEAMMembersBulkSuspend = [[DBRoute alloc] init:@"members/bulk_suspend"
-                                            namespace_:@"team"
-                                            deprecated:@YES
-                                            resultType:[DBASYNCLaunchResultBase class]
-                                             errorType:[DBTEAMMembersSuspendBatchError class]
-                                                 attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                                 dataStructSerialBlock:nil
-                               dataStructDeserialBlock:nil];
-    }
-    return DBTEAMMembersBulkSuspend;
-  }
-}
-
-+ (DBRoute *)DBTEAMMembersBulkSuspendJobStatusCheck {
-  @synchronized(lockObj) {
-    if (!DBTEAMMembersBulkSuspendJobStatusCheck) {
-      DBTEAMMembersBulkSuspendJobStatusCheck =
-          [[DBRoute alloc] init:@"members/bulk_suspend/job_status/check"
-                           namespace_:@"team"
-                           deprecated:@YES
-                           resultType:[DBTEAMMembersSuspendBatchJobStatus class]
-                            errorType:[DBASYNCPollError class]
-                                attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                dataStructSerialBlock:nil
-              dataStructDeserialBlock:nil];
-    }
-    return DBTEAMMembersBulkSuspendJobStatusCheck;
-  }
-}
-
 + (DBRoute *)DBTEAMMembersDeleteFormerMemberFiles {
   @synchronized(lockObj) {
     if (!DBTEAMMembersDeleteFormerMemberFiles) {
@@ -1652,71 +1606,6 @@ static NSObject *lockObj = nil;
                               dataStructDeserialBlock:nil];
     }
     return DBTEAMReportsGetStorage;
-  }
-}
-
-+ (DBRoute *)DBTEAMSharingAllowlistAdd {
-  @synchronized(lockObj) {
-    if (!DBTEAMSharingAllowlistAdd) {
-      DBTEAMSharingAllowlistAdd = [[DBRoute alloc] init:@"sharing_allowlist/add"
-                                             namespace_:@"team"
-                                             deprecated:@NO
-                                             resultType:[DBTEAMSharingAllowlistAddResponse class]
-                                              errorType:[DBTEAMSharingAllowlistAddError class]
-                                                  attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                                  dataStructSerialBlock:nil
-                                dataStructDeserialBlock:nil];
-    }
-    return DBTEAMSharingAllowlistAdd;
-  }
-}
-
-+ (DBRoute *)DBTEAMSharingAllowlistList {
-  @synchronized(lockObj) {
-    if (!DBTEAMSharingAllowlistList) {
-      DBTEAMSharingAllowlistList = [[DBRoute alloc] init:@"sharing_allowlist/list"
-                                              namespace_:@"team"
-                                              deprecated:@NO
-                                              resultType:[DBTEAMSharingAllowlistListResponse class]
-                                               errorType:[DBTEAMSharingAllowlistListError class]
-                                                   attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                                   dataStructSerialBlock:nil
-                                 dataStructDeserialBlock:nil];
-    }
-    return DBTEAMSharingAllowlistList;
-  }
-}
-
-+ (DBRoute *)DBTEAMSharingAllowlistListContinue {
-  @synchronized(lockObj) {
-    if (!DBTEAMSharingAllowlistListContinue) {
-      DBTEAMSharingAllowlistListContinue =
-          [[DBRoute alloc] init:@"sharing_allowlist/list/continue"
-                           namespace_:@"team"
-                           deprecated:@NO
-                           resultType:[DBTEAMSharingAllowlistListResponse class]
-                            errorType:[DBTEAMSharingAllowlistListContinueError class]
-                                attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                dataStructSerialBlock:nil
-              dataStructDeserialBlock:nil];
-    }
-    return DBTEAMSharingAllowlistListContinue;
-  }
-}
-
-+ (DBRoute *)DBTEAMSharingAllowlistRemove {
-  @synchronized(lockObj) {
-    if (!DBTEAMSharingAllowlistRemove) {
-      DBTEAMSharingAllowlistRemove = [[DBRoute alloc] init:@"sharing_allowlist/remove"
-                                                namespace_:@"team"
-                                                deprecated:@NO
-                                                resultType:[DBTEAMSharingAllowlistRemoveResponse class]
-                                                 errorType:[DBTEAMSharingAllowlistRemoveError class]
-                                                     attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
-                                     dataStructSerialBlock:nil
-                                   dataStructDeserialBlock:nil];
-    }
-    return DBTEAMSharingAllowlistRemove;
   }
 }
 

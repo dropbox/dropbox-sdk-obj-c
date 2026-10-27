@@ -143,12 +143,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the membersAddJobStatusGetV2 route object.
 + (DBRoute *)DBTEAMMembersAddJobStatusGetV2;
 
-/// Accessor method for the membersBulkSuspend route object.
-+ (DBRoute *)DBTEAMMembersBulkSuspend;
-
-/// Accessor method for the membersBulkSuspendJobStatusCheck route object.
-+ (DBRoute *)DBTEAMMembersBulkSuspendJobStatusCheck;
-
 /// Accessor method for the membersDeleteFormerMemberFiles route object.
 + (DBRoute *)DBTEAMMembersDeleteFormerMemberFiles;
 
@@ -261,18 +255,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Accessor method for the reportsGetStorage route object.
 + (DBRoute *)DBTEAMReportsGetStorage;
-
-/// Accessor method for the sharingAllowlistAdd route object.
-+ (DBRoute *)DBTEAMSharingAllowlistAdd;
-
-/// Accessor method for the sharingAllowlistList route object.
-+ (DBRoute *)DBTEAMSharingAllowlistList;
-
-/// Accessor method for the sharingAllowlistListContinue route object.
-+ (DBRoute *)DBTEAMSharingAllowlistListContinue;
-
-/// Accessor method for the sharingAllowlistRemove route object.
-+ (DBRoute *)DBTEAMSharingAllowlistRemove;
 
 /// Accessor method for the teamFolderActivate route object.
 + (DBRoute *)DBTEAMTeamFolderActivate;
