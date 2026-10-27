@@ -57,10 +57,6 @@
 #import "DBACCOUNTThumbnailError.h"
 
 
-// `AccountId` namespace types
-
-
-
 // `Async` namespace types
 
 #import "DBASYNCLaunchEmptyResult.h"
