@@ -201019,17 +201019,19 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithSharedLinkAccessLevel:(DBTEAMLOGSharedLinkAccessLevel *)sharedLinkAccessLevel {
+- (instancetype)initWithSharedLinkAccessLevel:(DBTEAMLOGSharedLinkAccessLevel *)sharedLinkAccessLevel
+                                    subdomain:(NSString *)subdomain {
 
   self = [super init];
   if (self) {
     _sharedLinkAccessLevel = sharedLinkAccessLevel;
+    _subdomain = subdomain;
   }
   return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithSharedLinkAccessLevel:nil];
+  return [self initWithSharedLinkAccessLevel:nil subdomain:nil];
 }
 
 #pragma mark - Serialization methods
@@ -201065,6 +201067,9 @@
   if (self.sharedLinkAccessLevel != nil) {
     result = prime * result + [self.sharedLinkAccessLevel hash];
   }
+  if (self.subdomain != nil) {
+    result = prime * result + [self.subdomain hash];
+  }
 
   return prime * result;
 }
@@ -201090,6 +201095,11 @@
       return NO;
     }
   }
+  if (self.subdomain) {
+    if (![self.subdomain isEqual:aSharedLinkCreateDetails.subdomain]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -201106,6 +201116,9 @@
     jsonDict[@"shared_link_access_level"] =
         [DBTEAMLOGSharedLinkAccessLevelSerializer serialize:valueObj.sharedLinkAccessLevel];
   }
+  if (valueObj.subdomain) {
+    jsonDict[@"subdomain"] = valueObj.subdomain;
+  }
 
   return jsonDict;
 }
@@ -201115,8 +201128,10 @@
       valueDict[@"shared_link_access_level"]
           ? [DBTEAMLOGSharedLinkAccessLevelSerializer deserialize:valueDict[@"shared_link_access_level"]]
           : nil;
+  NSString *subdomain = valueDict[@"subdomain"] ?: nil;
 
-  return [[DBTEAMLOGSharedLinkCreateDetails alloc] initWithSharedLinkAccessLevel:sharedLinkAccessLevel];
+  return [[DBTEAMLOGSharedLinkCreateDetails alloc] initWithSharedLinkAccessLevel:sharedLinkAccessLevel
+                                                                       subdomain:subdomain];
 }
 
 @end
