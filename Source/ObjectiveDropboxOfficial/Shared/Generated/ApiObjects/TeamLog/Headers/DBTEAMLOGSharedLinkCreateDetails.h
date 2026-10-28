@@ -32,6 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// data gap.
 @property (nonatomic, readonly, nullable) DBTEAMLOGSharedLinkAccessLevel *sharedLinkAccessLevel;
 
+/// Team subdomain associated with this shared-link action.
+@property (nonatomic, readonly, copy, nullable) NSString *subdomain;
+
 #pragma mark - Constructors
 
 ///
@@ -39,10 +42,12 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// @param sharedLinkAccessLevel Defines who can access the shared link. Might
 /// be missing due to historical data gap.
+/// @param subdomain Team subdomain associated with this shared-link action.
 ///
 /// @return An initialized instance.
 ///
-- (instancetype)initWithSharedLinkAccessLevel:(nullable DBTEAMLOGSharedLinkAccessLevel *)sharedLinkAccessLevel;
+- (instancetype)initWithSharedLinkAccessLevel:(nullable DBTEAMLOGSharedLinkAccessLevel *)sharedLinkAccessLevel
+                                    subdomain:(nullable NSString *)subdomain;
 
 ///
 /// Convenience constructor (exposes only non-nullable instance variables with
