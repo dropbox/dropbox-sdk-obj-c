@@ -204833,17 +204833,18 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWithSharedLinkOwner:(DBTEAMLOGUserLogInfo *)sharedLinkOwner {
+- (instancetype)initWithSharedLinkOwner:(DBTEAMLOGUserLogInfo *)sharedLinkOwner subdomain:(NSString *)subdomain {
 
   self = [super init];
   if (self) {
     _sharedLinkOwner = sharedLinkOwner;
+    _subdomain = subdomain;
   }
   return self;
 }
 
 - (instancetype)initDefault {
-  return [self initWithSharedLinkOwner:nil];
+  return [self initWithSharedLinkOwner:nil subdomain:nil];
 }
 
 #pragma mark - Serialization methods
@@ -204879,6 +204880,9 @@
   if (self.sharedLinkOwner != nil) {
     result = prime * result + [self.sharedLinkOwner hash];
   }
+  if (self.subdomain != nil) {
+    result = prime * result + [self.subdomain hash];
+  }
 
   return prime * result;
 }
@@ -204904,6 +204908,11 @@
       return NO;
     }
   }
+  if (self.subdomain) {
+    if (![self.subdomain isEqual:aSharedLinkViewDetails.subdomain]) {
+      return NO;
+    }
+  }
   return YES;
 }
 
@@ -204919,6 +204928,9 @@
   if (valueObj.sharedLinkOwner) {
     jsonDict[@"shared_link_owner"] = [DBTEAMLOGUserLogInfoSerializer serialize:valueObj.sharedLinkOwner];
   }
+  if (valueObj.subdomain) {
+    jsonDict[@"subdomain"] = valueObj.subdomain;
+  }
 
   return jsonDict;
 }
@@ -204927,8 +204939,9 @@
   DBTEAMLOGUserLogInfo *sharedLinkOwner =
       valueDict[@"shared_link_owner"] ? [DBTEAMLOGUserLogInfoSerializer deserialize:valueDict[@"shared_link_owner"]]
                                       : nil;
+  NSString *subdomain = valueDict[@"subdomain"] ?: nil;
 
-  return [[DBTEAMLOGSharedLinkViewDetails alloc] initWithSharedLinkOwner:sharedLinkOwner];
+  return [[DBTEAMLOGSharedLinkViewDetails alloc] initWithSharedLinkOwner:sharedLinkOwner subdomain:subdomain];
 }
 
 @end
