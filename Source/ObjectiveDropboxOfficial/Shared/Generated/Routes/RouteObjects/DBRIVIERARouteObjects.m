@@ -10,6 +10,9 @@
 #import "DBRIVIERAAppAuthRoutes.h"
 #import "DBRIVIERAContentApiV2Error.h"
 #import "DBRIVIERADownloadTransformOutputResult.h"
+#import "DBRIVIERAExtractApiV2Error.h"
+#import "DBRIVIERAExtractAsyncCheckResult.h"
+#import "DBRIVIERAExtractResult.h"
 #import "DBRIVIERAGetKeyframesAsyncCheckResult.h"
 #import "DBRIVIERAGetKeyframesResult.h"
 #import "DBRIVIERAGetMarkdownAsyncCheckResult.h"
@@ -36,6 +39,8 @@
 @implementation DBRIVIERARouteObjects
 
 static DBRoute *DBRIVIERADownloadTransformOutput;
+static DBRoute *DBRIVIERAExtractAsync;
+static DBRoute *DBRIVIERAExtractAsyncCheck;
 static DBRoute *DBRIVIERAGetKeyframesAsync;
 static DBRoute *DBRIVIERAGetKeyframesAsyncCheck;
 static DBRoute *DBRIVIERAGetMarkdownAsync;
@@ -73,6 +78,38 @@ static NSObject *lockObj = nil;
               dataStructDeserialBlock:nil];
     }
     return DBRIVIERADownloadTransformOutput;
+  }
+}
+
++ (DBRoute *)DBRIVIERAExtractAsync {
+  @synchronized(lockObj) {
+    if (!DBRIVIERAExtractAsync) {
+      DBRIVIERAExtractAsync = [[DBRoute alloc] init:@"extract_async"
+                                         namespace_:@"riviera"
+                                         deprecated:@NO
+                                         resultType:[DBASYNCLaunchResultBase class]
+                                          errorType:nil
+                                              attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
+                              dataStructSerialBlock:nil
+                            dataStructDeserialBlock:nil];
+    }
+    return DBRIVIERAExtractAsync;
+  }
+}
+
++ (DBRoute *)DBRIVIERAExtractAsyncCheck {
+  @synchronized(lockObj) {
+    if (!DBRIVIERAExtractAsyncCheck) {
+      DBRIVIERAExtractAsyncCheck = [[DBRoute alloc] init:@"extract_async/check"
+                                              namespace_:@"riviera"
+                                              deprecated:@NO
+                                              resultType:[DBRIVIERAExtractAsyncCheckResult class]
+                                               errorType:[DBASYNCPollError class]
+                                                   attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
+                                   dataStructSerialBlock:nil
+                                 dataStructDeserialBlock:nil];
+    }
+    return DBRIVIERAExtractAsyncCheck;
   }
 }
 

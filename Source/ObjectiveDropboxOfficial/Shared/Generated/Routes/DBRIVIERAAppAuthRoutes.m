@@ -11,6 +11,11 @@
 #import "DBRIVIERAContentApiV2Error.h"
 #import "DBRIVIERADownloadTransformOutputArgs.h"
 #import "DBRIVIERADownloadTransformOutputResult.h"
+#import "DBRIVIERAExtractApiV2Error.h"
+#import "DBRIVIERAExtractArgs.h"
+#import "DBRIVIERAExtractAsyncCheckResult.h"
+#import "DBRIVIERAExtractResult.h"
+#import "DBRIVIERAExtractType.h"
 #import "DBRIVIERAFileIdOrUrl.h"
 #import "DBRIVIERAGetKeyframesArgs.h"
 #import "DBRIVIERAGetKeyframesAsyncCheckResult.h"
@@ -98,6 +103,24 @@
   DBRIVIERADownloadTransformOutputArgs *arg =
       [[DBRIVIERADownloadTransformOutputArgs alloc] initWithOutputHandle:outputHandle];
   return [self.client requestDownload:route arg:arg byteOffsetStart:byteOffsetStart byteOffsetEnd:byteOffsetEnd];
+}
+
+- (DBRpcTask *)extractAsync:(DBRIVIERAExtractType *)extractType {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERAExtractAsync;
+  DBRIVIERAExtractArgs *arg = [[DBRIVIERAExtractArgs alloc] initWithExtractType:extractType];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)extractAsync:(DBRIVIERAExtractType *)extractType fileIdOrUrl:(DBRIVIERAFileIdOrUrl *)fileIdOrUrl {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERAExtractAsync;
+  DBRIVIERAExtractArgs *arg = [[DBRIVIERAExtractArgs alloc] initWithExtractType:extractType fileIdOrUrl:fileIdOrUrl];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)extractAsyncCheck:(NSString *)asyncJobId {
+  DBRoute *route = DBRIVIERARouteObjects.DBRIVIERAExtractAsyncCheck;
+  DBASYNCPollArg *arg = [[DBASYNCPollArg alloc] initWithAsyncJobId:asyncJobId];
+  return [self.client requestRpc:route arg:arg];
 }
 
 - (DBRpcTask *)getKeyframesAsync {
