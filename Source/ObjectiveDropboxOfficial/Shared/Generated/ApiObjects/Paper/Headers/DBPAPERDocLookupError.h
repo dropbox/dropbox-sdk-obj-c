@@ -40,6 +40,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBPAPERDocLookupErrorTag) {
   /// The required doc was not found.
   DBPAPERDocLookupErrorDocNotFound,
 
+  /// Cloud Docs do not have legacy Paper folders. Use the Dropbox filesystem
+  /// APIs to look up their containing folders.
+  DBPAPERDocLookupErrorFolderNotFound,
+
 };
 
 /// Represents the union's current tag state.
@@ -77,6 +81,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBPAPERDocLookupErrorTag) {
 ///
 - (instancetype)initWithDocNotFound;
 
+///
+/// Initializes union class with tag state of "folder_not_found".
+///
+/// Description of the "folder_not_found" tag state: Cloud Docs do not have
+/// legacy Paper folders. Use the Dropbox filesystem APIs to look up their
+/// containing folders.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithFolderNotFound;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Tag state methods
@@ -103,6 +118,14 @@ typedef NS_CLOSED_ENUM(NSInteger, DBPAPERDocLookupErrorTag) {
 /// @return Whether the union's current tag state has value "doc_not_found".
 ///
 - (BOOL)isDocNotFound;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "folder_not_found".
+///
+/// @return Whether the union's current tag state has value "folder_not_found".
+///
+- (BOOL)isFolderNotFound;
 
 ///
 /// Retrieves string value of union's current tag state.

@@ -1071,6 +1071,14 @@
   return self;
 }
 
+- (instancetype)initWithFolderNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBPAPERDocLookupErrorFolderNotFound;
+  }
+  return self;
+}
+
 #pragma mark - Instance field accessors
 
 #pragma mark - Tag state methods
@@ -1087,6 +1095,10 @@
   return _tag == DBPAPERDocLookupErrorDocNotFound;
 }
 
+- (BOOL)isFolderNotFound {
+  return _tag == DBPAPERDocLookupErrorFolderNotFound;
+}
+
 - (NSString *)tagName {
   switch (_tag) {
   case DBPAPERDocLookupErrorInsufficientPermissions:
@@ -1095,6 +1107,8 @@
     return @"DBPAPERDocLookupErrorOther";
   case DBPAPERDocLookupErrorDocNotFound:
     return @"DBPAPERDocLookupErrorDocNotFound";
+  case DBPAPERDocLookupErrorFolderNotFound:
+    return @"DBPAPERDocLookupErrorFolderNotFound";
   }
 
   @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
@@ -1140,6 +1154,9 @@
   case DBPAPERDocLookupErrorDocNotFound:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBPAPERDocLookupErrorFolderNotFound:
+    result = prime * result + [[self tagName] hash];
+    break;
   }
 
   return prime * result;
@@ -1171,6 +1188,8 @@
     return [[self tagName] isEqual:[aDocLookupError tagName]];
   case DBPAPERDocLookupErrorDocNotFound:
     return [[self tagName] isEqual:[aDocLookupError tagName]];
+  case DBPAPERDocLookupErrorFolderNotFound:
+    return [[self tagName] isEqual:[aDocLookupError tagName]];
   }
   return YES;
 }
@@ -1190,6 +1209,8 @@
     jsonDict[@".tag"] = @"other";
   } else if ([valueObj isDocNotFound]) {
     jsonDict[@".tag"] = @"doc_not_found";
+  } else if ([valueObj isFolderNotFound]) {
+    jsonDict[@".tag"] = @"folder_not_found";
   } else {
     jsonDict[@".tag"] = @"other";
   }
@@ -1206,6 +1227,8 @@
     return [[DBPAPERDocLookupError alloc] initWithOther];
   } else if ([tag isEqualToString:@"doc_not_found"]) {
     return [[DBPAPERDocLookupError alloc] initWithDocNotFound];
+  } else if ([tag isEqualToString:@"folder_not_found"]) {
+    return [[DBPAPERDocLookupError alloc] initWithFolderNotFound];
   } else {
     return [[DBPAPERDocLookupError alloc] initWithOther];
   }
@@ -6478,6 +6501,14 @@
   return self;
 }
 
+- (instancetype)initWithFolderNotFound {
+  self = [super init];
+  if (self) {
+    _tag = DBPAPERPaperDocUpdateErrorFolderNotFound;
+  }
+  return self;
+}
+
 - (instancetype)initWithContentMalformed {
   self = [super init];
   if (self) {
@@ -6542,6 +6573,10 @@
   return _tag == DBPAPERPaperDocUpdateErrorDocNotFound;
 }
 
+- (BOOL)isFolderNotFound {
+  return _tag == DBPAPERPaperDocUpdateErrorFolderNotFound;
+}
+
 - (BOOL)isContentMalformed {
   return _tag == DBPAPERPaperDocUpdateErrorContentMalformed;
 }
@@ -6574,6 +6609,8 @@
     return @"DBPAPERPaperDocUpdateErrorOther";
   case DBPAPERPaperDocUpdateErrorDocNotFound:
     return @"DBPAPERPaperDocUpdateErrorDocNotFound";
+  case DBPAPERPaperDocUpdateErrorFolderNotFound:
+    return @"DBPAPERPaperDocUpdateErrorFolderNotFound";
   case DBPAPERPaperDocUpdateErrorContentMalformed:
     return @"DBPAPERPaperDocUpdateErrorContentMalformed";
   case DBPAPERPaperDocUpdateErrorRevisionMismatch:
@@ -6631,6 +6668,9 @@
   case DBPAPERPaperDocUpdateErrorDocNotFound:
     result = prime * result + [[self tagName] hash];
     break;
+  case DBPAPERPaperDocUpdateErrorFolderNotFound:
+    result = prime * result + [[self tagName] hash];
+    break;
   case DBPAPERPaperDocUpdateErrorContentMalformed:
     result = prime * result + [[self tagName] hash];
     break;
@@ -6680,6 +6720,8 @@
     return [[self tagName] isEqual:[aPaperDocUpdateError tagName]];
   case DBPAPERPaperDocUpdateErrorDocNotFound:
     return [[self tagName] isEqual:[aPaperDocUpdateError tagName]];
+  case DBPAPERPaperDocUpdateErrorFolderNotFound:
+    return [[self tagName] isEqual:[aPaperDocUpdateError tagName]];
   case DBPAPERPaperDocUpdateErrorContentMalformed:
     return [[self tagName] isEqual:[aPaperDocUpdateError tagName]];
   case DBPAPERPaperDocUpdateErrorRevisionMismatch:
@@ -6711,6 +6753,8 @@
     jsonDict[@".tag"] = @"other";
   } else if ([valueObj isDocNotFound]) {
     jsonDict[@".tag"] = @"doc_not_found";
+  } else if ([valueObj isFolderNotFound]) {
+    jsonDict[@".tag"] = @"folder_not_found";
   } else if ([valueObj isContentMalformed]) {
     jsonDict[@".tag"] = @"content_malformed";
   } else if ([valueObj isRevisionMismatch]) {
@@ -6739,6 +6783,8 @@
     return [[DBPAPERPaperDocUpdateError alloc] initWithOther];
   } else if ([tag isEqualToString:@"doc_not_found"]) {
     return [[DBPAPERPaperDocUpdateError alloc] initWithDocNotFound];
+  } else if ([tag isEqualToString:@"folder_not_found"]) {
+    return [[DBPAPERPaperDocUpdateError alloc] initWithFolderNotFound];
   } else if ([tag isEqualToString:@"content_malformed"]) {
     return [[DBPAPERPaperDocUpdateError alloc] initWithContentMalformed];
   } else if ([tag isEqualToString:@"revision_mismatch"]) {

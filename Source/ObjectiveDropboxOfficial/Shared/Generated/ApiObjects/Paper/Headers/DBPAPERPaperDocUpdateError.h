@@ -40,6 +40,10 @@ typedef NS_CLOSED_ENUM(NSInteger, DBPAPERPaperDocUpdateErrorTag) {
   /// The required doc was not found.
   DBPAPERPaperDocUpdateErrorDocNotFound,
 
+  /// Cloud Docs do not have legacy Paper folders. Use the Dropbox filesystem
+  /// APIs to look up their containing folders.
+  DBPAPERPaperDocUpdateErrorFolderNotFound,
+
   /// The provided content was malformed and cannot be imported to Paper.
   DBPAPERPaperDocUpdateErrorContentMalformed,
 
@@ -96,6 +100,17 @@ typedef NS_CLOSED_ENUM(NSInteger, DBPAPERPaperDocUpdateErrorTag) {
 /// @return An initialized instance.
 ///
 - (instancetype)initWithDocNotFound;
+
+///
+/// Initializes union class with tag state of "folder_not_found".
+///
+/// Description of the "folder_not_found" tag state: Cloud Docs do not have
+/// legacy Paper folders. Use the Dropbox filesystem APIs to look up their
+/// containing folders.
+///
+/// @return An initialized instance.
+///
+- (instancetype)initWithFolderNotFound;
 
 ///
 /// Initializes union class with tag state of "content_malformed".
@@ -184,6 +199,14 @@ typedef NS_CLOSED_ENUM(NSInteger, DBPAPERPaperDocUpdateErrorTag) {
 /// @return Whether the union's current tag state has value "doc_not_found".
 ///
 - (BOOL)isDocNotFound;
+
+///
+/// Retrieves whether the union's current tag state has value
+/// "folder_not_found".
+///
+/// @return Whether the union's current tag state has value "folder_not_found".
+///
+- (BOOL)isFolderNotFound;
 
 ///
 /// Retrieves whether the union's current tag state has value
