@@ -235,6 +235,8 @@
 #import "DBTEAMTeamFolderCreateArg.h"
 #import "DBTEAMTeamFolderCreateError.h"
 #import "DBTEAMTeamFolderGetInfoItem.h"
+#import "DBTEAMTeamFolderGetSpaceLimitError.h"
+#import "DBTEAMTeamFolderGetSpaceLimitResponse.h"
 #import "DBTEAMTeamFolderIdArg.h"
 #import "DBTEAMTeamFolderIdListArg.h"
 #import "DBTEAMTeamFolderInvalidStatusError.h"
@@ -248,6 +250,10 @@
 #import "DBTEAMTeamFolderRenameArg.h"
 #import "DBTEAMTeamFolderRenameError.h"
 #import "DBTEAMTeamFolderRestoreError.h"
+#import "DBTEAMTeamFolderSetSpaceLimitArg.h"
+#import "DBTEAMTeamFolderSetSpaceLimitError.h"
+#import "DBTEAMTeamFolderSpaceLimitCapsType.h"
+#import "DBTEAMTeamFolderSpaceLimitNotificationTarget.h"
 #import "DBTEAMTeamFolderStatus.h"
 #import "DBTEAMTeamFolderTeamSharedDropboxError.h"
 #import "DBTEAMTeamFolderUpdateSyncSettingsArg.h"
@@ -1159,6 +1165,25 @@
 - (DBRpcTask *)teamFolderRestore:(NSString *)teamFolderId {
   DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderRestore;
   DBTEAMTeamFolderIdArg *arg = [[DBTEAMTeamFolderIdArg alloc] initWithTeamFolderId:teamFolderId];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderSpaceLimitGet:(NSString *)teamFolderId {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderSpaceLimitGet;
+  DBTEAMTeamFolderIdArg *arg = [[DBTEAMTeamFolderIdArg alloc] initWithTeamFolderId:teamFolderId];
+  return [self.client requestRpc:route arg:arg];
+}
+
+- (DBRpcTask *)teamFolderSpaceLimitSet:(NSString *)teamFolderId
+                       spaceLimitBytes:(NSNumber *)spaceLimitBytes
+                              capsType:(DBTEAMTeamFolderSpaceLimitCapsType *)capsType
+                    notificationTarget:(DBTEAMTeamFolderSpaceLimitNotificationTarget *)notificationTarget {
+  DBRoute *route = DBTEAMRouteObjects.DBTEAMTeamFolderSpaceLimitSet;
+  DBTEAMTeamFolderSetSpaceLimitArg *arg =
+      [[DBTEAMTeamFolderSetSpaceLimitArg alloc] initWithTeamFolderId:teamFolderId
+                                                     spaceLimitBytes:spaceLimitBytes
+                                                            capsType:capsType
+                                                  notificationTarget:notificationTarget];
   return [self.client requestRpc:route arg:arg];
 }
 

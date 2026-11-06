@@ -286,6 +286,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// Accessor method for the teamFolderRestore route object.
 + (DBRoute *)DBTEAMTeamFolderRestore;
 
+/// Accessor method for the teamFolderSpaceLimitGet route object.
++ (DBRoute *)DBTEAMTeamFolderSpaceLimitGet;
+
+/// Accessor method for the teamFolderSpaceLimitSet route object.
++ (DBRoute *)DBTEAMTeamFolderSpaceLimitSet;
+
 /// Accessor method for the teamFolderUpdateSyncSettings route object.
 + (DBRoute *)DBTEAMTeamFolderUpdateSyncSettings;
 

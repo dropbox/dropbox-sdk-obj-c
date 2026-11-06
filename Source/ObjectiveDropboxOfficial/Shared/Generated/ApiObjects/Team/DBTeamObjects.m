@@ -39738,6 +39738,383 @@
 
 #import "DBStoneSerializers.h"
 #import "DBStoneValidators.h"
+#import "DBTEAMBaseTeamFolderError.h"
+#import "DBTEAMTeamFolderAccessError.h"
+#import "DBTEAMTeamFolderGetSpaceLimitError.h"
+#import "DBTEAMTeamFolderInvalidStatusError.h"
+#import "DBTEAMTeamFolderTeamSharedDropboxError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMTeamFolderGetSpaceLimitError
+
+@synthesize accessError = _accessError;
+@synthesize statusError = _statusError;
+@synthesize teamSharedDropboxError = _teamSharedDropboxError;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithAccessError:(DBTEAMTeamFolderAccessError *)accessError {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderGetSpaceLimitErrorAccessError;
+    _accessError = accessError;
+  }
+  return self;
+}
+
+- (instancetype)initWithStatusError:(DBTEAMTeamFolderInvalidStatusError *)statusError {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderGetSpaceLimitErrorStatusError;
+    _statusError = statusError;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamSharedDropboxError:(DBTEAMTeamFolderTeamSharedDropboxError *)teamSharedDropboxError {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderGetSpaceLimitErrorTeamSharedDropboxError;
+    _teamSharedDropboxError = teamSharedDropboxError;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderGetSpaceLimitErrorOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBTEAMTeamFolderAccessError *)accessError {
+  if (![self isAccessError]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMTeamFolderGetSpaceLimitErrorAccessError, but was %@.", [self tagName]];
+  }
+  return _accessError;
+}
+
+- (DBTEAMTeamFolderInvalidStatusError *)statusError {
+  if (![self isStatusError]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMTeamFolderGetSpaceLimitErrorStatusError, but was %@.", [self tagName]];
+  }
+  return _statusError;
+}
+
+- (DBTEAMTeamFolderTeamSharedDropboxError *)teamSharedDropboxError {
+  if (![self isTeamSharedDropboxError]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMTeamFolderGetSpaceLimitErrorTeamSharedDropboxError, but was %@.",
+                       [self tagName]];
+  }
+  return _teamSharedDropboxError;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isAccessError {
+  return _tag == DBTEAMTeamFolderGetSpaceLimitErrorAccessError;
+}
+
+- (BOOL)isStatusError {
+  return _tag == DBTEAMTeamFolderGetSpaceLimitErrorStatusError;
+}
+
+- (BOOL)isTeamSharedDropboxError {
+  return _tag == DBTEAMTeamFolderGetSpaceLimitErrorTeamSharedDropboxError;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMTeamFolderGetSpaceLimitErrorOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMTeamFolderGetSpaceLimitErrorAccessError:
+    return @"DBTEAMTeamFolderGetSpaceLimitErrorAccessError";
+  case DBTEAMTeamFolderGetSpaceLimitErrorStatusError:
+    return @"DBTEAMTeamFolderGetSpaceLimitErrorStatusError";
+  case DBTEAMTeamFolderGetSpaceLimitErrorTeamSharedDropboxError:
+    return @"DBTEAMTeamFolderGetSpaceLimitErrorTeamSharedDropboxError";
+  case DBTEAMTeamFolderGetSpaceLimitErrorOther:
+    return @"DBTEAMTeamFolderGetSpaceLimitErrorOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMTeamFolderGetSpaceLimitErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMTeamFolderGetSpaceLimitErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMTeamFolderGetSpaceLimitErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderGetSpaceLimitErrorAccessError:
+    result = prime * result + [self.accessError hash];
+    break;
+  case DBTEAMTeamFolderGetSpaceLimitErrorStatusError:
+    result = prime * result + [self.statusError hash];
+    break;
+  case DBTEAMTeamFolderGetSpaceLimitErrorTeamSharedDropboxError:
+    result = prime * result + [self.teamSharedDropboxError hash];
+    break;
+  case DBTEAMTeamFolderGetSpaceLimitErrorOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderGetSpaceLimitError:other];
+}
+
+- (BOOL)isEqualToTeamFolderGetSpaceLimitError:(DBTEAMTeamFolderGetSpaceLimitError *)aTeamFolderGetSpaceLimitError {
+  if (self == aTeamFolderGetSpaceLimitError) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderGetSpaceLimitError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderGetSpaceLimitErrorAccessError:
+    return [self.accessError isEqual:aTeamFolderGetSpaceLimitError.accessError];
+  case DBTEAMTeamFolderGetSpaceLimitErrorStatusError:
+    return [self.statusError isEqual:aTeamFolderGetSpaceLimitError.statusError];
+  case DBTEAMTeamFolderGetSpaceLimitErrorTeamSharedDropboxError:
+    return [self.teamSharedDropboxError isEqual:aTeamFolderGetSpaceLimitError.teamSharedDropboxError];
+  case DBTEAMTeamFolderGetSpaceLimitErrorOther:
+    return [[self tagName] isEqual:[aTeamFolderGetSpaceLimitError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMTeamFolderGetSpaceLimitErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamFolderGetSpaceLimitError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isAccessError]) {
+    jsonDict[@"access_error"] = [[DBTEAMTeamFolderAccessErrorSerializer serialize:valueObj.accessError] mutableCopy];
+    jsonDict[@".tag"] = @"access_error";
+  } else if ([valueObj isStatusError]) {
+    jsonDict[@"status_error"] =
+        [[DBTEAMTeamFolderInvalidStatusErrorSerializer serialize:valueObj.statusError] mutableCopy];
+    jsonDict[@".tag"] = @"status_error";
+  } else if ([valueObj isTeamSharedDropboxError]) {
+    jsonDict[@"team_shared_dropbox_error"] =
+        [[DBTEAMTeamFolderTeamSharedDropboxErrorSerializer serialize:valueObj.teamSharedDropboxError] mutableCopy];
+    jsonDict[@".tag"] = @"team_shared_dropbox_error";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMTeamFolderGetSpaceLimitError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"access_error"]) {
+    DBTEAMTeamFolderAccessError *accessError =
+        [DBTEAMTeamFolderAccessErrorSerializer deserialize:valueDict[@"access_error"]];
+    return [[DBTEAMTeamFolderGetSpaceLimitError alloc] initWithAccessError:accessError];
+  } else if ([tag isEqualToString:@"status_error"]) {
+    DBTEAMTeamFolderInvalidStatusError *statusError =
+        [DBTEAMTeamFolderInvalidStatusErrorSerializer deserialize:valueDict[@"status_error"]];
+    return [[DBTEAMTeamFolderGetSpaceLimitError alloc] initWithStatusError:statusError];
+  } else if ([tag isEqualToString:@"team_shared_dropbox_error"]) {
+    DBTEAMTeamFolderTeamSharedDropboxError *teamSharedDropboxError =
+        [DBTEAMTeamFolderTeamSharedDropboxErrorSerializer deserialize:valueDict[@"team_shared_dropbox_error"]];
+    return [[DBTEAMTeamFolderGetSpaceLimitError alloc] initWithTeamSharedDropboxError:teamSharedDropboxError];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMTeamFolderGetSpaceLimitError alloc] initWithOther];
+  } else {
+    return [[DBTEAMTeamFolderGetSpaceLimitError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMTeamFolderGetSpaceLimitResponse.h"
+#import "DBTEAMTeamFolderSpaceLimitCapsType.h"
+#import "DBTEAMTeamFolderSpaceLimitNotificationTarget.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMTeamFolderGetSpaceLimitResponse
+
+#pragma mark - Constructors
+
+- (instancetype)initWithCapsType:(DBTEAMTeamFolderSpaceLimitCapsType *)capsType
+              notificationTarget:(DBTEAMTeamFolderSpaceLimitNotificationTarget *)notificationTarget
+                 spaceLimitBytes:(NSNumber *)spaceLimitBytes {
+  [DBStoneValidators nonnullValidator:nil](capsType);
+  [DBStoneValidators nonnullValidator:nil](notificationTarget);
+
+  self = [super init];
+  if (self) {
+    _spaceLimitBytes = spaceLimitBytes ?: @(0);
+    _capsType = capsType;
+    _notificationTarget = notificationTarget;
+  }
+  return self;
+}
+
+- (instancetype)initWithCapsType:(DBTEAMTeamFolderSpaceLimitCapsType *)capsType
+              notificationTarget:(DBTEAMTeamFolderSpaceLimitNotificationTarget *)notificationTarget {
+  return [self initWithCapsType:capsType notificationTarget:notificationTarget spaceLimitBytes:nil];
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMTeamFolderGetSpaceLimitResponseSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMTeamFolderGetSpaceLimitResponseSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMTeamFolderGetSpaceLimitResponseSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.capsType hash];
+  result = prime * result + [self.notificationTarget hash];
+  result = prime * result + [self.spaceLimitBytes hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderGetSpaceLimitResponse:other];
+}
+
+- (BOOL)isEqualToTeamFolderGetSpaceLimitResponse:
+    (DBTEAMTeamFolderGetSpaceLimitResponse *)aTeamFolderGetSpaceLimitResponse {
+  if (self == aTeamFolderGetSpaceLimitResponse) {
+    return YES;
+  }
+  if (![self.capsType isEqual:aTeamFolderGetSpaceLimitResponse.capsType]) {
+    return NO;
+  }
+  if (![self.notificationTarget isEqual:aTeamFolderGetSpaceLimitResponse.notificationTarget]) {
+    return NO;
+  }
+  if (![self.spaceLimitBytes isEqual:aTeamFolderGetSpaceLimitResponse.spaceLimitBytes]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMTeamFolderGetSpaceLimitResponseSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamFolderGetSpaceLimitResponse *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"caps_type"] = [DBTEAMTeamFolderSpaceLimitCapsTypeSerializer serialize:valueObj.capsType];
+  jsonDict[@"notification_target"] =
+      [DBTEAMTeamFolderSpaceLimitNotificationTargetSerializer serialize:valueObj.notificationTarget];
+  jsonDict[@"space_limit_bytes"] = valueObj.spaceLimitBytes;
+
+  return jsonDict;
+}
+
++ (DBTEAMTeamFolderGetSpaceLimitResponse *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  DBTEAMTeamFolderSpaceLimitCapsType *capsType =
+      [DBTEAMTeamFolderSpaceLimitCapsTypeSerializer deserialize:valueDict[@"caps_type"]];
+  DBTEAMTeamFolderSpaceLimitNotificationTarget *notificationTarget =
+      [DBTEAMTeamFolderSpaceLimitNotificationTargetSerializer deserialize:valueDict[@"notification_target"]];
+  NSNumber *spaceLimitBytes = valueDict[@"space_limit_bytes"] ?: @(0);
+
+  return [[DBTEAMTeamFolderGetSpaceLimitResponse alloc] initWithCapsType:capsType
+                                                      notificationTarget:notificationTarget
+                                                         spaceLimitBytes:spaceLimitBytes];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
 #import "DBTEAMTeamFolderIdListArg.h"
 
 #pragma mark - API Object
@@ -41756,6 +42133,857 @@
     return [[DBTEAMTeamFolderRestoreError alloc] initWithFolderCountLimitExceeded];
   } else {
     return [[DBTEAMTeamFolderRestoreError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMTeamFolderIdArg.h"
+#import "DBTEAMTeamFolderSetSpaceLimitArg.h"
+#import "DBTEAMTeamFolderSpaceLimitCapsType.h"
+#import "DBTEAMTeamFolderSpaceLimitNotificationTarget.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMTeamFolderSetSpaceLimitArg
+
+#pragma mark - Constructors
+
+- (instancetype)initWithTeamFolderId:(NSString *)teamFolderId
+                     spaceLimitBytes:(NSNumber *)spaceLimitBytes
+                            capsType:(DBTEAMTeamFolderSpaceLimitCapsType *)capsType
+                  notificationTarget:(DBTEAMTeamFolderSpaceLimitNotificationTarget *)notificationTarget {
+  [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
+                                                                 pattern:@"[-_0-9a-zA-Z:]+"]](teamFolderId);
+  [DBStoneValidators nonnullValidator:nil](spaceLimitBytes);
+  [DBStoneValidators nonnullValidator:nil](capsType);
+  [DBStoneValidators nonnullValidator:nil](notificationTarget);
+
+  self = [super initWithTeamFolderId:teamFolderId];
+  if (self) {
+    _spaceLimitBytes = spaceLimitBytes;
+    _capsType = capsType;
+    _notificationTarget = notificationTarget;
+  }
+  return self;
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMTeamFolderSetSpaceLimitArgSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMTeamFolderSetSpaceLimitArgSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMTeamFolderSetSpaceLimitArgSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  result = prime * result + [self.teamFolderId hash];
+  result = prime * result + [self.spaceLimitBytes hash];
+  result = prime * result + [self.capsType hash];
+  result = prime * result + [self.notificationTarget hash];
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderSetSpaceLimitArg:other];
+}
+
+- (BOOL)isEqualToTeamFolderSetSpaceLimitArg:(DBTEAMTeamFolderSetSpaceLimitArg *)aTeamFolderSetSpaceLimitArg {
+  if (self == aTeamFolderSetSpaceLimitArg) {
+    return YES;
+  }
+  if (![self.teamFolderId isEqual:aTeamFolderSetSpaceLimitArg.teamFolderId]) {
+    return NO;
+  }
+  if (![self.spaceLimitBytes isEqual:aTeamFolderSetSpaceLimitArg.spaceLimitBytes]) {
+    return NO;
+  }
+  if (![self.capsType isEqual:aTeamFolderSetSpaceLimitArg.capsType]) {
+    return NO;
+  }
+  if (![self.notificationTarget isEqual:aTeamFolderSetSpaceLimitArg.notificationTarget]) {
+    return NO;
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMTeamFolderSetSpaceLimitArgSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamFolderSetSpaceLimitArg *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  jsonDict[@"team_folder_id"] = valueObj.teamFolderId;
+  jsonDict[@"space_limit_bytes"] = valueObj.spaceLimitBytes;
+  jsonDict[@"caps_type"] = [DBTEAMTeamFolderSpaceLimitCapsTypeSerializer serialize:valueObj.capsType];
+  jsonDict[@"notification_target"] =
+      [DBTEAMTeamFolderSpaceLimitNotificationTargetSerializer serialize:valueObj.notificationTarget];
+
+  return jsonDict;
+}
+
++ (DBTEAMTeamFolderSetSpaceLimitArg *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *teamFolderId = valueDict[@"team_folder_id"];
+  NSNumber *spaceLimitBytes = valueDict[@"space_limit_bytes"];
+  DBTEAMTeamFolderSpaceLimitCapsType *capsType =
+      [DBTEAMTeamFolderSpaceLimitCapsTypeSerializer deserialize:valueDict[@"caps_type"]];
+  DBTEAMTeamFolderSpaceLimitNotificationTarget *notificationTarget =
+      [DBTEAMTeamFolderSpaceLimitNotificationTargetSerializer deserialize:valueDict[@"notification_target"]];
+
+  return [[DBTEAMTeamFolderSetSpaceLimitArg alloc] initWithTeamFolderId:teamFolderId
+                                                        spaceLimitBytes:spaceLimitBytes
+                                                               capsType:capsType
+                                                     notificationTarget:notificationTarget];
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMBaseTeamFolderError.h"
+#import "DBTEAMTeamFolderAccessError.h"
+#import "DBTEAMTeamFolderInvalidStatusError.h"
+#import "DBTEAMTeamFolderSetSpaceLimitError.h"
+#import "DBTEAMTeamFolderTeamSharedDropboxError.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMTeamFolderSetSpaceLimitError
+
+@synthesize accessError = _accessError;
+@synthesize statusError = _statusError;
+@synthesize teamSharedDropboxError = _teamSharedDropboxError;
+
+#pragma mark - Constructors
+
+- (instancetype)initWithAccessError:(DBTEAMTeamFolderAccessError *)accessError {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSetSpaceLimitErrorAccessError;
+    _accessError = accessError;
+  }
+  return self;
+}
+
+- (instancetype)initWithStatusError:(DBTEAMTeamFolderInvalidStatusError *)statusError {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSetSpaceLimitErrorStatusError;
+    _statusError = statusError;
+  }
+  return self;
+}
+
+- (instancetype)initWithTeamSharedDropboxError:(DBTEAMTeamFolderTeamSharedDropboxError *)teamSharedDropboxError {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSetSpaceLimitErrorTeamSharedDropboxError;
+    _teamSharedDropboxError = teamSharedDropboxError;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSetSpaceLimitErrorOther;
+  }
+  return self;
+}
+
+- (instancetype)initWithLimitBelowMinimum {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSetSpaceLimitErrorLimitBelowMinimum;
+  }
+  return self;
+}
+
+- (instancetype)initWithLimitExceedsTeamQuota {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSetSpaceLimitErrorLimitExceedsTeamQuota;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+- (DBTEAMTeamFolderAccessError *)accessError {
+  if (![self isAccessError]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMTeamFolderSetSpaceLimitErrorAccessError, but was %@.", [self tagName]];
+  }
+  return _accessError;
+}
+
+- (DBTEAMTeamFolderInvalidStatusError *)statusError {
+  if (![self isStatusError]) {
+    [NSException
+         raise:@"IllegalStateException"
+        format:@"Invalid tag: required DBTEAMTeamFolderSetSpaceLimitErrorStatusError, but was %@.", [self tagName]];
+  }
+  return _statusError;
+}
+
+- (DBTEAMTeamFolderTeamSharedDropboxError *)teamSharedDropboxError {
+  if (![self isTeamSharedDropboxError]) {
+    [NSException raise:@"IllegalStateException"
+                format:@"Invalid tag: required DBTEAMTeamFolderSetSpaceLimitErrorTeamSharedDropboxError, but was %@.",
+                       [self tagName]];
+  }
+  return _teamSharedDropboxError;
+}
+
+#pragma mark - Tag state methods
+
+- (BOOL)isAccessError {
+  return _tag == DBTEAMTeamFolderSetSpaceLimitErrorAccessError;
+}
+
+- (BOOL)isStatusError {
+  return _tag == DBTEAMTeamFolderSetSpaceLimitErrorStatusError;
+}
+
+- (BOOL)isTeamSharedDropboxError {
+  return _tag == DBTEAMTeamFolderSetSpaceLimitErrorTeamSharedDropboxError;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMTeamFolderSetSpaceLimitErrorOther;
+}
+
+- (BOOL)isLimitBelowMinimum {
+  return _tag == DBTEAMTeamFolderSetSpaceLimitErrorLimitBelowMinimum;
+}
+
+- (BOOL)isLimitExceedsTeamQuota {
+  return _tag == DBTEAMTeamFolderSetSpaceLimitErrorLimitExceedsTeamQuota;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMTeamFolderSetSpaceLimitErrorAccessError:
+    return @"DBTEAMTeamFolderSetSpaceLimitErrorAccessError";
+  case DBTEAMTeamFolderSetSpaceLimitErrorStatusError:
+    return @"DBTEAMTeamFolderSetSpaceLimitErrorStatusError";
+  case DBTEAMTeamFolderSetSpaceLimitErrorTeamSharedDropboxError:
+    return @"DBTEAMTeamFolderSetSpaceLimitErrorTeamSharedDropboxError";
+  case DBTEAMTeamFolderSetSpaceLimitErrorOther:
+    return @"DBTEAMTeamFolderSetSpaceLimitErrorOther";
+  case DBTEAMTeamFolderSetSpaceLimitErrorLimitBelowMinimum:
+    return @"DBTEAMTeamFolderSetSpaceLimitErrorLimitBelowMinimum";
+  case DBTEAMTeamFolderSetSpaceLimitErrorLimitExceedsTeamQuota:
+    return @"DBTEAMTeamFolderSetSpaceLimitErrorLimitExceedsTeamQuota";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMTeamFolderSetSpaceLimitErrorSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMTeamFolderSetSpaceLimitErrorSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMTeamFolderSetSpaceLimitErrorSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderSetSpaceLimitErrorAccessError:
+    result = prime * result + [self.accessError hash];
+    break;
+  case DBTEAMTeamFolderSetSpaceLimitErrorStatusError:
+    result = prime * result + [self.statusError hash];
+    break;
+  case DBTEAMTeamFolderSetSpaceLimitErrorTeamSharedDropboxError:
+    result = prime * result + [self.teamSharedDropboxError hash];
+    break;
+  case DBTEAMTeamFolderSetSpaceLimitErrorOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMTeamFolderSetSpaceLimitErrorLimitBelowMinimum:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMTeamFolderSetSpaceLimitErrorLimitExceedsTeamQuota:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderSetSpaceLimitError:other];
+}
+
+- (BOOL)isEqualToTeamFolderSetSpaceLimitError:(DBTEAMTeamFolderSetSpaceLimitError *)aTeamFolderSetSpaceLimitError {
+  if (self == aTeamFolderSetSpaceLimitError) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderSetSpaceLimitError.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderSetSpaceLimitErrorAccessError:
+    return [self.accessError isEqual:aTeamFolderSetSpaceLimitError.accessError];
+  case DBTEAMTeamFolderSetSpaceLimitErrorStatusError:
+    return [self.statusError isEqual:aTeamFolderSetSpaceLimitError.statusError];
+  case DBTEAMTeamFolderSetSpaceLimitErrorTeamSharedDropboxError:
+    return [self.teamSharedDropboxError isEqual:aTeamFolderSetSpaceLimitError.teamSharedDropboxError];
+  case DBTEAMTeamFolderSetSpaceLimitErrorOther:
+    return [[self tagName] isEqual:[aTeamFolderSetSpaceLimitError tagName]];
+  case DBTEAMTeamFolderSetSpaceLimitErrorLimitBelowMinimum:
+    return [[self tagName] isEqual:[aTeamFolderSetSpaceLimitError tagName]];
+  case DBTEAMTeamFolderSetSpaceLimitErrorLimitExceedsTeamQuota:
+    return [[self tagName] isEqual:[aTeamFolderSetSpaceLimitError tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMTeamFolderSetSpaceLimitErrorSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamFolderSetSpaceLimitError *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isAccessError]) {
+    jsonDict[@"access_error"] = [[DBTEAMTeamFolderAccessErrorSerializer serialize:valueObj.accessError] mutableCopy];
+    jsonDict[@".tag"] = @"access_error";
+  } else if ([valueObj isStatusError]) {
+    jsonDict[@"status_error"] =
+        [[DBTEAMTeamFolderInvalidStatusErrorSerializer serialize:valueObj.statusError] mutableCopy];
+    jsonDict[@".tag"] = @"status_error";
+  } else if ([valueObj isTeamSharedDropboxError]) {
+    jsonDict[@"team_shared_dropbox_error"] =
+        [[DBTEAMTeamFolderTeamSharedDropboxErrorSerializer serialize:valueObj.teamSharedDropboxError] mutableCopy];
+    jsonDict[@".tag"] = @"team_shared_dropbox_error";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else if ([valueObj isLimitBelowMinimum]) {
+    jsonDict[@".tag"] = @"limit_below_minimum";
+  } else if ([valueObj isLimitExceedsTeamQuota]) {
+    jsonDict[@".tag"] = @"limit_exceeds_team_quota";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMTeamFolderSetSpaceLimitError *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"access_error"]) {
+    DBTEAMTeamFolderAccessError *accessError =
+        [DBTEAMTeamFolderAccessErrorSerializer deserialize:valueDict[@"access_error"]];
+    return [[DBTEAMTeamFolderSetSpaceLimitError alloc] initWithAccessError:accessError];
+  } else if ([tag isEqualToString:@"status_error"]) {
+    DBTEAMTeamFolderInvalidStatusError *statusError =
+        [DBTEAMTeamFolderInvalidStatusErrorSerializer deserialize:valueDict[@"status_error"]];
+    return [[DBTEAMTeamFolderSetSpaceLimitError alloc] initWithStatusError:statusError];
+  } else if ([tag isEqualToString:@"team_shared_dropbox_error"]) {
+    DBTEAMTeamFolderTeamSharedDropboxError *teamSharedDropboxError =
+        [DBTEAMTeamFolderTeamSharedDropboxErrorSerializer deserialize:valueDict[@"team_shared_dropbox_error"]];
+    return [[DBTEAMTeamFolderSetSpaceLimitError alloc] initWithTeamSharedDropboxError:teamSharedDropboxError];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMTeamFolderSetSpaceLimitError alloc] initWithOther];
+  } else if ([tag isEqualToString:@"limit_below_minimum"]) {
+    return [[DBTEAMTeamFolderSetSpaceLimitError alloc] initWithLimitBelowMinimum];
+  } else if ([tag isEqualToString:@"limit_exceeds_team_quota"]) {
+    return [[DBTEAMTeamFolderSetSpaceLimitError alloc] initWithLimitExceedsTeamQuota];
+  } else {
+    return [[DBTEAMTeamFolderSetSpaceLimitError alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMTeamFolderSpaceLimitCapsType.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMTeamFolderSpaceLimitCapsType
+
+#pragma mark - Constructors
+
+- (instancetype)initWithOff {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSpaceLimitCapsTypeOff;
+  }
+  return self;
+}
+
+- (instancetype)initWithSoft {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSpaceLimitCapsTypeSoft;
+  }
+  return self;
+}
+
+- (instancetype)initWithHard {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSpaceLimitCapsTypeHard;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSpaceLimitCapsTypeOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isOff {
+  return _tag == DBTEAMTeamFolderSpaceLimitCapsTypeOff;
+}
+
+- (BOOL)isSoft {
+  return _tag == DBTEAMTeamFolderSpaceLimitCapsTypeSoft;
+}
+
+- (BOOL)isHard {
+  return _tag == DBTEAMTeamFolderSpaceLimitCapsTypeHard;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMTeamFolderSpaceLimitCapsTypeOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMTeamFolderSpaceLimitCapsTypeOff:
+    return @"DBTEAMTeamFolderSpaceLimitCapsTypeOff";
+  case DBTEAMTeamFolderSpaceLimitCapsTypeSoft:
+    return @"DBTEAMTeamFolderSpaceLimitCapsTypeSoft";
+  case DBTEAMTeamFolderSpaceLimitCapsTypeHard:
+    return @"DBTEAMTeamFolderSpaceLimitCapsTypeHard";
+  case DBTEAMTeamFolderSpaceLimitCapsTypeOther:
+    return @"DBTEAMTeamFolderSpaceLimitCapsTypeOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMTeamFolderSpaceLimitCapsTypeSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMTeamFolderSpaceLimitCapsTypeSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMTeamFolderSpaceLimitCapsTypeSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderSpaceLimitCapsTypeOff:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMTeamFolderSpaceLimitCapsTypeSoft:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMTeamFolderSpaceLimitCapsTypeHard:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMTeamFolderSpaceLimitCapsTypeOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderSpaceLimitCapsType:other];
+}
+
+- (BOOL)isEqualToTeamFolderSpaceLimitCapsType:(DBTEAMTeamFolderSpaceLimitCapsType *)aTeamFolderSpaceLimitCapsType {
+  if (self == aTeamFolderSpaceLimitCapsType) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderSpaceLimitCapsType.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderSpaceLimitCapsTypeOff:
+    return [[self tagName] isEqual:[aTeamFolderSpaceLimitCapsType tagName]];
+  case DBTEAMTeamFolderSpaceLimitCapsTypeSoft:
+    return [[self tagName] isEqual:[aTeamFolderSpaceLimitCapsType tagName]];
+  case DBTEAMTeamFolderSpaceLimitCapsTypeHard:
+    return [[self tagName] isEqual:[aTeamFolderSpaceLimitCapsType tagName]];
+  case DBTEAMTeamFolderSpaceLimitCapsTypeOther:
+    return [[self tagName] isEqual:[aTeamFolderSpaceLimitCapsType tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMTeamFolderSpaceLimitCapsTypeSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamFolderSpaceLimitCapsType *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isOff]) {
+    jsonDict[@".tag"] = @"off";
+  } else if ([valueObj isSoft]) {
+    jsonDict[@".tag"] = @"soft";
+  } else if ([valueObj isHard]) {
+    jsonDict[@".tag"] = @"hard";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMTeamFolderSpaceLimitCapsType *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"off"]) {
+    return [[DBTEAMTeamFolderSpaceLimitCapsType alloc] initWithOff];
+  } else if ([tag isEqualToString:@"soft"]) {
+    return [[DBTEAMTeamFolderSpaceLimitCapsType alloc] initWithSoft];
+  } else if ([tag isEqualToString:@"hard"]) {
+    return [[DBTEAMTeamFolderSpaceLimitCapsType alloc] initWithHard];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMTeamFolderSpaceLimitCapsType alloc] initWithOther];
+  } else {
+    return [[DBTEAMTeamFolderSpaceLimitCapsType alloc] initWithOther];
+  }
+}
+
+@end
+
+#import "DBStoneSerializers.h"
+#import "DBStoneValidators.h"
+#import "DBTEAMTeamFolderSpaceLimitNotificationTarget.h"
+
+#pragma mark - API Object
+
+@implementation DBTEAMTeamFolderSpaceLimitNotificationTarget
+
+#pragma mark - Constructors
+
+- (instancetype)initWithAdmins {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSpaceLimitNotificationTargetAdmins;
+  }
+  return self;
+}
+
+- (instancetype)initWithEditors {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSpaceLimitNotificationTargetEditors;
+  }
+  return self;
+}
+
+- (instancetype)initWithBoth {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSpaceLimitNotificationTargetBoth;
+  }
+  return self;
+}
+
+- (instancetype)initWithSilent {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSpaceLimitNotificationTargetSilent;
+  }
+  return self;
+}
+
+- (instancetype)initWithOther {
+  self = [super init];
+  if (self) {
+    _tag = DBTEAMTeamFolderSpaceLimitNotificationTargetOther;
+  }
+  return self;
+}
+
+#pragma mark - Instance field accessors
+
+#pragma mark - Tag state methods
+
+- (BOOL)isAdmins {
+  return _tag == DBTEAMTeamFolderSpaceLimitNotificationTargetAdmins;
+}
+
+- (BOOL)isEditors {
+  return _tag == DBTEAMTeamFolderSpaceLimitNotificationTargetEditors;
+}
+
+- (BOOL)isBoth {
+  return _tag == DBTEAMTeamFolderSpaceLimitNotificationTargetBoth;
+}
+
+- (BOOL)isSilent {
+  return _tag == DBTEAMTeamFolderSpaceLimitNotificationTargetSilent;
+}
+
+- (BOOL)isOther {
+  return _tag == DBTEAMTeamFolderSpaceLimitNotificationTargetOther;
+}
+
+- (NSString *)tagName {
+  switch (_tag) {
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetAdmins:
+    return @"DBTEAMTeamFolderSpaceLimitNotificationTargetAdmins";
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetEditors:
+    return @"DBTEAMTeamFolderSpaceLimitNotificationTargetEditors";
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetBoth:
+    return @"DBTEAMTeamFolderSpaceLimitNotificationTargetBoth";
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetSilent:
+    return @"DBTEAMTeamFolderSpaceLimitNotificationTargetSilent";
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetOther:
+    return @"DBTEAMTeamFolderSpaceLimitNotificationTargetOther";
+  }
+
+  @throw([NSException exceptionWithName:@"InvalidTag" reason:@"Tag has an unknown value." userInfo:nil]);
+}
+
+#pragma mark - Serialization methods
+
++ (nullable NSDictionary<NSString *, id> *)serialize:(id)instance {
+  return [DBTEAMTeamFolderSpaceLimitNotificationTargetSerializer serialize:instance];
+}
+
++ (id)deserialize:(NSDictionary<NSString *, id> *)dict {
+  return [DBTEAMTeamFolderSpaceLimitNotificationTargetSerializer deserialize:dict];
+}
+
+#pragma mark - Debug Description method
+
+- (NSString *)debugDescription {
+  return [[DBTEAMTeamFolderSpaceLimitNotificationTargetSerializer serialize:self] description];
+}
+
+#pragma mark - Copyable method
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+#pragma unused(zone)
+  /// object is immutable
+  return self;
+}
+
+#pragma mark - Hash method
+
+- (NSUInteger)hash {
+  NSUInteger prime = 31;
+  NSUInteger result = 1;
+
+  switch (_tag) {
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetAdmins:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetEditors:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetBoth:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetSilent:
+    result = prime * result + [[self tagName] hash];
+    break;
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetOther:
+    result = prime * result + [[self tagName] hash];
+    break;
+  }
+
+  return prime * result;
+}
+
+#pragma mark - Equality method
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (!other || ![other isKindOfClass:[self class]]) {
+    return NO;
+  }
+  return [self isEqualToTeamFolderSpaceLimitNotificationTarget:other];
+}
+
+- (BOOL)isEqualToTeamFolderSpaceLimitNotificationTarget:
+    (DBTEAMTeamFolderSpaceLimitNotificationTarget *)aTeamFolderSpaceLimitNotificationTarget {
+  if (self == aTeamFolderSpaceLimitNotificationTarget) {
+    return YES;
+  }
+  if (self.tag != aTeamFolderSpaceLimitNotificationTarget.tag) {
+    return NO;
+  }
+  switch (_tag) {
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetAdmins:
+    return [[self tagName] isEqual:[aTeamFolderSpaceLimitNotificationTarget tagName]];
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetEditors:
+    return [[self tagName] isEqual:[aTeamFolderSpaceLimitNotificationTarget tagName]];
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetBoth:
+    return [[self tagName] isEqual:[aTeamFolderSpaceLimitNotificationTarget tagName]];
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetSilent:
+    return [[self tagName] isEqual:[aTeamFolderSpaceLimitNotificationTarget tagName]];
+  case DBTEAMTeamFolderSpaceLimitNotificationTargetOther:
+    return [[self tagName] isEqual:[aTeamFolderSpaceLimitNotificationTarget tagName]];
+  }
+  return YES;
+}
+
+@end
+
+#pragma mark - Serializer Object
+
+@implementation DBTEAMTeamFolderSpaceLimitNotificationTargetSerializer
+
++ (NSDictionary<NSString *, id> *)serialize:(DBTEAMTeamFolderSpaceLimitNotificationTarget *)valueObj {
+  NSMutableDictionary *jsonDict = [[NSMutableDictionary alloc] init];
+
+  if ([valueObj isAdmins]) {
+    jsonDict[@".tag"] = @"admins";
+  } else if ([valueObj isEditors]) {
+    jsonDict[@".tag"] = @"editors";
+  } else if ([valueObj isBoth]) {
+    jsonDict[@".tag"] = @"both";
+  } else if ([valueObj isSilent]) {
+    jsonDict[@".tag"] = @"silent";
+  } else if ([valueObj isOther]) {
+    jsonDict[@".tag"] = @"other";
+  } else {
+    jsonDict[@".tag"] = @"other";
+  }
+
+  return jsonDict;
+}
+
++ (DBTEAMTeamFolderSpaceLimitNotificationTarget *)deserialize:(NSDictionary<NSString *, id> *)valueDict {
+  NSString *tag = valueDict[@".tag"];
+
+  if ([tag isEqualToString:@"admins"]) {
+    return [[DBTEAMTeamFolderSpaceLimitNotificationTarget alloc] initWithAdmins];
+  } else if ([tag isEqualToString:@"editors"]) {
+    return [[DBTEAMTeamFolderSpaceLimitNotificationTarget alloc] initWithEditors];
+  } else if ([tag isEqualToString:@"both"]) {
+    return [[DBTEAMTeamFolderSpaceLimitNotificationTarget alloc] initWithBoth];
+  } else if ([tag isEqualToString:@"silent"]) {
+    return [[DBTEAMTeamFolderSpaceLimitNotificationTarget alloc] initWithSilent];
+  } else if ([tag isEqualToString:@"other"]) {
+    return [[DBTEAMTeamFolderSpaceLimitNotificationTarget alloc] initWithOther];
+  } else {
+    return [[DBTEAMTeamFolderSpaceLimitNotificationTarget alloc] initWithOther];
   }
 }
 

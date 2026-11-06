@@ -164,6 +164,8 @@
 @class DBTEAMTeamFolderArchiveLaunch;
 @class DBTEAMTeamFolderCreateError;
 @class DBTEAMTeamFolderGetInfoItem;
+@class DBTEAMTeamFolderGetSpaceLimitError;
+@class DBTEAMTeamFolderGetSpaceLimitResponse;
 @class DBTEAMTeamFolderInvalidStatusError;
 @class DBTEAMTeamFolderListContinueError;
 @class DBTEAMTeamFolderListError;
@@ -172,6 +174,9 @@
 @class DBTEAMTeamFolderPermanentlyDeleteError;
 @class DBTEAMTeamFolderRenameError;
 @class DBTEAMTeamFolderRestoreError;
+@class DBTEAMTeamFolderSetSpaceLimitError;
+@class DBTEAMTeamFolderSpaceLimitCapsType;
+@class DBTEAMTeamFolderSpaceLimitNotificationTarget;
 @class DBTEAMTeamFolderStatus;
 @class DBTEAMTeamFolderTeamSharedDropboxError;
 @class DBTEAMTeamFolderUpdateSyncSettingsError;
@@ -1821,6 +1826,38 @@ NS_ASSUME_NONNULL_BEGIN
 /// `DBTEAMTeamFolderRestoreError` object on failure.
 ///
 - (DBRpcTask<DBTEAMTeamFolderMetadata *, DBTEAMTeamFolderRestoreError *> *)teamFolderRestore:(NSString *)teamFolderId;
+
+///
+/// Returns the space limit configuration of a team folder. See TeamFolderSpaceLimitCapsType for how space limits are
+/// enforced.
+///
+/// @param teamFolderId The ID of the team folder.
+///
+/// @return Through the response callback, the caller will receive a `DBTEAMTeamFolderGetSpaceLimitResponse` object on
+/// success or a `DBTEAMTeamFolderGetSpaceLimitError` object on failure.
+///
+- (DBRpcTask<DBTEAMTeamFolderGetSpaceLimitResponse *, DBTEAMTeamFolderGetSpaceLimitError *> *)teamFolderSpaceLimitGet:
+    (NSString *)teamFolderId;
+
+///
+/// Sets the space limit configuration of a team folder, replacing any existing configuration. See
+/// TeamFolderSpaceLimitCapsType for how space limits are enforced.
+///
+/// @param spaceLimitBytes The maximum total size, in bytes, of all content in the team folder and its subfolders. When
+/// capsType is `soft` in `DBTEAMTeamFolderSpaceLimitCapsType` or `hard` in `DBTEAMTeamFolderSpaceLimitCapsType`, this
+/// must be at least 2 GB (2147483648 bytes). It must never exceed the team's total storage capacity. When capsType is
+/// `off` in `DBTEAMTeamFolderSpaceLimitCapsType`, the value is stored but has no effect, and it may be 0.
+/// @param capsType The caps type to apply to the specified team folder.
+/// @param notificationTarget Who receives usage notifications for the specified team folder.
+///
+/// @return Through the response callback, the caller will receive a `void` object on success or a
+/// `DBTEAMTeamFolderSetSpaceLimitError` object on failure.
+///
+- (DBRpcTask<DBNilObject *, DBTEAMTeamFolderSetSpaceLimitError *> *)
+    teamFolderSpaceLimitSet:(NSString *)teamFolderId
+            spaceLimitBytes:(NSNumber *)spaceLimitBytes
+                   capsType:(DBTEAMTeamFolderSpaceLimitCapsType *)capsType
+         notificationTarget:(DBTEAMTeamFolderSpaceLimitNotificationTarget *)notificationTarget;
 
 ///
 /// Updates the sync settings on a team folder or its contents.  Use of this endpoint requires that the team has team
