@@ -159,6 +159,8 @@
 #import "DBTEAMTeamFolderArchiveLaunch.h"
 #import "DBTEAMTeamFolderCreateError.h"
 #import "DBTEAMTeamFolderGetInfoItem.h"
+#import "DBTEAMTeamFolderGetSpaceLimitError.h"
+#import "DBTEAMTeamFolderGetSpaceLimitResponse.h"
 #import "DBTEAMTeamFolderInvalidStatusError.h"
 #import "DBTEAMTeamFolderListContinueError.h"
 #import "DBTEAMTeamFolderListError.h"
@@ -167,6 +169,9 @@
 #import "DBTEAMTeamFolderPermanentlyDeleteError.h"
 #import "DBTEAMTeamFolderRenameError.h"
 #import "DBTEAMTeamFolderRestoreError.h"
+#import "DBTEAMTeamFolderSetSpaceLimitError.h"
+#import "DBTEAMTeamFolderSpaceLimitCapsType.h"
+#import "DBTEAMTeamFolderSpaceLimitNotificationTarget.h"
 #import "DBTEAMTeamFolderStatus.h"
 #import "DBTEAMTeamFolderTeamSharedDropboxError.h"
 #import "DBTEAMTeamFolderUpdateSyncSettingsError.h"
@@ -279,6 +284,8 @@ static DBRoute *DBTEAMTeamFolderListContinue;
 static DBRoute *DBTEAMTeamFolderPermanentlyDelete;
 static DBRoute *DBTEAMTeamFolderRename;
 static DBRoute *DBTEAMTeamFolderRestore;
+static DBRoute *DBTEAMTeamFolderSpaceLimitGet;
+static DBRoute *DBTEAMTeamFolderSpaceLimitSet;
 static DBRoute *DBTEAMTeamFolderUpdateSyncSettings;
 static DBRoute *DBTEAMTokenGetAuthenticatedAdmin;
 
@@ -1773,6 +1780,38 @@ static NSObject *lockObj = nil;
                               dataStructDeserialBlock:nil];
     }
     return DBTEAMTeamFolderRestore;
+  }
+}
+
++ (DBRoute *)DBTEAMTeamFolderSpaceLimitGet {
+  @synchronized(lockObj) {
+    if (!DBTEAMTeamFolderSpaceLimitGet) {
+      DBTEAMTeamFolderSpaceLimitGet = [[DBRoute alloc] init:@"team_folder/space_limit/get"
+                                                 namespace_:@"team"
+                                                 deprecated:@NO
+                                                 resultType:[DBTEAMTeamFolderGetSpaceLimitResponse class]
+                                                  errorType:[DBTEAMTeamFolderGetSpaceLimitError class]
+                                                      attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                                      dataStructSerialBlock:nil
+                                    dataStructDeserialBlock:nil];
+    }
+    return DBTEAMTeamFolderSpaceLimitGet;
+  }
+}
+
++ (DBRoute *)DBTEAMTeamFolderSpaceLimitSet {
+  @synchronized(lockObj) {
+    if (!DBTEAMTeamFolderSpaceLimitSet) {
+      DBTEAMTeamFolderSpaceLimitSet = [[DBRoute alloc] init:@"team_folder/space_limit/set"
+                                                 namespace_:@"team"
+                                                 deprecated:@NO
+                                                 resultType:nil
+                                                  errorType:[DBTEAMTeamFolderSetSpaceLimitError class]
+                                                      attrs:@{@"auth" : @"team", @"host" : @"api", @"style" : @"rpc"}
+                                      dataStructSerialBlock:nil
+                                    dataStructDeserialBlock:nil];
+    }
+    return DBTEAMTeamFolderSpaceLimitSet;
   }
 }
 
