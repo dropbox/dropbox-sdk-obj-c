@@ -786,8 +786,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Download a folder from the user's Dropbox, as a zip file. The folder must be less than 20 GB in size and any single
 /// file within must be less than 4 GB in size. The resulting zip must have fewer than 10,000 total file and folder
-/// entries, including the top level folder. The input cannot be a single file. Note: this endpoint does not support
-/// HTTP range requests.
+/// entries, including the top level folder. The input cannot be a single file.
 ///
 /// @param path The path of the folder to download.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
@@ -805,8 +804,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Download a folder from the user's Dropbox, as a zip file. The folder must be less than 20 GB in size and any single
 /// file within must be less than 4 GB in size. The resulting zip must have fewer than 10,000 total file and folder
-/// entries, including the top level folder. The input cannot be a single file. Note: this endpoint does not support
-/// HTTP range requests.
+/// entries, including the top level folder. The input cannot be a single file.
 ///
 /// @param path The path of the folder to download.
 /// @param overwrite A boolean to set behavior in the event of a naming conflict. `YES` will overwrite conflicting file
@@ -830,8 +828,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Download a folder from the user's Dropbox, as a zip file. The folder must be less than 20 GB in size and any single
 /// file within must be less than 4 GB in size. The resulting zip must have fewer than 10,000 total file and folder
-/// entries, including the top level folder. The input cannot be a single file. Note: this endpoint does not support
-/// HTTP range requests.
+/// entries, including the top level folder. The input cannot be a single file.
 ///
 /// @param path The path of the folder to download.
 ///
@@ -843,8 +840,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Download a folder from the user's Dropbox, as a zip file. The folder must be less than 20 GB in size and any single
 /// file within must be less than 4 GB in size. The resulting zip must have fewer than 10,000 total file and folder
-/// entries, including the top level folder. The input cannot be a single file. Note: this endpoint does not support
-/// HTTP range requests.
+/// entries, including the top level folder. The input cannot be a single file.
 ///
 /// @param path The path of the folder to download.
 /// @param byteOffsetStart For partial file download. Download file beginning from this starting byte position. Must
