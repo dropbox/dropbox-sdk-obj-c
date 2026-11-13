@@ -118,7 +118,7 @@ static NSObject *lockObj = nil;
     if (!DBRIVIERAGetKeyframesAsync) {
       DBRIVIERAGetKeyframesAsync = [[DBRoute alloc] init:@"get_keyframes_async"
                                               namespace_:@"riviera"
-                                              deprecated:@NO
+                                              deprecated:@YES
                                               resultType:[DBASYNCLaunchResultBase class]
                                                errorType:nil
                                                    attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
@@ -135,7 +135,7 @@ static NSObject *lockObj = nil;
       DBRIVIERAGetKeyframesAsyncCheck =
           [[DBRoute alloc] init:@"get_keyframes_async/check"
                            namespace_:@"riviera"
-                           deprecated:@NO
+                           deprecated:@YES
                            resultType:[DBRIVIERAGetKeyframesAsyncCheckResult class]
                             errorType:[DBASYNCPollError class]
                                 attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
@@ -151,7 +151,7 @@ static NSObject *lockObj = nil;
     if (!DBRIVIERAGetMarkdownAsync) {
       DBRIVIERAGetMarkdownAsync = [[DBRoute alloc] init:@"get_markdown_async"
                                              namespace_:@"riviera"
-                                             deprecated:@NO
+                                             deprecated:@YES
                                              resultType:[DBASYNCLaunchResultBase class]
                                               errorType:nil
                                                   attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
@@ -168,7 +168,7 @@ static NSObject *lockObj = nil;
       DBRIVIERAGetMarkdownAsyncCheck =
           [[DBRoute alloc] init:@"get_markdown_async/check"
                            namespace_:@"riviera"
-                           deprecated:@NO
+                           deprecated:@YES
                            resultType:[DBRIVIERAGetMarkdownAsyncCheckResult class]
                             errorType:[DBASYNCPollError class]
                                 attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
@@ -217,7 +217,7 @@ static NSObject *lockObj = nil;
     if (!DBRIVIERAGetOcrAsync) {
       DBRIVIERAGetOcrAsync = [[DBRoute alloc] init:@"get_ocr_async"
                                         namespace_:@"riviera"
-                                        deprecated:@NO
+                                        deprecated:@YES
                                         resultType:[DBASYNCLaunchResultBase class]
                                          errorType:nil
                                              attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
@@ -233,7 +233,7 @@ static NSObject *lockObj = nil;
     if (!DBRIVIERAGetOcrAsyncCheck) {
       DBRIVIERAGetOcrAsyncCheck = [[DBRoute alloc] init:@"get_ocr_async/check"
                                              namespace_:@"riviera"
-                                             deprecated:@NO
+                                             deprecated:@YES
                                              resultType:[DBRIVIERAGetOcrAsyncCheckResult class]
                                               errorType:[DBASYNCPollError class]
                                                   attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
@@ -249,7 +249,7 @@ static NSObject *lockObj = nil;
     if (!DBRIVIERAGetTextAsync) {
       DBRIVIERAGetTextAsync = [[DBRoute alloc] init:@"get_text_async"
                                          namespace_:@"riviera"
-                                         deprecated:@NO
+                                         deprecated:@YES
                                          resultType:[DBASYNCLaunchResultBase class]
                                           errorType:nil
                                               attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
@@ -265,7 +265,7 @@ static NSObject *lockObj = nil;
     if (!DBRIVIERAGetTextAsyncCheck) {
       DBRIVIERAGetTextAsyncCheck = [[DBRoute alloc] init:@"get_text_async/check"
                                               namespace_:@"riviera"
-                                              deprecated:@NO
+                                              deprecated:@YES
                                               resultType:[DBRIVIERAGetTextAsyncCheckResult class]
                                                errorType:[DBASYNCPollError class]
                                                    attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
@@ -281,7 +281,7 @@ static NSObject *lockObj = nil;
     if (!DBRIVIERAGetTranscriptAsync) {
       DBRIVIERAGetTranscriptAsync = [[DBRoute alloc] init:@"get_transcript_async"
                                                namespace_:@"riviera"
-                                               deprecated:@NO
+                                               deprecated:@YES
                                                resultType:[DBASYNCLaunchResultBase class]
                                                 errorType:nil
                                                     attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}
@@ -298,7 +298,7 @@ static NSObject *lockObj = nil;
       DBRIVIERAGetTranscriptAsyncCheck =
           [[DBRoute alloc] init:@"get_transcript_async/check"
                            namespace_:@"riviera"
-                           deprecated:@NO
+                           deprecated:@YES
                            resultType:[DBRIVIERAGetTranscriptAsyncCheckResult class]
                             errorType:[DBASYNCPollError class]
                                 attrs:@{@"auth" : @"app, user", @"host" : @"api", @"style" : @"rpc"}

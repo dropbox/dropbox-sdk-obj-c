@@ -205,32 +205,37 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBRIVIERAExtractAsyncCheckResult *, DBASYNCPollError *> *)extractAsyncCheck:(NSString *)asyncJobId;
 
 ///
-/// Asynchronous scene-change keyframe extraction for video files. Detects scene changes in the source video and returns
-/// one representative keyframe per detected scene, each tagged with its timestamp (seconds from the start of the video)
-/// and scene-change score. Set `include_images = true` to also receive each frame as a base64-encoded JPEG; when the
-/// field is omitted the response carries keyframe metadata only. Supported video formats: .3gp, .3gpp, .3gpp2, .asf,
-/// .avi, .dv, .flv, .m2t, .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob,
-/// .webm, .wmv. Unsupported formats return an `unsupported_format_error`. Limits: the source file must be at most 10
-/// GB. To keep responses within service limits the number of keyframes and the total image payload are bounded;
-/// requests that would exceed these limits return a `limit_exceeded_error` -- raise `scene_change_threshold` or set
-/// `include_images = false` to stay within bounds.
+/// DEPRECATED: Deprecated: use `extractAsync` with `extract_type` set to `keyframes` in `DBRIVIERAExtractType` instead,
+/// which takes the same options. This route will be turned off by December 31, 2026. Asynchronous scene-change keyframe
+/// extraction for video files. Detects scene changes in the source video and returns one representative keyframe per
+/// detected scene, each tagged with its timestamp (seconds from the start of the video) and scene-change score. Set
+/// `include_images = true` to also receive each frame as a base64-encoded JPEG; when the field is omitted the response
+/// carries keyframe metadata only. Supported video formats: .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .flv, .m2t, .m2ts,
+/// .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. Unsupported formats
+/// return an `unsupported_format_error`. Limits: the source file must be at most 10 GB. To keep responses within
+/// service limits the number of keyframes and the total image payload are bounded; requests that would exceed these
+/// limits return a `limit_exceeded_error` -- raise `scene_change_threshold` or set `include_images = false` to stay
+/// within bounds.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getKeyframesAsync;
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getKeyframesAsync __deprecated_msg("getKeyframesAsync is "
+                                                                                            "deprecated.");
 
 ///
-/// Asynchronous scene-change keyframe extraction for video files. Detects scene changes in the source video and returns
-/// one representative keyframe per detected scene, each tagged with its timestamp (seconds from the start of the video)
-/// and scene-change score. Set `include_images = true` to also receive each frame as a base64-encoded JPEG; when the
-/// field is omitted the response carries keyframe metadata only. Supported video formats: .3gp, .3gpp, .3gpp2, .asf,
-/// .avi, .dv, .flv, .m2t, .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob,
-/// .webm, .wmv. Unsupported formats return an `unsupported_format_error`. Limits: the source file must be at most 10
-/// GB. To keep responses within service limits the number of keyframes and the total image payload are bounded;
-/// requests that would exceed these limits return a `limit_exceeded_error` -- raise `scene_change_threshold` or set
-/// `include_images = false` to stay within bounds.
+/// DEPRECATED: Deprecated: use `extractAsync` with `extract_type` set to `keyframes` in `DBRIVIERAExtractType` instead,
+/// which takes the same options. This route will be turned off by December 31, 2026. Asynchronous scene-change keyframe
+/// extraction for video files. Detects scene changes in the source video and returns one representative keyframe per
+/// detected scene, each tagged with its timestamp (seconds from the start of the video) and scene-change score. Set
+/// `include_images = true` to also receive each frame as a base64-encoded JPEG; when the field is omitted the response
+/// carries keyframe metadata only. Supported video formats: .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .flv, .m2t, .m2ts,
+/// .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. Unsupported formats
+/// return an `unsupported_format_error`. Limits: the source file must be at most 10 GB. To keep responses within
+/// service limits the number of keyframes and the total image payload are bounded; requests that would exceed these
+/// limits return a `limit_exceeded_error` -- raise `scene_change_threshold` or set `include_images = false` to stay
+/// within bounds.
 ///
 /// @param fileIdOrUrl Identifier of the video file to extract keyframes from. Callers must set exactly one of the
 /// `FileIdOrUrl` variants. Keyframe extraction is supported for video files only; see the route description for the
@@ -248,10 +253,11 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 - (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getKeyframesAsync:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl
                                                       sceneChangeThreshold:(nullable NSNumber *)sceneChangeThreshold
-                                                             includeImages:(nullable NSNumber *)includeImages;
+                                                             includeImages:(nullable NSNumber *)includeImages
+    __deprecated_msg("getKeyframesAsync is deprecated.");
 
 ///
-/// Returns the status or result of specified get_keyframes_async task.
+/// DEPRECATED: Returns the status or result of specified get_keyframes_async task.
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
@@ -260,29 +266,34 @@ NS_ASSUME_NONNULL_BEGIN
 /// success or a `DBASYNCPollError` object on failure.
 ///
 - (DBRpcTask<DBRIVIERAGetKeyframesAsyncCheckResult *, DBASYNCPollError *> *)getKeyframesAsyncCheck:
-    (NSString *)asyncJobId;
+    (NSString *)asyncJobId __deprecated_msg("getKeyframesAsyncCheck is deprecated.");
 
 ///
-/// Asynchronous document-to-markdown conversion for supported file formats. Supported formats: .binder, .docx, .html,
-/// .paper, .papert, .pptx, .xlsx, .gsheet, .ods, .pdf. Files in other formats fail with `userError` in
-/// `DBRIVIERAMarkdownConversionApiV2Error`. Size limit: the source file must be at most 50 MB. Larger files fail with
-/// `userError` in `DBRIVIERAMarkdownConversionApiV2Error`. The markdown is not returned by this route. Poll
-/// `getMarkdownAsyncCheck` with the returned async job ID until it reports `complete` in
-/// `DBRIVIERAGetMarkdownAsyncCheckResult` or `failed` in `DBRIVIERAGetMarkdownAsyncCheckResult`.
+/// DEPRECATED: Deprecated: use `extractAsync` with `extract_type` set to `markdown` in `DBRIVIERAExtractType` instead,
+/// which takes the same options. This route will be turned off by December 31, 2026. Asynchronous document-to-markdown
+/// conversion for supported file formats. Supported formats: .binder, .docx, .html, .paper, .papert, .pptx, .xlsx,
+/// .gsheet, .ods, .pdf. Files in other formats fail with `userError` in `DBRIVIERAMarkdownConversionApiV2Error`. Size
+/// limit: the source file must be at most 50 MB. Larger files fail with `userError` in
+/// `DBRIVIERAMarkdownConversionApiV2Error`. The markdown is not returned by this route. Poll `getMarkdownAsyncCheck`
+/// with the returned async job ID until it reports `complete` in `DBRIVIERAGetMarkdownAsyncCheckResult` or `failed` in
+/// `DBRIVIERAGetMarkdownAsyncCheckResult`.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getMarkdownAsync;
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getMarkdownAsync __deprecated_msg("getMarkdownAsync is "
+                                                                                           "deprecated.");
 
 ///
-/// Asynchronous document-to-markdown conversion for supported file formats. Supported formats: .binder, .docx, .html,
-/// .paper, .papert, .pptx, .xlsx, .gsheet, .ods, .pdf. Files in other formats fail with `userError` in
-/// `DBRIVIERAMarkdownConversionApiV2Error`. Size limit: the source file must be at most 50 MB. Larger files fail with
-/// `userError` in `DBRIVIERAMarkdownConversionApiV2Error`. The markdown is not returned by this route. Poll
-/// `getMarkdownAsyncCheck` with the returned async job ID until it reports `complete` in
-/// `DBRIVIERAGetMarkdownAsyncCheckResult` or `failed` in `DBRIVIERAGetMarkdownAsyncCheckResult`.
+/// DEPRECATED: Deprecated: use `extractAsync` with `extract_type` set to `markdown` in `DBRIVIERAExtractType` instead,
+/// which takes the same options. This route will be turned off by December 31, 2026. Asynchronous document-to-markdown
+/// conversion for supported file formats. Supported formats: .binder, .docx, .html, .paper, .papert, .pptx, .xlsx,
+/// .gsheet, .ods, .pdf. Files in other formats fail with `userError` in `DBRIVIERAMarkdownConversionApiV2Error`. Size
+/// limit: the source file must be at most 50 MB. Larger files fail with `userError` in
+/// `DBRIVIERAMarkdownConversionApiV2Error`. The markdown is not returned by this route. Poll `getMarkdownAsyncCheck`
+/// with the returned async job ID until it reports `complete` in `DBRIVIERAGetMarkdownAsyncCheckResult` or `failed` in
+/// `DBRIVIERAGetMarkdownAsyncCheckResult`.
 ///
 /// @param fileIdOrUrl Identifier of the document to convert. Callers must set exactly one of the FileIdOrUrl variants.
 /// The referenced file must be a document in a supported format (see the route description for the list); requests
@@ -296,10 +307,11 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 - (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getMarkdownAsync:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl
                                                                 enableOcr:(nullable NSNumber *)enableOcr
-                                                              embedImages:(nullable NSNumber *)embedImages;
+                                                              embedImages:(nullable NSNumber *)embedImages
+    __deprecated_msg("getMarkdownAsync is deprecated.");
 
 ///
-/// Returns the status or result of specified get_markdown_async task.
+/// DEPRECATED: Returns the status or result of specified get_markdown_async task.
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
@@ -307,7 +319,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return Through the response callback, the caller will receive a `DBRIVIERAGetMarkdownAsyncCheckResult` object on
 /// success or a `DBASYNCPollError` object on failure.
 ///
-- (DBRpcTask<DBRIVIERAGetMarkdownAsyncCheckResult *, DBASYNCPollError *> *)getMarkdownAsyncCheck:(NSString *)asyncJobId;
+- (DBRpcTask<DBRIVIERAGetMarkdownAsyncCheckResult *, DBASYNCPollError *> *)getMarkdownAsyncCheck:(NSString *)asyncJobId
+    __deprecated_msg("getMarkdownAsyncCheck is deprecated.");
 
 ///
 /// Asynchronous file metadata extraction for supported file formats. The kind of metadata returned depends on the file
@@ -366,26 +379,30 @@ NS_ASSUME_NONNULL_BEGIN
 - (DBRpcTask<DBRIVIERAGetMetadataAsyncCheckResult *, DBASYNCPollError *> *)getMetadataAsyncCheck:(NSString *)asyncJobId;
 
 ///
-/// Asynchronous OCR (optical character recognition) text extraction for images and PDFs, including scanned / non-text
-/// PDFs. Supported formats: - Image formats: .bmp, .gif, .heic, .jpeg, .jpg, .png, .tif, .tiff, .webp. - PDF format:
-/// .pdf. Unsupported formats return an `unsupported_format_error`. For the `url` variant only Dropbox shared links are
-/// supported; external URLs return `unsupported_format_error`. Text-based PDFs already carry a text layer, so OCR is
-/// not run against them and the result is empty; use `get_text_async` to read the embedded text layer of such a PDF.
-/// The result carries the extracted words as plain text, plus the same content as hOCR with per-word coordinates.
+/// DEPRECATED: Deprecated: use `extractAsync` with `extract_type` set to `ocr` in `DBRIVIERAExtractType` instead, which
+/// takes the same options. This route will be turned off by December 31, 2026. Asynchronous OCR (optical character
+/// recognition) text extraction for images and PDFs, including scanned / non-text PDFs. Supported formats: - Image
+/// formats: .bmp, .gif, .heic, .jpeg, .jpg, .png, .tif, .tiff, .webp. - PDF format: .pdf. Unsupported formats return an
+/// `unsupported_format_error`. For the `url` variant only Dropbox shared links are supported; external URLs return
+/// `unsupported_format_error`. Text-based PDFs already carry a text layer, so OCR is not run against them and the
+/// result is empty; use `get_text_async` to read the embedded text layer of such a PDF. The result carries the
+/// extracted words as plain text, plus the same content as hOCR with per-word coordinates.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getOcrAsync;
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getOcrAsync __deprecated_msg("getOcrAsync is deprecated.");
 
 ///
-/// Asynchronous OCR (optical character recognition) text extraction for images and PDFs, including scanned / non-text
-/// PDFs. Supported formats: - Image formats: .bmp, .gif, .heic, .jpeg, .jpg, .png, .tif, .tiff, .webp. - PDF format:
-/// .pdf. Unsupported formats return an `unsupported_format_error`. For the `url` variant only Dropbox shared links are
-/// supported; external URLs return `unsupported_format_error`. Text-based PDFs already carry a text layer, so OCR is
-/// not run against them and the result is empty; use `get_text_async` to read the embedded text layer of such a PDF.
-/// The result carries the extracted words as plain text, plus the same content as hOCR with per-word coordinates.
+/// DEPRECATED: Deprecated: use `extractAsync` with `extract_type` set to `ocr` in `DBRIVIERAExtractType` instead, which
+/// takes the same options. This route will be turned off by December 31, 2026. Asynchronous OCR (optical character
+/// recognition) text extraction for images and PDFs, including scanned / non-text PDFs. Supported formats: - Image
+/// formats: .bmp, .gif, .heic, .jpeg, .jpg, .png, .tif, .tiff, .webp. - PDF format: .pdf. Unsupported formats return an
+/// `unsupported_format_error`. For the `url` variant only Dropbox shared links are supported; external URLs return
+/// `unsupported_format_error`. Text-based PDFs already carry a text layer, so OCR is not run against them and the
+/// result is empty; use `get_text_async` to read the embedded text layer of such a PDF. The result carries the
+/// extracted words as plain text, plus the same content as hOCR with per-word coordinates.
 ///
 /// @param fileIdOrUrl Identifier of the file to run OCR on. Callers must set exactly one of the `FileIdOrUrl` variants.
 /// OCR is supported for image files and PDFs, including scanned / non-text PDFs; see the route description for the
@@ -396,10 +413,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getOcrAsync:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl;
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getOcrAsync:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl
+    __deprecated_msg("getOcrAsync is deprecated.");
 
 ///
-/// Returns the status or result of specified get_ocr_async task.
+/// DEPRECATED: Returns the status or result of specified get_ocr_async task.
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
@@ -407,27 +425,32 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return Through the response callback, the caller will receive a `DBRIVIERAGetOcrAsyncCheckResult` object on success
 /// or a `DBASYNCPollError` object on failure.
 ///
-- (DBRpcTask<DBRIVIERAGetOcrAsyncCheckResult *, DBASYNCPollError *> *)getOcrAsyncCheck:(NSString *)asyncJobId;
+- (DBRpcTask<DBRIVIERAGetOcrAsyncCheckResult *, DBASYNCPollError *> *)getOcrAsyncCheck:(NSString *)asyncJobId
+    __deprecated_msg("getOcrAsyncCheck is deprecated.");
 
 ///
-/// Asynchronous plain-text extraction from documents. Supported formats include: - Word processing: .doc, .docx, .docm,
-/// .rtf. - Presentations: .ppt, .pptx, .pptm. - Spreadsheets: .xls, .xlsx, .xlsm. - PDF: .pdf. - Dropbox document
-/// types: .paper, .papert, .binder, .gdoc, .gsheet, .gslides. - Plain text / subtitles: .txt, .vtt. Unsupported formats
-/// return an `unsupported_format_error`. For the `url` variant only Dropbox shared links are supported; external URLs
-/// return `unsupported_format_error`.
+/// DEPRECATED: Deprecated: use `extractAsync` with `extract_type` set to `text` in `DBRIVIERAExtractType` instead,
+/// which takes the same options. This route will be turned off by December 31, 2026. Asynchronous plain-text extraction
+/// from documents. Supported formats include: - Word processing: .doc, .docx, .docm, .rtf. - Presentations: .ppt,
+/// .pptx, .pptm. - Spreadsheets: .xls, .xlsx, .xlsm. - PDF: .pdf. - Dropbox document types: .paper, .papert, .binder,
+/// .gdoc, .gsheet, .gslides. - Plain text / subtitles: .txt, .vtt. Unsupported formats return an
+/// `unsupported_format_error`. For the `url` variant only Dropbox shared links are supported; external URLs return
+/// `unsupported_format_error`.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getTextAsync;
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getTextAsync __deprecated_msg("getTextAsync is deprecated.");
 
 ///
-/// Asynchronous plain-text extraction from documents. Supported formats include: - Word processing: .doc, .docx, .docm,
-/// .rtf. - Presentations: .ppt, .pptx, .pptm. - Spreadsheets: .xls, .xlsx, .xlsm. - PDF: .pdf. - Dropbox document
-/// types: .paper, .papert, .binder, .gdoc, .gsheet, .gslides. - Plain text / subtitles: .txt, .vtt. Unsupported formats
-/// return an `unsupported_format_error`. For the `url` variant only Dropbox shared links are supported; external URLs
-/// return `unsupported_format_error`.
+/// DEPRECATED: Deprecated: use `extractAsync` with `extract_type` set to `text` in `DBRIVIERAExtractType` instead,
+/// which takes the same options. This route will be turned off by December 31, 2026. Asynchronous plain-text extraction
+/// from documents. Supported formats include: - Word processing: .doc, .docx, .docm, .rtf. - Presentations: .ppt,
+/// .pptx, .pptm. - Spreadsheets: .xls, .xlsx, .xlsm. - PDF: .pdf. - Dropbox document types: .paper, .papert, .binder,
+/// .gdoc, .gsheet, .gslides. - Plain text / subtitles: .txt, .vtt. Unsupported formats return an
+/// `unsupported_format_error`. For the `url` variant only Dropbox shared links are supported; external URLs return
+/// `unsupported_format_error`.
 ///
 /// @param fileIdOrUrl Identifier of the document to extract text from. Callers must set exactly one of the
 /// `FileIdOrUrl` variants. Text extraction is supported for common document formats (Word, PowerPoint, Excel, PDF, RTF,
@@ -439,10 +462,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getTextAsync:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl;
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getTextAsync:(nullable DBRIVIERAFileIdOrUrl *)fileIdOrUrl
+    __deprecated_msg("getTextAsync is deprecated.");
 
 ///
-/// Returns the status or result of specified get_text_async task.
+/// DEPRECATED: Returns the status or result of specified get_text_async task.
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
@@ -450,32 +474,38 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return Through the response callback, the caller will receive a `DBRIVIERAGetTextAsyncCheckResult` object on
 /// success or a `DBASYNCPollError` object on failure.
 ///
-- (DBRpcTask<DBRIVIERAGetTextAsyncCheckResult *, DBASYNCPollError *> *)getTextAsyncCheck:(NSString *)asyncJobId;
+- (DBRpcTask<DBRIVIERAGetTextAsyncCheckResult *, DBASYNCPollError *> *)getTextAsyncCheck:(NSString *)asyncJobId
+    __deprecated_msg("getTextAsyncCheck is deprecated.");
 
 ///
-/// Asynchronous transcript generation for audio and video files. Supported audio formats: .aac, .aif, .aiff, .flac,
-/// .m4a, .m4r, .mp3, .oga, .ogg, .wav, .wma. Supported video formats: .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .flv, .m2t,
-/// .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. Files in
-/// other formats fail with `userError` in `DBRIVIERAContentApiV2Error`. Size limits: the source file must be at most 10
-/// GB and its audio track at most 1 hour in duration. Files exceeding either limit fail with `userError` in
-/// `DBRIVIERAContentApiV2Error`. The transcript is not returned by this route. Poll `getTranscriptAsyncCheck` with the
-/// returned async job ID until it reports `complete` in `DBRIVIERAGetTranscriptAsyncCheckResult` or `failed` in
+/// DEPRECATED: Deprecated: use `extractAsync` with `extract_type` set to `transcript` in `DBRIVIERAExtractType`
+/// instead, which takes the same options. This route will be turned off by December 31, 2026. Asynchronous transcript
+/// generation for audio and video files. Supported audio formats: .aac, .aif, .aiff, .flac, .m4a, .m4r, .mp3, .oga,
+/// .ogg, .wav, .wma. Supported video formats: .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .flv, .m2t, .m2ts, .m4v, .mkv,
+/// .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. Files in other formats fail with
+/// `userError` in `DBRIVIERAContentApiV2Error`. Size limits: the source file must be at most 10 GB and its audio track
+/// at most 1 hour in duration. Files exceeding either limit fail with `userError` in `DBRIVIERAContentApiV2Error`. The
+/// transcript is not returned by this route. Poll `getTranscriptAsyncCheck` with the returned async job ID until it
+/// reports `complete` in `DBRIVIERAGetTranscriptAsyncCheckResult` or `failed` in
 /// `DBRIVIERAGetTranscriptAsyncCheckResult`.
 ///
 ///
 /// @return Through the response callback, the caller will receive a `DBASYNCLaunchResultBase` object on success or a
 /// `void` object on failure.
 ///
-- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getTranscriptAsync;
+- (DBRpcTask<DBASYNCLaunchResultBase *, DBNilObject *> *)getTranscriptAsync __deprecated_msg("getTranscriptAsync is "
+                                                                                             "deprecated.");
 
 ///
-/// Asynchronous transcript generation for audio and video files. Supported audio formats: .aac, .aif, .aiff, .flac,
-/// .m4a, .m4r, .mp3, .oga, .ogg, .wav, .wma. Supported video formats: .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .flv, .m2t,
-/// .m2ts, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. Files in
-/// other formats fail with `userError` in `DBRIVIERAContentApiV2Error`. Size limits: the source file must be at most 10
-/// GB and its audio track at most 1 hour in duration. Files exceeding either limit fail with `userError` in
-/// `DBRIVIERAContentApiV2Error`. The transcript is not returned by this route. Poll `getTranscriptAsyncCheck` with the
-/// returned async job ID until it reports `complete` in `DBRIVIERAGetTranscriptAsyncCheckResult` or `failed` in
+/// DEPRECATED: Deprecated: use `extractAsync` with `extract_type` set to `transcript` in `DBRIVIERAExtractType`
+/// instead, which takes the same options. This route will be turned off by December 31, 2026. Asynchronous transcript
+/// generation for audio and video files. Supported audio formats: .aac, .aif, .aiff, .flac, .m4a, .m4r, .mp3, .oga,
+/// .ogg, .wav, .wma. Supported video formats: .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .flv, .m2t, .m2ts, .m4v, .mkv,
+/// .mov, .mp4, .mpeg, .mpg, .mts, .mxf, .oggtheora, .ogv, .rm, .ts, .vob, .webm, .wmv. Files in other formats fail with
+/// `userError` in `DBRIVIERAContentApiV2Error`. Size limits: the source file must be at most 10 GB and its audio track
+/// at most 1 hour in duration. Files exceeding either limit fail with `userError` in `DBRIVIERAContentApiV2Error`. The
+/// transcript is not returned by this route. Poll `getTranscriptAsyncCheck` with the returned async job ID until it
+/// reports `complete` in `DBRIVIERAGetTranscriptAsyncCheckResult` or `failed` in
 /// `DBRIVIERAGetTranscriptAsyncCheckResult`.
 ///
 /// @param fileIdOrUrl Identifier of the media asset to transcribe. Callers must set exactly one of the FileIdOrUrl
@@ -497,10 +527,11 @@ NS_ASSUME_NONNULL_BEGIN
                                                              timestampLevel:
                                                                  (nullable DBRIVIERATimestampLevel *)timestampLevel
                                                        includedSpecialWords:(nullable NSString *)includedSpecialWords
-                                                              audioLanguage:(nullable NSString *)audioLanguage;
+                                                              audioLanguage:(nullable NSString *)audioLanguage
+    __deprecated_msg("getTranscriptAsync is deprecated.");
 
 ///
-/// Returns the status or result of specified get_transcript_async task.
+/// DEPRECATED: Returns the status or result of specified get_transcript_async task.
 ///
 /// @param asyncJobId Id of the asynchronous job. This is the value of a response returned from the method that launched
 /// the job.
@@ -509,7 +540,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// success or a `DBASYNCPollError` object on failure.
 ///
 - (DBRpcTask<DBRIVIERAGetTranscriptAsyncCheckResult *, DBASYNCPollError *> *)getTranscriptAsyncCheck:
-    (NSString *)asyncJobId;
+    (NSString *)asyncJobId __deprecated_msg("getTranscriptAsyncCheck is deprecated.");
 
 ///
 /// Asynchronous file transformation: produces a new file from an existing one. One route covers many conversions. Name
