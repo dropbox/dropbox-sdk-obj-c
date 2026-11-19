@@ -20,7 +20,7 @@
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
                                                                  pattern:@"/(.|[\\r\\n])*"]](path);
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:@(32)
-                                                                 pattern:@"[\\w]+"]](tagText);
+                                                                 pattern:@"[\\w ]+"]](tagText);
 
   self = [super init];
   if (self) {
@@ -21504,7 +21504,7 @@
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:nil maxLength:nil
                                                                  pattern:@"/(.|[\\r\\n])*"]](path);
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:@(32)
-                                                                 pattern:@"[\\w]+"]](tagText);
+                                                                 pattern:@"[\\w ]+"]](tagText);
 
   self = [super init];
   if (self) {
@@ -33648,7 +33648,7 @@
 
 - (instancetype)initWithTagText:(NSString *)tagText {
   [DBStoneValidators nonnullValidator:[DBStoneValidators stringValidator:@(1) maxLength:@(32)
-                                                                 pattern:@"[\\w]+"]](tagText);
+                                                                 pattern:@"[\\w ]+"]](tagText);
 
   self = [super init];
   if (self) {
